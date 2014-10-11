@@ -11,7 +11,7 @@ int main(int argc, char argv[])
 	cout << "hello world";
 
 
-
+	cout << "How y'all doing??";
 
 	cin.ignore(1000, '\n');
 	return 0;
