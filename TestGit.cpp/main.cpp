@@ -6,5 +6,7 @@ int main()
 
 	std::cout << "Hi anthony";
 	
+	std::cout << "yolo";
+
 	return 0;
 }
