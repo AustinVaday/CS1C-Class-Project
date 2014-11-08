@@ -45,6 +45,8 @@ char  CharCheck(  string    outputString,   // IN - will output a message
 		cout << outputString;
 		cin.get(character);
 		uppercaseChar = toupper(character);
+		charOne = toupper(charOne);
+		charTwo = toupper(charTwo);
 		cin.ignore(1000, '\n');
 
 

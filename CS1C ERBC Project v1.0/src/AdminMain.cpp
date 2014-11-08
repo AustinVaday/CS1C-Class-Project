@@ -13,9 +13,9 @@
  *
  *************************************************************************/
 
-#include "PreprocessorDirectiveHeader.h"
-#include "AdminClassHeader.h"
-#include "Header.h"
+#include "../Header Files/PreprocessorDirectiveHeader.h"
+#include "../Header Files/AdminClassHeader.h"
+#include "../Header Files/Header.h"
 
 void AdminMain( CustomerList activatedList,
 				CustomerList listOfPrevPurchasers,
@@ -35,15 +35,7 @@ void AdminMain( CustomerList activatedList,
 	string password;
 	char tryAgain;
 	bool searchDeactivatedList = false;
-//	bool deleteFound = true;
 	DisplayListMenu displaySelection;
-
-
-//	 CustomerList activatedList;
-//	 CustomerList listOfPrevPurchasers;
-//	 CustomerList deactivatedList;
-//	 List<string> customerReviews;
-
 
 
 
@@ -51,12 +43,10 @@ void AdminMain( CustomerList activatedList,
 
 	if (!overrideInput)
 	{
-//		whichList = ACTIVATED_LIST;
 		selection = AdminSelectionMenu();
 	}
 	else
 	{
-//		whichList = DEACTIVATED_LIST;
 		selection = overrideSelection;
 	}
 
@@ -118,8 +108,8 @@ void AdminMain( CustomerList activatedList,
 			break;
 		case SEARCH_AND_DISPLAY_CUSTOMER:
 
-			// searches the activated list first. if not found, it will
-			// search the deactivated list.
+					// searches the activated list first. if not found, it will
+					// search the deactivated list.
 					cout << "Enter the name of the individual you would ";
 					cout << "like to SEARCH: ";
 					getline(cin,userName);
@@ -227,17 +217,14 @@ void AdminMain( CustomerList activatedList,
 					cout << "Enter the name of the individual you would ";
 					cout << "like to REMOVE: ";
 					getline(cin,userName);
-//cerr << "\n ok1 \n";
 
 					try
 					{
-//cerr << "\n ok2 \n";
 						// search a user in activated list...
 						*someCustomer = Admin1.findCustomer(activatedList, userName);
 
 						Admin1.moveCustomer(deactivatedList, activatedList, *someCustomer);
 
-//cerr << "\n ok3 \n";
 					}
 					catch(const EmptyList&)
 					{
@@ -308,13 +295,9 @@ void AdminMain( CustomerList activatedList,
 							overrideInput = false;
 						}
 					}// END TRY
-//cerr << "\n ok4 \n";
-//
-//cerr << "\n ok5 \n";
 
 					cout << "Done.\n";
 
-//cerr << "\n ok6 \n";
 			break;
 		case WIPE_DEACTIVATED_LIST:
 
@@ -338,19 +321,6 @@ void AdminMain( CustomerList activatedList,
 											deactivatedList,
 											*someCustomer);
 
-						/*
-						// if true, will remove the customer from
-						// deactivated list and restore the customer
-						// into the activated list
-						if(Admin1.recoverCustomer(*someCustomer))
-						{
-							cout << "Successful restored customer.\n";
-						}
-						else
-						{
-							cout << "Sorry, could not restore the customer";
-						}
-						*/
 
 					}
 					catch(const EmptyList&)

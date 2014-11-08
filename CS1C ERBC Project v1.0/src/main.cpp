@@ -13,8 +13,8 @@
  *
  *************************************************************************/
 
-#include "Header.h"
-#include "AdminClassHeader.h"
+#include "../Header Files/Header.h"
+#include "../Header Files/AdminClassHeader.h"
 
 /**************************************************************************
  *

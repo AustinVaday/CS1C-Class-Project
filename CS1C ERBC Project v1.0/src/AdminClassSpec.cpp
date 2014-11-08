@@ -15,8 +15,8 @@
 
 
 
-#include "AdminClassHeader.h"
-#include "Header.h"
+#include "../Header Files/AdminClassHeader.h"
+#include "../Header Files/Header.h"
 
 // PREVENTS THE ARCHITECHURAL ERROR!!
 //CustomerList Admin::listOfCustomers;

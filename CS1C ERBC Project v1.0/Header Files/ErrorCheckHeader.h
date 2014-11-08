@@ -32,6 +32,16 @@ Type CheckInput (string    outputMessage, 	// IN   - The message the progam
 											//            boundary limit
 				const int SIZE);			// IN 	- setw width for output
 											//			  message
+/**************************************************************************
+* Function CharCheck
+* This function will use a do-while loop to validate whether user input
+* is a one character or the other
+ *************************************************************************/
+char  CharCheck(  string    outputString,   // IN - will output a message
+											//      to the user
+				  char	    charOne,		// IN - first char val to check
+				  char	    charTwo,		// IN - second char val to check
+				  const int SIZE);			// IN - setw width for output
 
 
 /**************************************************************************

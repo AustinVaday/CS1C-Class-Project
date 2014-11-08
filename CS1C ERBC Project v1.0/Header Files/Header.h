@@ -96,11 +96,6 @@ AdminMenu AdminSelectionMenu();
  *************************************************************************/
 DisplayListMenu DisplayListSelectionMenu();
 
-char  CharCheck(  string    outputString,   // IN - will output a message
-											//      to the user
-				  char	    charOne,		// IN - first char val to check
-				  char	    charTwo,		// IN - second char val to check
-				  const int SIZE);			// IN - setw width for output
 
 //ProgramFunctions DisplayMainProgramMenu();
 //
