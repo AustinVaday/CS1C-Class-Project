@@ -35,14 +35,14 @@ Admin::Admin(string userName,
 			  string email,
 			  long accountNum,
 			  string password
-			)
+			) : User(userName,email,accountNum,password)
 {
-	User::setUserName(userName);
-	User::setEmail(email);
-	User::setAccountNum(accountNum); // should we make this in the class instead?????
-	User::setPassword(password);
+//	User::setUserName(userName);
+//	User::setEmail(email);
+//	User::setAccountNum(accountNum); // should we make this in the class instead?????
+//	User::setPassword(password);
 
-	activate = true;
+//	activate = true;
 }
 
 // destructor
@@ -77,65 +77,55 @@ bool Admin::activationStatus()
 
 //add a customer to the list of customers.
 // pass by value so a copy will be added to the list.
-void Admin::addCustomer(Customer customerToAdd, bool activated)
+void Admin::addCustomer(CustomerList &list, Customer customerToAdd)
 {
-	if (activated)
-	{
-
-		listOfCustomers.Enqueue(customerToAdd);
-	}
-	else
-	{
-		deactivatedList.Enqueue(customerToAdd);
-	}
+	list.Enqueue(customerToAdd);
 }
 
 
-// search for the customer, remove the customer from the
-// list of customers.
-// If delete forever is false: add the customer to the deactivated
-// list.
-// If delete forever is true: delete forever.
-void Admin::deleteCustomer(Customer &customerToDelete,
-						    bool deleteForever)
+// move the customer from list 2 to list 1
+void Admin::moveCustomer(CustomerList &list1,
+						 CustomerList &list2,
+						 Customer &customerToMove)
 {
 
+	// try and catch blocks or nahh??
 
-	try
-	{
-		// delete forever
-		if (deleteForever)
-		{
-			listOfCustomers.RemoveCustomer(customerToDelete);
-		}
-		// migrate user to deactivated list
-		// remove from list of customers
-		else
-		{
-			deactivatedList.Enqueue(customerToDelete);
-			listOfCustomers.RemoveCustomer(customerToDelete);
-		}
-	}
-	catch(const EmptyList&)
-	{
-		cout << "Inside CATCH for Empty List.\n";
-		cout << "You have an empty list, cannot delete customer";
-		cout << "(Output some kind of pop-up window here)\n";
-	}
-	catch (const NotFound&)
-	{
-		cout << "Inside CATCH for not found.\n";
-		cout << "Cannot delete customer because not found.\n";
-		cout << "(Output some kind of pop-up window here)\n";
-	}
-	catch(...)
-	{
-		cout << "Uhh, something went wrong. Bye bye\n";
-	}
+//
+//	try
+//	{
+
+			list2.RemoveCustomer(customerToMove);
+
+			list1.Enqueue(customerToMove);
+//	}
+//	catch(const EmptyList&)
+//	{
+//		cout << "Inside CATCH for Empty List.\n";
+//		cout << "Your second list is empty, cannot delete customer";
+//		cout << "(Output some kind of pop-up window here)\n";
+//	}
+//	catch (const NotFound&)
+//	{
+//		cout << "Inside CATCH for not found.\n";
+//		cout << "Cannot delete customer because not found in second list.\n";
+//		cout << "(Output some kind of pop-up window here)\n";
+//	}
+//	catch(...)
+//	{
+//		cout << "Uhh, something went wrong. Bye bye\n";
+//	}
 }
 
+void Admin::deleteCustomer(CustomerList &list,
+							Customer &customerToDelete)
+{
+		// try and catch blocks or nahh??
 
+		list.RemoveCustomer(customerToDelete);
+}
 
+/*
 // searches the deactivated list. If finds customer, return
 // true and add the customer back to the list of customers
 // else, return false and do not do anything.
@@ -167,11 +157,12 @@ bool Admin::recoverCustomer(Customer &customerToRecover)
 		}
 
 }
+*/
 
 // wipes out the whole list of deactivated customers.
-void Admin::wipeDeactivatedList ()
+void Admin::wipeList (CustomerList &list)
 {
-	deactivatedList.ClearList();
+	list.ClearList();
 
 }
 
@@ -190,42 +181,86 @@ void Admin::modifyHelpOptions()
 
  }
 
- void Admin::displayLists()
+ void Admin::displayList(CustomerList &list)
  {
-	 DisplayListMenu selection;
+//	 DisplayListMenu selection;
+//
+//	 selection = DisplayListSelectionMenu();
+//	 while (selection != LIST_EXIT)
+//	 {
+//		 switch (selection)
+//		{
+//		 case LIST_CUSTOMERS: 		listOfCustomers.OutputList();
+//			 break;
+//		 case LIST_DEACTIVATED: 	deactivatedList.OutputList();
+//			 break;
+//		 case LIST_PREV_PURCHASERS: listOfPrevPurchasers.OutputList();
+//			 break;
+//		 case LIST_CUSTOMER_REVIEWS: cout << "Feature Coming Soon...\n";
+//			 break;
+//		}
+//
+//		 selection = DisplayListSelectionMenu();
+//	 }
 
-	 selection = DisplayListSelectionMenu();
-	 while (selection != LIST_EXIT)
+	 list.OutputList();
+ }
+
+ Customer Admin::findCustomer(CustomerList &list, string userName)
+ {
+
+	 return list.FindCustomer(userName);
+
+	 /*
+	 switch (listToSearch)
 	 {
-		 switch (selection)
-		{
-		 case LIST_CUSTOMERS: 		listOfCustomers.OutputList();
-			 break;
-		 case LIST_DEACTIVATED: 	deactivatedList.OutputList();
-			 break;
-		 case LIST_PREV_PURCHASERS: listOfPrevPurchasers.OutputList();
-			 break;
-		 case LIST_CUSTOMER_REVIEWS: cout << "Feature Coming Soon...\n";
-			 break;
-		}
+	 	 case BOTH_LISTS:
 
-		 selection = DisplayListSelectionMenu();
+	 		 	 try
+	 		 	 {
+	 		 		 Customer someCustomer;
+	 		 		 // return customer from activated list
+	 				 cerr << userName;
+
+	 				 someCustomer = listOfCustomers.FindCustomer(userName);
+	 		 		 return someCustomer;
+	 		 	 }
+	 		 	 // if activated list is empty
+	 		 	 catch(const EmptyList&)
+	 		 	 {
+	 				 cerr << userName;
+
+	 		 		 cout << "In emtpy list catchhhh";
+	 		 		 // recurse to check deactivated list
+	 		 		 findCustomer(userName,DEACTIVATED_LIST);
+	 		 	 }
+	 		 	 catch (const NotFound&)
+	 		 	 {
+	 		 		 cout << "In not found catcchhhhh\n";
+	 		 		 // recurse to check deactivated list
+	 		 		 findCustomer(userName,DEACTIVATED_LIST);
+	 		 	 }
+	 		 break;
+
+		 case ACTIVATED_LIST: return listOfCustomers.FindCustomer(userName);
+			 break;
+
+		 case DEACTIVATED_LIST:
+
+
+			 cerr << userName;
+			 return deactivatedList.FindCustomer(userName);
+			 break;
 	 }
 
+	 */
  }
 
- Customer Admin::findCustomerFromID(long accountNum)
- {
-
-	return listOfCustomers.FindCustomer(accountNum);
-
- }
-
- string Admin::displayCustomer(long accountNum)
+ string Admin::displayCustomer(CustomerList &list, string userName)
  {
 	 Customer temp;
 
-	 temp = findCustomerFromID(accountNum);
+	 temp = findCustomer(list, userName);
 
 	 return temp.OutputData();
  }

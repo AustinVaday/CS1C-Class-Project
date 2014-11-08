@@ -156,7 +156,7 @@ public:
 
 	void RemoveCustomer(Customer &someCustomer);
 
-	Customer FindCustomer(long accountNum) ;
+	Customer FindCustomer(string userName) ;
 
 
 };

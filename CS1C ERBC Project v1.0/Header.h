@@ -18,6 +18,7 @@
 
 #include "PreprocessorDirectiveHeader.h"
 
+
 #include "ErrorCheckHeader.h"
 
 #include "ExceptionHandlers.h"
@@ -30,6 +31,13 @@
 *
 *
  *************************************************************************/
+
+enum WhichList
+{
+	ACTIVATED_LIST,
+	DEACTIVATED_LIST
+};
+
 enum MainMenu
 {
 	PROGRAM_EXIT,
@@ -58,7 +66,7 @@ enum AdminMenu
 enum DisplayListMenu
 {
 	LIST_EXIT,
-	LIST_CUSTOMERS,
+	LIST_ACTIVATED,
 	LIST_DEACTIVATED,
 	LIST_PREV_PURCHASERS,
 	LIST_CUSTOMER_REVIEWS
@@ -89,9 +97,15 @@ AdminMenu AdminSelectionMenu();
  *************************************************************************/
 DisplayListMenu DisplayListSelectionMenu();
 
+char  CharCheck(  string    outputString,   // IN - will output a message
+											//      to the user
+				  char	    charOne,		// IN - first char val to check
+				  char	    charTwo,		// IN - second char val to check
+				  const int SIZE);			// IN - setw width for output
+
 //ProgramFunctions DisplayMainProgramMenu();
 //
 
-void AdminMain(AdminMenu overrideSelection, bool overrideInput);
+
 
 #endif /* HEADER_H_ */

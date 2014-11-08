@@ -14,6 +14,7 @@
  *************************************************************************/
 
 #include "Header.h"
+#include "AdminClassHeader.h"
 
 /**************************************************************************
  *
@@ -27,14 +28,26 @@ int main()
 	// VARIABLE DECLARATIONS
 	MainMenu	userSelection;
 	bool		exitProgram;
+	 CustomerList activatedList;
+	 CustomerList listOfPrevPurchasers;
+	 CustomerList deactivatedList;
+	 List<string> customerReviews;
 
 	// INITIALIZATING
 	exitProgram = false;
 
 	// PROCESSES
 
-	// dummy parameters :/
-	AdminMain(ADMIN_EXIT, false);
+
+
+
+	// FOUND IN ADMINCLASSHEADER.h
+	AdminMain(activatedList,
+				listOfPrevPurchasers,
+				deactivatedList,
+				customerReviews,
+				ADMIN_EXIT, 		// dummy variables
+				false);				// dummy variables.
 
 	// WHEN PROGRAM STARTS GIVES LOGIN SCREEN
 

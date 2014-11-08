@@ -326,58 +326,60 @@ void CustomerList::RemoveCustomer(Customer &someCustomer)
 	traversePtr = _head;
 	int index = 0;
 
-	while (index < _listLimit && traversePtr != NULL)
+cerr << "OUTSIDE WHILE\n";
+	while (index < _listLimit && traversePtr != NULL && !(traversePtr->GetData() == someCustomer))
 	{
-		// overloaded operator
-		if (traversePtr->GetData() == someCustomer)
-		{
-			// head deletion
-			if (traversePtr == _head)
-			{
-				Dequeue();
 
-			}
-			// end deletion
-			else if (traversePtr == _tail)
-			{
-				_tail = _tail->GetPrevious();
-
-
-				_tail->SetNext(NULL);
-//				_tail->_next = NULL;
-
-				traversePtr->Orphan();
-
-				delete traversePtr;
-
-			}
-			// middle deletion
-			else
-			{
-//				actionPtr = traversePtr->_previous;
-				actionPtr = traversePtr->GetPrevious();
-
-//				actionPtr->_next = traversePtr->_next;
-				actionPtr->SetNext(traversePtr->GetNext());
-
-//				traversePtr->_next->_previous = actionPtr;
-
-				traversePtr->SetNext(traversePtr->GetNext());
-				traversePtr->SetPrevious(actionPtr);
-
-				traversePtr->Orphan();
-
-				delete traversePtr;
-
-
-
-			}
-
-		}
+cerr << "INSIDE WHILE\n";
 
 		traversePtr = traversePtr->GetNext();
 		index++;
 	}
+
+	// overloaded operator
+			if (traversePtr->GetData() == someCustomer)
+			{
+				// head deletion
+				if (traversePtr == _head)
+				{
+					Dequeue();
+
+				}
+				// end deletion
+				else if (traversePtr == _tail)
+				{
+					_tail = _tail->GetPrevious();
+
+
+					_tail->SetNext(NULL);
+	//				_tail->_next = NULL;
+
+					traversePtr->Orphan();
+
+					delete traversePtr;
+
+				}
+				// middle deletion
+				else
+				{
+	//				actionPtr = traversePtr->_previous;
+					actionPtr = traversePtr->GetPrevious();
+
+	//				actionPtr->_next = traversePtr->_next;
+					actionPtr->SetNext(traversePtr->GetNext());
+
+	//				traversePtr->_next->_previous = actionPtr;
+
+					traversePtr->SetNext(traversePtr->GetNext());
+					traversePtr->SetPrevious(actionPtr);
+
+					traversePtr->Orphan();
+
+					delete traversePtr;
+
+				}
+
+			}
 
 	if (index == _listLimit && traversePtr == NULL)
 	{
@@ -387,34 +389,27 @@ void CustomerList::RemoveCustomer(Customer &someCustomer)
 	}
 }
 
-Customer CustomerList::FindCustomer(long accountNum)
+Customer CustomerList::FindCustomer(string userName)
 {
 		CustomerNode * traversePtr;
-		Customer * ptr;
-
 
 		if(isEmpty())
 		{
 			throw EmptyList();
 		}
 
-
 		// NEED TO MAKE SURE 2 ACCOUNT NUMBERS CANNOT BE THE SAME //
-
 		traversePtr = _head;
 		int index = 0;
 		while (index < _listLimit && traversePtr !=NULL &&
-				traversePtr->GetData().getAccountNum() != accountNum)
+				traversePtr->GetData().getUserName() != userName)
 		{
-
 			traversePtr = traversePtr->GetNext();
 
 			index++;
 		}
-
 		if (traversePtr == NULL)
 		{
-
 			// throw exception class if not found.
 			traversePtr = NULL;
 			throw NotFound();

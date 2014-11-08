@@ -17,7 +17,12 @@
 #include "AdminClassHeader.h"
 #include "Header.h"
 
-void AdminMain(AdminMenu overrideSelection, bool overrideInput)
+void AdminMain( CustomerList activatedList,
+				CustomerList listOfPrevPurchasers,
+				CustomerList deactivatedList,
+				List<string> customerReviews,
+				AdminMenu overrideSelection,
+				bool overrideInput)
 {
 
 	// CLASS DECLARATION
@@ -28,7 +33,17 @@ void AdminMain(AdminMenu overrideSelection, bool overrideInput)
 	string email;
 	long   accountNum;
 	string password;
+	char tryAgain;
+	bool searchDeactivatedList = false;
 //	bool deleteFound = true;
+	DisplayListMenu displaySelection;
+
+
+//	 CustomerList activatedList;
+//	 CustomerList listOfPrevPurchasers;
+//	 CustomerList deactivatedList;
+//	 List<string> customerReviews;
+
 
 
 
@@ -36,10 +51,12 @@ void AdminMain(AdminMenu overrideSelection, bool overrideInput)
 
 	if (!overrideInput)
 	{
+//		whichList = ACTIVATED_LIST;
 		selection = AdminSelectionMenu();
 	}
 	else
 	{
+//		whichList = DEACTIVATED_LIST;
 		selection = overrideSelection;
 	}
 
@@ -68,8 +85,7 @@ void AdminMain(AdminMenu overrideSelection, bool overrideInput)
 											accountNum,
 											password);
 
-					// true means ACTIVATED customer
-					Admin1.addCustomer(*someCustomer, true);
+					Admin1.addCustomer(activatedList,*someCustomer);
 
 
 
@@ -95,89 +111,321 @@ void AdminMain(AdminMenu overrideSelection, bool overrideInput)
 											accountNum,
 											password);
 
-					// false means DEACTIVATED customer
-					Admin1.addCustomer(*someCustomer, false);
+					Admin1.addCustomer(deactivatedList, *someCustomer);
 
 					cout << "Done.\n";
 
 			break;
 		case SEARCH_AND_DISPLAY_CUSTOMER:
-					accountNum = CheckInput("Enter the account # of the "
-												"individual you would "
-													"like to search:",
-													0, 99999999, 0);
+
+			// searches the activated list first. if not found, it will
+			// search the deactivated list.
+					cout << "Enter the name of the individual you would ";
+					cout << "like to SEARCH: ";
+					getline(cin,userName);
 
 					try
 					{
-						// remove customer, delete permanently: FALSE
-						cout << Admin1.displayCustomer(accountNum);
+
+						cout << Admin1.displayCustomer(activatedList, userName);
+						searchDeactivatedList = false;
+
 					}
 					catch(const EmptyList&)
 					{
-						cout << "inside CATCH for EmptyList\n";
-						AdminMain(SEARCH_AND_DISPLAY_CUSTOMER, true);
+						searchDeactivatedList = true;
+
 					}
 					catch(const NotFound&)
 					 {
 
-						 cout << "inside CATCH for NotFound\n";
-						 AdminMain(SEARCH_AND_DISPLAY_CUSTOMER, true);
+						searchDeactivatedList = true;
 					 }
 					 catch(...)
 					 {
 						 cout << "Something went wrong... (inside catch all) \n";
-						 AdminMain(SEARCH_AND_DISPLAY_CUSTOMER, true);
+						 searchDeactivatedList = true;
 					 } // END TRY
 
+					 if (searchDeactivatedList)
+					 {
+						 try
+						{
+							cout << Admin1.displayCustomer(deactivatedList, userName);
+						}
+						catch(const EmptyList&)
+						{
+							cout << "inside CATCH for EmptyList\n";
+
+							tryAgain = CharCheck( " Empty... Try again? (Y/N): ",
+										 'Y',
+										 'N',
+										  0);
+							if (tryAgain == 'Y')
+							{
+								AdminMain(activatedList,
+										listOfPrevPurchasers,
+										deactivatedList,
+										customerReviews,
+										SEARCH_AND_DISPLAY_CUSTOMER,
+										true);
+							}
+							else
+							{
+								overrideInput=false;
+							}
+
+						}
+						catch(const NotFound&)
+						 {
+							 cout << "inside CATCH for NotFound\n";
+							 tryAgain = CharCheck( " Not found... Try again? (Y/N): ",
+											 'Y',
+											 'N',
+											  0);
+							if (tryAgain == 'Y')
+							{
+								AdminMain(activatedList,
+										listOfPrevPurchasers,
+										deactivatedList,
+										customerReviews,
+										SEARCH_AND_DISPLAY_CUSTOMER,
+										true);
+							}
+							else
+							{
+								overrideInput = false;
+							}
+						 }
+						 catch(...)
+						 {
+							 cout << "Something went wrong... (inside catch all) \n";
+							 tryAgain = CharCheck( " Not found... Try again? (Y/N): ",
+											 'Y',
+											 'N',
+											  0);
+
+							if (tryAgain == 'Y')
+							{
+								AdminMain(activatedList,
+										listOfPrevPurchasers,
+										deactivatedList,
+										customerReviews,
+										SEARCH_AND_DISPLAY_CUSTOMER,
+										true);
+							}
+							else
+							{
+								overrideInput = false;
+							}
+						 } // END TRY
+					 }
 					 cout << "Done.\n";
 
 			break;
 		case REMOVE_ACTIVATED_CUSTOMER:
-					accountNum = CheckInput("Enter the account # of the "
-												"individual you would"
-													"like to remove:",
-													0, 99999999, 0);
+					cout << "Enter the name of the individual you would ";
+					cout << "like to REMOVE: ";
+					getline(cin,userName);
 //cerr << "\n ok1 \n";
 
 					try
 					{
 //cerr << "\n ok2 \n";
-						*someCustomer = Admin1.findCustomerFromID(accountNum);
+						// search a user in activated list...
+						*someCustomer = Admin1.findCustomer(activatedList, userName);
+
+						Admin1.moveCustomer(deactivatedList, activatedList, *someCustomer);
 
 //cerr << "\n ok3 \n";
 					}
 					catch(const EmptyList&)
 					{
 						cout << "inside CATCH for EmptyList\n";
-						AdminMain(REMOVE_ACTIVATED_CUSTOMER, true);
+
+						tryAgain = CharCheck( " Empty List... Try again? (Y/N): ",
+									 'Y',
+									 'N',
+									  0);
+
+						if (tryAgain == 'Y')
+						{
+						AdminMain(activatedList,
+								listOfPrevPurchasers,
+								deactivatedList,
+								customerReviews,
+								REMOVE_ACTIVATED_CUSTOMER,
+								true);
+						}
+						else
+						{
+							overrideInput = false;
+						}
 					}
 					catch(const NotFound&)
 					{
 						cout << "inside CATCH for NotFound\n";
-						AdminMain(REMOVE_ACTIVATED_CUSTOMER, true);
+
+						tryAgain = CharCheck( " Not found... Try again? (Y/N): ",
+									 'Y',
+									 'N',
+									  0);
+
+						if (tryAgain == 'Y')
+						{
+						AdminMain(activatedList,
+								listOfPrevPurchasers,
+								deactivatedList,
+								customerReviews,
+								REMOVE_ACTIVATED_CUSTOMER,
+								true);
+						}
+						else
+						{
+							overrideInput = false;
+						}
 					}
 					catch(...)
 					{
 						cout << "Something went wrong... (inside catch all) \n";
-						AdminMain(REMOVE_ACTIVATED_CUSTOMER, true);
+
+						tryAgain = CharCheck( " Not found... Try again? (Y/N): ",
+									 'Y',
+									 'N',
+									  0);
+
+						if (tryAgain == 'Y')
+						{
+							AdminMain(activatedList,
+									listOfPrevPurchasers,
+									deactivatedList,
+									customerReviews,
+									REMOVE_ACTIVATED_CUSTOMER,
+									true);
+						}
+						else
+						{
+							overrideInput = false;
+						}
 					}// END TRY
 //cerr << "\n ok4 \n";
 //
 //cerr << "\n ok5 \n";
-					 // remove customer, delete permanently: FALSE
-					Admin1.deleteCustomer(*someCustomer, false);
+
 					cout << "Done.\n";
 
 //cerr << "\n ok6 \n";
 			break;
 		case WIPE_DEACTIVATED_LIST:
 
-					Admin1.wipeDeactivatedList();
+					Admin1.wipeList(deactivatedList);
 					cout << "Done.\n";
 
 			break;
 		case RECOVER_ACCIDENTAL_DELETION:
-					cout << "Coming soon ...\n";
+
+						cout << "Enter the name of the individual you would ";
+						cout << "like to RESTORE to ACTIVATED: ";
+						getline(cin,userName);
+
+					try
+					{
+						// search a user in DEACTIVATED list
+						*someCustomer = Admin1.findCustomer(deactivatedList,userName);
+
+						// move the customer from deactivated to activated list
+						Admin1.moveCustomer(activatedList,
+											deactivatedList,
+											*someCustomer);
+
+						/*
+						// if true, will remove the customer from
+						// deactivated list and restore the customer
+						// into the activated list
+						if(Admin1.recoverCustomer(*someCustomer))
+						{
+							cout << "Successful restored customer.\n";
+						}
+						else
+						{
+							cout << "Sorry, could not restore the customer";
+						}
+						*/
+
+					}
+					catch(const EmptyList&)
+					{
+						cout << "inside CATCH for EmptyList\n";
+
+						tryAgain = CharCheck( " Empty List... Try again? (Y/N): ",
+									 'Y',
+									 'N',
+									  0);
+
+						if (tryAgain == 'Y')
+						{
+							AdminMain(activatedList,
+									listOfPrevPurchasers,
+									deactivatedList,
+									customerReviews,
+									REMOVE_ACTIVATED_CUSTOMER,
+									true);
+
+						}
+						else
+						{
+							overrideInput = false;
+						}
+					}
+					catch(const NotFound&)
+					{
+						cout << "inside CATCH for NotFound\n";
+						cout << "Failed to recover customer.\n";
+						tryAgain = CharCheck( " Not found... Try again? (Y/N): ",
+									 'Y',
+									 'N',
+									  0);
+						if (tryAgain == 'Y')
+						{
+							AdminMain(activatedList,
+									listOfPrevPurchasers,
+									deactivatedList,
+									customerReviews,
+									REMOVE_ACTIVATED_CUSTOMER,
+									true);
+
+						}
+						else
+						{
+							overrideInput = false;
+						}
+					}
+					catch(...)
+					{
+						cout << "Something went wrong... (inside catch all) \n";
+						tryAgain = CharCheck( " Not found... Try again? (Y/N): ",
+									 'Y',
+									 'N',
+									  0);
+
+						if (tryAgain == 'Y')
+						{
+							AdminMain(activatedList,
+									listOfPrevPurchasers,
+									deactivatedList,
+									customerReviews,
+									REMOVE_ACTIVATED_CUSTOMER,
+									true);
+
+						}
+						else
+						{
+							overrideInput = false;
+						}
+					}// END TRY
+
+
+					cout << "Done.\n";
 			break;
 		case MODIFY_HELP_OPTIONS:
 					cout << "Coming soon...\n";
@@ -186,7 +434,24 @@ void AdminMain(AdminMenu overrideSelection, bool overrideInput)
 					cout << "Coming soon ... \n";
 			break;
 		case DISPLAY_A_LIST:
-					Admin1.displayLists();
+
+				displaySelection = DisplayListSelectionMenu();
+				 while (displaySelection != LIST_EXIT)
+				 {
+					 switch (displaySelection)
+					{
+					 case LIST_ACTIVATED: 		activatedList.OutputList();
+						 break;
+					 case LIST_DEACTIVATED: 	deactivatedList.OutputList();
+						 break;
+					 case LIST_PREV_PURCHASERS: listOfPrevPurchasers.OutputList();
+						 break;
+					 case LIST_CUSTOMER_REVIEWS: cout << "Feature Coming Soon...\n";
+						 break;
+					}
+
+					 displaySelection = DisplayListSelectionMenu();
+				 }
 			break;
 		case DISPLAY_A_CUSTOMER:
 					cout << "Coming soon ... \n";

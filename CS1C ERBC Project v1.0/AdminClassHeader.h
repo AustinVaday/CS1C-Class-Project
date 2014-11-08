@@ -21,6 +21,15 @@
 #include "CustomerClassHeader.h"
 #include "GenericList.h"
 #include "ExceptionHandlers.h"
+#include "Header.h"
+
+void AdminMain( CustomerList activatedList,
+				CustomerList listOfPrevPurchasers,
+				CustomerList deactivatedList,
+				List<string> customerReviews,
+				AdminMenu overrideSelection,
+				bool overrideInput);
+
 
 class Admin : public User
 {
@@ -46,22 +55,16 @@ class Admin : public User
 
 		//Mutators
 
-		void addCustomer(Customer customerToAdd, bool activated);
+		void addCustomer(CustomerList &list, Customer customerToAdd);
 		//add a customer to the list of customers.
 
-		void deleteCustomer(Customer &customerToDelete, bool deleteForever);
-		// search for the customer, remove the customer from the
-		// list of customers.
-		// If delete forever is false: add the customer to the deactivated
-		// list.
-		// If delete forever is true: delete forever.
+		void moveCustomer(CustomerList &list1,
+							 CustomerList &list2,
+							 Customer &customerToMove);
 
-		bool recoverCustomer(Customer &customerToRecover);
-		// searches the deactivated list. If finds customer, return
-		// true and add the customer back to the list of customers
-		// else, return false and do not do anything.
+		void deleteCustomer(CustomerList &list, Customer &customerToDelete);
 
-		void wipeDeactivatedList ();
+		void wipeList (CustomerList &list);
 		// wipes out the whole list of deactivated customers.
 
 		void modifyHelpOptions();
@@ -72,31 +75,16 @@ class Admin : public User
 		 // allow the admin to access, delete, or modify any
 		 // customer reviews.
 
-		void displayLists();
-		// menu with sub-options to select which menu to display
+		void displayList(CustomerList &list);
 
-		//Accessors
+		Customer findCustomer(CustomerList &list, string userName);
 
-		Customer findCustomerFromID(long accountNum);
+		string displayCustomer(CustomerList &list, string userName);
 
-		string displayCustomer(long accountNum);
-		 /*
-		  *  NOTE: Perhaps template usage is best for the following
-		  *  two methods. But I will do this for simplicity
-		  */
-//		bool displayCustomerList(List<Customer> list) const;
-//		bool displayStringList(List<string> list) const;
-		// generic display for a list of strings.
 
 
 	private:
-		 CustomerList listOfCustomers;
-		 CustomerList listOfPrevPurchasers;
-		 CustomerList deactivatedList;
-		List<string> customerReviews;
-		 //**==**HELP CLASS HERE**==** ...
-		 	//helpClass helpOptions
-		 bool activate;
+
 };
 
 
