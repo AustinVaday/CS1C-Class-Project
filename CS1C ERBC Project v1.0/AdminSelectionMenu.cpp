@@ -32,14 +32,13 @@ AdminMenu AdminSelectionMenu ()
 					"7 - Modify the Help options\n"
 					"8 - Modify the Customer reviews\n"
 					"9 - Display a List\n"
-					"10 -Display a Customer\n"
 					"0 - Exit \n"
 					"=================================================\n"
 					"What would you like to do?: ";
 
 	// Calls the function GetAndCheckInput to get and check the input
 	// on a given range.
-	selection = CheckInput(menuString, 0 , 10, 0);
+	selection = CheckInput(menuString, 0 , 9, 0);
 
 
 

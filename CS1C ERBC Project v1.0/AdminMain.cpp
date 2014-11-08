@@ -453,9 +453,7 @@ void AdminMain( CustomerList activatedList,
 					 displaySelection = DisplayListSelectionMenu();
 				 }
 			break;
-		case DISPLAY_A_CUSTOMER:
-					cout << "Coming soon ... \n";
-			break;
+
 		} // END SWITCH
 
 		if (!overrideInput)
