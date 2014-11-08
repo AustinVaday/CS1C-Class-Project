@@ -1,22 +1,8 @@
-/**************************************************************************
- * CS1C Class Project
- * -----------------------------------------------------------------------
- * Functions Menu
- * -----------------------------------------------------------------------
- * Version: 0.0.1
- * -----------------------------------------------------------------------
- * Programmers:
- *		Austin 	Vaday
- *		Anthony Ramirez
- *		Annie	Raichev
- *		Erik 	Karlsson
- *
- *************************************************************************/
 
-#include "../Header Files/Header.h"
+#include "../../Header Files/Header.h"
 /**************************************************************************
  *
- * MainProgramMenu
+ * AdminSelectionMenu
  *_________________________________________________________________________
  *	This function will assign an ordered menu output into a variable, then
  *	it will call the CheckInput function to prompt and validate user input.
@@ -29,27 +15,33 @@
  * POST-CONDITIONS
  *	returns a type casted MainMenu value of an integer input
  *************************************************************************/
-MainMenu MainProgramMenu ()
+AdminMenu AdminSelectionMenu ()
 {
 	// Declare variables
 	int				selection;		// IN   - an integer input the user specifies
 	string			menuString;		// PROC - a string output menu for the user
 
-	menuString   = 	"\nMain Menu\n"
+	menuString   = 	"\nAdministrator Menu\n"
 					"=================================================\n"
-					"1 - Login\n"
-					"2 - Request Brochure\n"
-					"3 - Guest Access\n"
+					"1 - Add a customer to Activated List \n"
+					"2 - Add a customer to Deactivated List\n"
+					"3 - Search for a customer and display him/her\n"
+					"4 - Remove a Customer from Activated List\n"
+					"5 - Permanently wipe Deactivated List\n"
+					"6 - Recover an accidently deleted Customer\n"
+					"7 - Modify the Help options\n"
+					"8 - Modify the Customer reviews\n"
+					"9 - Display a List\n"
 					"0 - Exit \n"
 					"=================================================\n"
 					"What would you like to do?: ";
 
 	// Calls the function GetAndCheckInput to get and check the input
 	// on a given range.
-	selection = CheckInput(menuString, 0 , 10, 0);
+	selection = CheckInput(menuString, 0 , 9, 0);
 
 
 
 	// PROC - type casting integer to enumeration type
-	return MainMenu(selection);
+	return AdminMenu(selection);
 }

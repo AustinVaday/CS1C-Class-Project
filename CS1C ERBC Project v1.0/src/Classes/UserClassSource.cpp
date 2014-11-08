@@ -13,9 +13,9 @@
  *
  *************************************************************************/
 
-#include "../Header Files/Header.h"
+#include "../../Header Files/Header.h"
 
-#include"../Header Files/UserClassHeader.h"
+#include"../../Header Files/UserClassHeader.h"
 
 // Default constructor
 User::User()

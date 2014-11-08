@@ -17,7 +17,6 @@
 #ifndef PRODUCTCLASSHEADER_H_
 #define PRODUCTCLASSHEADER_H_
 
-#include "Header.h"
 #include "GenericList.h"
 
 /**************************************************************************

@@ -1,9 +1,9 @@
 /**************************************************************************
  * CS1C Class Project
  * -----------------------------------------------------------------------
- * Product Class Source
+ * CustomerClassSource
  * -----------------------------------------------------------------------
- * Version: 1.0
+ * Version: 0.0.1
  * -----------------------------------------------------------------------
  * Programmers:
  *		Austin 	Vaday
@@ -13,19 +13,31 @@
  *
  *************************************************************************/
 
-#include "../Header Files/ProductClassHeader.h"
 
-Product::Product()
+#include "../../Header Files/CustomerClassHeader.h"
+
+Customer::Customer()
 {
-	cost 					= 0;
-	productName				= " ";
-	productDescription		= " ";
-
-	//This is a list
-//	productSpecs			= " ";
 }
 
-Product::~Product()
+Customer::~Customer()
 {
 
 }
+Customer::Customer(string userName,
+		 string email,
+		 long 	accountNum,
+		 string password)
+{
+	User::setUserName(userName);
+	User::setEmail(email);
+	User::setAccountNum(accountNum);
+	User::setPassword(password);
+	activate = false;
+
+}
+
+//Customer::Customer()
+//{
+//
+//}

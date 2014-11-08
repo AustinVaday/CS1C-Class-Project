@@ -25,9 +25,8 @@ int main()
 
 	// CLASS DECLARATIONS
 
-	// VARIABLE DECLARATIONS
-	MainMenu	userSelection;
-	bool		exitProgram;
+	// VARIABLE DECLARATION
+		bool		exitProgram;
 	 CustomerList activatedList;
 	 CustomerList listOfPrevPurchasers;
 	 CustomerList deactivatedList;
