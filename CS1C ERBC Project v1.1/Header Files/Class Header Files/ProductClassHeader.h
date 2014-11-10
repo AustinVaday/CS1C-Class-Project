@@ -50,7 +50,7 @@ class Product
 				string 	name,			// Starting name of product
 				string 	description,	// Description of the product
 				string 	specs, 			// Specifications of the product
-				int		modelNumber,	// Model Number of the product
+				int		modelNum,		// Model Number of the product
 				int		dateReleased,	// The date the product was released
 				int		specCounter);	// Number of specs or features
 

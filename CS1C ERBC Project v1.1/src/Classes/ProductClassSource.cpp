@@ -28,9 +28,13 @@ Product::Product()
 Product::Product(float  cost,		// Starting cost of product
 				 string name,		// Starting name of product
 				 string description,	// Description of the product
+				 string specs,
 				 int 	modelNum,
-				 long 	date) 		// Specifications of the product
+				 int	dateReleased,
+				 int 	specCounter) 		// Specifications of the product
 {
+
+
 
 }
 
