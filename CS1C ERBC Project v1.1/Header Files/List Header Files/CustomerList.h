@@ -18,7 +18,8 @@
 
 #include "../PreprocessorDirectiveHeader.h"
 
-#include "../Node Header Files/CustomerNode.h"
+#include "../Node Header Files/GenericNode.h"
+#include "../Class Header Files/CustomerClassHeader.h"
 #include "../ExceptionHandlers.h"
 
 /**************************************************************************
@@ -35,11 +36,11 @@ class CustomerList
 private:
 	//M E M B E R ~ D E C L A R A T I O N S
 
-	CustomerNode*     	_head;
-	CustomerNode*      	_tail;
-	CustomerNode*	 	_ptr;
-	int      		   _nodeCount;
-	int 			   _listLimit;
+	Node<Customer>*		_head;
+	Node<Customer>* 	_tail;
+	Node<Customer>*		_ptr;
+	int      		  	 	_nodeCount;
+	int 			  		_listLimit;
 
 /**************************************************************************
  * P U B L I C

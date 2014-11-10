@@ -80,7 +80,7 @@ void CustomerList::DecrementCount()
 string CustomerList::OutputList() const
 {
 	//D E C L A R A T I O N
-	CustomerNode * traverse; //CALC - used to traverse the list
+	Node<Customer> * traverse; //CALC - used to traverse the list
 	string  stringList;		   //OUT - used to store the content of the
 							   //	   list
 	ostringstream out;		   //OUT - used to create a stream in which
@@ -198,14 +198,14 @@ void CustomerList::ClearList()
  	//D E C L A R A T I O N S
  //	Node<typeName> * temp;
  		//D E C L A R A T I O N S
- 		CustomerNode*  _createNew;   //CALC - used to create dynamic memory
+	 Node<Customer>*  _createNew;   //CALC - used to create dynamic memory
 
 
  	//Begin If only if the list is empty
  	if(isEmpty())
  	{
  		//Creates new dynamic memory
- 		_createNew  = new CustomerNode;
+ 		_createNew  = new Node<Customer>;
 
  		//Sets the data of the newly created node
  		_createNew->SetData(data);
@@ -225,7 +225,7 @@ void CustomerList::ClearList()
  	else if(_nodeCount < _listLimit)
  	{
  		//Creates new dynamic memory
- 		_createNew  = new CustomerNode;
+ 		_createNew  = new Node<Customer>;
 
  				//Sets the data of the newly created node
  		_createNew->SetData(data);
@@ -265,7 +265,7 @@ void CustomerList::ClearList()
  **************************************************************************/
 void CustomerList::Dequeue()
 {
-	CustomerNode* temp;
+	Node<Customer>* temp;
 
 	if(isEmpty())
 	{
@@ -314,8 +314,8 @@ int CustomerList::Size() const
 
 void CustomerList::RemoveCustomer(Customer &someCustomer)
 {
-	CustomerNode * traversePtr;
-	CustomerNode * actionPtr;
+	Node<Customer> * traversePtr;
+	Node<Customer> * actionPtr;
 
 	if(isEmpty())
 	{
@@ -391,7 +391,7 @@ cerr << "INSIDE WHILE\n";
 
 Customer CustomerList::FindCustomer(string userName)
 {
-		CustomerNode * traversePtr;
+	Node<Customer> * traversePtr;
 
 		if(isEmpty())
 		{

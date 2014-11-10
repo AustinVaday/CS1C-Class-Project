@@ -68,7 +68,7 @@ public:
 	 * --------------------------------------------------------------------
 	 * This template method is used to set pointer in node
 	 **********************************************************************/
-	void SetPointer(typeName _newPointer);
+	void SetPointer(typeName* _newPointer);
 
 	void SetNext(Node* newNext);
 
@@ -179,7 +179,7 @@ void Node<typeName>::SetData(typeName newData)
  * Sets the _next pointer to a pointer argument
  **************************************************************************/
 template <class typeName>
-void Node<typeName>::SetPointer(typeName newPointer)
+void Node<typeName>::SetPointer(typeName* newPointer)
 {
 	_next = newPointer;
 }
@@ -194,9 +194,6 @@ typeName Node<typeName>::GetData() const
 {
 	return _data;
 }
-
-
-
 
 
 #endif /* GENERICNODE_H_ */
