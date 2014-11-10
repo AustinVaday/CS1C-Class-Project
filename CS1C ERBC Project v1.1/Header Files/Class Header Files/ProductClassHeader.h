@@ -19,6 +19,20 @@
 
 #include "../List Header Files/GenericList.h"
 
+/***********************************************************
+ * PARSE CODE - GLOBAL CONSTANT
+ * ---------------------------------------------------------
+ *
+ * Sets the parse code required to create each specification
+ * 	Used to check for each specification in the string.
+ *
+ ********** -> MUST BE 3 CHARACTERS LONG <- ****************/
+
+const string PARSE_CODE = "N$P";
+
+/***********************************************************/
+
+
 /**************************************************************************
  * Product Class
  * -----------------------------------------------------------------------
@@ -32,12 +46,14 @@ class Product
 		Product();
 		// Default Constructor
 
-		Product(float  cost,		// Starting cost of product
-				string name,		// Starting name of product
-				string description,	// Description of the product
-//				string specs,
-				int 	modelNum,
-				 long 	date); 		// Specifications of the product
+		Product(float  	cost,			// Starting cost of product
+				string 	name,			// Starting name of product
+				string 	description,	// Description of the product
+				string 	specs, 			// Specifications of the product
+				int		modelNumber,	// Model Number of the product
+				int		dateReleased,	// The date the product was released
+				int		specCounter);	// Number of specs or features
+
 
 				/***********-> SPECIAL NOTE ABOUT SPECIFICATION <-*********
 				*
@@ -54,9 +70,6 @@ class Product
 				*
 				*	I would just rather be safe than sorry!
 				*
-				*
-				*	"Why not just use an array or another linked list?"
-				*			--Austin
 				*
 				**********-> SPECIAL NOTE ABOUT SPECIFICATION <-*********/
 
@@ -82,7 +95,7 @@ class Product
 		//	value of the class.
 		// Returns: Nothing
 
-		void changeDescription(string newDescription);
+		void changeDescription(string description);
 		// Changes the description of the product
 		//	Passes in a new string to replace the productDescription
 		//	string value of the class.
@@ -143,18 +156,77 @@ class Product
 		float		 cost;					// Cost of the product
 		string  	 productName;			// Name of the product
 		string		 productDescription;	// Description of the product
-		List<string> productSpecs;	// A queue of the product's
+		List<string> productSpecs;			// A queue of the product's
 											//	specifications
 		int			 modelNumber;			// Model number of the product
 		int			 dateReleased;			// Stores the date the product
 											//	was released
-
+		int			 specCounter;			// Keeps a running total of
+											//	specs
 		// Class Helper Function
-		void createSpecList(string specification);
-		// Creates the list of specifications
-		//	User will pass in a string with the characters N$P to separate
-		//	each spec from the next.
+		// 	Creates the list of specifications
+		//		User will pass in a string with the characters N$P to
+		//		separate each spec from the next.
+		void createSpecList(string specs)
+		{
+			int		enqueueIndex;
+			int		stringIndex;
+			string 	enqueueSpecString;
+
+			enqueueIndex = 0;
+
+			// Iterates through the specification string and creates a
+			//	list of specifications
+			for(stringIndex = 0;
+				stringIndex == signed(specs.length());
+				stringIndex ++)
+			{
+
+				// Checks if the string is nearing the end of the list
+				//	If not it will check if the current and next 3 char
+				//	match the parsing code required to add to the queue
+				if(stringIndex + 3 < signed(specs.length()))
+				{
+
+					// Checks against the parsing code
+					if(specs[stringIndex] 	  == PARSE_CODE[0]
+					&& specs[stringIndex + 1] == PARSE_CODE[1]
+					&& specs[stringIndex + 2] == PARSE_CODE[2])
+					{
+						// Enqueues the current specification
+						productSpecs.Enqueue(enqueueSpecString);
+
+						// Compensates for the the parsing code
+						stringIndex  = stringIndex + 3;
+
+						// Reinitializes the enqueue index to begin at
+						//	the first index of the string
+						enqueueIndex = 0;
+
+					}// END INNER IF
+
+				} // END OUTER IF
+
+				// Checks if it has reached the end of the specification
+				//	string
+				else if (stringIndex == signed(specs.length()))
+				{
+					productSpecs.Enqueue(enqueueSpecString);
+
+				} // END ELSE IF
+
+				// Adds each character as the spec string is iterated
+				//	through
+				enqueueSpecString[enqueueIndex] = specs[stringIndex];
+
+				enqueueIndex = enqueueIndex + 1;
+
+			} // END FOR LOOP
+
+		} // END METHOD
 };
 
 
 #endif /* PRODUCTCLASSHEADER_H_ */
+
+
