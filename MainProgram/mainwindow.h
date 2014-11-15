@@ -8,13 +8,13 @@ class MainWindow;
 
 }
 
-class AdminWindow : public QMainWindow
+class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit AdminWindow(QWidget *parent = 0);
-    ~AdminWindow();
+    explicit MainWindow(QWidget *parent = 0);
+    ~MainWindow();
 
 private slots:
     void on_user_name_label_linkActivated(const QString &link);

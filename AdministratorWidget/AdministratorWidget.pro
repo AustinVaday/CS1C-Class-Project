@@ -31,8 +31,9 @@ HEADERS  += mainwindow.h \
     Header.h \
     newactivatedlist.h
 
-FORMS    += mainwindow.ui \
-    newactivatedlist.ui
+FORMS    += \
+    newactivatedlist.ui \
+    mainwindow.ui
 
 OTHER_FILES +=
 
