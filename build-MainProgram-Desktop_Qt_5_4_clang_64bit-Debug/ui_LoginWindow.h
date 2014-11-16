@@ -18,7 +18,7 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QPlainTextEdit>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -28,59 +28,64 @@ class Ui_LoginWindow
 {
 public:
     QDialogButtonBox *submitButton;
+    QLabel *label;
     QWidget *widget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_2;
-    QLabel *label;
-    QPlainTextEdit *nameInput;
+    QLabel *accountNameLabel;
+    QLineEdit *inputName;
     QHBoxLayout *horizontalLayout;
-    QLabel *label_2;
-    QPlainTextEdit *passwordInput;
+    QLabel *passwordLabel;
+    QLineEdit *inputPassword;
 
     void setupUi(QDialog *LoginWindow)
     {
         if (LoginWindow->objectName().isEmpty())
             LoginWindow->setObjectName(QStringLiteral("LoginWindow"));
-        LoginWindow->resize(334, 122);
+        LoginWindow->resize(337, 151);
         submitButton = new QDialogButtonBox(LoginWindow);
         submitButton->setObjectName(QStringLiteral("submitButton"));
-        submitButton->setGeometry(QRect(80, 80, 164, 32));
+        submitButton->setGeometry(QRect(90, 100, 164, 32));
         submitButton->setOrientation(Qt::Horizontal);
         submitButton->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
+        label = new QLabel(LoginWindow);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(110, 0, 116, 29));
+        QFont font;
+        font.setPointSize(24);
+        label->setFont(font);
         widget = new QWidget(LoginWindow);
         widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(40, 20, 248, 58));
+        widget->setGeometry(QRect(60, 40, 232, 58));
         verticalLayout = new QVBoxLayout(widget);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        label = new QLabel(widget);
-        label->setObjectName(QStringLiteral("label"));
+        accountNameLabel = new QLabel(widget);
+        accountNameLabel->setObjectName(QStringLiteral("accountNameLabel"));
 
-        horizontalLayout_2->addWidget(label);
+        horizontalLayout_2->addWidget(accountNameLabel);
 
-        nameInput = new QPlainTextEdit(widget);
-        nameInput->setObjectName(QStringLiteral("nameInput"));
-        nameInput->setMaximumSize(QSize(141, 21));
+        inputName = new QLineEdit(widget);
+        inputName->setObjectName(QStringLiteral("inputName"));
 
-        horizontalLayout_2->addWidget(nameInput);
+        horizontalLayout_2->addWidget(inputName);
 
 
         verticalLayout->addLayout(horizontalLayout_2);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        label_2 = new QLabel(widget);
-        label_2->setObjectName(QStringLiteral("label_2"));
+        passwordLabel = new QLabel(widget);
+        passwordLabel->setObjectName(QStringLiteral("passwordLabel"));
 
-        horizontalLayout->addWidget(label_2);
+        horizontalLayout->addWidget(passwordLabel);
 
-        passwordInput = new QPlainTextEdit(widget);
-        passwordInput->setObjectName(QStringLiteral("passwordInput"));
-        passwordInput->setMaximumSize(QSize(141, 21));
+        inputPassword = new QLineEdit(widget);
+        inputPassword->setObjectName(QStringLiteral("inputPassword"));
 
-        horizontalLayout->addWidget(passwordInput);
+        horizontalLayout->addWidget(inputPassword, 0, Qt::AlignRight);
 
 
         verticalLayout->addLayout(horizontalLayout);
@@ -96,11 +101,9 @@ public:
     void retranslateUi(QDialog *LoginWindow)
     {
         LoginWindow->setWindowTitle(QApplication::translate("LoginWindow", "Dialog", 0));
-        label->setText(QApplication::translate("LoginWindow", "Account Name:", 0));
-        nameInput->setPlainText(QString());
-        label_2->setText(QApplication::translate("LoginWindow", "Password", 0));
-        passwordInput->setPlainText(QString());
-        passwordInput->setPlaceholderText(QString());
+        label->setText(QApplication::translate("LoginWindow", "User Login", 0));
+        accountNameLabel->setText(QApplication::translate("LoginWindow", "Account Name:", 0));
+        passwordLabel->setText(QApplication::translate("LoginWindow", "Password", 0));
     } // retranslateUi
 
 };

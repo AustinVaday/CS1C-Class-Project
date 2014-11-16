@@ -38,6 +38,7 @@ public:
     QPushButton *pushButton;
     QPushButton *pushButton_2;
     QPushButton *pushButton_3;
+    QPushButton *pushButton_4;
     QMenuBar *menuBar;
     QMenu *menuExtreme_Robo_Cat_Coderz;
     QToolBar *mainToolBar;
@@ -81,6 +82,9 @@ public:
 
         verticalLayout->addWidget(pushButton_3);
 
+        pushButton_4 = new QPushButton(centralWidget);
+        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
+        pushButton_4->setGeometry(QRect(80, 240, 115, 32));
         MainProgramWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainProgramWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -114,6 +118,7 @@ public:
         pushButton->setText(QApplication::translate("MainProgramWindow", "Login", 0));
         pushButton_2->setText(QApplication::translate("MainProgramWindow", "Guest", 0));
         pushButton_3->setText(QApplication::translate("MainProgramWindow", "Request Brochure", 0));
+        pushButton_4->setText(QApplication::translate("MainProgramWindow", "PushButton", 0));
         menuExtreme_Robo_Cat_Coderz->setTitle(QApplication::translate("MainProgramWindow", "Extreme Robo Cat Coderz", 0));
     } // retranslateUi
 

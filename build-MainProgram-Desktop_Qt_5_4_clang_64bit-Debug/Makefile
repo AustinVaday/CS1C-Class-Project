@@ -56,13 +56,14 @@ SOURCES       = ../MainProgram/main.cpp \
 		../MainProgram/customerclass.cpp \
 		../MainProgram/ReadCustomerFile.cpp \
 		../MainProgram/newactivatedlist.cpp \
-		../MainProgram/mainwindow.cpp \
 		../MainProgram/LoginWindow.cpp \
-		../MainProgram/maindisplay.cpp moc_MainProgramWindow.cpp \
+		../MainProgram/maindisplay.cpp \
+		../MainProgram/AdminWindow.cpp \
+		../MainProgram/ProductClass.cpp moc_MainProgramWindow.cpp \
 		moc_newactivatedlist.cpp \
-		moc_mainwindow.cpp \
 		moc_LoginWindow.cpp \
-		moc_maindisplay.cpp
+		moc_maindisplay.cpp \
+		moc_AdminWindow.cpp
 OBJECTS       = qrc_TextFilesFolder.o \
 		main.o \
 		MainProgramWindow.o \
@@ -72,14 +73,15 @@ OBJECTS       = qrc_TextFilesFolder.o \
 		customerclass.o \
 		ReadCustomerFile.o \
 		newactivatedlist.o \
-		mainwindow.o \
 		LoginWindow.o \
 		maindisplay.o \
+		AdminWindow.o \
+		ProductClass.o \
 		moc_MainProgramWindow.o \
 		moc_newactivatedlist.o \
-		moc_mainwindow.o \
 		moc_LoginWindow.o \
-		moc_maindisplay.o
+		moc_maindisplay.o \
+		moc_AdminWindow.o
 DIST          = ../../../Qt5.4.0/5.4/clang_64/mkspecs/features/spec_pre.prf \
 		../../../Qt5.4.0/5.4/clang_64/mkspecs/qdevice.pri \
 		../../../Qt5.4.0/5.4/clang_64/mkspecs/features/device_config.prf \
@@ -215,9 +217,10 @@ DIST          = ../../../Qt5.4.0/5.4/clang_64/mkspecs/features/spec_pre.prf \
 		../MainProgram/ExceptionHandlers.h \
 		../MainProgram/Header.h \
 		../MainProgram/newactivatedlist.h \
-		../MainProgram/mainwindow.h \
 		../MainProgram/LoginWindow.h \
-		../MainProgram/maindisplay.h ../MainProgram/main.cpp \
+		../MainProgram/maindisplay.h \
+		../MainProgram/AdminWindow.h \
+		../MainProgram/ProductClass.h ../MainProgram/main.cpp \
 		../MainProgram/MainProgramWindow.cpp \
 		../MainProgram/adminclass.cpp \
 		../MainProgram/userclass.cpp \
@@ -225,9 +228,10 @@ DIST          = ../../../Qt5.4.0/5.4/clang_64/mkspecs/features/spec_pre.prf \
 		../MainProgram/customerclass.cpp \
 		../MainProgram/ReadCustomerFile.cpp \
 		../MainProgram/newactivatedlist.cpp \
-		../MainProgram/mainwindow.cpp \
 		../MainProgram/LoginWindow.cpp \
-		../MainProgram/maindisplay.cpp
+		../MainProgram/maindisplay.cpp \
+		../MainProgram/AdminWindow.cpp \
+		../MainProgram/ProductClass.cpp
 QMAKE_TARGET  = MainProgram
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = MainProgram.app/Contents/MacOS/MainProgram
@@ -265,7 +269,7 @@ first: all
 
 ####### Build rules
 
-$(TARGET): ui_mainprogramwindow.h ui_newactivatedlist.h ui_mainwindow.h ui_LoginWindow.h ui_maindisplay.h $(OBJECTS)  
+$(TARGET): ui_mainprogramwindow.h ui_newactivatedlist.h ui_LoginWindow.h ui_maindisplay.h ui_AdminWindow.h $(OBJECTS)  
 	@test -d MainProgram.app/Contents/MacOS/ || mkdir -p MainProgram.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -562,9 +566,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../MainProgram/TextFilesFolder.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../MainProgram/MainProgramWindow.h ../MainProgram/adminclass.h ../MainProgram/userclass.h ../MainProgram/customerlistclass.h ../MainProgram/customerclass.h ../MainProgram/genericnodeclass.h ../MainProgram/ExceptionHandlers.h ../MainProgram/Header.h ../MainProgram/newactivatedlist.h ../MainProgram/mainwindow.h ../MainProgram/LoginWindow.h ../MainProgram/maindisplay.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../MainProgram/main.cpp ../MainProgram/MainProgramWindow.cpp ../MainProgram/adminclass.cpp ../MainProgram/userclass.cpp ../MainProgram/customerlistclass.cpp ../MainProgram/customerclass.cpp ../MainProgram/ReadCustomerFile.cpp ../MainProgram/newactivatedlist.cpp ../MainProgram/mainwindow.cpp ../MainProgram/LoginWindow.cpp ../MainProgram/maindisplay.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../MainProgram/mainprogramwindow.ui ../MainProgram/newactivatedlist.ui ../MainProgram/mainwindow.ui ../MainProgram/LoginWindow.ui ../MainProgram/maindisplay.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../MainProgram/MainProgramWindow.h ../MainProgram/adminclass.h ../MainProgram/userclass.h ../MainProgram/customerlistclass.h ../MainProgram/customerclass.h ../MainProgram/genericnodeclass.h ../MainProgram/ExceptionHandlers.h ../MainProgram/Header.h ../MainProgram/newactivatedlist.h ../MainProgram/LoginWindow.h ../MainProgram/maindisplay.h ../MainProgram/AdminWindow.h ../MainProgram/ProductClass.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../MainProgram/main.cpp ../MainProgram/MainProgramWindow.cpp ../MainProgram/adminclass.cpp ../MainProgram/userclass.cpp ../MainProgram/customerlistclass.cpp ../MainProgram/customerclass.cpp ../MainProgram/ReadCustomerFile.cpp ../MainProgram/newactivatedlist.cpp ../MainProgram/LoginWindow.cpp ../MainProgram/maindisplay.cpp ../MainProgram/AdminWindow.cpp ../MainProgram/ProductClass.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../MainProgram/mainprogramwindow.ui ../MainProgram/newactivatedlist.ui ../MainProgram/LoginWindow.ui ../MainProgram/maindisplay.ui ../MainProgram/AdminWindow.ui $(DISTDIR)/
 
 
 clean:compiler_clean 
@@ -597,9 +601,9 @@ qrc_TextFilesFolder.o: ../MainProgram/TextFilesFolder.qrc \
 	 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXXFLAGS) -c ./qrc_TextFilesFolder.cpp -o ./qrc_TextFilesFolder.tmp.o 
 	 /Users/syndacit/Qt5.4.0/5.4/clang_64/bin/rcc -name TextFilesFolder ../MainProgram/TextFilesFolder.qrc -pass 2 -temp ./qrc_TextFilesFolder.tmp.o -o qrc_TextFilesFolder.o
 
-compiler_moc_header_make_all: moc_MainProgramWindow.cpp moc_newactivatedlist.cpp moc_mainwindow.cpp moc_LoginWindow.cpp moc_maindisplay.cpp
+compiler_moc_header_make_all: moc_MainProgramWindow.cpp moc_newactivatedlist.cpp moc_LoginWindow.cpp moc_maindisplay.cpp moc_AdminWindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_MainProgramWindow.cpp moc_newactivatedlist.cpp moc_mainwindow.cpp moc_LoginWindow.cpp moc_maindisplay.cpp
+	-$(DEL_FILE) moc_MainProgramWindow.cpp moc_newactivatedlist.cpp moc_LoginWindow.cpp moc_maindisplay.cpp moc_AdminWindow.cpp
 moc_MainProgramWindow.cpp: ../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
 		../MainProgram/MainProgramWindow.h
@@ -609,11 +613,6 @@ moc_newactivatedlist.cpp: ../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
 		../MainProgram/newactivatedlist.h
 	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/syndacit/Qt5.4.0/5.4/clang_64/mkspecs/macx-clang -I/Users/syndacit/git/Class-Project/MainProgram -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Users/syndacit/Qt5.4.0/5.4/clang_64/lib ../MainProgram/newactivatedlist.h -o moc_newactivatedlist.cpp
-
-moc_mainwindow.cpp: ../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
-		../MainProgram/mainwindow.h
-	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/syndacit/Qt5.4.0/5.4/clang_64/mkspecs/macx-clang -I/Users/syndacit/git/Class-Project/MainProgram -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Users/syndacit/Qt5.4.0/5.4/clang_64/lib ../MainProgram/mainwindow.h -o moc_mainwindow.cpp
 
 moc_LoginWindow.cpp: ../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
@@ -625,25 +624,30 @@ moc_maindisplay.cpp: ../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versi
 		../MainProgram/maindisplay.h
 	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/syndacit/Qt5.4.0/5.4/clang_64/mkspecs/macx-clang -I/Users/syndacit/git/Class-Project/MainProgram -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Users/syndacit/Qt5.4.0/5.4/clang_64/lib ../MainProgram/maindisplay.h -o moc_maindisplay.cpp
 
+moc_AdminWindow.cpp: ../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
+		../MainProgram/AdminWindow.h
+	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/syndacit/Qt5.4.0/5.4/clang_64/mkspecs/macx-clang -I/Users/syndacit/git/Class-Project/MainProgram -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Users/syndacit/Qt5.4.0/5.4/clang_64/lib ../MainProgram/AdminWindow.h -o moc_AdminWindow.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainprogramwindow.h ui_newactivatedlist.h ui_mainwindow.h ui_LoginWindow.h ui_maindisplay.h
+compiler_uic_make_all: ui_mainprogramwindow.h ui_newactivatedlist.h ui_LoginWindow.h ui_maindisplay.h ui_AdminWindow.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainprogramwindow.h ui_newactivatedlist.h ui_mainwindow.h ui_LoginWindow.h ui_maindisplay.h
+	-$(DEL_FILE) ui_mainprogramwindow.h ui_newactivatedlist.h ui_LoginWindow.h ui_maindisplay.h ui_AdminWindow.h
 ui_mainprogramwindow.h: ../MainProgram/mainprogramwindow.ui
 	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/uic ../MainProgram/mainprogramwindow.ui -o ui_mainprogramwindow.h
 
 ui_newactivatedlist.h: ../MainProgram/newactivatedlist.ui
 	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/uic ../MainProgram/newactivatedlist.ui -o ui_newactivatedlist.h
 
-ui_mainwindow.h: ../MainProgram/mainwindow.ui
-	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/uic ../MainProgram/mainwindow.ui -o ui_mainwindow.h
-
 ui_LoginWindow.h: ../MainProgram/LoginWindow.ui
 	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/uic ../MainProgram/LoginWindow.ui -o ui_LoginWindow.h
 
 ui_maindisplay.h: ../MainProgram/maindisplay.ui
 	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/uic ../MainProgram/maindisplay.ui -o ui_maindisplay.h
+
+ui_AdminWindow.h: ../MainProgram/AdminWindow.ui
+	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/uic ../MainProgram/AdminWindow.ui -o ui_AdminWindow.h
 
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
@@ -681,7 +685,7 @@ MainProgramWindow.o: ../MainProgram/MainProgramWindow.cpp ../MainProgram/MainPro
 		../MainProgram/customerlistclass.h \
 		../MainProgram/genericnodeclass.h \
 		../MainProgram/activatedlist.h \
-		ui_mainwindow.h \
+		ui_AdminWindow.h \
 		../MainProgram/Header.h \
 		../MainProgram/LoginWindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MainProgramWindow.o ../MainProgram/MainProgramWindow.cpp
@@ -765,7 +769,25 @@ newactivatedlist.o: ../MainProgram/newactivatedlist.cpp ../MainProgram/newactiva
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o newactivatedlist.o ../MainProgram/newactivatedlist.cpp
 
-mainwindow.o: ../MainProgram/mainwindow.cpp ../MainProgram/mainwindow.h \
+LoginWindow.o: ../MainProgram/LoginWindow.cpp ../MainProgram/LoginWindow.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		ui_LoginWindow.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLabel \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlabel.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLineEdit \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlineedit.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o LoginWindow.o ../MainProgram/LoginWindow.cpp
+
+maindisplay.o: ../MainProgram/maindisplay.cpp ../MainProgram/maindisplay.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFrame \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qframe.h \
+		ui_maindisplay.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o maindisplay.o ../MainProgram/maindisplay.cpp
+
+AdminWindow.o: ../MainProgram/AdminWindow.cpp ../MainProgram/AdminWindow.h \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
 		../MainProgram/newactivatedlist.h \
@@ -778,21 +800,14 @@ mainwindow.o: ../MainProgram/mainwindow.cpp ../MainProgram/mainwindow.h \
 		../MainProgram/customerlistclass.h \
 		../MainProgram/genericnodeclass.h \
 		../MainProgram/activatedlist.h \
-		ui_mainwindow.h \
+		ui_AdminWindow.h \
 		../MainProgram/Header.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../MainProgram/mainwindow.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o AdminWindow.o ../MainProgram/AdminWindow.cpp
 
-LoginWindow.o: ../MainProgram/LoginWindow.cpp ../MainProgram/LoginWindow.h \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
-		ui_LoginWindow.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o LoginWindow.o ../MainProgram/LoginWindow.cpp
-
-maindisplay.o: ../MainProgram/maindisplay.cpp ../MainProgram/maindisplay.h \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFrame \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qframe.h \
-		ui_maindisplay.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o maindisplay.o ../MainProgram/maindisplay.cpp
+ProductClass.o: ../MainProgram/ProductClass.cpp ../MainProgram/ProductClass.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ProductClass.o ../MainProgram/ProductClass.cpp
 
 moc_MainProgramWindow.o: moc_MainProgramWindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_MainProgramWindow.o moc_MainProgramWindow.cpp
@@ -800,14 +815,14 @@ moc_MainProgramWindow.o: moc_MainProgramWindow.cpp
 moc_newactivatedlist.o: moc_newactivatedlist.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_newactivatedlist.o moc_newactivatedlist.cpp
 
-moc_mainwindow.o: moc_mainwindow.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
-
 moc_LoginWindow.o: moc_LoginWindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_LoginWindow.o moc_LoginWindow.cpp
 
 moc_maindisplay.o: moc_maindisplay.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_maindisplay.o moc_maindisplay.cpp
+
+moc_AdminWindow.o: moc_AdminWindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_AdminWindow.o moc_AdminWindow.cpp
 
 ####### Install
 

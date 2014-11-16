@@ -15,9 +15,13 @@ public:
     explicit MainProgramWindow(QWidget *parent = 0);
     ~MainProgramWindow();
 
+signals:
+
 private slots:
 
     void on_pushButton_clicked();
+
+    void on_exitProgram_clicked();
 
 private:
     Ui::MainProgramWindow *ui;

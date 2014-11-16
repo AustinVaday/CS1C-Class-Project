@@ -1,17 +1,17 @@
-#include "mainwindow.h"
+#include "AdminWindow.h"
 #include "newactivatedlist.h"
 #include "customerclass.h"
 #include "customerlistclass.h"
-#include "ui_mainwindow.h"
+#include "ui_AdminWindow.h"
 #include "Header.h"
 
-MainWindow::MainWindow(QWidget *parent) :
+AdminWindow::AdminWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::AdminWindow)
 {
     ui->setupUi(this);
 
-    // FOR PROJECT MAIN WINDOW
+    // FOR PROJECT MAIN WINDOWx
 //    CustomerList activatedList;
 //    CustomerList deactivatedList;
 
@@ -24,12 +24,12 @@ MainWindow::MainWindow(QWidget *parent) :
     on_user_name_label_linkActivated("Austin Vaday");
 }
 
-MainWindow::~MainWindow()
+AdminWindow::~AdminWindow()
 {
     delete ui;
 }
 
-void MainWindow::on_user_name_label_linkActivated(const QString &link)
+void AdminWindow::on_user_name_label_linkActivated(const QString &link)
 {
 
     ui->user_name_label->setText(link);
@@ -39,11 +39,11 @@ void MainWindow::on_user_name_label_linkActivated(const QString &link)
     ui->user_name_label->setFont(font);
 }
 
-void MainWindow::on_back_button_clicked()
+void AdminWindow::on_back_button_clicked()
 {
     qApp->quit();
 }
-void MainWindow::on_view_activated_customers_clicked()
+void AdminWindow::on_view_activated_customers_clicked()
 {
 //    QWidget *viewActivatedCustomers = new QWidget;
 

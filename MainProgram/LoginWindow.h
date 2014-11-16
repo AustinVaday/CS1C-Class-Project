@@ -15,13 +15,17 @@ public:
     explicit LoginWindow(QWidget *parent = 0);
     ~LoginWindow();
 
+signals:
+    void adminChanged(bool);
+    void customerChanged(bool);
+
 private slots:
     void on_submitButton_accepted();
-
-    void on_nameInput_textChanged();
+    void textChangedSlot(const QString &newString);
 
 private:
     Ui::LoginWindow *ui;
+
 };
 
 #endif // LOGINWINDOW_H

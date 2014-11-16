@@ -1,20 +1,20 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef ADMINWINDOW_H
+#define ADMINWINDOW_H
 
 #include <QMainWindow>
 
 namespace Ui {
-class MainWindow;
+class AdminWindow;
 
 }
 
-class MainWindow : public QMainWindow
+class AdminWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+    explicit AdminWindow(QWidget *parent = 0);
+    ~AdminWindow();
 
 private slots:
     void on_user_name_label_linkActivated(const QString &link);
@@ -24,7 +24,7 @@ private slots:
     void on_view_activated_customers_clicked();
 
 private:
-    Ui::MainWindow *ui;
+    Ui::AdminWindow *ui;
 };
 
-#endif // MAINWINDOW_H
+#endif // ADMINWINDOW_H

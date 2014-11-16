@@ -20,9 +20,11 @@ SOURCES += main.cpp\
         customerclass.cpp \
         ReadCustomerFile.cpp \
         newactivatedlist.cpp\
-        mainwindow.cpp \
         LoginWindow.cpp \
-    maindisplay.cpp
+        maindisplay.cpp \
+        AdminWindow.cpp \
+    ProductClass.cpp \
+    ProductListClass.cpp
 
 HEADERS += MainProgramWindow.h \
         adminclass.h \
@@ -33,15 +35,17 @@ HEADERS += MainProgramWindow.h \
         ExceptionHandlers.h \
         Header.h \
         newactivatedlist.h\
-        mainwindow.h \
         LoginWindow.h \
-    maindisplay.h
+        maindisplay.h \
+        AdminWindow.h \
+    ProductClass.h \
+    ProductListClass.h
 
 FORMS   += mainprogramwindow.ui \
         newactivatedlist.ui \
-        mainwindow.ui \
         LoginWindow.ui\
-    maindisplay.ui
+        maindisplay.ui \
+        AdminWindow.ui\
 
 RESOURCES += \
     TextFilesFolder.qrc
