@@ -373,7 +373,7 @@ void ProductList::RemoveProduct(Product &someProduct)
     }
 }
 
-Product ProductList::FindProduct(QString userName)
+Product ProductList::FindProduct(QString productName)
 {
     Node<Product> * traversePtr;
 
@@ -386,7 +386,7 @@ Product ProductList::FindProduct(QString userName)
         traversePtr = _head;
         int index = 0;
         while (index < _listLimit && traversePtr !=NULL &&
-                traversePtr->GetData().getUserName() != userName)
+                traversePtr->GetData().getName() != productName)
         {
             traversePtr = traversePtr->GetNext();
 
