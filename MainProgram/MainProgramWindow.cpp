@@ -7,11 +7,13 @@
 #include "ui_AdminWindow.h"
 #include "Header.h"
 #include "LoginWindow.h"
+#include "AdminWindow.h"
 
 MainProgramWindow::MainProgramWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainProgramWindow)
 {
+    aWindow = new AdminWindow;
 
     ui->setupUi(this);
 
