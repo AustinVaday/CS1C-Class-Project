@@ -32,6 +32,8 @@ private:
     Node*    _previous;
     typeName _data;
 
+    typeName* _dataPtr;
+
 /**************************************************************************
  * P U B L I C
  * ------------------------------------------------------------------------
@@ -86,6 +88,8 @@ public:
      **********************************************************************/
     typeName GetData() const;
 
+     typeName* GetDataPtr() const;
+
     Node<typeName>* GetPrevious() const;
 
     Node<typeName>* GetNext() const;
@@ -102,6 +106,8 @@ Node<typeName>::Node()
     _next     = NULL;
     _previous = NULL;
     _data     = typeName();
+
+    _dataPtr = &_data;
 }
 
 /**************************************************************************
@@ -194,5 +200,13 @@ typeName Node<typeName>::GetData() const
 {
     return _data;
 }
+
+template <class typeName>
+ typeName* Node<typeName>::GetDataPtr() const
+{
+
+    return _dataPtr;
+}
+
 
 #endif // GENERICNODECLASS_H

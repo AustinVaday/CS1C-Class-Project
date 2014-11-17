@@ -14,8 +14,6 @@
  *************************************************************************/
 
 #include "ProductClass.h"
-#include <QString>
-#include <QTextStream>
 
 // Default constructor
 Product::Product()
@@ -87,64 +85,3 @@ int  Product::getReleaseDate() const
     return dateReleased;
 }
 
-// Overloading the equality operator **FOR SIMILARITY**
-bool Product::operator &=(const Product otherProduct)
-{
-    bool same;
-
-    same = false;
-
-    // Compares names and account numbers, if either are the same it will
-    //	throw a flag. We could compare objects completely but we don't want
-    //	to throw a flag on a person who has the exact same password by
-    //	some crazy chance.
-    //
-
-    if(	  otherProduct.getModelNumber() == this->getModelNumber()
-       || otherProduct.getName() 	== this->getName())
-    {
-        same = true;
-    }
-
-    return same;
-}
-
-// Overloading the equality operator **FOR ABSOLUTE EQUALITY**
-bool Product::operator ==(const Product otherProduct)
-{
-    bool same;
-
-    same = false;
-
-    // Compares names and account numbers, if either are the same it will
-    //	throw a flag. We could compare objects completely but we don't want
-    //	to throw a flag on a person who has the exact same password by
-    //	some crazy chance.
-    //
-
-    if(	  otherProduct.getModelNumber() == this->getModelNumber()
-       && otherProduct.getName() 	== this->getName()
-       && otherProduct.getReleaseDate() == this->getReleaseDate()
-       && otherProduct.getCost()   == this->getCost())
-    {
-        same = true;
-    }
-
-    return same;
-}
-
-QString  Product::OutputData() const
-{
-    QString str;
-
-    QTextStream out(&str);
-    out << "........................................................\n";
-    out << "Product Name: " <<  productName << endl;
-    out << "Description: " << productDescription  << endl;
-    out << "Model Number: " <<  modelNumber << endl;
-    out << "Cost: $" << cost << endl;
-    out << "Date of Release: " << dateReleased << endl;
-    out << "........................................................\n";
-
-    return str;
-}
