@@ -20,13 +20,20 @@ signals:
 
 private slots:
 
-    void on_pushButton_clicked();
-
+    void on_pushButton_Login_clicked();
     void on_exitProgram_clicked();
 
 private:
     Ui::MainProgramWindow *ui;
+
+    // PROGRAM SECTION WINDOWS
     AdminWindow *aWindow;
+
+    // SECTION LOGIN BOOLEANS
+    bool adminLogin;
+    bool customerLogin;
+    bool guestLogin;
+    bool requestBrochure;
 };
 
 #endif // MAINPROGRAMWINDOW_H

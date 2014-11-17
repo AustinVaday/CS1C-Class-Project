@@ -27,7 +27,7 @@ MainProgramWindow::~MainProgramWindow()
     delete ui;
 }
 
-void MainProgramWindow::on_pushButton_clicked()
+void MainProgramWindow::on_pushButton_Login_clicked()
 {
     LoginWindow login;
 

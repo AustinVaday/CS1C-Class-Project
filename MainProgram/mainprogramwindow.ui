@@ -38,40 +38,34 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="pushButton_Login">
        <property name="text">
         <string>Login</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="pushButton_Guest">
        <property name="text">
         <string>Guest</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="pushButton_RequestBrochure_2">
        <property name="text">
-        <string>Request Brochure</string>
+        <string>Create Account</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_Help">
+       <property name="text">
+        <string>Help</string>
        </property>
       </widget>
      </item>
     </layout>
-   </widget>
-   <widget class="QPushButton" name="pushButton_4">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>240</y>
-      <width>115</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">

@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainProgramWindow_t {
     QByteArrayData data[4];
-    char stringdata[64];
+    char stringdata[70];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -30,12 +30,12 @@ struct qt_meta_stringdata_MainProgramWindow_t {
 static const qt_meta_stringdata_MainProgramWindow_t qt_meta_stringdata_MainProgramWindow = {
     {
 QT_MOC_LITERAL(0, 0, 17), // "MainProgramWindow"
-QT_MOC_LITERAL(1, 18, 21), // "on_pushButton_clicked"
-QT_MOC_LITERAL(2, 40, 0), // ""
-QT_MOC_LITERAL(3, 41, 22) // "on_exitProgram_clicked"
+QT_MOC_LITERAL(1, 18, 27), // "on_pushButton_Login_clicked"
+QT_MOC_LITERAL(2, 46, 0), // ""
+QT_MOC_LITERAL(3, 47, 22) // "on_exitProgram_clicked"
 
     },
-    "MainProgramWindow\0on_pushButton_clicked\0"
+    "MainProgramWindow\0on_pushButton_Login_clicked\0"
     "\0on_exitProgram_clicked"
 };
 #undef QT_MOC_LITERAL
@@ -69,7 +69,7 @@ void MainProgramWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
     if (_c == QMetaObject::InvokeMetaMethod) {
         MainProgramWindow *_t = static_cast<MainProgramWindow *>(_o);
         switch (_id) {
-        case 0: _t->on_pushButton_clicked(); break;
+        case 0: _t->on_pushButton_Login_clicked(); break;
         case 1: _t->on_exitProgram_clicked(); break;
         default: ;
         }
