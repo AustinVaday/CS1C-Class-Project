@@ -28,6 +28,13 @@ Admin::~Admin()
 
 }
 
+
+bool Admin::checkAdmin(QString name, QString password)
+{
+   return ((GetUserName() == name) && (GetPassword() == password));
+}
+
+
 //WHY U NEED THIS?????
 QString Admin::GetUserName()
 {

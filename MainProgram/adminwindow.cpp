@@ -41,7 +41,7 @@ void AdminWindow::on_user_name_label_linkActivated(const QString &link)
 
 void AdminWindow::on_back_button_clicked()
 {
-    qApp->quit();
+    this->hide();
 }
 void AdminWindow::on_view_activated_customers_clicked()
 {
