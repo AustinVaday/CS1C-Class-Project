@@ -24,40 +24,38 @@ void MainProgramWindow::on_pushButton_Login_clicked()
 {
      Admin testAdmin("admin","admin1234@gmail.com", 1234, "password");
 
-    bool validInput = true;
+    bool validInput = false;
     QString tempName;
     QString tempPassword;
     Login loginWindow;
     ErrorLogin errorWindow;
 
 
-
-
-
-    do
-    {
         loginWindow.setModal(true);
 
-    loginWindow.exec();
+        loginWindow.exec();
 
-    loginWindow.on_buttonBox_loginPress_accepted(tempName, tempPassword);
-    SetUsername(tempName);
-    SetPassword(tempPassword);
+        loginWindow.on_buttonBox_loginPress_accepted(tempName, tempPassword);
+
+        SetUsername(tempName);
+        SetPassword(tempPassword);
+
         if(testAdmin.checkAdmin(tempName, tempPassword ))
         {
-           validInput = false;
-           SetAdminLogin(true);
+            validInput = true;
+            SetAdminLogin(true);
         }
-        else
+
+        if(!loginWindow.on_buttonBox_loginPress_rejected())
         {
             errorWindow.setModal(true);
             errorWindow.exec();
         }
 
-    }while(validInput);
-
-    Launcher();
-
+    if(validInput)
+    {
+        Launcher();
+    }
 
 
 //    qDebug() << "TESTING" << tempName << tempPassword;

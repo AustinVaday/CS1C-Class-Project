@@ -30,3 +30,8 @@ void Login::on_buttonBox_loginPress_accepted(QString& user, QString& password)
 //        user     = ui->lineEdit_username->text();
 
 //}
+
+bool Login::on_buttonBox_loginPress_rejected()
+{
+    return true;
+}

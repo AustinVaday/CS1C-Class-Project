@@ -18,10 +18,12 @@ public:
     explicit Login(QWidget *parent = 0);
     void on_buttonBox_loginPress_accepted(QString&, QString&);
 
+    bool on_buttonBox_loginPress_rejected();
     ~Login();
 
 
 private slots:
+
 
 
 private:
