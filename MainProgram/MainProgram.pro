@@ -20,11 +20,18 @@ SOURCES += main.cpp\
         customerclass.cpp \
         ReadCustomerFile.cpp \
         newactivatedlist.cpp\
-        LoginWindow.cpp \
         maindisplay.cpp \
         AdminWindow.cpp \
-    ProductClass.cpp \
-    ProductListClass.cpp
+        ProductClass.cpp \
+        ProductListClass.cpp \
+        login.cpp \
+        errorlogin.cpp\
+        helpwindow.cpp \
+        firstdialog.cpp \
+        orderproduct.cpp \
+        requestbrochure.cpp \
+        loginhelp.cpp \
+        navigatingapp.cpp
 
 HEADERS += MainProgramWindow.h \
         adminclass.h \
@@ -35,18 +42,37 @@ HEADERS += MainProgramWindow.h \
         ExceptionHandlers.h \
         Header.h \
         newactivatedlist.h\
-        LoginWindow.h \
         maindisplay.h \
         AdminWindow.h \
-    ProductClass.h \
-    ProductListClass.h
+        ProductClass.h \
+        ProductListClass.h \
+        login.h \
+        errorlogin.h\
+        helpwindow.h \
+        firstdialog.h \
+        orderproduct.h \
+        requestbrochure.h \
+        loginhelp.h \
+        navigatingapp.h
 
 FORMS   += mainprogramwindow.ui \
         newactivatedlist.ui \
-        LoginWindow.ui\
         maindisplay.ui \
         AdminWindow.ui\
+        login.ui \
+        errorlogin.ui\
+        helpwindow.ui \
+        firstdialog.ui \
+        orderproduct.ui \
+        requestbrochure.ui \
+        LoginHelp.ui \
+        loginhelp.ui \
+        navigatingapp.ui
+
 
 RESOURCES += \
     TextFilesFolder.qrc
+
+OTHER_FILES += \
+    AdminFile.txt
 

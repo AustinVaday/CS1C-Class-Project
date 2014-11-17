@@ -20,7 +20,7 @@
       <x>460</x>
       <y>220</y>
       <width>219</width>
-      <height>202</height>
+      <height>236</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -131,9 +131,21 @@
     <property name="title">
      <string>Help</string>
     </property>
+    <addaction name="actionFAQ"/>
+    <addaction name="actionCONTACT"/>
    </widget>
    <addaction name="menuMenu"/>
   </widget>
+  <action name="actionFAQ">
+   <property name="text">
+    <string>FAQ</string>
+   </property>
+  </action>
+  <action name="actionCONTACT">
+   <property name="text">
+    <string>CONTACT</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

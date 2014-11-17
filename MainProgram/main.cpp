@@ -4,8 +4,8 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainProgramWindow AdminWindow;
+    MainProgramWindow program;
 
-    AdminWindow.show();
+    program.show();
     return a.exec();
 }

@@ -1,4 +1,5 @@
 #include "AdminWindow.h"
+#include "MainProgramWindow.h"
 #include "newactivatedlist.h"
 #include "customerclass.h"
 #include "customerlistclass.h"
@@ -9,6 +10,7 @@ AdminWindow::AdminWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::AdminWindow)
 {
+    hWindow = new HelpWindow;
     ui->setupUi(this);
 
     // FOR PROJECT MAIN WINDOWx
@@ -41,7 +43,7 @@ void AdminWindow::on_user_name_label_linkActivated(const QString &link)
 
 void AdminWindow::on_back_button_clicked()
 {
-    qApp->quit();
+    this->hide();
 }
 void AdminWindow::on_view_activated_customers_clicked()
 {
@@ -54,3 +56,10 @@ void AdminWindow::on_view_activated_customers_clicked()
     viewList.setModal(true);
     viewList.exec();
 }
+
+// USED WITH SIGNALS AND SLOTS!! NOT WORKING, THIS AND OTHER METHODS CRASHES PROGRAM
+void AdminWindow::on_modify_help_options_clicked()
+{
+    hWindow->show();
+}
+

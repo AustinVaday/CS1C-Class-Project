@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>LoginWindow</class>
- <widget class="QDialog" name="LoginWindow">
+ <class>Login</class>
+ <widget class="QDialog" name="Login">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>337</width>
-    <height>151</height>
+    <width>320</width>
+    <height>209</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>0</string>
   </property>
-  <widget class="QDialogButtonBox" name="submitButton">
+  <widget class="QDialogButtonBox" name="buttonBox_Login">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>100</y>
-     <width>164</width>
+     <x>30</x>
+     <y>130</y>
+     <width>220</width>
      <height>32</height>
     </rect>
    </property>
@@ -29,59 +29,45 @@
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>0</y>
-     <width>116</width>
-     <height>29</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>24</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>User Login</string>
-   </property>
-  </widget>
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>40</y>
-     <width>232</width>
-     <height>58</height>
+     <y>20</y>
+     <width>220</width>
+     <height>105</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QLabel" name="accountNameLabel">
+       <widget class="QLabel" name="label">
         <property name="text">
-         <string>Account Name:</string>
+         <string>User Name</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="inputName"/>
+       <widget class="QLineEdit" name="lineEdit_username"/>
       </item>
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="QLabel" name="passwordLabel">
+       <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>Password</string>
+         <string>Password  </string>
         </property>
        </widget>
       </item>
-      <item alignment="Qt::AlignRight">
-       <widget class="QLineEdit" name="inputPassword"/>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_password">
+        <property name="echoMode">
+         <enum>QLineEdit::Password</enum>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -91,9 +77,9 @@
  <resources/>
  <connections>
   <connection>
-   <sender>submitButton</sender>
+   <sender>buttonBox_Login</sender>
    <signal>accepted()</signal>
-   <receiver>LoginWindow</receiver>
+   <receiver>Login</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -107,9 +93,9 @@
    </hints>
   </connection>
   <connection>
-   <sender>submitButton</sender>
+   <sender>buttonBox_Login</sender>
    <signal>rejected()</signal>
-   <receiver>LoginWindow</receiver>
+   <receiver>Login</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

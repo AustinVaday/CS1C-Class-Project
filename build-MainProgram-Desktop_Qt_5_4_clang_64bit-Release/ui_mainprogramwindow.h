@@ -35,10 +35,17 @@ public:
     QPushButton *exitProgram;
     QWidget *MainMenu;
     QVBoxLayout *verticalLayout;
+<<<<<<< HEAD
     QPushButton *pushButton;
     QPushButton *pushButton_2;
     QPushButton *pushButton_3;
     QPushButton *pushButton_4;
+=======
+    QPushButton *pushButton_Login;
+    QPushButton *pushButton_Guest;
+    QPushButton *pushButton_RequestBrochure_2;
+    QPushButton *pushButton_Help;
+>>>>>>> Erik's-Branch
     QMenuBar *menuBar;
     QMenu *menuExtreme_Robo_Cat_Coderz;
     QToolBar *mainToolBar;
@@ -67,6 +74,7 @@ public:
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+<<<<<<< HEAD
         pushButton = new QPushButton(MainMenu);
         pushButton->setObjectName(QStringLiteral("pushButton"));
 
@@ -85,6 +93,28 @@ public:
         pushButton_4 = new QPushButton(centralWidget);
         pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
         pushButton_4->setGeometry(QRect(80, 240, 115, 32));
+=======
+        pushButton_Login = new QPushButton(MainMenu);
+        pushButton_Login->setObjectName(QStringLiteral("pushButton_Login"));
+
+        verticalLayout->addWidget(pushButton_Login);
+
+        pushButton_Guest = new QPushButton(MainMenu);
+        pushButton_Guest->setObjectName(QStringLiteral("pushButton_Guest"));
+
+        verticalLayout->addWidget(pushButton_Guest);
+
+        pushButton_RequestBrochure_2 = new QPushButton(MainMenu);
+        pushButton_RequestBrochure_2->setObjectName(QStringLiteral("pushButton_RequestBrochure_2"));
+
+        verticalLayout->addWidget(pushButton_RequestBrochure_2);
+
+        pushButton_Help = new QPushButton(MainMenu);
+        pushButton_Help->setObjectName(QStringLiteral("pushButton_Help"));
+
+        verticalLayout->addWidget(pushButton_Help);
+
+>>>>>>> Erik's-Branch
         MainProgramWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainProgramWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -115,10 +145,17 @@ public:
         actionHelp->setText(QApplication::translate("MainProgramWindow", "Help", 0));
         actionExit->setText(QApplication::translate("MainProgramWindow", "Exit", 0));
         exitProgram->setText(QApplication::translate("MainProgramWindow", "Exit Program", 0));
+<<<<<<< HEAD
         pushButton->setText(QApplication::translate("MainProgramWindow", "Login", 0));
         pushButton_2->setText(QApplication::translate("MainProgramWindow", "Guest", 0));
         pushButton_3->setText(QApplication::translate("MainProgramWindow", "Request Brochure", 0));
         pushButton_4->setText(QApplication::translate("MainProgramWindow", "PushButton", 0));
+=======
+        pushButton_Login->setText(QApplication::translate("MainProgramWindow", "Login", 0));
+        pushButton_Guest->setText(QApplication::translate("MainProgramWindow", "Guest", 0));
+        pushButton_RequestBrochure_2->setText(QApplication::translate("MainProgramWindow", "Create Account", 0));
+        pushButton_Help->setText(QApplication::translate("MainProgramWindow", "Help", 0));
+>>>>>>> Erik's-Branch
         menuExtreme_Robo_Cat_Coderz->setTitle(QApplication::translate("MainProgramWindow", "Extreme Robo Cat Coderz", 0));
     } // retranslateUi
 

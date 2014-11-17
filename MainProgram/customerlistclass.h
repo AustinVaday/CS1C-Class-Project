@@ -18,9 +18,9 @@ class CustomerList
 private:
     //M E M B E R ~ D E C L A R A T I O N S
 
-    Node<Customer>*             _head;
-    Node<Customer>*             _tail;
-    Node<Customer>*             _ptr;
+    Node<Customer>*         _head;
+    Node<Customer>*         _tail;
+    Node<Customer>*         _ptr;
     int      		  	 	_nodeCount;
     int 			  		_listLimit;
 
