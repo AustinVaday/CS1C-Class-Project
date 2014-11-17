@@ -427,7 +427,68 @@ Customer CustomerList::FindCustomer(QString userName)
 
 }
 
-QString CustomerList::operator[](int index)
+   Customer* CustomerList::ReturnCustomerPtr(QString userName)
+  {
+      Node<Customer> * traversePtr;
+
+          if(isEmpty())
+          {
+              throw EmptyList();
+          }
+
+          // NEED TO MAKE SURE 2 ACCOUNT NUMBERS CANNOT BE THE SAME //
+          traversePtr = _head;
+          int index = 0;
+          while (index < _listLimit && traversePtr !=NULL &&
+                  traversePtr->GetData().getUserName() != userName)
+          {
+              traversePtr = traversePtr->GetNext();
+
+              index++;
+          }
+          if (traversePtr == NULL)
+          {
+              // throw exception class if not found.
+              traversePtr = NULL;
+              throw NotFound();
+          }
+
+       Customer *dataPtr = traversePtr->GetDataPtr();
+
+
+          return dataPtr;
+  }
+
+int CustomerList::FindCustomerLocation (QString userName)
+{
+    Node<Customer> * traversePtr;
+
+        if(isEmpty())
+        {
+            throw EmptyList();
+        }
+
+        // NEED TO MAKE SURE 2 ACCOUNT NUMBERS CANNOT BE THE SAME //
+        traversePtr = _head;
+        int index = 0;
+        while (index < _listLimit && traversePtr !=NULL &&
+                traversePtr->GetData().getUserName() != userName)
+        {
+            traversePtr = traversePtr->GetNext();
+
+            index++;
+        }
+        if (traversePtr == NULL)
+        {
+            // throw exception class if not found.
+            traversePtr = NULL;
+            throw NotFound();
+        }
+
+        return index;
+}
+
+Customer CustomerList::operator[](int index)
 {
     Node<Customer> * traversePtr;
 
@@ -460,7 +521,39 @@ QString CustomerList::operator[](int index)
             throw NotFound();
         }
 
-        return traversePtr->GetData().OutputData();
+        return traversePtr->GetData();
 
+
+}
+
+
+bool CustomerList::isExist(Customer someCustomer)
+{
+        Node<Customer> * traversePtr;
+
+        if(isEmpty())
+        {
+            return false;
+        }
+
+        // NEED TO MAKE SURE 2 ACCOUNT NUMBERS CANNOT BE THE SAME //
+        traversePtr = _head;
+        int i = 0;
+        while (i < _listLimit && traversePtr !=NULL)
+        {
+            if (someCustomer == traversePtr->GetData())
+            {
+                return true;
+            }
+            traversePtr = traversePtr->GetNext();
+
+            i++;
+        }
+
+        if (traversePtr == NULL)
+        {
+            // throw exception class if not found.
+            return false;
+        }
 
 }

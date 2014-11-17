@@ -24,7 +24,8 @@ NewActivatedList::NewActivatedList(QWidget *parent) :
     {
         try
         {
-            ui->listWidget->addItem(activatedList[i]);
+            // no longer returns a string
+            ui->listWidget->addItem(activatedList[i].OutputData());
         }
         catch(const NotFound&)
         {

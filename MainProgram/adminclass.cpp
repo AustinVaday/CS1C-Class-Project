@@ -14,8 +14,12 @@ Admin::Admin(QString userName,
               QString password
             ) : User(userName,email,accountNum,password)
 {
+//	User::setUserName(userName);
+//	User::setEmail(email);
+//	User::setAccountNum(accountNum); // should we make this in the class instead?????
+//	User::setPassword(password);
 
-
+//	activate = true;
 }
 
 // destructor
@@ -23,13 +27,6 @@ Admin::~Admin()
 {
 
 }
-
-
-bool Admin::checkAdmin(QString name, QString password)
-{
-   return ((GetUserName() == name) && (GetPassword() == password));
-}
-
 
 //WHY U NEED THIS?????
 QString Admin::GetUserName()
