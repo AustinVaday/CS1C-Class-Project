@@ -14,7 +14,7 @@
 #include "customerlistclass.h"
 #include "ui_AdminWindow.h"
 #include "Header.h"
-#include "AdminWindow.h"
+#include "helpwindow.h"
 
 
 //
@@ -51,14 +51,19 @@ public:
      bool GetAdminLoginState     ();
      bool GetCustomerLoginState  ();
      bool GetGuestLoginState     ();
-     bool GetCreateAccountState();
+     bool GetCreateAccountState  ();
 
 
      QString GetUsername();
      QString GetPassword();
 
+    //  Accessors
      void SetUsername(QString newUsername);
+     // Sets user name
+
      void SetPassword(QString newPassword);
+     // Sets users password
+
 
 
 void Launcher();
@@ -67,25 +72,45 @@ void Launcher();
     ~MainProgramWindow();
 
 signals:
+    void clicked();
+    // ******DON'T KNOW HOW TO GET THIS TO WORK!!!******
+    // Supposed to use connect and slots for this!
+
+public slots:
+
+    void on_pushButton_Help_clicked();
+
+    void on_exitProgram_clicked();
+
+    void showHelpWindow();
+    // displays help window
 
 private slots:
 
     void on_pushButton_Login_clicked();
-    void on_exitProgram_clicked();
+
 
 private:
     Ui::MainProgramWindow *ui;
 
     // PROGRAM SECTION WINDOWS
     AdminWindow *aWindow;
+    // Pointer towards the admin window
+
+    // Customer / Brochure Data Memeber Placeholder
+
+    HelpWindow  *hWindow;
+    // Pointer of type HelpWindow
+    //  Used to create a help window for the user
 
     // SECTION LOGIN BOOLEANS
-    //These boolean variables are used to determine what type of window to
-    // launch
+    //These boolean variables are used to determine what
+    //  type of window to launch
+
     bool adminLogin      = false;
-    bool customerLogin   = false ;
+    bool customerLogin   = false;
     bool guestLogin      = false;
-    bool createAccount = false;
+    bool createAccount   = false;
 
     QString userName;
     QString password;

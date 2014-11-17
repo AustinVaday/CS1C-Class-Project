@@ -5,10 +5,15 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainProgramWindow)
 {
+    // Hard code of admin login
     Admin testAdmin("admin","admin1234@gmail.com", 1234, "password");
-    aWindow = new AdminWindow;
 
+    // Initialize
+    hWindow = new HelpWindow;
+    aWindow = new AdminWindow;
+    connect(aWindow, SIGNAL(clicked()), this, SLOT(on_pushButton_Help_clicked()));
     ui->setupUi(this);
+
 
 
     // Shows the main program buttons when first logging in
@@ -18,6 +23,11 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
 MainProgramWindow::~MainProgramWindow()
 {
     delete ui;
+
+    if(adminLogin)
+    {
+        delete aWindow;
+    }
 }
 
 void MainProgramWindow::on_pushButton_Login_clicked()
@@ -70,11 +80,16 @@ void MainProgramWindow::on_pushButton_Login_clicked()
 
 void MainProgramWindow::Launcher()
 {
-    AdminWindow * newWindow;
+    if(adminLogin)
+    {
+        aWindow->show();
+    }
+    else if(customerLogin)
+    {
+        // Brochure / Customer login place holder
+        // Will allocate memory and show the customer / brochure window
+    }
 
-    newWindow = new AdminWindow;
-
-    newWindow->show();
 }
 
 void MainProgramWindow::on_exitProgram_clicked()
@@ -148,3 +163,14 @@ void MainProgramWindow::SetPassword(QString newPassword)
 {
     password = newPassword;
 }
+
+void MainProgramWindow::on_pushButton_Help_clicked()
+{
+    showHelpWindow();
+}
+
+void MainProgramWindow::showHelpWindow()
+{
+    hWindow->show();
+}
+
