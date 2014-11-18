@@ -85,12 +85,6 @@ class Product
         int getModelNumber() const;
         // Returns the model number of the product
 
-        bool operator &=(const Product otherProduct);
-
-        bool operator ==(const Product otherProduct);
-
-        QString OutputData() const;
-
     private:
         // Data members
         float		 cost;					// Cost of the product

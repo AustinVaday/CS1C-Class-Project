@@ -38,34 +38,40 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QPushButton" name="pushButton_Login">
+      <widget class="QPushButton" name="pushButton">
        <property name="text">
         <string>Login</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_Guest">
+      <widget class="QPushButton" name="pushButton_2">
        <property name="text">
         <string>Guest</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_RequestBrochure_2">
+      <widget class="QPushButton" name="pushButton_3">
        <property name="text">
-        <string>Create Account</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_Help">
-       <property name="text">
-        <string>Help</string>
+        <string>Request Brochure</string>
        </property>
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QPushButton" name="tempAdminAccess">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>320</y>
+      <width>115</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Temp Admin Access</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -74,7 +80,7 @@
      <x>0</x>
      <y>0</y>
      <width>533</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuExtreme_Robo_Cat_Coderz">

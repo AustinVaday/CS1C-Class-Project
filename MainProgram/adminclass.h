@@ -30,9 +30,9 @@ class Admin : public User
 
         QString GetUserName();
         QString GetEmail();
-        long    GetAccountNum();
+        long GetAccountNum();
         QString GetPassword();
-        bool    activationStatus();
+        bool activationStatus();
 
 
 
@@ -53,10 +53,6 @@ class Admin : public User
         void modifyHelpOptions();
         // admin opportunity to modify help options
 
-
-
-        //NEW
-        bool checkAdmin(QString name, QString password);
 
         void modifyCustomerReviews();
          // allow the admin to access, delete, or modify any
