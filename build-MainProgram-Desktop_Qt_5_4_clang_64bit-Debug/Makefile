@@ -56,14 +56,29 @@ SOURCES       = ../MainProgram/main.cpp \
 		../MainProgram/customerclass.cpp \
 		../MainProgram/ReadCustomerFile.cpp \
 		../MainProgram/newactivatedlist.cpp \
-		../MainProgram/LoginWindow.cpp \
 		../MainProgram/maindisplay.cpp \
 		../MainProgram/AdminWindow.cpp \
-		../MainProgram/ProductClass.cpp moc_MainProgramWindow.cpp \
+		../MainProgram/ProductClass.cpp \
+		../MainProgram/ProductListClass.cpp \
+		../MainProgram/login.cpp \
+		../MainProgram/errorlogin.cpp \
+		../MainProgram/helpwindow.cpp \
+		../MainProgram/firstdialog.cpp \
+		../MainProgram/orderproduct.cpp \
+		../MainProgram/requestbrochure.cpp \
+		../MainProgram/loginhelp.cpp \
+		../MainProgram/navigatingapp.cpp moc_MainProgramWindow.cpp \
 		moc_newactivatedlist.cpp \
-		moc_LoginWindow.cpp \
 		moc_maindisplay.cpp \
-		moc_AdminWindow.cpp
+		moc_AdminWindow.cpp \
+		moc_login.cpp \
+		moc_errorlogin.cpp \
+		moc_helpwindow.cpp \
+		moc_firstdialog.cpp \
+		moc_orderproduct.cpp \
+		moc_requestbrochure.cpp \
+		moc_loginhelp.cpp \
+		moc_navigatingapp.cpp
 OBJECTS       = qrc_TextFilesFolder.o \
 		main.o \
 		MainProgramWindow.o \
@@ -73,15 +88,30 @@ OBJECTS       = qrc_TextFilesFolder.o \
 		customerclass.o \
 		ReadCustomerFile.o \
 		newactivatedlist.o \
-		LoginWindow.o \
 		maindisplay.o \
 		AdminWindow.o \
 		ProductClass.o \
+		ProductListClass.o \
+		login.o \
+		errorlogin.o \
+		helpwindow.o \
+		firstdialog.o \
+		orderproduct.o \
+		requestbrochure.o \
+		loginhelp.o \
+		navigatingapp.o \
 		moc_MainProgramWindow.o \
 		moc_newactivatedlist.o \
-		moc_LoginWindow.o \
 		moc_maindisplay.o \
-		moc_AdminWindow.o
+		moc_AdminWindow.o \
+		moc_login.o \
+		moc_errorlogin.o \
+		moc_helpwindow.o \
+		moc_firstdialog.o \
+		moc_orderproduct.o \
+		moc_requestbrochure.o \
+		moc_loginhelp.o \
+		moc_navigatingapp.o
 DIST          = ../../../Qt5.4.0/5.4/clang_64/mkspecs/features/spec_pre.prf \
 		../../../Qt5.4.0/5.4/clang_64/mkspecs/qdevice.pri \
 		../../../Qt5.4.0/5.4/clang_64/mkspecs/features/device_config.prf \
@@ -217,10 +247,18 @@ DIST          = ../../../Qt5.4.0/5.4/clang_64/mkspecs/features/spec_pre.prf \
 		../MainProgram/ExceptionHandlers.h \
 		../MainProgram/Header.h \
 		../MainProgram/newactivatedlist.h \
-		../MainProgram/LoginWindow.h \
 		../MainProgram/maindisplay.h \
 		../MainProgram/AdminWindow.h \
-		../MainProgram/ProductClass.h ../MainProgram/main.cpp \
+		../MainProgram/ProductClass.h \
+		../MainProgram/ProductListClass.h \
+		../MainProgram/login.h \
+		../MainProgram/errorlogin.h \
+		../MainProgram/helpwindow.h \
+		../MainProgram/firstdialog.h \
+		../MainProgram/orderproduct.h \
+		../MainProgram/requestbrochure.h \
+		../MainProgram/loginhelp.h \
+		../MainProgram/navigatingapp.h ../MainProgram/main.cpp \
 		../MainProgram/MainProgramWindow.cpp \
 		../MainProgram/adminclass.cpp \
 		../MainProgram/userclass.cpp \
@@ -228,10 +266,18 @@ DIST          = ../../../Qt5.4.0/5.4/clang_64/mkspecs/features/spec_pre.prf \
 		../MainProgram/customerclass.cpp \
 		../MainProgram/ReadCustomerFile.cpp \
 		../MainProgram/newactivatedlist.cpp \
-		../MainProgram/LoginWindow.cpp \
 		../MainProgram/maindisplay.cpp \
 		../MainProgram/AdminWindow.cpp \
-		../MainProgram/ProductClass.cpp
+		../MainProgram/ProductClass.cpp \
+		../MainProgram/ProductListClass.cpp \
+		../MainProgram/login.cpp \
+		../MainProgram/errorlogin.cpp \
+		../MainProgram/helpwindow.cpp \
+		../MainProgram/firstdialog.cpp \
+		../MainProgram/orderproduct.cpp \
+		../MainProgram/requestbrochure.cpp \
+		../MainProgram/loginhelp.cpp \
+		../MainProgram/navigatingapp.cpp
 QMAKE_TARGET  = MainProgram
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = MainProgram.app/Contents/MacOS/MainProgram
@@ -269,7 +315,7 @@ first: all
 
 ####### Build rules
 
-$(TARGET): ui_mainprogramwindow.h ui_newactivatedlist.h ui_LoginWindow.h ui_maindisplay.h ui_AdminWindow.h $(OBJECTS)  
+$(TARGET): ui_mainprogramwindow.h ui_newactivatedlist.h ui_maindisplay.h ui_AdminWindow.h ui_login.h ui_errorlogin.h ui_helpwindow.h ui_firstdialog.h ui_orderproduct.h ui_requestbrochure.h ui_LoginHelp.h ui_loginhelp.h ui_navigatingapp.h $(OBJECTS)  
 	@test -d MainProgram.app/Contents/MacOS/ || mkdir -p MainProgram.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -566,9 +612,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../MainProgram/TextFilesFolder.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../MainProgram/MainProgramWindow.h ../MainProgram/adminclass.h ../MainProgram/userclass.h ../MainProgram/customerlistclass.h ../MainProgram/customerclass.h ../MainProgram/genericnodeclass.h ../MainProgram/ExceptionHandlers.h ../MainProgram/Header.h ../MainProgram/newactivatedlist.h ../MainProgram/LoginWindow.h ../MainProgram/maindisplay.h ../MainProgram/AdminWindow.h ../MainProgram/ProductClass.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../MainProgram/main.cpp ../MainProgram/MainProgramWindow.cpp ../MainProgram/adminclass.cpp ../MainProgram/userclass.cpp ../MainProgram/customerlistclass.cpp ../MainProgram/customerclass.cpp ../MainProgram/ReadCustomerFile.cpp ../MainProgram/newactivatedlist.cpp ../MainProgram/LoginWindow.cpp ../MainProgram/maindisplay.cpp ../MainProgram/AdminWindow.cpp ../MainProgram/ProductClass.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../MainProgram/mainprogramwindow.ui ../MainProgram/newactivatedlist.ui ../MainProgram/LoginWindow.ui ../MainProgram/maindisplay.ui ../MainProgram/AdminWindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../MainProgram/MainProgramWindow.h ../MainProgram/adminclass.h ../MainProgram/userclass.h ../MainProgram/customerlistclass.h ../MainProgram/customerclass.h ../MainProgram/genericnodeclass.h ../MainProgram/ExceptionHandlers.h ../MainProgram/Header.h ../MainProgram/newactivatedlist.h ../MainProgram/maindisplay.h ../MainProgram/AdminWindow.h ../MainProgram/ProductClass.h ../MainProgram/ProductListClass.h ../MainProgram/login.h ../MainProgram/errorlogin.h ../MainProgram/helpwindow.h ../MainProgram/firstdialog.h ../MainProgram/orderproduct.h ../MainProgram/requestbrochure.h ../MainProgram/loginhelp.h ../MainProgram/navigatingapp.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../MainProgram/main.cpp ../MainProgram/MainProgramWindow.cpp ../MainProgram/adminclass.cpp ../MainProgram/userclass.cpp ../MainProgram/customerlistclass.cpp ../MainProgram/customerclass.cpp ../MainProgram/ReadCustomerFile.cpp ../MainProgram/newactivatedlist.cpp ../MainProgram/maindisplay.cpp ../MainProgram/AdminWindow.cpp ../MainProgram/ProductClass.cpp ../MainProgram/ProductListClass.cpp ../MainProgram/login.cpp ../MainProgram/errorlogin.cpp ../MainProgram/helpwindow.cpp ../MainProgram/firstdialog.cpp ../MainProgram/orderproduct.cpp ../MainProgram/requestbrochure.cpp ../MainProgram/loginhelp.cpp ../MainProgram/navigatingapp.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../MainProgram/mainprogramwindow.ui ../MainProgram/newactivatedlist.ui ../MainProgram/maindisplay.ui ../MainProgram/AdminWindow.ui ../MainProgram/login.ui ../MainProgram/errorlogin.ui ../MainProgram/helpwindow.ui ../MainProgram/firstdialog.ui ../MainProgram/orderproduct.ui ../MainProgram/requestbrochure.ui ../MainProgram/LoginHelp.ui ../MainProgram/loginhelp.ui ../MainProgram/navigatingapp.ui $(DISTDIR)/
 
 
 clean:compiler_clean 
@@ -601,11 +647,34 @@ qrc_TextFilesFolder.o: ../MainProgram/TextFilesFolder.qrc \
 	 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXXFLAGS) -c ./qrc_TextFilesFolder.cpp -o ./qrc_TextFilesFolder.tmp.o 
 	 /Users/syndacit/Qt5.4.0/5.4/clang_64/bin/rcc -name TextFilesFolder ../MainProgram/TextFilesFolder.qrc -pass 2 -temp ./qrc_TextFilesFolder.tmp.o -o qrc_TextFilesFolder.o
 
-compiler_moc_header_make_all: moc_MainProgramWindow.cpp moc_newactivatedlist.cpp moc_LoginWindow.cpp moc_maindisplay.cpp moc_AdminWindow.cpp
+compiler_moc_header_make_all: moc_MainProgramWindow.cpp moc_newactivatedlist.cpp moc_maindisplay.cpp moc_AdminWindow.cpp moc_login.cpp moc_errorlogin.cpp moc_helpwindow.cpp moc_firstdialog.cpp moc_orderproduct.cpp moc_requestbrochure.cpp moc_loginhelp.cpp moc_navigatingapp.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_MainProgramWindow.cpp moc_newactivatedlist.cpp moc_LoginWindow.cpp moc_maindisplay.cpp moc_AdminWindow.cpp
+	-$(DEL_FILE) moc_MainProgramWindow.cpp moc_newactivatedlist.cpp moc_maindisplay.cpp moc_AdminWindow.cpp moc_login.cpp moc_errorlogin.cpp moc_helpwindow.cpp moc_firstdialog.cpp moc_orderproduct.cpp moc_requestbrochure.cpp moc_loginhelp.cpp moc_navigatingapp.cpp
 moc_MainProgramWindow.cpp: ../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
+		../MainProgram/adminclass.h \
+		../MainProgram/userclass.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
+		../MainProgram/customerclass.h \
+		../MainProgram/customerlistclass.h \
+		../MainProgram/genericnodeclass.h \
+		../MainProgram/activatedlist.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		../MainProgram/errorlogin.h \
+		../MainProgram/AdminWindow.h \
+		../MainProgram/helpwindow.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
+		../MainProgram/login.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		ui_mainprogramwindow.h \
+		../MainProgram/WelcomeWidget.h \
+		../MainProgram/newactivatedlist.h \
+		ui_AdminWindow.h \
+		../MainProgram/Header.h \
 		../MainProgram/MainProgramWindow.h
 	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/syndacit/Qt5.4.0/5.4/clang_64/mkspecs/macx-clang -I/Users/syndacit/git/Class-Project/MainProgram -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Users/syndacit/Qt5.4.0/5.4/clang_64/lib ../MainProgram/MainProgramWindow.h -o moc_MainProgramWindow.cpp
 
@@ -614,11 +683,6 @@ moc_newactivatedlist.cpp: ../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/
 		../MainProgram/newactivatedlist.h
 	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/syndacit/Qt5.4.0/5.4/clang_64/mkspecs/macx-clang -I/Users/syndacit/git/Class-Project/MainProgram -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Users/syndacit/Qt5.4.0/5.4/clang_64/lib ../MainProgram/newactivatedlist.h -o moc_newactivatedlist.cpp
 
-moc_LoginWindow.cpp: ../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
-		../MainProgram/LoginWindow.h
-	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/syndacit/Qt5.4.0/5.4/clang_64/mkspecs/macx-clang -I/Users/syndacit/git/Class-Project/MainProgram -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Users/syndacit/Qt5.4.0/5.4/clang_64/lib ../MainProgram/LoginWindow.h -o moc_LoginWindow.cpp
-
 moc_maindisplay.cpp: ../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFrame \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qframe.h \
 		../MainProgram/maindisplay.h
@@ -626,28 +690,99 @@ moc_maindisplay.cpp: ../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versi
 
 moc_AdminWindow.cpp: ../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
+		../MainProgram/helpwindow.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
 		../MainProgram/AdminWindow.h
 	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/syndacit/Qt5.4.0/5.4/clang_64/mkspecs/macx-clang -I/Users/syndacit/git/Class-Project/MainProgram -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Users/syndacit/Qt5.4.0/5.4/clang_64/lib ../MainProgram/AdminWindow.h -o moc_AdminWindow.cpp
 
+moc_login.cpp: ../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		../MainProgram/login.h
+	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/syndacit/Qt5.4.0/5.4/clang_64/mkspecs/macx-clang -I/Users/syndacit/git/Class-Project/MainProgram -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Users/syndacit/Qt5.4.0/5.4/clang_64/lib ../MainProgram/login.h -o moc_login.cpp
+
+moc_errorlogin.cpp: ../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		../MainProgram/errorlogin.h
+	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/syndacit/Qt5.4.0/5.4/clang_64/mkspecs/macx-clang -I/Users/syndacit/git/Class-Project/MainProgram -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Users/syndacit/Qt5.4.0/5.4/clang_64/lib ../MainProgram/errorlogin.h -o moc_errorlogin.cpp
+
+moc_helpwindow.cpp: ../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
+		../MainProgram/helpwindow.h
+	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/syndacit/Qt5.4.0/5.4/clang_64/mkspecs/macx-clang -I/Users/syndacit/git/Class-Project/MainProgram -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Users/syndacit/Qt5.4.0/5.4/clang_64/lib ../MainProgram/helpwindow.h -o moc_helpwindow.cpp
+
+moc_firstdialog.cpp: ../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		../MainProgram/firstdialog.h
+	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/syndacit/Qt5.4.0/5.4/clang_64/mkspecs/macx-clang -I/Users/syndacit/git/Class-Project/MainProgram -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Users/syndacit/Qt5.4.0/5.4/clang_64/lib ../MainProgram/firstdialog.h -o moc_firstdialog.cpp
+
+moc_orderproduct.cpp: ../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		../MainProgram/orderproduct.h
+	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/syndacit/Qt5.4.0/5.4/clang_64/mkspecs/macx-clang -I/Users/syndacit/git/Class-Project/MainProgram -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Users/syndacit/Qt5.4.0/5.4/clang_64/lib ../MainProgram/orderproduct.h -o moc_orderproduct.cpp
+
+moc_requestbrochure.cpp: ../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		../MainProgram/requestbrochure.h
+	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/syndacit/Qt5.4.0/5.4/clang_64/mkspecs/macx-clang -I/Users/syndacit/git/Class-Project/MainProgram -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Users/syndacit/Qt5.4.0/5.4/clang_64/lib ../MainProgram/requestbrochure.h -o moc_requestbrochure.cpp
+
+moc_loginhelp.cpp: ../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		../MainProgram/loginhelp.h
+	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/syndacit/Qt5.4.0/5.4/clang_64/mkspecs/macx-clang -I/Users/syndacit/git/Class-Project/MainProgram -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Users/syndacit/Qt5.4.0/5.4/clang_64/lib ../MainProgram/loginhelp.h -o moc_loginhelp.cpp
+
+moc_navigatingapp.cpp: ../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		../MainProgram/navigatingapp.h
+	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/syndacit/Qt5.4.0/5.4/clang_64/mkspecs/macx-clang -I/Users/syndacit/git/Class-Project/MainProgram -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Users/syndacit/Qt5.4.0/5.4/clang_64/lib ../MainProgram/navigatingapp.h -o moc_navigatingapp.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainprogramwindow.h ui_newactivatedlist.h ui_LoginWindow.h ui_maindisplay.h ui_AdminWindow.h
+compiler_uic_make_all: ui_mainprogramwindow.h ui_newactivatedlist.h ui_maindisplay.h ui_AdminWindow.h ui_login.h ui_errorlogin.h ui_helpwindow.h ui_firstdialog.h ui_orderproduct.h ui_requestbrochure.h ui_LoginHelp.h ui_loginhelp.h ui_navigatingapp.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainprogramwindow.h ui_newactivatedlist.h ui_LoginWindow.h ui_maindisplay.h ui_AdminWindow.h
+	-$(DEL_FILE) ui_mainprogramwindow.h ui_newactivatedlist.h ui_maindisplay.h ui_AdminWindow.h ui_login.h ui_errorlogin.h ui_helpwindow.h ui_firstdialog.h ui_orderproduct.h ui_requestbrochure.h ui_LoginHelp.h ui_loginhelp.h ui_navigatingapp.h
 ui_mainprogramwindow.h: ../MainProgram/mainprogramwindow.ui
 	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/uic ../MainProgram/mainprogramwindow.ui -o ui_mainprogramwindow.h
 
 ui_newactivatedlist.h: ../MainProgram/newactivatedlist.ui
 	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/uic ../MainProgram/newactivatedlist.ui -o ui_newactivatedlist.h
 
-ui_LoginWindow.h: ../MainProgram/LoginWindow.ui
-	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/uic ../MainProgram/LoginWindow.ui -o ui_LoginWindow.h
-
 ui_maindisplay.h: ../MainProgram/maindisplay.ui
 	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/uic ../MainProgram/maindisplay.ui -o ui_maindisplay.h
 
 ui_AdminWindow.h: ../MainProgram/AdminWindow.ui
 	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/uic ../MainProgram/AdminWindow.ui -o ui_AdminWindow.h
+
+ui_login.h: ../MainProgram/login.ui
+	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/uic ../MainProgram/login.ui -o ui_login.h
+
+ui_errorlogin.h: ../MainProgram/errorlogin.ui
+	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/uic ../MainProgram/errorlogin.ui -o ui_errorlogin.h
+
+ui_helpwindow.h: ../MainProgram/helpwindow.ui
+	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/uic ../MainProgram/helpwindow.ui -o ui_helpwindow.h
+
+ui_firstdialog.h: ../MainProgram/firstdialog.ui
+	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/uic ../MainProgram/firstdialog.ui -o ui_firstdialog.h
+
+ui_orderproduct.h: ../MainProgram/orderproduct.ui
+	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/uic ../MainProgram/orderproduct.ui -o ui_orderproduct.h
+
+ui_requestbrochure.h: ../MainProgram/requestbrochure.ui
+	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/uic ../MainProgram/requestbrochure.ui -o ui_requestbrochure.h
+
+ui_LoginHelp.h: ../MainProgram/LoginHelp.ui
+	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/uic ../MainProgram/LoginHelp.ui -o ui_LoginHelp.h
+
+ui_loginhelp.h: ../MainProgram/loginhelp.ui
+	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/uic ../MainProgram/loginhelp.ui -o ui_loginhelp.h
+
+ui_navigatingapp.h: ../MainProgram/navigatingapp.ui
+	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/uic ../MainProgram/navigatingapp.ui -o ui_navigatingapp.h
 
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
@@ -664,6 +799,29 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_uic_clean
 main.o: ../MainProgram/main.cpp ../MainProgram/MainProgramWindow.h \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
+		../MainProgram/adminclass.h \
+		../MainProgram/userclass.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
+		../MainProgram/customerclass.h \
+		../MainProgram/customerlistclass.h \
+		../MainProgram/genericnodeclass.h \
+		../MainProgram/activatedlist.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		../MainProgram/errorlogin.h \
+		../MainProgram/AdminWindow.h \
+		../MainProgram/helpwindow.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
+		../MainProgram/login.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		ui_mainprogramwindow.h \
+		../MainProgram/WelcomeWidget.h \
+		../MainProgram/newactivatedlist.h \
+		ui_AdminWindow.h \
+		../MainProgram/Header.h \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QApplication \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../MainProgram/main.cpp
@@ -671,23 +829,29 @@ main.o: ../MainProgram/main.cpp ../MainProgram/MainProgramWindow.h \
 MainProgramWindow.o: ../MainProgram/MainProgramWindow.cpp ../MainProgram/MainProgramWindow.h \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
-		ui_mainprogramwindow.h \
-		../MainProgram/WelcomeWidget.h \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
-		../MainProgram/newactivatedlist.h \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
-		../MainProgram/customerclass.h \
+		../MainProgram/adminclass.h \
 		../MainProgram/userclass.h \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
+		../MainProgram/customerclass.h \
 		../MainProgram/customerlistclass.h \
 		../MainProgram/genericnodeclass.h \
 		../MainProgram/activatedlist.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		../MainProgram/errorlogin.h \
+		../MainProgram/AdminWindow.h \
+		../MainProgram/helpwindow.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
+		../MainProgram/login.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		ui_mainprogramwindow.h \
+		../MainProgram/WelcomeWidget.h \
+		../MainProgram/newactivatedlist.h \
 		ui_AdminWindow.h \
-		../MainProgram/Header.h \
-		../MainProgram/LoginWindow.h
+		../MainProgram/Header.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MainProgramWindow.o ../MainProgram/MainProgramWindow.cpp
 
 adminclass.o: ../MainProgram/adminclass.cpp ../MainProgram/adminclass.h \
@@ -769,18 +933,6 @@ newactivatedlist.o: ../MainProgram/newactivatedlist.cpp ../MainProgram/newactiva
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o newactivatedlist.o ../MainProgram/newactivatedlist.cpp
 
-LoginWindow.o: ../MainProgram/LoginWindow.cpp ../MainProgram/LoginWindow.h \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
-		ui_LoginWindow.h \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLabel \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlabel.h \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLineEdit \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlineedit.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o LoginWindow.o ../MainProgram/LoginWindow.cpp
-
 maindisplay.o: ../MainProgram/maindisplay.cpp ../MainProgram/maindisplay.h \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFrame \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qframe.h \
@@ -790,24 +942,112 @@ maindisplay.o: ../MainProgram/maindisplay.cpp ../MainProgram/maindisplay.h \
 AdminWindow.o: ../MainProgram/AdminWindow.cpp ../MainProgram/AdminWindow.h \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
-		../MainProgram/newactivatedlist.h \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
-		../MainProgram/customerclass.h \
+		../MainProgram/helpwindow.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
+		../MainProgram/MainProgramWindow.h \
+		../MainProgram/adminclass.h \
 		../MainProgram/userclass.h \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
+		../MainProgram/customerclass.h \
 		../MainProgram/customerlistclass.h \
 		../MainProgram/genericnodeclass.h \
 		../MainProgram/activatedlist.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		../MainProgram/errorlogin.h \
+		../MainProgram/login.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		ui_mainprogramwindow.h \
+		../MainProgram/WelcomeWidget.h \
+		../MainProgram/newactivatedlist.h \
 		ui_AdminWindow.h \
 		../MainProgram/Header.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o AdminWindow.o ../MainProgram/AdminWindow.cpp
 
 ProductClass.o: ../MainProgram/ProductClass.cpp ../MainProgram/ProductClass.h \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QTextStream \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qtextstream.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ProductClass.o ../MainProgram/ProductClass.cpp
+
+ProductListClass.o: ../MainProgram/ProductListClass.cpp ../MainProgram/Productlistclass.h \
+		../MainProgram/ProductClass.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
+		../MainProgram/genericnodeclass.h \
+		../MainProgram/activatedlist.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QTextStream \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qtextstream.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		../MainProgram/ExceptionHandlers.h \
+		../MainProgram/activatedlist2.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ProductListClass.o ../MainProgram/ProductListClass.cpp
+
+login.o: ../MainProgram/login.cpp ../MainProgram/login.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		ui_login.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o login.o ../MainProgram/login.cpp
+
+errorlogin.o: ../MainProgram/errorlogin.cpp ../MainProgram/errorlogin.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		ui_errorlogin.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o errorlogin.o ../MainProgram/errorlogin.cpp
+
+helpwindow.o: ../MainProgram/helpwindow.cpp ../MainProgram/helpwindow.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
+		ui_helpwindow.h \
+		../MainProgram/firstdialog.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		../MainProgram/orderproduct.h \
+		../MainProgram/requestbrochure.h \
+		../MainProgram/loginhelp.h \
+		../MainProgram/navigatingapp.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o helpwindow.o ../MainProgram/helpwindow.cpp
+
+firstdialog.o: ../MainProgram/firstdialog.cpp ../MainProgram/firstdialog.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		ui_firstdialog.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o firstdialog.o ../MainProgram/firstdialog.cpp
+
+orderproduct.o: ../MainProgram/orderproduct.cpp ../MainProgram/orderproduct.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		ui_orderproduct.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o orderproduct.o ../MainProgram/orderproduct.cpp
+
+requestbrochure.o: ../MainProgram/requestbrochure.cpp ../MainProgram/requestbrochure.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		ui_requestbrochure.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o requestbrochure.o ../MainProgram/requestbrochure.cpp
+
+loginhelp.o: ../MainProgram/loginhelp.cpp ../MainProgram/loginhelp.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		ui_loginhelp.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o loginhelp.o ../MainProgram/loginhelp.cpp
+
+navigatingapp.o: ../MainProgram/navigatingapp.cpp ../MainProgram/navigatingapp.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		ui_navigatingapp.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o navigatingapp.o ../MainProgram/navigatingapp.cpp
 
 moc_MainProgramWindow.o: moc_MainProgramWindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_MainProgramWindow.o moc_MainProgramWindow.cpp
@@ -815,14 +1055,35 @@ moc_MainProgramWindow.o: moc_MainProgramWindow.cpp
 moc_newactivatedlist.o: moc_newactivatedlist.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_newactivatedlist.o moc_newactivatedlist.cpp
 
-moc_LoginWindow.o: moc_LoginWindow.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_LoginWindow.o moc_LoginWindow.cpp
-
 moc_maindisplay.o: moc_maindisplay.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_maindisplay.o moc_maindisplay.cpp
 
 moc_AdminWindow.o: moc_AdminWindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_AdminWindow.o moc_AdminWindow.cpp
+
+moc_login.o: moc_login.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_login.o moc_login.cpp
+
+moc_errorlogin.o: moc_errorlogin.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_errorlogin.o moc_errorlogin.cpp
+
+moc_helpwindow.o: moc_helpwindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_helpwindow.o moc_helpwindow.cpp
+
+moc_firstdialog.o: moc_firstdialog.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_firstdialog.o moc_firstdialog.cpp
+
+moc_orderproduct.o: moc_orderproduct.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_orderproduct.o moc_orderproduct.cpp
+
+moc_requestbrochure.o: moc_requestbrochure.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_requestbrochure.o moc_requestbrochure.cpp
+
+moc_loginhelp.o: moc_loginhelp.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_loginhelp.o moc_loginhelp.cpp
+
+moc_navigatingapp.o: moc_navigatingapp.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_navigatingapp.o moc_navigatingapp.cpp
 
 ####### Install
 
