@@ -29,11 +29,6 @@ QT_BEGIN_NAMESPACE
 class Ui_AdminWindow
 {
 public:
-<<<<<<< HEAD
-    QAction *actionFAQ;
-    QAction *actionCONTACT;
-=======
->>>>>>> refs/heads/master
     QWidget *centralWidget;
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
@@ -57,22 +52,11 @@ public:
         if (AdminWindow->objectName().isEmpty())
             AdminWindow->setObjectName(QStringLiteral("AdminWindow"));
         AdminWindow->resize(1084, 651);
-<<<<<<< HEAD
-        actionFAQ = new QAction(AdminWindow);
-        actionFAQ->setObjectName(QStringLiteral("actionFAQ"));
-        actionCONTACT = new QAction(AdminWindow);
-        actionCONTACT->setObjectName(QStringLiteral("actionCONTACT"));
-=======
->>>>>>> refs/heads/master
         centralWidget = new QWidget(AdminWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-<<<<<<< HEAD
-        layoutWidget->setGeometry(QRect(460, 220, 219, 236));
-=======
         layoutWidget->setGeometry(QRect(460, 220, 219, 202));
->>>>>>> refs/heads/master
         verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
@@ -147,11 +131,6 @@ public:
         AdminWindow->setMenuBar(menuBar);
 
         menuBar->addAction(menuMenu->menuAction());
-<<<<<<< HEAD
-        menuMenu->addAction(actionFAQ);
-        menuMenu->addAction(actionCONTACT);
-=======
->>>>>>> refs/heads/master
 
         retranslateUi(AdminWindow);
 
@@ -161,11 +140,6 @@ public:
     void retranslateUi(QMainWindow *AdminWindow)
     {
         AdminWindow->setWindowTitle(QApplication::translate("AdminWindow", "MainWindow", 0));
-<<<<<<< HEAD
-        actionFAQ->setText(QApplication::translate("AdminWindow", "FAQ", 0));
-        actionCONTACT->setText(QApplication::translate("AdminWindow", "CONTACT", 0));
-=======
->>>>>>> refs/heads/master
         view_activated_customers->setText(QApplication::translate("AdminWindow", "View Activated Customers", 0));
         view_deactivated_customers->setText(QApplication::translate("AdminWindow", "View Deactivated Customers", 0));
         search_customer->setText(QApplication::translate("AdminWindow", "Search Customer", 0));

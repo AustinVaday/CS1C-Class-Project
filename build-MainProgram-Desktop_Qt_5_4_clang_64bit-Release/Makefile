@@ -663,18 +663,18 @@ moc_MainProgramWindow.cpp: ../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
 		../MainProgram/errorlogin.h \
-		../MainProgram/AdminWindow.h \
+		../MainProgram/adminwindow.h \
+		../MainProgram/helpwindow.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
 		../MainProgram/login.h \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
 		ui_mainprogramwindow.h \
 		../MainProgram/WelcomeWidget.h \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
 		../MainProgram/newactivatedlist.h \
 		ui_AdminWindow.h \
 		../MainProgram/Header.h \
-		../MainProgram/helpwindow.h \
 		../MainProgram/MainProgramWindow.h
 	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/syndacit/Qt5.4.0/5.4/clang_64/mkspecs/macx-clang -I/Users/syndacit/git/Class-Project/MainProgram -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Users/syndacit/Qt5.4.0/5.4/clang_64/lib ../MainProgram/MainProgramWindow.h -o moc_MainProgramWindow.cpp
 
@@ -690,6 +690,9 @@ moc_maindisplay.cpp: ../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versi
 
 moc_AdminWindow.cpp: ../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
+		../MainProgram/helpwindow.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
 		../MainProgram/AdminWindow.h
 	/Users/syndacit/Qt5.4.0/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/syndacit/Qt5.4.0/5.4/clang_64/mkspecs/macx-clang -I/Users/syndacit/git/Class-Project/MainProgram -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/syndacit/Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Users/syndacit/Qt5.4.0/5.4/clang_64/lib ../MainProgram/AdminWindow.h -o moc_AdminWindow.cpp
 
@@ -807,18 +810,18 @@ main.o: ../MainProgram/main.cpp ../MainProgram/MainProgramWindow.h \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
 		../MainProgram/errorlogin.h \
-		../MainProgram/AdminWindow.h \
+		../MainProgram/adminwindow.h \
+		../MainProgram/helpwindow.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
 		../MainProgram/login.h \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
 		ui_mainprogramwindow.h \
 		../MainProgram/WelcomeWidget.h \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
 		../MainProgram/newactivatedlist.h \
 		ui_AdminWindow.h \
 		../MainProgram/Header.h \
-		../MainProgram/helpwindow.h \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QApplication \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../MainProgram/main.cpp
@@ -837,18 +840,18 @@ MainProgramWindow.o: ../MainProgram/MainProgramWindow.cpp ../MainProgram/MainPro
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
 		../MainProgram/errorlogin.h \
-		../MainProgram/AdminWindow.h \
+		../MainProgram/adminwindow.h \
+		../MainProgram/helpwindow.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
 		../MainProgram/login.h \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
 		ui_mainprogramwindow.h \
 		../MainProgram/WelcomeWidget.h \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
 		../MainProgram/newactivatedlist.h \
 		ui_AdminWindow.h \
-		../MainProgram/Header.h \
-		../MainProgram/helpwindow.h
+		../MainProgram/Header.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MainProgramWindow.o ../MainProgram/MainProgramWindow.cpp
 
 adminclass.o: ../MainProgram/adminclass.cpp ../MainProgram/adminclass.h \
@@ -936,9 +939,12 @@ maindisplay.o: ../MainProgram/maindisplay.cpp ../MainProgram/maindisplay.h \
 		ui_maindisplay.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o maindisplay.o ../MainProgram/maindisplay.cpp
 
-AdminWindow.o: ../MainProgram/AdminWindow.cpp ../MainProgram/AdminWindow.h \
+AdminWindow.o: ../MainProgram/AdminWindow.cpp ../MainProgram/adminwindow.h \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
+		../MainProgram/helpwindow.h \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
+		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
 		../MainProgram/MainProgramWindow.h \
 		../MainProgram/adminclass.h \
 		../MainProgram/userclass.h \
@@ -956,12 +962,9 @@ AdminWindow.o: ../MainProgram/AdminWindow.cpp ../MainProgram/AdminWindow.h \
 		../../../Qt5.4.0/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
 		ui_mainprogramwindow.h \
 		../MainProgram/WelcomeWidget.h \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
-		../../../Qt5.4.0/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
 		../MainProgram/newactivatedlist.h \
 		ui_AdminWindow.h \
-		../MainProgram/Header.h \
-		../MainProgram/helpwindow.h
+		../MainProgram/Header.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o AdminWindow.o ../MainProgram/AdminWindow.cpp
 
 ProductClass.o: ../MainProgram/ProductClass.cpp ../MainProgram/ProductClass.h \
