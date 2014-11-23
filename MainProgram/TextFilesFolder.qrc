@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>ActivatedListFile.txt</file>
+        <file>DeactivatedListFile.txt</file>
+    </qresource>
+</RCC>
