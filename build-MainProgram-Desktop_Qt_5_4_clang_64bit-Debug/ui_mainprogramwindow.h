@@ -18,6 +18,7 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
@@ -39,6 +40,9 @@ public:
     QPushButton *pushButton_Guest;
     QPushButton *pushButton_RequestBrochure_2;
     QPushButton *pushButton_Help;
+    QStackedWidget *stackedWidget;
+    QWidget *page;
+    QWidget *page_2;
     QMenuBar *menuBar;
     QMenu *menuExtreme_Robo_Cat_Coderz;
     QToolBar *mainToolBar;
@@ -87,6 +91,15 @@ public:
 
         verticalLayout->addWidget(pushButton_Help);
 
+        stackedWidget = new QStackedWidget(centralWidget);
+        stackedWidget->setObjectName(QStringLiteral("stackedWidget"));
+        stackedWidget->setGeometry(QRect(80, 230, 311, 131));
+        page = new QWidget();
+        page->setObjectName(QStringLiteral("page"));
+        stackedWidget->addWidget(page);
+        page_2 = new QWidget();
+        page_2->setObjectName(QStringLiteral("page_2"));
+        stackedWidget->addWidget(page_2);
         MainProgramWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainProgramWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -106,6 +119,9 @@ public:
         menuExtreme_Robo_Cat_Coderz->addAction(actionExit);
 
         retranslateUi(MainProgramWindow);
+
+        stackedWidget->setCurrentIndex(0);
+
 
         QMetaObject::connectSlotsByName(MainProgramWindow);
     } // setupUi

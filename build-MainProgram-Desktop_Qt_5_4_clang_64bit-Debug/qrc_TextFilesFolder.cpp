@@ -6,10 +6,10 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-  // /Users/syndacit/git/Class-Project/MainProgram/ActivatedListFile.txt
+  // /Users/syndacit/CS1C/CS1C-Project-Master/ActivatedListFile.txt
   
   
-    // /Users/syndacit/git/Class-Project/MainProgram/DeactivatedListFile.txt
+    // /Users/syndacit/CS1C/CS1C-Project-Master/DeactivatedListFile.txt
   
   
   

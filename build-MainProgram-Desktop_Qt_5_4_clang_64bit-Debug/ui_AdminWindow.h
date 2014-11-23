@@ -29,6 +29,7 @@ QT_BEGIN_NAMESPACE
 class Ui_AdminWindow
 {
 public:
+    QAction *actionHelp;
     QWidget *centralWidget;
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
@@ -45,18 +46,20 @@ public:
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
     QMenuBar *menuBar;
-    QMenu *menuMenu;
+    QMenu *mainMenu;
 
     void setupUi(QMainWindow *AdminWindow)
     {
         if (AdminWindow->objectName().isEmpty())
             AdminWindow->setObjectName(QStringLiteral("AdminWindow"));
         AdminWindow->resize(1084, 651);
+        actionHelp = new QAction(AdminWindow);
+        actionHelp->setObjectName(QStringLiteral("actionHelp"));
         centralWidget = new QWidget(AdminWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(460, 220, 219, 202));
+        layoutWidget->setGeometry(QRect(460, 220, 219, 236));
         verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
@@ -126,11 +129,12 @@ public:
         menuBar = new QMenuBar(AdminWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 1084, 22));
-        menuMenu = new QMenu(menuBar);
-        menuMenu->setObjectName(QStringLiteral("menuMenu"));
+        mainMenu = new QMenu(menuBar);
+        mainMenu->setObjectName(QStringLiteral("mainMenu"));
         AdminWindow->setMenuBar(menuBar);
 
-        menuBar->addAction(menuMenu->menuAction());
+        menuBar->addAction(mainMenu->menuAction());
+        mainMenu->addAction(actionHelp);
 
         retranslateUi(AdminWindow);
 
@@ -140,6 +144,7 @@ public:
     void retranslateUi(QMainWindow *AdminWindow)
     {
         AdminWindow->setWindowTitle(QApplication::translate("AdminWindow", "MainWindow", 0));
+        actionHelp->setText(QApplication::translate("AdminWindow", "Help", 0));
         view_activated_customers->setText(QApplication::translate("AdminWindow", "View Activated Customers", 0));
         view_deactivated_customers->setText(QApplication::translate("AdminWindow", "View Deactivated Customers", 0));
         search_customer->setText(QApplication::translate("AdminWindow", "Search Customer", 0));
@@ -148,7 +153,7 @@ public:
         back_button->setText(QApplication::translate("AdminWindow", "Back ", 0));
         welcome_label->setText(QApplication::translate("AdminWindow", "<html><head/><body><p><span style=\" font-family: Arial; font-size:28pt; font-weight:600;\">Welcome, </span></p></body></html>", 0));
         user_name_label->setText(QApplication::translate("AdminWindow", "<html><head/><body><p><span style=\" font-family:'Arial'; font-size:28pt; font-weight:600;\">UserName</span></p></body></html>", 0));
-        menuMenu->setTitle(QApplication::translate("AdminWindow", "Help", 0));
+        mainMenu->setTitle(QApplication::translate("AdminWindow", "Menu", 0));
     } // retranslateUi
 
 };
