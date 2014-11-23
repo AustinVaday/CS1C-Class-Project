@@ -5,11 +5,16 @@
 #include "Header.h"
 #include "ExceptionHandlers.h"
 #include <QMessageBox>
+#include <QDebug>
+
 NewActivatedList::NewActivatedList(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::NewActivatedList)
 {
     ui->setupUi(this);
+
+    // when a list widget item is clicked, will call the function.
+    connect(ui->listWidget,SIGNAL(itemClicked(QListWidgetItem*)),this,SLOT(on_listItem_clicked(QListWidgetItem*)));
 
     // for MAIN
     CustomerList activatedList;
@@ -17,8 +22,13 @@ NewActivatedList::NewActivatedList(QWidget *parent) :
 
     ReadCustomerFile(activatedList, ":/ActivatedListFile.txt");
 
+    customerList = activatedList;
+
+    custAddBook = new CustomerAddressBook(0, activatedList);
+
 //    ReadCustomerFile(deactivatedList, "://DeactivatedListFile.txt");
 
+    ui->listWidget->setSortingEnabled(true);
 
     for (int i = 0; i < activatedList.Size(); i++)
     {
@@ -26,6 +36,8 @@ NewActivatedList::NewActivatedList(QWidget *parent) :
         {
             // no longer returns a string
             ui->listWidget->addItem(activatedList[i].OutputData());
+
+
         }
         catch(const NotFound&)
         {
@@ -55,4 +67,20 @@ NewActivatedList::NewActivatedList(QWidget *parent) :
 NewActivatedList::~NewActivatedList()
 {
     delete ui;
+    delete custAddBook;
+}
+
+void NewActivatedList::on_listItem_clicked(QListWidgetItem* item)
+{
+   QMessageBox::information(this,"Hello!","You clicked\n \""+item->text()+"\"");
+
+   custAddBook->setModal(true);
+   custAddBook->exec();
+
+//    custAddBook->showNormal();
+
+//    custAddBook->activateWindow();
+
+
+//    custAddBook->show();
 }

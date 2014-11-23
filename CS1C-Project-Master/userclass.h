@@ -22,11 +22,11 @@ class User
         // deconstructor
 
         // Mutators
-        bool operator&=(const User otherUser);
+        bool operator&=(const User& otherUser);
         // Overloading the equality operator **FOR SIMILARITY**
 
 
-        bool operator==(const User otherUser);
+        bool operator==(const User& otherUser);
         // Overloading the equality operator **FOR ABSOLUTE EQUALITY**
 
 

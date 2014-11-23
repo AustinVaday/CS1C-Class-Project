@@ -22,7 +22,7 @@ AdminWindow::AdminWindow(QWidget *parent) :
 
 
     // FOR ADMIN WINDOW
-    on_user_name_label_linkActivated("Austin Vaday");
+    on_user_name_label_linkActivated("Administrator");
 }
 
 AdminWindow::~AdminWindow()
@@ -50,20 +50,32 @@ void AdminWindow::on_view_activated_customers_clicked()
 
 //    viewActivatedCustomers->show();
 
-    NewActivatedList viewList;
 
+
+
+    NewActivatedList viewList;
     viewList.setModal(true);
     viewList.exec();
-}
 
+//    CustomerList customerList;
+//    Customer Bob("Bob", "a", 0, "a");
+//    customerList.Enqueue(Bob);
+//    CustomerAddressBook* custAddBook = new CustomerAddressBook(0, customerList);
+//    custAddBook->setModal(true);
+//    custAddBook->exec();
 
 //    CustomerAddressBook *custAddBook = new CustomerAddressBook();
 
 //    custAddBook->showNormal();
 
-////    custAddBook->activateWindow();
+//    custAddBook->activateWindow();
 
-////    custAddBook->show();
+//    custAddBook->show();
+}
+
+
+
+
 
 
 void AdminWindow::on_modify_help_options_clicked()
