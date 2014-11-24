@@ -33,10 +33,10 @@ public:
     QVBoxLayout *verticalLayout_2;
     QLabel *label;
     QVBoxLayout *verticalLayout;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_4;
-    QPushButton *pushButton_3;
+    QPushButton *button_placeOrder;
+    QPushButton *button_viewProducts;
+    QPushButton *button_accountInfo;
+    QPushButton *button_logout;
     QMenuBar *menubar;
     QMenu *menuMenu;
     QStatusBar *statusbar;
@@ -65,25 +65,25 @@ public:
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
+        button_placeOrder = new QPushButton(centralwidget);
+        button_placeOrder->setObjectName(QStringLiteral("button_placeOrder"));
 
-        verticalLayout->addWidget(pushButton);
+        verticalLayout->addWidget(button_placeOrder);
 
-        pushButton_2 = new QPushButton(centralwidget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        button_viewProducts = new QPushButton(centralwidget);
+        button_viewProducts->setObjectName(QStringLiteral("button_viewProducts"));
 
-        verticalLayout->addWidget(pushButton_2);
+        verticalLayout->addWidget(button_viewProducts);
 
-        pushButton_4 = new QPushButton(centralwidget);
-        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
+        button_accountInfo = new QPushButton(centralwidget);
+        button_accountInfo->setObjectName(QStringLiteral("button_accountInfo"));
 
-        verticalLayout->addWidget(pushButton_4);
+        verticalLayout->addWidget(button_accountInfo);
 
-        pushButton_3 = new QPushButton(centralwidget);
-        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        button_logout = new QPushButton(centralwidget);
+        button_logout->setObjectName(QStringLiteral("button_logout"));
 
-        verticalLayout->addWidget(pushButton_3);
+        verticalLayout->addWidget(button_logout);
 
 
         verticalLayout_2->addLayout(verticalLayout);
@@ -112,10 +112,10 @@ public:
         BrochureWindow->setWindowTitle(QApplication::translate("BrochureWindow", "MainWindow", 0));
         actionHELP->setText(QApplication::translate("BrochureWindow", "HELP", 0));
         label->setText(QApplication::translate("BrochureWindow", "Brochure", 0));
-        pushButton->setText(QApplication::translate("BrochureWindow", "Place Order", 0));
-        pushButton_2->setText(QApplication::translate("BrochureWindow", "View Products", 0));
-        pushButton_4->setText(QApplication::translate("BrochureWindow", "Account Info", 0));
-        pushButton_3->setText(QApplication::translate("BrochureWindow", "Log out", 0));
+        button_placeOrder->setText(QApplication::translate("BrochureWindow", "Place Order", 0));
+        button_viewProducts->setText(QApplication::translate("BrochureWindow", "View Products", 0));
+        button_accountInfo->setText(QApplication::translate("BrochureWindow", "Account Info", 0));
+        button_logout->setText(QApplication::translate("BrochureWindow", "Log out", 0));
         menuMenu->setTitle(QApplication::translate("BrochureWindow", "Menu", 0));
     } // retranslateUi
 
