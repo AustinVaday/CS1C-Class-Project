@@ -114,10 +114,10 @@ private:
     //These boolean variables are used to determine what
     //  type of window to launch
 
-    bool adminLogin      = false;
-    bool customerLogin   = false;
-    bool guestLogin      = false;
-    bool createAccount   = false;
+    bool adminLogin      ;
+    bool customerLogin   ;
+    bool guestLogin      ;
+    bool createAccount  ;
 
     QString userName;
     QString password;
