@@ -20,9 +20,9 @@ class ProductList
 private:
     //M E M B E R ~ D E C L A R A T I O N S
 
-    Node<Product>*             _head;
-    Node<Product>*             _tail;
-    Node<Product>*             _ptr;
+    Node<Product>*          _head;
+    Node<Product>*          _tail;
+    Node<Product>*          _ptr;
     int      		  	 	_nodeCount;
     int 			  		_listLimit;
 
