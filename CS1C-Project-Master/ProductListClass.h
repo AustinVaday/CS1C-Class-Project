@@ -122,16 +122,26 @@ public:
     /**********************************************************************
      * isFull
      * --------------------------------------------------------------------
-     * This method will check to see if the list is full
+	 * This method will check to see if the list is full
      **********************************************************************/
     bool     isFull() const;
 
     /**********************************************************************
-     * OutputList
+	 * OutputList
      * --------------------------------------------------------------------
      * This method will return a QString containing the list
      **********************************************************************/
     QString   OutputList() const;
+
+	/**********************************************************************
+	  * WriteToFile
+	  * --------------------------------------------------------------------------------
+	  * This method will write the product data to a file.
+	  **********************************************************************/
+
+	  void WriteToFile();
+
+	  void ReadFile();
 
     void    RemoveProduct(Product &someProduct);
     Product FindProduct(QString userName) ;

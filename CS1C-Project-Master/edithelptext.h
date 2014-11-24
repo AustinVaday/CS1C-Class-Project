@@ -13,7 +13,7 @@ class EditHelpText : public QWidget
 
 public:
     explicit EditHelpText(QWidget *parent = 0);
-    ~EditHelpText();
+	~EditHelpText();
 
 private:
     Ui::EditHelpText *ui;

@@ -80,3 +80,5 @@ FORMS   += mainprogramwindow.ui \
 RESOURCES += \
     TextFilesFolder.qrc
 
+OTHER_FILES +=
+
