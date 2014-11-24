@@ -34,7 +34,9 @@ SOURCES += main.cpp\
         navigatingapp.cpp \
         requestbrochure.cpp\
         orderproduct.cpp \
-    BrochureWindow.cpp
+    BrochureWindow.cpp \
+    CustomerPlaceOrder.cpp \
+    ViewProducts.cpp
 
 HEADERS += MainProgramWindow.h \
         adminclass.h \
@@ -59,7 +61,9 @@ HEADERS += MainProgramWindow.h \
         navigatingapp.h\
         requestbrochure.h\
         orderproduct.h \
-    BrochureWindow.h
+    BrochureWindow.h \
+    CustomerPlaceOrder.h \
+    ViewProducts.h
 
 FORMS   += mainprogramwindow.ui \
         newactivatedlist.ui \
@@ -75,7 +79,9 @@ FORMS   += mainprogramwindow.ui \
         navigatingapp.ui\
         requestbrochure.ui\
         orderproduct.ui \
-    BrochureWindow.ui
+    BrochureWindow.ui \
+    CustomerPlaceOrder.ui \
+    ViewProducts.ui
 
 RESOURCES += \
     TextFilesFolder.qrc

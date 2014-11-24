@@ -27,9 +27,9 @@ Product::Product()
     dateReleased			= 0;
 }
 
-Product::Product(float  initCost,		// Starting cost of product
-                 QString initName,		// Starting name of product
+Product::Product(QString initName,		// Starting name of product
                  QString description,	// Description of the product
+                 float  initCost,		// Starting cost of product
                  int 	modelNum,
                  int	initReleaseDate)
 {

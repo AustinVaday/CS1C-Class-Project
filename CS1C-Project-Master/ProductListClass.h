@@ -133,7 +133,6 @@ public:
      **********************************************************************/
     QString   OutputList() const;
 
-<<<<<<< Updated upstream
 	/**********************************************************************
 	  * WriteToFile
 	  * --------------------------------------------------------------------------------
@@ -143,9 +142,8 @@ public:
 	  void WriteToFile();
 
 	  void ReadFile();
-=======
+
     void    WriteListToFile();
->>>>>>> Stashed changes
 
     void    RemoveProduct(Product &someProduct);
 

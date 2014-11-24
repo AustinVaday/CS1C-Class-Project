@@ -17,9 +17,9 @@
 #include "Header.h"
 #include "helpwindow.h"
 #include "BrochureWindow.h"
-
-
-//
+#include "ProductListClass.h"
+#include "ProductClass.h"
+#include "ViewProducts.h"
 
 #include <QDebug>
 
@@ -110,14 +110,19 @@ private:
 
     BrochureWindow* bWindow;
 
+
+    ProductList*    lst;
+
+
+
     // SECTION LOGIN BOOLEANS
     //These boolean variables are used to determine what
     //  type of window to launch
 
-    bool adminLogin      = false;
-    bool customerLogin   = false;
-    bool guestLogin      = false;
-    bool createAccount   = false;
+    bool adminLogin      = 0;
+    bool customerLogin   = 0;
+    bool guestLogin      = 0;
+    bool createAccount   = 0;
 
     QString userName;
     QString password;
