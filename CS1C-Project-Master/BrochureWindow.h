@@ -21,6 +21,10 @@ signals:
 private slots:
     void on_actionHELP_triggered();
 
+//    void on_pushButton_2_clicked();
+
+//    void on_button_viewProducts_clicked();
+
 private:
     Ui::BrochureWindow *ui;
 };

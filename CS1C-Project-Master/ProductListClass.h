@@ -20,11 +20,11 @@ class ProductList
 private:
     //M E M B E R ~ D E C L A R A T I O N S
 
-    Node<Product>*             _head;
-    Node<Product>*             _tail;
-    Node<Product>*             _ptr;
-    int      		  	 	_nodeCount;
-    int 			  		_listLimit;
+    Node<Product>*    _head;
+    Node<Product>*    _tail;
+    Node<Product>*    _ptr;
+    int      		  _nodeCount;
+    int 			  _listLimit;
 
 /**************************************************************************
  * P U B L I C
@@ -133,6 +133,7 @@ public:
      **********************************************************************/
     QString   OutputList() const;
 
+<<<<<<< Updated upstream
 	/**********************************************************************
 	  * WriteToFile
 	  * --------------------------------------------------------------------------------
@@ -142,9 +143,14 @@ public:
 	  void WriteToFile();
 
 	  void ReadFile();
+=======
+    void    WriteListToFile();
+>>>>>>> Stashed changes
 
     void    RemoveProduct(Product &someProduct);
+
     Product FindProduct(QString userName) ;
+
     QString operator[](int index);
 
 

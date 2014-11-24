@@ -91,6 +91,8 @@ class Product
 
         QString OutputData() const;
 
+        //void
+
     private:
         // Data members
         float		 cost;					// Cost of the product

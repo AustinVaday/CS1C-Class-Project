@@ -60,7 +60,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_3">
+       <widget class="QPushButton" name="button_logout">
         <property name="text">
          <string>Log out</string>
         </property>
