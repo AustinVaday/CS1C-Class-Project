@@ -88,7 +88,7 @@ bool User::getAccess() const
     return accountAccess;
 }
 // Overloading the equality operator **FOR SIMILARITY**
-bool User::operator &=(const User otherUser)
+bool User::operator &=(const User& otherUser)
 {
     bool same;
 
@@ -110,7 +110,7 @@ bool User::operator &=(const User otherUser)
 }
 
 // Overloading the equality operator **FOR ABSOLUTE EQUALITY**
-bool User::operator ==(const User otherUser)
+bool User::operator ==(const User& otherUser)
 {
     bool same;
 
