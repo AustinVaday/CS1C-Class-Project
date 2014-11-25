@@ -2,7 +2,7 @@
 #include "ui_BrochureWindow.h"
 
 
-BrochureWindow::BrochureWindow(QWidget *parent, ProductList *lst) :
+BrochureWindow::BrochureWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::BrochureWindow)
 {

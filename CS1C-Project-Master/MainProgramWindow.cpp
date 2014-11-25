@@ -217,3 +217,8 @@ void MainProgramWindow::on_actionHelp_triggered()
 {
     hWindow->show();
 }
+
+ProductList* MainProgramWindow::getProductList() const
+{
+    return lst;
+}

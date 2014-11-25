@@ -56,6 +56,7 @@ public:
      bool GetGuestLoginState     ();
      bool GetCreateAccountState  ();
 
+     ProductList* getProductList() const;
 
      QString GetUsername();
      QString GetPassword();

@@ -15,7 +15,7 @@ class BrochureWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit BrochureWindow(QWidget *parent = 0, ProductList *lst = 0);
+    explicit BrochureWindow(QWidget *parent = 0);
     ~BrochureWindow();
 
 signals:
