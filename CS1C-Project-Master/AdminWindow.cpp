@@ -6,13 +6,21 @@
 #include "Header.h"
 #include "customeraddressbook.h"
 
-AdminWindow::AdminWindow(QWidget *parent) :
+AdminWindow::AdminWindow(QWidget *parent, CustomerList &list) :
     QMainWindow(parent),
     ui(new Ui::AdminWindow)
 {
-    viewList = new NewActivatedList;
+    /***********************************************************
+     * This should be used in all windows except main window!
+     ***********************************************************/
+    connect(this, SIGNAL(customerListChanged(CustomerList*)), parent, SLOT(updateCustomerList(CustomerList*)));
+    customerList = list;
+
+
+    viewList = new NewActivatedList(this, customerList);
 
     ui->setupUi(this);
+
 
     // FOR PROJECT MAIN WINDOWx
 //    CustomerList activatedList;
@@ -94,4 +102,19 @@ void AdminWindow::on_actionHelp_triggered()
 void AdminWindow::on_search_customer_clicked()
 {
 
+}
+
+//void AdminWindow::customerListChanged(CustomerList* list)
+//{
+
+//}
+
+void AdminWindow::updateCustomerList(CustomerList *list)
+{
+    customerList = *list;
+
+    // notify the AdminWindow that list has been changed
+    emit customerListChanged(&customerList);
+
+    qDebug() << "Emitting in AdminWindow to MainWindow!";
 }

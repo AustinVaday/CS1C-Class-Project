@@ -18,8 +18,10 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QScrollArea>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -42,6 +44,10 @@ public:
     QPushButton *pushButton_Help;
     QStackedWidget *stackedWidget;
     QWidget *page;
+    QScrollArea *scrollArea;
+    QWidget *scrollAreaWidgetContents;
+    QVBoxLayout *verticalLayout_2;
+    QTextBrowser *tempDisplay;
     QWidget *page_2;
     QMenuBar *menuBar;
     QMenu *menuExtreme_Robo_Cat_Coderz;
@@ -96,6 +102,23 @@ public:
         stackedWidget->setGeometry(QRect(80, 230, 311, 131));
         page = new QWidget();
         page->setObjectName(QStringLiteral("page"));
+        scrollArea = new QScrollArea(page);
+        scrollArea->setObjectName(QStringLiteral("scrollArea"));
+        scrollArea->setGeometry(QRect(-10, 0, 241, 131));
+        scrollArea->setWidgetResizable(true);
+        scrollAreaWidgetContents = new QWidget();
+        scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 239, 129));
+        verticalLayout_2 = new QVBoxLayout(scrollAreaWidgetContents);
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        tempDisplay = new QTextBrowser(scrollAreaWidgetContents);
+        tempDisplay->setObjectName(QStringLiteral("tempDisplay"));
+
+        verticalLayout_2->addWidget(tempDisplay);
+
+        scrollArea->setWidget(scrollAreaWidgetContents);
         stackedWidget->addWidget(page);
         page_2 = new QWidget();
         page_2->setObjectName(QStringLiteral("page_2"));

@@ -16,6 +16,8 @@ class AdminWindow : public QMainWindow
 
 public:
     explicit AdminWindow(QWidget *parent = 0);
+    AdminWindow(QWidget *parent, CustomerList &list);
+
     ~AdminWindow();
 
 signals:
@@ -23,9 +25,14 @@ signals:
 
     void adminAccess();
 
+    void customerListChanged(CustomerList* list);
+
 public slots:
 
     void on_modify_help_options_clicked();
+
+    void updateCustomerList(CustomerList *list);
+
 
 
 private slots:
@@ -43,6 +50,7 @@ private slots:
 private:
     Ui::AdminWindow *ui;
     NewActivatedList *viewList;
+    CustomerList customerList;
 };
 
 #endif // ADMINWINDOW_H

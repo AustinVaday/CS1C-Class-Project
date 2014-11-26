@@ -88,6 +88,12 @@ public slots:
     void showHelpWindow();
     // displays help window
 
+    void updateCustomerList(CustomerList *list);
+
+
+
+
+
 private slots:
 
     void on_pushButton_Login_clicked();
@@ -109,6 +115,8 @@ private:
     //  Used to create a help window for the user
 
     BrochureWindow* bWindow;
+
+    CustomerList customerList;
 
     // SECTION LOGIN BOOLEANS
     //These boolean variables are used to determine what

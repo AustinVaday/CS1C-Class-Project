@@ -11,12 +11,11 @@ CustomerAddressBook::CustomerAddressBook(QWidget *parent, CustomerList &list, in
 
 
     // CONNECT THE EDIT, REMOVE, AND SUBMIT BUTTONS
-    /**********************************************************************************************
-     * This should be in the parent window not here, this has to be where parent is at right now.
-     **********************************************************************************************/
+    /***********************************************************
+     * This should be used in all windows except main window!
+     ***********************************************************/
     connect(this, SIGNAL(customerListChanged(CustomerList*)), parent, SLOT(updateCustomerList(CustomerList*)));
 
-    // ... Ignore below
 
     /*              ^                        ^                      ^           ^
  should be child widget of admin.        |                  || this      slot in parent class and this connect(  ) should be in

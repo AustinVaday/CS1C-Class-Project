@@ -17,9 +17,13 @@ class NewActivatedList : public QDialog
 
 public:
     explicit NewActivatedList(QWidget *parent = 0);
+    NewActivatedList(QWidget *parent, CustomerList &list);
+
     ~NewActivatedList();
     void DisplayTheList(CustomerList &list);
 
+signals:
+    void customerListChanged(CustomerList* list);
 
 public slots:
     void on_listItem_clicked(QListWidgetItem* item);

@@ -5,19 +5,28 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainProgramWindow)
 {
+
+    ui->setupUi(this);
+
+    //Create the customer list...
+    ReadCustomerFile(customerList, ":/ActivatedListFile.txt");
+
+    // TEMPORARY DISPLAY!!
+    ui->tempDisplay->setText(customerList.OutputList());
+
+
     // Hard code of admin login
     Admin testAdmin("","admin1234@gmail.com", 1234, "");
 
     // Initialize
     hWindow = new HelpWindow;
-    aWindow = new AdminWindow;
+    aWindow = new AdminWindow(this, customerList);
     bWindow = new BrochureWindow;
 
     connect(aWindow, SIGNAL(clicked()), this, SLOT(on_pushButton_Help_clicked()));
 
     connect(bWindow, SIGNAL(clicked()), this, SLOT(on_pushButton_Help_clicked()));
 
-    ui->setupUi(this);
 
     // Shows the main program buttons when first logging in
 
@@ -195,4 +204,16 @@ void MainProgramWindow::showHelpWindow()
 void MainProgramWindow::on_actionHelp_triggered()
 {
     hWindow->show();
+}
+
+void MainProgramWindow::updateCustomerList(CustomerList *list)
+{
+    // TEMPORARY DISPLAY!!
+    ui->tempDisplay->clear();
+    ui->tempDisplay->setText(customerList.OutputList());
+
+
+    customerList = *list;
+
+    qDebug() << "List has finally reached the MainProgramWindow!";
 }

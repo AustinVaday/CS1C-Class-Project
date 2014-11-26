@@ -614,21 +614,11 @@ moc_MainProgramWindow.cpp: ../../../QT/5.3/clang_64/lib/QtWidgets.framework/Vers
 		../CS1C-Project-Master/customerclass.h \
 		../CS1C-Project-Master/customerlistclass.h \
 		../CS1C-Project-Master/genericnodeclass.h \
-		../CS1C-Project-Master/newactivatedlist.h \
+		../CS1C-Project-Master/login.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QListWidgetItem \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlistwidget.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QObject \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qobject.h \
-		../CS1C-Project-Master/customeraddressbook.h \
-		ui_customeraddressbook.h \
-		../CS1C-Project-Master/find.h \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
-		../CS1C-Project-Master/login.h \
 		../CS1C-Project-Master/loginhelp.h \
 		../CS1C-Project-Master/LoginWindow.h \
 		../CS1C-Project-Master/errorlogin.h \
@@ -636,6 +626,13 @@ moc_MainProgramWindow.cpp: ../../../QT/5.3/clang_64/lib/QtWidgets.framework/Vers
 		../CS1C-Project-Master/helpwindow.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
+		../CS1C-Project-Master/newactivatedlist.h \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QListWidgetItem \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlistwidget.h \
+		../CS1C-Project-Master/customeraddressbook.h \
+		../CS1C-Project-Master/find.h \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
 		ui_mainprogramwindow.h \
 		../CS1C-Project-Master/WelcomeWidget.h \
 		ui_AdminWindow.h \
@@ -644,21 +641,17 @@ moc_MainProgramWindow.cpp: ../../../QT/5.3/clang_64/lib/QtWidgets.framework/Vers
 		../CS1C-Project-Master/MainProgramWindow.h
 	/Users/AustinVaday/QT/5.3/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/AustinVaday/QT/5.3/clang_64/mkspecs/macx-clang -I/Users/AustinVaday/git/Class-Project/CS1C-Project-Master -I/Users/AustinVaday/QT/5.3/clang_64/lib/QtWidgets.framework/Headers -I/Users/AustinVaday/QT/5.3/clang_64/lib/QtGui.framework/Headers -I/Users/AustinVaday/QT/5.3/clang_64/lib/QtCore.framework/Headers -I. -F/Users/AustinVaday/QT/5.3/clang_64/lib ../CS1C-Project-Master/MainProgramWindow.h -o moc_MainProgramWindow.cpp
 
-moc_newactivatedlist.cpp: ../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QListWidgetItem \
+moc_newactivatedlist.cpp: ../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QListWidgetItem \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlistwidget.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QObject \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qobject.h \
 		../CS1C-Project-Master/customeraddressbook.h \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
 		../CS1C-Project-Master/customerlistclass.h \
 		../CS1C-Project-Master/customerclass.h \
 		../CS1C-Project-Master/userclass.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		../CS1C-Project-Master/genericnodeclass.h \
-		../CS1C-Project-Master/newactivatedlist.h \
-		ui_customeraddressbook.h \
 		../CS1C-Project-Master/find.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
@@ -678,20 +671,17 @@ moc_AdminWindow.cpp: ../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
 		../CS1C-Project-Master/newactivatedlist.h \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QListWidgetItem \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlistwidget.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QObject \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qobject.h \
 		../CS1C-Project-Master/customeraddressbook.h \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
 		../CS1C-Project-Master/customerlistclass.h \
 		../CS1C-Project-Master/customerclass.h \
 		../CS1C-Project-Master/userclass.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		../CS1C-Project-Master/genericnodeclass.h \
-		ui_customeraddressbook.h \
 		../CS1C-Project-Master/find.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
@@ -708,13 +698,6 @@ moc_customeraddressbook.cpp: ../../../QT/5.3/clang_64/lib/QtWidgets.framework/Ve
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		../CS1C-Project-Master/genericnodeclass.h \
-		../CS1C-Project-Master/newactivatedlist.h \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QListWidgetItem \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlistwidget.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QObject \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qobject.h \
-		../CS1C-Project-Master/customeraddressbook.h \
-		ui_customeraddressbook.h \
 		../CS1C-Project-Master/find.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
@@ -857,21 +840,11 @@ main.o: ../CS1C-Project-Master/main.cpp ../CS1C-Project-Master/MainProgramWindow
 		../CS1C-Project-Master/customerclass.h \
 		../CS1C-Project-Master/customerlistclass.h \
 		../CS1C-Project-Master/genericnodeclass.h \
-		../CS1C-Project-Master/newactivatedlist.h \
+		../CS1C-Project-Master/login.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QListWidgetItem \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlistwidget.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QObject \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qobject.h \
-		../CS1C-Project-Master/customeraddressbook.h \
-		ui_customeraddressbook.h \
-		../CS1C-Project-Master/find.h \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
-		../CS1C-Project-Master/login.h \
 		../CS1C-Project-Master/loginhelp.h \
 		../CS1C-Project-Master/LoginWindow.h \
 		../CS1C-Project-Master/errorlogin.h \
@@ -879,6 +852,13 @@ main.o: ../CS1C-Project-Master/main.cpp ../CS1C-Project-Master/MainProgramWindow
 		../CS1C-Project-Master/helpwindow.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
+		../CS1C-Project-Master/newactivatedlist.h \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QListWidgetItem \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlistwidget.h \
+		../CS1C-Project-Master/customeraddressbook.h \
+		../CS1C-Project-Master/find.h \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
 		ui_mainprogramwindow.h \
 		../CS1C-Project-Master/WelcomeWidget.h \
 		ui_AdminWindow.h \
@@ -898,21 +878,11 @@ MainProgramWindow.o: ../CS1C-Project-Master/MainProgramWindow.cpp ../CS1C-Projec
 		../CS1C-Project-Master/customerclass.h \
 		../CS1C-Project-Master/customerlistclass.h \
 		../CS1C-Project-Master/genericnodeclass.h \
-		../CS1C-Project-Master/newactivatedlist.h \
+		../CS1C-Project-Master/login.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QListWidgetItem \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlistwidget.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QObject \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qobject.h \
-		../CS1C-Project-Master/customeraddressbook.h \
-		ui_customeraddressbook.h \
-		../CS1C-Project-Master/find.h \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
-		../CS1C-Project-Master/login.h \
 		../CS1C-Project-Master/loginhelp.h \
 		../CS1C-Project-Master/LoginWindow.h \
 		../CS1C-Project-Master/errorlogin.h \
@@ -920,6 +890,13 @@ MainProgramWindow.o: ../CS1C-Project-Master/MainProgramWindow.cpp ../CS1C-Projec
 		../CS1C-Project-Master/helpwindow.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
+		../CS1C-Project-Master/newactivatedlist.h \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QListWidgetItem \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlistwidget.h \
+		../CS1C-Project-Master/customeraddressbook.h \
+		../CS1C-Project-Master/find.h \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
 		ui_mainprogramwindow.h \
 		../CS1C-Project-Master/WelcomeWidget.h \
 		ui_AdminWindow.h \
@@ -933,21 +910,7 @@ adminclass.o: ../CS1C-Project-Master/adminclass.cpp ../CS1C-Project-Master/admin
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		../CS1C-Project-Master/customerclass.h \
 		../CS1C-Project-Master/customerlistclass.h \
-		../CS1C-Project-Master/genericnodeclass.h \
-		../CS1C-Project-Master/newactivatedlist.h \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QListWidgetItem \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlistwidget.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QObject \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qobject.h \
-		../CS1C-Project-Master/customeraddressbook.h \
-		ui_customeraddressbook.h \
-		../CS1C-Project-Master/find.h \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h
+		../CS1C-Project-Master/genericnodeclass.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o adminclass.o ../CS1C-Project-Master/adminclass.cpp
 
 userclass.o: ../CS1C-Project-Master/userclass.cpp ../CS1C-Project-Master/userclass.h \
@@ -963,24 +926,16 @@ customerlistclass.o: ../CS1C-Project-Master/customerlistclass.cpp ../CS1C-Projec
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		../CS1C-Project-Master/genericnodeclass.h \
-		../CS1C-Project-Master/newactivatedlist.h \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QListWidgetItem \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlistwidget.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QObject \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qobject.h \
-		../CS1C-Project-Master/customeraddressbook.h \
-		ui_customeraddressbook.h \
-		../CS1C-Project-Master/find.h \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QTextStream \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qtextstream.h \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
 		../CS1C-Project-Master/ExceptionHandlers.h \
-		../CS1C-Project-Master/activatedlist2.h
+		../CS1C-Project-Master/activatedlist2.h \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o customerlistclass.o ../CS1C-Project-Master/customerlistclass.cpp
 
 customerclass.o: ../CS1C-Project-Master/customerclass.cpp ../CS1C-Project-Master/customerclass.h \
@@ -996,43 +951,28 @@ ReadCustomerFile.o: ../CS1C-Project-Master/ReadCustomerFile.cpp ../CS1C-Project-
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		../CS1C-Project-Master/genericnodeclass.h \
-		../CS1C-Project-Master/newactivatedlist.h \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QListWidgetItem \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlistwidget.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QObject \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qobject.h \
-		../CS1C-Project-Master/customeraddressbook.h \
-		ui_customeraddressbook.h \
-		../CS1C-Project-Master/find.h \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QTextStream \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qtextstream.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLabel \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlabel.h
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlabel.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ReadCustomerFile.o ../CS1C-Project-Master/ReadCustomerFile.cpp
 
 newactivatedlist.o: ../CS1C-Project-Master/newactivatedlist.cpp ../CS1C-Project-Master/newactivatedlist.h \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QListWidgetItem \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlistwidget.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QObject \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qobject.h \
 		../CS1C-Project-Master/customeraddressbook.h \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
 		../CS1C-Project-Master/customerlistclass.h \
 		../CS1C-Project-Master/customerclass.h \
 		../CS1C-Project-Master/userclass.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		../CS1C-Project-Master/genericnodeclass.h \
-		ui_customeraddressbook.h \
 		../CS1C-Project-Master/find.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
@@ -1056,20 +996,17 @@ AdminWindow.o: ../CS1C-Project-Master/AdminWindow.cpp ../CS1C-Project-Master/Adm
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
 		../CS1C-Project-Master/newactivatedlist.h \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QListWidgetItem \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlistwidget.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QObject \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qobject.h \
 		../CS1C-Project-Master/customeraddressbook.h \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
 		../CS1C-Project-Master/customerlistclass.h \
 		../CS1C-Project-Master/customerclass.h \
 		../CS1C-Project-Master/userclass.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		../CS1C-Project-Master/genericnodeclass.h \
-		ui_customeraddressbook.h \
 		../CS1C-Project-Master/find.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
@@ -1111,17 +1048,12 @@ customeraddressbook.o: ../CS1C-Project-Master/customeraddressbook.cpp ../CS1C-Pr
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		../CS1C-Project-Master/genericnodeclass.h \
-		../CS1C-Project-Master/newactivatedlist.h \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QListWidgetItem \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlistwidget.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QObject \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qobject.h \
-		ui_customeraddressbook.h \
 		../CS1C-Project-Master/find.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		ui_customeraddressbook.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o customeraddressbook.o ../CS1C-Project-Master/customeraddressbook.cpp
 
 errorlogin.o: ../CS1C-Project-Master/errorlogin.cpp ../CS1C-Project-Master/errorlogin.h \

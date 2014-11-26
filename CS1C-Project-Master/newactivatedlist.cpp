@@ -7,17 +7,28 @@
 #include <QMessageBox>
 #include <QDebug>
 
-NewActivatedList::NewActivatedList(QWidget *parent) :
+NewActivatedList::NewActivatedList(QWidget *parent)
+{
+
+}
+
+NewActivatedList::NewActivatedList(QWidget *parent, CustomerList &list) :
     QDialog(parent),
     ui(new Ui::NewActivatedList)
 {
+    /***********************************************************
+     * This should be used in all windows except main window!
+     ***********************************************************/
+    connect(this, SIGNAL(customerListChanged(CustomerList*)), parent, SLOT(updateCustomerList(CustomerList*)));
+
     ui->setupUi(this);
 
     // when a list widget item is clicked, will call the function to output customer address book.
     connect(ui->listWidget,SIGNAL(itemClicked(QListWidgetItem*)),this,SLOT(on_listItem_clicked(QListWidgetItem*)));
 
+    customerList = list;
 
-    ReadCustomerFile(customerList, ":/ActivatedListFile.txt");
+//    ReadCustomerFile(customerList, ":/ActivatedListFile.txt");
 
     custAddBook = new CustomerAddressBook(this, customerList, 0);
 
@@ -97,9 +108,17 @@ void NewActivatedList::on_listItem_clicked(QListWidgetItem* item)
 
 }
 
+
 void NewActivatedList::updateCustomerList(CustomerList *list)
 {
     customerList = *list;
 
     DisplayTheList(customerList);
+
+    // notify the AdminWindow that list has been changed
+    emit customerListChanged(&customerList);
+
+    qDebug() << "Emitting in NewActivatedList to AdminWindow!";
 }
+
+
