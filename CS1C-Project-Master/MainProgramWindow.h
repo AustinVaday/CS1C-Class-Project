@@ -2,11 +2,11 @@
 #define MAINPROGRAMWINDOW_H
 
 #include <QMainWindow>
-#include <adminclass.h>
+#include "adminclass.h"
 #include "login.h"
 #include "loginhelp.h"
 #include "LoginWindow.h"
-#include <errorlogin.h>
+#include "errorlogin.h"
 #include "AdminWindow.h"
 #include "ui_mainprogramwindow.h"
 #include "WelcomeWidget.h"

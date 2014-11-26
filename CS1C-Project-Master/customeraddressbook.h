@@ -1,7 +1,8 @@
 #ifndef CUSTOMERADDRESSBOOK_H
 #define CUSTOMERADDRESSBOOK_H
 
-#include <QWidget>
+
+#include <QDialog>
 #include "customerlistclass.h"
 #include "customerclass.h"
 
@@ -16,14 +17,16 @@ namespace Ui {
 class CustomerAddressBook;
 }
 
-class CustomerAddressBook : public QWidget
+class CustomerAddressBook : public QDialog
 {
     Q_OBJECT
 
 public:
     explicit CustomerAddressBook(QWidget *parent = 0);
+    CustomerAddressBook(QWidget *parent, CustomerList &list);
     ~CustomerAddressBook();
     void updateInterface (Mode currentMode);
+    void importList(CustomerList list);
 
 private slots:
     void on_addButton_clicked();

@@ -3,6 +3,7 @@
 #include <QMessageBox>
 #include "ExceptionHandlers.h"
 #include "activatedlist2.h"
+#include <QDebug>
 
 /**************************************************************************
  * CS1C Class Project
@@ -42,6 +43,7 @@ CustomerList::~CustomerList()
 {
     //Traverse list to delete
     delete _head;
+
 }
 
 /**************************************************************************
@@ -345,49 +347,55 @@ void CustomerList::RemoveCustomer(Customer &someCustomer)
     }
 
     // overloaded operator
-            if (traversePtr->GetData() == someCustomer)
-            {
-                // head deletion
-                if (traversePtr == _head)
-                {
-                    Dequeue();
+    if (traversePtr->GetData() == someCustomer)
+    {
+        // head deletion
+        if (traversePtr == _head)
+        {
+            Dequeue();
 
-                }
-                // end deletion
-                else if (traversePtr == _tail)
-                {
-                    _tail = _tail->GetPrevious();
+        }
+        // end deletion
+        else if (traversePtr == _tail)
+        {
+            _tail = _tail->GetPrevious();
 
 
-                    _tail->SetNext(NULL);
-    //				_tail->_next = NULL;
+            _tail->SetNext(NULL);
+//				_tail->_next = NULL;
 
-                    traversePtr->Orphan();
+            traversePtr->Orphan();
 
-                    delete traversePtr;
+            delete traversePtr;
 
-                }
-                // middle deletion
-                else
-                {
-    //				actionPtr = traversePtr->_previous;
-                    actionPtr = traversePtr->GetPrevious();
+            //Decrements the _nodeCount
+            DecrementCount();
 
-    //				actionPtr->_next = traversePtr->_next;
-                    actionPtr->SetNext(traversePtr->GetNext());
+        }
+        // middle deletion
+        else
+        {
+//				actionPtr = traversePtr->_previous;
+            actionPtr = traversePtr->GetPrevious();
 
-    //				traversePtr->_next->_previous = actionPtr;
+//				actionPtr->_next = traversePtr->_next;
+            actionPtr->SetNext(traversePtr->GetNext());
 
-                    traversePtr->SetNext(traversePtr->GetNext());
-                    traversePtr->SetPrevious(actionPtr);
+//				traversePtr->_next->_previous = actionPtr;
 
-                    traversePtr->Orphan();
+            traversePtr->SetNext(traversePtr->GetNext());
+            traversePtr->SetPrevious(actionPtr);
 
-                    delete traversePtr;
+            traversePtr->Orphan();
 
-                }
+            delete traversePtr;
 
-            }
+            //Decrements the _nodeCount
+            DecrementCount();
+
+        }
+
+    }
 
     if (index == _listLimit && traversePtr == NULL)
     {
@@ -471,7 +479,7 @@ int CustomerList::FindCustomerLocation (QString userName)
         // NEED TO MAKE SURE 2 ACCOUNT NUMBERS CANNOT BE THE SAME //
         traversePtr = _head;
         int index = 0;
-        while (index < _listLimit && traversePtr !=NULL &&
+        while (index < Size() && traversePtr !=NULL &&
                 traversePtr->GetData().getUserName() != userName)
         {
             traversePtr = traversePtr->GetNext();
@@ -480,8 +488,8 @@ int CustomerList::FindCustomerLocation (QString userName)
         }
         if (traversePtr == NULL)
         {
+            qDebug() << "12";
             // throw exception class if not found.
-            traversePtr = NULL;
             throw NotFound();
         }
 
@@ -531,29 +539,46 @@ bool CustomerList::isExist(Customer someCustomer)
 {
         Node<Customer> * traversePtr;
 
+        qDebug() << "ooo0009";
+
         if(isEmpty())
         {
             return false;
         }
+        qDebug() << "ooo00010";
 
         // NEED TO MAKE SURE 2 ACCOUNT NUMBERS CANNOT BE THE SAME //
         traversePtr = _head;
         int i = 0;
-        while (i < _listLimit && traversePtr !=NULL)
+        qDebug() << Size() << _head;
+        while (i < Size() && traversePtr !=NULL)
         {
+            qDebug() << "outputting\n" << traversePtr->GetData().OutputData();
+            qDebug() << "ooo11";
+
+
             if (someCustomer == traversePtr->GetData())
             {
+                qDebug() << "ooo12";
+
                 return true;
             }
+
+            qDebug() << "ooo13";
+
             traversePtr = traversePtr->GetNext();
+            qDebug() << "ooo14";
 
             i++;
         }
+        qDebug() << "ooo11";
 
         if (traversePtr == NULL)
         {
             // throw exception class if not found.
             return false;
         }
+
+        return true;
 
 }
