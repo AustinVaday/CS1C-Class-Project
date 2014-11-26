@@ -6,6 +6,8 @@ Login::Login(QWidget *parent) :
     ui(new Ui::Login)
 {
     ui->setupUi(this);
+
+    ui->lineEdit_username->setFocus();
 }
 
 Login::~Login()

@@ -13,31 +13,35 @@ NewActivatedList::NewActivatedList(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    // when a list widget item is clicked, will call the function.
+    // when a list widget item is clicked, will call the function to output customer address book.
     connect(ui->listWidget,SIGNAL(itemClicked(QListWidgetItem*)),this,SLOT(on_listItem_clicked(QListWidgetItem*)));
 
-    // for MAIN
-    CustomerList activatedList;
-//    CustomerList deactivatedList;
 
-    ReadCustomerFile(activatedList, ":/ActivatedListFile.txt");
+    ReadCustomerFile(customerList, ":/ActivatedListFile.txt");
 
-    customerList = activatedList;
-
-    custAddBook = new CustomerAddressBook(0, activatedList);
+    custAddBook = new CustomerAddressBook(this, customerList, 0);
 
 //    ReadCustomerFile(deactivatedList, "://DeactivatedListFile.txt");
 
-    ui->listWidget->setSortingEnabled(true);
+//    ui->listWidget->setSortingEnabled(true);
 
-    for (int i = 0; i < activatedList.Size(); i++)
+    DisplayTheList(customerList);
+
+
+
+}
+
+void NewActivatedList::DisplayTheList(CustomerList &list)
+{
+
+    ui->listWidget->clear();
+
+    for (int i = 0; i < list.Size(); i++)
     {
         try
         {
             // no longer returns a string
-            ui->listWidget->addItem(activatedList[i].OutputData());
-
-
+            ui->listWidget->addItem((list)[i].OutputData());
         }
         catch(const NotFound&)
         {
@@ -68,19 +72,34 @@ NewActivatedList::~NewActivatedList()
 {
     delete ui;
     delete custAddBook;
+//    customerList = 0;
 }
 
 void NewActivatedList::on_listItem_clicked(QListWidgetItem* item)
 {
-   QMessageBox::information(this,"Hello!","You clicked\n \""+item->text()+"\"");
+//   QMessageBox::information(this,"Hello!","You clicked\n \""+item->text()+"\"");
 
-   custAddBook->setModal(true);
-   custAddBook->exec();
+//   custAddBook->setModal(true);
+//   custAddBook->exec();
 
-//    custAddBook->showNormal();
+   delete custAddBook;
 
-//    custAddBook->activateWindow();
+   // find current list number
+   int listItemNum = ui->listWidget->row(item);
+
+   qDebug() << "Num is: " << listItemNum;
+
+   custAddBook = new CustomerAddressBook(this, customerList, listItemNum);
 
 
-//    custAddBook->show();
+   custAddBook->show();
+
+
+}
+
+void NewActivatedList::updateCustomerList(CustomerList *list)
+{
+    customerList = *list;
+
+    DisplayTheList(customerList);
 }

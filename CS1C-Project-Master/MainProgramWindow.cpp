@@ -6,7 +6,7 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
     ui(new Ui::MainProgramWindow)
 {
     // Hard code of admin login
-    Admin testAdmin("admin","admin1234@gmail.com", 1234, "password");
+    Admin testAdmin("","admin1234@gmail.com", 1234, "");
 
     // Initialize
     hWindow = new HelpWindow;
@@ -18,8 +18,6 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
     connect(bWindow, SIGNAL(clicked()), this, SLOT(on_pushButton_Help_clicked()));
 
     ui->setupUi(this);
-
-
 
     // Shows the main program buttons when first logging in
 
@@ -45,7 +43,7 @@ MainProgramWindow::~MainProgramWindow()
 
 void MainProgramWindow::on_pushButton_Login_clicked()
 {
-     Admin testAdmin("admin","admin1234@gmail.com", 1234, "password");
+     Admin testAdmin("","admin1234@gmail.com", 1234, "");
 
     bool validInput = false;
     QString tempName;
@@ -91,7 +89,6 @@ void MainProgramWindow::on_pushButton_Login_clicked()
 //        loginWindow.exec();
 
 //    loginWindow.close();
-
 
 
 

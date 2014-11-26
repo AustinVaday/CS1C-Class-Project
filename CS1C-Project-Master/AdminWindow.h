@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include "helpwindow.h"
+#include "newactivatedlist.h"
+
 namespace Ui {
 class AdminWindow;
 
@@ -36,8 +38,11 @@ private slots:
     void on_actionHelp_triggered();
 
 
+    void on_search_customer_clicked();
+
 private:
     Ui::AdminWindow *ui;
+    NewActivatedList *viewList;
 };
 
 #endif // ADMINWINDOW_H

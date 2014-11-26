@@ -14,9 +14,15 @@ class Find : public QDialog
 public:
     explicit Find(QWidget *parent = 0);
     ~Find();
+    QString return_searched_name();
+
+
+private slots:
+    void on_buttonBox_accepted();
 
 private:
     Ui::Find *ui;
+    QString findText;
 };
 
 #endif // FIND_H

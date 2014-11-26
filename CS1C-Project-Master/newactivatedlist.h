@@ -1,9 +1,9 @@
 #ifndef NEWACTIVATEDLIST_H
 #define NEWACTIVATEDLIST_H
 
-#include <QDialog>
+//#include <QDialog>
 #include <QListWidgetItem>
- #include <QObject>
+// #include <QObject>
 #include "customeraddressbook.h"
 #include "customerlistclass.h"
 
@@ -18,9 +18,12 @@ class NewActivatedList : public QDialog
 public:
     explicit NewActivatedList(QWidget *parent = 0);
     ~NewActivatedList();
+    void DisplayTheList(CustomerList &list);
+
 
 public slots:
     void on_listItem_clicked(QListWidgetItem* item);
+    void updateCustomerList(CustomerList *list);
 
 
 private:

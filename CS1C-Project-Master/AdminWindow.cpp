@@ -10,6 +10,8 @@ AdminWindow::AdminWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::AdminWindow)
 {
+    viewList = new NewActivatedList;
+
     ui->setupUi(this);
 
     // FOR PROJECT MAIN WINDOWx
@@ -27,6 +29,8 @@ AdminWindow::AdminWindow(QWidget *parent) :
 
 AdminWindow::~AdminWindow()
 {
+    delete viewList;
+
     delete ui;
 }
 
@@ -53,14 +57,13 @@ void AdminWindow::on_view_activated_customers_clicked()
 
 
 
-    NewActivatedList viewList;
-    viewList.setModal(true);
-    viewList.exec();
 
-//    CustomerList customerList;
+    viewList->show();
+
+//    CustomerList customerList2;
 //    Customer Bob("Bob", "a", 0, "a");
-//    customerList.Enqueue(Bob);
-//    CustomerAddressBook* custAddBook = new CustomerAddressBook(0, customerList);
+//    customerList2.Enqueue(Bob);
+//    CustomerAddressBook* custAddBook = new CustomerAddressBook(0, customerList2);
 //    custAddBook->setModal(true);
 //    custAddBook->exec();
 
@@ -86,4 +89,9 @@ void AdminWindow::on_modify_help_options_clicked()
 void AdminWindow::on_actionHelp_triggered()
 {
     emit clicked();
+}
+
+void AdminWindow::on_search_customer_clicked()
+{
+
 }
