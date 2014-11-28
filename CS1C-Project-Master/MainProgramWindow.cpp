@@ -1,4 +1,5 @@
 #include "MainProgramWindow.h"
+#include "QDebug"
 
 
 MainProgramWindow::MainProgramWindow(QWidget *parent) :
@@ -30,16 +31,14 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
 
     lst->Enqueue(Robo3);
 
+    qDebug() << lst->OutputList();
+
     connect(aWindow, SIGNAL(clicked()), this, SLOT(on_pushButton_Help_clicked()));
 
     connect(bWindow, SIGNAL(clicked()), this, SLOT(on_pushButton_Help_clicked()));
 
 
     ui->setupUi(this);
-
-
-
-    // Shows the main program buttons when first logging in
 
 }
 

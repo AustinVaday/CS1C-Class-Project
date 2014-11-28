@@ -68,8 +68,6 @@ public:
      void SetPassword(QString newPassword);
      // Sets users password
 
-
-
 void Launcher();
 
 
@@ -77,8 +75,6 @@ void Launcher();
 
 signals:
     void clicked();
-    // ******DON'T KNOW HOW TO GET THIS TO WORK!!!******
-    // Supposed to use connect and slots for this!
 
 public slots:
 
@@ -92,7 +88,6 @@ public slots:
 private slots:
 
     void on_pushButton_Login_clicked();
-
 
     void on_actionHelp_triggered();
 
