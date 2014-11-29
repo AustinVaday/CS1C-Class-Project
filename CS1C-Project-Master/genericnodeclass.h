@@ -1,5 +1,7 @@
 #ifndef GENERICNODECLASS_H
 #define GENERICNODECLASS_H
+#include <QDebug>
+#include <QString>
 
 /**************************************************************************
  * CS1C Class Project
@@ -117,8 +119,10 @@ Node<typeName>::Node()
 template <class typeName>
 Node<typeName>::~Node()
 {
-        node* deconPtr;
 
+qDebug() << "******Debugging: Deleting _next node.******\n";
+
+    delete _next;
 }
 
 /**************************************************************************

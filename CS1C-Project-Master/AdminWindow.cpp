@@ -5,6 +5,8 @@
 #include "ui_AdminWindow.h"
 #include "Header.h"
 #include "customeraddressbook.h"
+#include <QDebug>
+
 
 AdminWindow::AdminWindow(QWidget *parent, CustomerList &list) :
     QMainWindow(parent),
@@ -15,6 +17,8 @@ AdminWindow::AdminWindow(QWidget *parent, CustomerList &list) :
      ***********************************************************/
     connect(this, SIGNAL(customerListChanged(CustomerList*)), parent, SLOT(updateCustomerList(CustomerList*)));
     customerList = list;
+
+qDebug() << "******Debugging: Admin Window- Allocating viewList******\n";
 
 
     viewList = new NewActivatedList(this, customerList);
@@ -37,6 +41,9 @@ AdminWindow::AdminWindow(QWidget *parent, CustomerList &list) :
 
 AdminWindow::~AdminWindow()
 {
+
+qDebug() << "******Debugging: Admin Window- deconstructor******\n";
+
     delete viewList;
     delete ui;
 }

@@ -41,9 +41,13 @@ CustomerList::CustomerList()
  **************************************************************************/
 CustomerList::~CustomerList()
 {
-    //Traverse list to delete
-    delete _head;
+    while(!isEmpty())
+    {
 
+qDebug() << "******Debugging: Deleting customer in list.******\n";
+
+        Dequeue();
+    }
 }
 
 /**************************************************************************
