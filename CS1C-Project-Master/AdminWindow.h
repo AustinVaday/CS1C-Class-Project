@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include "helpwindow.h"
+#include "newactivatedlist.h"
+
 namespace Ui {
 class AdminWindow;
 
@@ -14,6 +16,8 @@ class AdminWindow : public QMainWindow
 
 public:
     explicit AdminWindow(QWidget *parent = 0);
+    explicit AdminWindow(QWidget *parent , CustomerList &list);
+
     ~AdminWindow();
 
 signals:
@@ -21,9 +25,14 @@ signals:
 
     void adminAccess();
 
+    void customerListChanged(CustomerList* list);
+
 public slots:
 
     void on_modify_help_options_clicked();
+
+    void updateCustomerList(CustomerList *list);
+
 
 
 private slots:
@@ -36,8 +45,12 @@ private slots:
     void on_actionHelp_triggered();
 
 
+    void on_search_customer_clicked();
+
 private:
     Ui::AdminWindow *ui;
+    NewActivatedList *viewList;
+    CustomerList customerList;
 };
 
 #endif // ADMINWINDOW_H

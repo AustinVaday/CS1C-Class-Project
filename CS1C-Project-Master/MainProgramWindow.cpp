@@ -6,11 +6,21 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainProgramWindow)
 {
-    lst = new ProductList;
+    ui->setupUi(this);
+
+    //Create the customer list...
+    ReadCustomerFile(customerList, ":/ActivatedListFile.txt");
+
+    // TEMPORARY DISPLAY!!
+    ui->tempDisplay->setText(customerList.OutputList());
+
+
+    // Hard code of admin login
+    Admin testAdmin("","admin1234@gmail.com", 1234, "");
 
     // Initialize
     hWindow = new HelpWindow;
-    aWindow = new AdminWindow;
+    aWindow = new AdminWindow(this, customerList);
     bWindow = new BrochureWindow;
 
     // Hard Code product list ATM
@@ -25,18 +35,17 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
                   550.00, 9414, 122414);
 
 
-    lst->Enqueue(Robo1);
+//    lst->Enqueue(Robo1);
 
-    lst->Enqueue(Robo2);
+//    lst->Enqueue(Robo2);
 
-    lst->Enqueue(Robo3);
+//    lst->Enqueue(Robo3);
 
-    qDebug() << lst->OutputList();
+//    qDebug() << lst->OutputList();
 
     connect(aWindow, SIGNAL(clicked()), this, SLOT(on_pushButton_Help_clicked()));
 
     connect(bWindow, SIGNAL(clicked()), this, SLOT(on_pushButton_Help_clicked()));
-
 
     ui->setupUi(this);
 
@@ -45,24 +54,16 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
 MainProgramWindow::~MainProgramWindow()
 {
 
-    if(adminLogin)
-    {
         delete aWindow;
-    }
-    if(customerLogin)
-    {
         delete bWindow;
-    }
-
-    delete hWindow;
-
-    delete ui;
+        delete hWindow;
+        delete ui;
 
 }
 
 void MainProgramWindow::on_pushButton_Login_clicked()
 {
-     Admin testAdmin("admin","admin1234@gmail.com", 1234, "password");
+     Admin testAdmin("","admin1234@gmail.com", 1234, "");
 
     bool validInput = false;
     QString tempName;
@@ -108,7 +109,6 @@ void MainProgramWindow::on_pushButton_Login_clicked()
 //        loginWindow.exec();
 
 //    loginWindow.close();
-
 
 
 
@@ -217,7 +217,19 @@ void MainProgramWindow::on_actionHelp_triggered()
     hWindow->show();
 }
 
+
 ProductList* MainProgramWindow::getProductList() const
 {
     return lst;
+}
+
+void MainProgramWindow::updateCustomerList(CustomerList *list)
+{
+    // TEMPORARY DISPLAY!!
+    ui->tempDisplay->clear();
+    ui->tempDisplay->setText(customerList.OutputList());
+
+    customerList = *list;
+
+    qDebug() << "List has finally reached the MainProgramWindow!";
 }

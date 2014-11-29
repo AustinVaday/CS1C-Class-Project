@@ -70,7 +70,6 @@ public:
 
 void Launcher();
 
-
     ~MainProgramWindow();
 
 signals:
@@ -84,6 +83,10 @@ public slots:
 
     void showHelpWindow();
     // displays help window
+
+    void updateCustomerList(CustomerList *list);
+
+
 
 private slots:
 
@@ -105,11 +108,8 @@ private:
     //  Used to create a help window for the user
 
     BrochureWindow* bWindow;
-
-
     ProductList*    lst;
-
-
+    CustomerList customerList;
 
     // SECTION LOGIN BOOLEANS
     //These boolean variables are used to determine what
