@@ -6,7 +6,10 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainProgramWindow)
 {
+<<<<<<< HEAD
     lst = new ProductList;
+=======
+>>>>>>> master
 
     ui->setupUi(this);
 
@@ -33,6 +36,7 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
                   "If there was a robot dog to dismantle a bomb, this"
                   "would be it!", 20000.00, 1449, 111414);
 
+<<<<<<< HEAD
     Product Robo3("R.Bot Jr.", "Comes in all sizes! Kids of all ages!",
                   550.00, 9414, 122414);
 
@@ -49,6 +53,8 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
 
     connect(bWindow, SIGNAL(clicked()), this, SLOT(on_pushButton_Help_clicked()));
 
+=======
+>>>>>>> master
 
     ui->setupUi(this);
 
@@ -228,11 +234,14 @@ void MainProgramWindow::on_actionHelp_triggered()
     hWindow->show();
 }
 
+<<<<<<< HEAD
 
 ProductList* MainProgramWindow::getProductList() const
 {
     return lst;
 }
+=======
+>>>>>>> master
 void MainProgramWindow::updateCustomerList(CustomerList *list)
 {
     // TEMPORARY DISPLAY!!

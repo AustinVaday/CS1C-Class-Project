@@ -35,8 +35,11 @@ SOURCES += main.cpp\
         requestbrochure.cpp\
         orderproduct.cpp \
     BrochureWindow.cpp \
+<<<<<<< HEAD
     CustomerPlaceOrder.cpp \
     ViewProducts.cpp\
+=======
+>>>>>>> master
     find.cpp
 
 HEADERS += MainProgramWindow.h \
@@ -63,8 +66,11 @@ HEADERS += MainProgramWindow.h \
         requestbrochure.h\
         orderproduct.h \
     BrochureWindow.h \
+<<<<<<< HEAD
     CustomerPlaceOrder.h \
     ViewProducts.h\
+=======
+>>>>>>> master
     find.h
 
 FORMS   += mainprogramwindow.ui \
@@ -82,8 +88,11 @@ FORMS   += mainprogramwindow.ui \
         requestbrochure.ui\
         orderproduct.ui \
     BrochureWindow.ui \
+<<<<<<< HEAD
     CustomerPlaceOrder.ui \
     ViewProducts.ui\
+=======
+>>>>>>> master
     find.ui
 
 RESOURCES += \

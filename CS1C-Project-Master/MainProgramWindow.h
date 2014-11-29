@@ -112,6 +112,7 @@ private:
 
     BrochureWindow* bWindow;
 
+<<<<<<< HEAD
     ProductList*    lst;
 
 
@@ -119,6 +120,10 @@ private:
     CustomerList customerList;
 
 
+=======
+    CustomerList customerList;
+
+>>>>>>> master
     // SECTION LOGIN BOOLEANS
     //These boolean variables are used to determine what
     //  type of window to launch
