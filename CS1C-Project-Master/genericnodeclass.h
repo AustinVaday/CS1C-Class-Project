@@ -117,10 +117,8 @@ Node<typeName>::Node()
 template <class typeName>
 Node<typeName>::~Node()
 {
-    if(_next != nullptr)
-    {
-        delete _next;
-    }
+        node* deconPtr;
+
 }
 
 /**************************************************************************
