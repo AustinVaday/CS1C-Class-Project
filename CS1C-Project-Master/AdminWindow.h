@@ -16,7 +16,7 @@ class AdminWindow : public QMainWindow
 
 public:
     explicit AdminWindow(QWidget *parent = 0);
-    AdminWindow(QWidget *parent, CustomerList &list);
+    explicit AdminWindow(QWidget *parent , CustomerList &list);
 
     ~AdminWindow();
 

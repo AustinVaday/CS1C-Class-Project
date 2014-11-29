@@ -106,7 +106,6 @@ Node<typeName>::Node()
     _next     = NULL;
     _previous = NULL;
     _data     = typeName();
-
     _dataPtr = &_data;
 }
 
@@ -118,7 +117,10 @@ Node<typeName>::Node()
 template <class typeName>
 Node<typeName>::~Node()
 {
-    delete _next;
+    if(_next != nullptr)
+    {
+        delete _next;
+    }
 }
 
 /**************************************************************************

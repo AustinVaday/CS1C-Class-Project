@@ -7,11 +7,6 @@
 #include <QMessageBox>
 #include <QDebug>
 
-NewActivatedList::NewActivatedList(QWidget *parent)
-{
-
-}
-
 NewActivatedList::NewActivatedList(QWidget *parent, CustomerList &list) :
     QDialog(parent),
     ui(new Ui::NewActivatedList)
@@ -19,26 +14,26 @@ NewActivatedList::NewActivatedList(QWidget *parent, CustomerList &list) :
     /***********************************************************
      * This should be used in all windows except main window!
      ***********************************************************/
+qDebug() << "Debugging: NewActivatedList connect #1";
     connect(this, SIGNAL(customerListChanged(CustomerList*)), parent, SLOT(updateCustomerList(CustomerList*)));
 
     ui->setupUi(this);
-
+qDebug() << "Debugging: NewActivatedList connect #2";
     // when a list widget item is clicked, will call the function to output customer address book.
     connect(ui->listWidget,SIGNAL(itemClicked(QListWidgetItem*)),this,SLOT(on_listItem_clicked(QListWidgetItem*)));
 
     customerList = list;
 
 //    ReadCustomerFile(customerList, ":/ActivatedListFile.txt");
-
+qDebug() << "Debugging: NewActivatedList custBook mem alloc";
     custAddBook = new CustomerAddressBook(this, customerList, 0);
 
 //    ReadCustomerFile(deactivatedList, "://DeactivatedListFile.txt");
 
 //    ui->listWidget->setSortingEnabled(true);
 
+qDebug() << "Debugging: NewActivatedList Display List";
     DisplayTheList(customerList);
-
-
 
 }
 
