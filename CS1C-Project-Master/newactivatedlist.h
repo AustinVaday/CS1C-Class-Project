@@ -23,7 +23,7 @@ public:
     void DisplayTheList(CustomerList &list);
 
 signals:
-    void customerListChanged(CustomerList* list);
+    void customerListChanged(CustomerList list);
 
 public slots:
     void on_listItem_clicked(QListWidgetItem* item);

@@ -15,7 +15,7 @@ NewActivatedList::NewActivatedList(QWidget *parent, CustomerList &list) :
      * This should be used in all windows except main window!
      ***********************************************************/
 qDebug() << "Debugging: NewActivatedList connect #1";
-    connect(this, SIGNAL(customerListChanged(CustomerList*)), parent, SLOT(updateCustomerList(CustomerList*)));
+    connect(this, SIGNAL(customerListChanged(CustomerList)), parent, SLOT(updateCustomerList(CustomerList)));
 
     ui->setupUi(this);
 qDebug() << "Debugging: NewActivatedList connect #2";
@@ -25,21 +25,18 @@ qDebug() << "Debugging: NewActivatedList connect #2";
     customerList = list;
 
 //    ReadCustomerFile(customerList, ":/ActivatedListFile.txt");
-qDebug() << "Debugging: NewActivatedList custBook mem alloc";
+qDebug() << "Debugging: NewActivatedList - custAddBook : mem alloc\n";
     custAddBook = new CustomerAddressBook(this, customerList, 0);
-
+qDebug() << "Debugging: NewActivatedList - custAddBook : after mem alloc\n";
 //    ReadCustomerFile(deactivatedList, "://DeactivatedListFile.txt");
 
 //    ui->listWidget->setSortingEnabled(true);
-
-qDebug() << "Debugging: NewActivatedList Display List";
-    DisplayTheList(customerList);
 
 }
 
 void NewActivatedList::DisplayTheList(CustomerList &list)
 {
-
+qDebug() << "******Debugging: newactivatedlist - displayList******\n";
     ui->listWidget->clear();
 
     for (int i = 0; i < list.Size(); i++)
@@ -76,8 +73,9 @@ void NewActivatedList::DisplayTheList(CustomerList &list)
 
 NewActivatedList::~NewActivatedList()
 {
-    delete ui;
+qDebug() << "******Debugging: NewActivatedList - Deconstructor******\n";
     delete custAddBook;
+    delete ui;
 //    customerList = 0;
 }
 
@@ -88,6 +86,7 @@ void NewActivatedList::on_listItem_clicked(QListWidgetItem* item)
 //   custAddBook->setModal(true);
 //   custAddBook->exec();
 
+qDebug() << "******Debugging: NewActivatedList - custAddBook : Deconstructor******\n";
    delete custAddBook;
 
    // find current list number

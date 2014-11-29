@@ -16,28 +16,7 @@ CustomerAddressBook::CustomerAddressBook(QWidget *parent, CustomerList &list, in
      ***********************************************************/
     connect(this, SIGNAL(customerListChanged(CustomerList*)), parent, SLOT(updateCustomerList(CustomerList*)));
 
-
-    /*              ^                        ^                      ^           ^
- should be child widget of admin.        |                  || this      slot in parent class and this connect(  ) should be in
-              should be in header of both parent and child  ||              constructor of admin window
-              I haven't see
-
-                class. eg: public signal:
-                                emit listChanged();  <--- I am not sure if I have seen any signals so far with pass parameters.
-
-    Consider:
-        in parent class of admin window having a method that receives the object
-        void AdminWindow::updateCustomerList( customer )
-                    {
-                        updateList(); \/ \/ \/ \/ consider having admin window modify the list and this window only collect data
-                                                    then returns the object to the admin class.
-                    }
-
- */
-
-//         connect(this, SIGNAL(customerListChanged(CustomerList*)), parent, SLOT()
-
-    ui->setupUi(this);
+   ui->setupUi(this);
 
     // name title
     setWindowTitle(tr("List of Customers"));
@@ -79,6 +58,8 @@ CustomerAddressBook::CustomerAddressBook(QWidget *parent, CustomerList &list, in
 
 CustomerAddressBook::~CustomerAddressBook()
 {
+qDebug() << "Debugging: CustomerAddressBook - Deconstructors\n";
+
     customerList = 0;
     delete ui;
 }
@@ -519,5 +500,32 @@ void CustomerAddressBook::on_searchButton_clicked()
     }
 
 }
+
+
+
+// XTRA DOCUMENTATION!!!!!!!
+
+
+
+    /*              ^                        ^                      ^           ^
+ should be child widget of admin.        |                  || this      slot in parent class and this connect(  ) should be in
+              should be in header of both parent and child  ||              constructor of admin window
+              I haven't see
+
+                class. eg: public signal:
+                                emit listChanged();  <--- I am not sure if I have seen any signals so far with pass parameters.
+
+    Consider:
+        in parent class of admin window having a method that receives the object
+        void AdminWindow::updateCustomerList( customer )
+                    {
+                        updateList(); \/ \/ \/ \/ consider having admin window modify the list and this window only collect data
+                                                    then returns the object to the admin class.
+                    }
+
+ */
+
+//         connect(this, SIGNAL(customerListChanged(CustomerList*)), parent, SLOT()
+
 
 
