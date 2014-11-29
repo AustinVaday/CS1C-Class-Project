@@ -1,9 +1,17 @@
 #ifndef CUSTOMERADDRESSBOOK_H
 #define CUSTOMERADDRESSBOOK_H
 
-#include <QWidget>
+
+#include <QDialog>
 #include "customerlistclass.h"
 #include "customerclass.h"
+
+//#include "newactivatedlist.h"
+
+#include "find.h"
+#include <QMessageBox>
+#include <QString>
+#include <QDebug>
 
 enum Mode
 {
@@ -16,14 +24,17 @@ namespace Ui {
 class CustomerAddressBook;
 }
 
-class CustomerAddressBook : public QWidget
+class CustomerAddressBook : public QDialog
 {
     Q_OBJECT
 
 public:
     explicit CustomerAddressBook(QWidget *parent = 0);
+    CustomerAddressBook(QWidget *parent, CustomerList &list, int listNum);
     ~CustomerAddressBook();
     void updateInterface (Mode currentMode);
+    void importList(CustomerList list);
+    void SetCurrentDisplay(Customer* someCustomer);
 
 private slots:
     void on_addButton_clicked();
@@ -40,6 +51,11 @@ private slots:
 
     void on_removeButton_clicked();
 
+    void on_searchButton_clicked();
+
+signals:
+    void customerListChanged(CustomerList* list);
+
 private:
     Ui::CustomerAddressBook *ui;
     QString oldName;
@@ -50,7 +66,7 @@ private:
 
 
     // TEMP *for testing only*
-    CustomerList customerList;
+    CustomerList *customerList;
 
 };
 

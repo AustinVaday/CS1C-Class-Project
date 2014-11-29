@@ -3,7 +3,7 @@
 
 #include "customerclass.h"
 #include "genericnodeclass.h"
-#include "activatedlist.h"
+//#include "newactivatedlist.h"
 /**************************************************************************
  * 							[L I S T ~ C L A S S]
  **************************************************************************/
