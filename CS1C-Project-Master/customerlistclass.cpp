@@ -561,10 +561,10 @@ bool CustomerList::isExist(Customer someCustomer)
             qDebug() << "ooo11";
 
 
+
             if (someCustomer == traversePtr->GetData())
             {
                 qDebug() << "ooo12";
-
                 return true;
             }
 

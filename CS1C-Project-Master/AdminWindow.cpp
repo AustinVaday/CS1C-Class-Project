@@ -5,8 +5,6 @@
 #include "ui_AdminWindow.h"
 #include "Header.h"
 #include "customeraddressbook.h"
-#include <QDebug>
-
 
 AdminWindow::AdminWindow(QWidget *parent, CustomerList &list) :
     QMainWindow(parent),
@@ -17,8 +15,6 @@ AdminWindow::AdminWindow(QWidget *parent, CustomerList &list) :
      ***********************************************************/
     connect(this, SIGNAL(customerListChanged(CustomerList*)), parent, SLOT(updateCustomerList(CustomerList*)));
     customerList = list;
-
-qDebug() << "******Debugging: Admin Window- Allocating viewList******\n";
 
 
     viewList = new NewActivatedList(this, customerList);
@@ -41,11 +37,11 @@ qDebug() << "******Debugging: Admin Window- Allocating viewList******\n";
 
 AdminWindow::~AdminWindow()
 {
-
-qDebug() << "******Debugging: Admin Window- deconstructor******\n";
-
+    qDebug() << "AdminWindow -- Destructor Test #1";
     delete viewList;
+    qDebug() << "AdminWindow -- Destructor Test #2";
     delete ui;
+     qDebug() << "AdminWindow -- Destructor Test #3";
 }
 
 void AdminWindow::on_user_name_label_linkActivated(const QString &link)

@@ -1,11 +1,11 @@
 #include "MainProgramWindow.h"
-#include "QDebug"
 
 
 MainProgramWindow::MainProgramWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainProgramWindow)
 {
+
     ui->setupUi(this);
 
     //Create the customer list...
@@ -23,41 +23,33 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
     aWindow = new AdminWindow(this, customerList);
     bWindow = new BrochureWindow;
 
-    // Hard Code product list ATM
-    Product Robo1("KillerKat","Super awesome megafreakazoid bomb "
-                   "diffusor", 15000.00, 2344, 112214);
-
-    Product Robo2("Edward the Monstorous",
-                  "If there was a robot dog to dismantle a bomb, this"
-                  "would be it!", 20000.00, 1449, 111414);
-
-    Product Robo3("R.Bot Jr.", "Comes in all sizes! Kids of all ages!",
-                  550.00, 9414, 122414);
-
-
-//    lst->Enqueue(Robo1);
-
-//    lst->Enqueue(Robo2);
-
-//    lst->Enqueue(Robo3);
-
-//    qDebug() << lst->OutputList();
-
     connect(aWindow, SIGNAL(clicked()), this, SLOT(on_pushButton_Help_clicked()));
 
     connect(bWindow, SIGNAL(clicked()), this, SLOT(on_pushButton_Help_clicked()));
 
-    ui->setupUi(this);
+
+    // Shows the main program buttons when first logging in
 
 }
 
 MainProgramWindow::~MainProgramWindow()
 {
 
-        delete aWindow;
-        delete bWindow;
-        delete hWindow;
-        delete ui;
+qDebug() << "MainProgramWindow -- Destructor Test #1";
+    delete aWindow;
+
+qDebug() << "MainProgramWindow -- Destructor Test #2";
+
+    delete bWindow;
+
+qDebug() << "MainProgramWindow -- Destructor Test #3";
+
+    delete hWindow;
+qDebug() << "MainProgramWindow -- Destructor Test #4";
+
+    delete ui;
+qDebug() << "MainProgramWindow -- Destructor Test #5";
+
 
 }
 
@@ -217,17 +209,12 @@ void MainProgramWindow::on_actionHelp_triggered()
     hWindow->show();
 }
 
-
-ProductList* MainProgramWindow::getProductList() const
-{
-    return lst;
-}
-
 void MainProgramWindow::updateCustomerList(CustomerList *list)
 {
     // TEMPORARY DISPLAY!!
     ui->tempDisplay->clear();
     ui->tempDisplay->setText(customerList.OutputList());
+
 
     customerList = *list;
 
