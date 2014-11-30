@@ -25,20 +25,15 @@ User::User(QString name,
 
 }
 
-User::~User()
+void User:: setValues(QString newName,
+         QString newEmail,
+         long 	newAccountNum,
+         QString newPassword)
 {
-
-}
-
-void User:: setValues(QString userName,
-         QString email,
-         long 	accountNum,
-         QString password)
-{
-    this->userName 		= userName;
-    this->userEmail 	= email;
-    this->accountNum 	= accountNum;
-    this->userPassword 	= password;
+    userName           = newName;
+    userEmail           = newEmail;
+    accountNum      = newAccountNum;
+    userPassword   = newPassword;
 
 }
 

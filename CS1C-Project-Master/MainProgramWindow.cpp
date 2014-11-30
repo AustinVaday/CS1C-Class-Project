@@ -35,18 +35,21 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
 MainProgramWindow::~MainProgramWindow()
 {
 
-    if(adminLogin)
-    {
-        delete aWindow;
-    }
-    if(customerLogin)
-    {
-        delete bWindow;
-    }
+qDebug() << "MainProgramWindow -- Destructor Test #1";
+    delete aWindow;
+
+qDebug() << "MainProgramWindow -- Destructor Test #2";
+
+    delete bWindow;
+
+qDebug() << "MainProgramWindow -- Destructor Test #3";
 
     delete hWindow;
+qDebug() << "MainProgramWindow -- Destructor Test #4";
 
     delete ui;
+qDebug() << "MainProgramWindow -- Destructor Test #5";
+
 
 }
 

@@ -4,10 +4,7 @@ Customer::Customer()
 {
 }
 
-Customer::~Customer()
-{
 
-}
 Customer::Customer(QString userName,
          QString email,
          long 	accountNum,

@@ -32,9 +32,9 @@ class Product
         Product();
         // Default Constructor
 
-        Product(float  	initCost,			// Starting cost of product
-                QString initName,			// Starting name of product
+        Product(QString initName,			// Starting name of product
                 QString description,        // Description of the product
+                float  	initCost,			// Starting cost of product
                 int		modelNum,           // Model Number of the product
                 int		initReleaseDate);	// The date the product was released
 
@@ -90,6 +90,8 @@ class Product
         bool operator ==(const Product otherProduct);
 
         QString OutputData() const;
+
+        //void
 
     private:
         // Data members

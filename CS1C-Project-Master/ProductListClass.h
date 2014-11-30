@@ -20,11 +20,11 @@ class ProductList
 private:
     //M E M B E R ~ D E C L A R A T I O N S
 
-    Node<Product>*             _head;
-    Node<Product>*             _tail;
-    Node<Product>*             _ptr;
-    int      		  	 	_nodeCount;
-    int 			  		_listLimit;
+    Node<Product>*    _head;
+    Node<Product>*    _tail;
+    Node<Product>*    _ptr;
+    int      		  _nodeCount;
+    int 			  _listLimit;
 
 /**************************************************************************
  * P U B L I C
@@ -122,19 +122,33 @@ public:
     /**********************************************************************
      * isFull
      * --------------------------------------------------------------------
-     * This method will check to see if the list is full
+	 * This method will check to see if the list is full
      **********************************************************************/
     bool     isFull() const;
 
     /**********************************************************************
-     * OutputList
+	 * OutputList
      * --------------------------------------------------------------------
      * This method will return a QString containing the list
      **********************************************************************/
     QString   OutputList() const;
 
+	/**********************************************************************
+	  * WriteToFile
+	  * --------------------------------------------------------------------------------
+	  * This method will write the product data to a file.
+	  **********************************************************************/
+
+	  void WriteToFile();
+
+	  void ReadFile();
+
+    void    WriteListToFile();
+
     void    RemoveProduct(Product &someProduct);
+
     Product FindProduct(QString userName) ;
+
     QString operator[](int index);
 
 

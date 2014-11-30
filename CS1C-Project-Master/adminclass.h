@@ -58,7 +58,7 @@ class Admin : public User
          // allow the admin to access, delete, or modify any
          // customer reviews.
 
-        void displayList(CustomerList &list);
+        //void displayList(CustomerList &list);
 
         Customer findCustomer(CustomerList &list, QString userName);
 

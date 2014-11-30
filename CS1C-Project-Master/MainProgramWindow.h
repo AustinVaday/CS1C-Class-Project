@@ -17,9 +17,9 @@
 #include "Header.h"
 #include "helpwindow.h"
 #include "BrochureWindow.h"
-
-
-//
+#include "ProductListClass.h"
+#include "ProductClass.h"
+#include "ViewProducts.h"
 
 #include <QDebug>
 
@@ -56,6 +56,7 @@ public:
      bool GetGuestLoginState     ();
      bool GetCreateAccountState  ();
 
+     ProductList* getProductList() const;
 
      QString GetUsername();
      QString GetPassword();
@@ -67,17 +68,12 @@ public:
      void SetPassword(QString newPassword);
      // Sets users password
 
-
-
 void Launcher();
-
 
     ~MainProgramWindow();
 
 signals:
     void clicked();
-    // ******DON'T KNOW HOW TO GET THIS TO WORK!!!******
-    // Supposed to use connect and slots for this!
 
 public slots:
 
@@ -92,12 +88,9 @@ public slots:
 
 
 
-
-
 private slots:
 
     void on_pushButton_Login_clicked();
-
 
     void on_actionHelp_triggered();
 
@@ -115,17 +108,17 @@ private:
     //  Used to create a help window for the user
 
     BrochureWindow* bWindow;
-
+    ProductList*    lst;
     CustomerList customerList;
 
     // SECTION LOGIN BOOLEANS
     //These boolean variables are used to determine what
     //  type of window to launch
 
-    bool adminLogin      = false;
-    bool customerLogin   = false;
-    bool guestLogin      = false;
-    bool createAccount   = false;
+    bool adminLogin      = 0;
+    bool customerLogin   = 0;
+    bool guestLogin      = 0;
+    bool createAccount   = 0;
 
     QString userName;
     QString password;

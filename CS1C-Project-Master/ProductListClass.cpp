@@ -3,6 +3,7 @@
 #include <QMessageBox>
 #include "ExceptionHandlers.h"
 #include "activatedlist2.h"
+#include <QTextStream>
 
 /**************************************************************************
  * CS1C Class Project
@@ -84,11 +85,11 @@ void ProductList::DecrementCount()
 QString ProductList::OutputList () const
 {
     //D E C L A R A T I O N
-    Node<Product> * traverse;      //CALC - used to traverse the list
-    QString  stringList;		   //OUT - used to store the content of the
+    Node<Product> * traverse;       //CALC - used to traverse the list
+    QString  stringList;			//OUT - used to store the content of the
                                     //	   list
-    QTextStream out(&stringList);  //OUT - used to create a stream in which
-                                     //	   the content of the list will be sent
+    QTextStream out(&stringList);   //OUT - used to create a stream in which
+                                    //	   the content of the list will be sent
                                     //	   too
 
     //I N I T I A L I Z A T I O N S
@@ -105,7 +106,7 @@ QString ProductList::OutputList () const
     {//Begin While
 
 //        out << endl << "***Current Linked List***" << endl;
-//        out << "******************************************************************\n";
+//        out << "*************************************************************\n";
 
         int index = 0;
         while(traverse != NULL)
@@ -438,5 +439,10 @@ QString ProductList::operator[](int index)
 
         return traversePtr->GetData().OutputData();
 
+
+}
+
+void ProductList::WriteToFile()
+{
 
 }

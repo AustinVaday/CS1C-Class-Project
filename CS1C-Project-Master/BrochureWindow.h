@@ -2,6 +2,9 @@
 #define BROCHUREWINDOW_H
 
 #include <QMainWindow>
+#include "ProductClass.h"
+#include "ProductListClass.h"
+#include "ViewProducts.h"
 
 namespace Ui {
 class BrochureWindow;
@@ -18,11 +21,16 @@ public:
 signals:
     void clicked();
 
+    void viewProducts();
+
 private slots:
     void on_actionHELP_triggered();
 
+    void on_button_viewProducts_clicked();
+
 private:
-    Ui::BrochureWindow *ui;
+    Ui::BrochureWindow* ui;
+    ViewProducts*       vpWindow;
 };
 
 #endif // BROCHUREWINDOW_H

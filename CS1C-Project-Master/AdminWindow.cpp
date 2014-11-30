@@ -37,9 +37,11 @@ AdminWindow::AdminWindow(QWidget *parent, CustomerList &list) :
 
 AdminWindow::~AdminWindow()
 {
+    qDebug() << "AdminWindow -- Destructor Test #1";
     delete viewList;
-
+    qDebug() << "AdminWindow -- Destructor Test #2";
     delete ui;
+     qDebug() << "AdminWindow -- Destructor Test #3";
 }
 
 void AdminWindow::on_user_name_label_linkActivated(const QString &link)

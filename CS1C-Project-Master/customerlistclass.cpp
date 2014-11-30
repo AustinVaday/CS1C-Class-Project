@@ -41,9 +41,31 @@ CustomerList::CustomerList()
  **************************************************************************/
 CustomerList::~CustomerList()
 {
-    //Traverse list to delete
-    delete _head;
+        Node<Customer>* delCustomerPtr;
 
+        while(!isEmpty())
+        {
+                // Assigns pointer to head
+                delCustomerPtr = _head;
+
+                // Sets head to the next item in list
+                _head = delCustomerPtr ->GetNext();
+
+               // Deletes customer in list
+                delete delCustomerPtr;
+
+                // Points delCustomerPtr one a head
+                delCustomerPtr = _head;
+        }
+
+// **** Previous code commented out - 11/29/14 - Erik ****
+//    while(!isEmpty())
+//    {
+
+//qDebug() << "******Debugging: Deleting customer in list.******\n";
+
+//        Dequeue();
+//    }
 }
 
 /**************************************************************************
@@ -496,7 +518,7 @@ int CustomerList::FindCustomerLocation (QString userName)
         return index;
 }
 
-Customer CustomerList::operator[](int index)
+Customer CustomerList::operator[](int index) const
 {
     Node<Customer> * traversePtr;
 
@@ -557,10 +579,10 @@ bool CustomerList::isExist(Customer someCustomer)
             qDebug() << "ooo11";
 
 
+
             if (someCustomer == traversePtr->GetData())
             {
                 qDebug() << "ooo12";
-
                 return true;
             }
 
@@ -580,5 +602,38 @@ bool CustomerList::isExist(Customer someCustomer)
         }
 
         return true;
+}
 
+
+CustomerList* CustomerList::operator=(const CustomerList& list)
+{
+        int index;
+        Customer copyCustomer;
+        Customer tempCustomer;
+        index = 0;
+
+        // Checks to see if the current list is larger than the copying list. Will preserve the
+        //      last 2 as if it were overwritting the index it is supposed to be.
+        if(this->Size() > list.Size())
+        {
+                for(index = this->Size(); index > list.Size(); index--)
+                {
+                        tempCustomer = _tail->GetData();
+                        this->Enqueue(tempCustomer);
+                        this->Dequeue();
+
+                }
+        }
+
+
+// Only a temporary fix :( It's only adding to the queue not removing from it.
+        for(index = 0; index < list.Size(); index++)
+        {
+                 copyCustomer =list[index];
+
+                 this->Enqueue(copyCustomer);
+                 this->Dequeue();
+
+        }
+        return this;
 }

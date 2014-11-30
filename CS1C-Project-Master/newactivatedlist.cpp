@@ -7,11 +7,6 @@
 #include <QMessageBox>
 #include <QDebug>
 
-NewActivatedList::NewActivatedList(QWidget *parent)
-{
-
-}
-
 NewActivatedList::NewActivatedList(QWidget *parent, CustomerList &list) :
     QDialog(parent),
     ui(new Ui::NewActivatedList)
@@ -19,32 +14,29 @@ NewActivatedList::NewActivatedList(QWidget *parent, CustomerList &list) :
     /***********************************************************
      * This should be used in all windows except main window!
      ***********************************************************/
-    connect(this, SIGNAL(customerListChanged(CustomerList*)), parent, SLOT(updateCustomerList(CustomerList*)));
+qDebug() << "Debugging: NewActivatedList connect #1";
+    connect(this, SIGNAL(customerListChanged(CustomerList)), parent, SLOT(updateCustomerList(CustomerList)));
 
     ui->setupUi(this);
-
+qDebug() << "Debugging: NewActivatedList connect #2";
     // when a list widget item is clicked, will call the function to output customer address book.
     connect(ui->listWidget,SIGNAL(itemClicked(QListWidgetItem*)),this,SLOT(on_listItem_clicked(QListWidgetItem*)));
 
     customerList = list;
 
 //    ReadCustomerFile(customerList, ":/ActivatedListFile.txt");
-
+qDebug() << "Debugging: NewActivatedList - custAddBook : mem alloc\n";
     custAddBook = new CustomerAddressBook(this, customerList, 0);
-
+qDebug() << "Debugging: NewActivatedList - custAddBook : after mem alloc\n";
 //    ReadCustomerFile(deactivatedList, "://DeactivatedListFile.txt");
 
 //    ui->listWidget->setSortingEnabled(true);
-
-    DisplayTheList(customerList);
-
-
 
 }
 
 void NewActivatedList::DisplayTheList(CustomerList &list)
 {
-
+qDebug() << "******Debugging: newactivatedlist - displayList******\n";
     ui->listWidget->clear();
 
     for (int i = 0; i < list.Size(); i++)
@@ -81,8 +73,14 @@ void NewActivatedList::DisplayTheList(CustomerList &list)
 
 NewActivatedList::~NewActivatedList()
 {
-    delete ui;
-    delete custAddBook;
+qDebug() << "******Debugging: NewActivatedList - Deconstructor******\n";
+
+qDebug() << "******Debugging: NewActivatedList - Deleting custAddBook******\n";
+        delete custAddBook;
+
+qDebug() << "******Debugging: NewActivatedList - Deleting ui******\n";
+        delete ui;
+
 //    customerList = 0;
 }
 
@@ -93,6 +91,7 @@ void NewActivatedList::on_listItem_clicked(QListWidgetItem* item)
 //   custAddBook->setModal(true);
 //   custAddBook->exec();
 
+qDebug() << "******Debugging: NewActivatedList - custAddBook : Deconstructor******\n";
    delete custAddBook;
 
    // find current list number

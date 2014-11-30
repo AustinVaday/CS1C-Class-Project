@@ -138,14 +138,22 @@ public:
 
 
     void RemoveCustomer(Customer &someCustomer);
+    // Removes customer from list
+    //   Returns customer by reference
 
     Customer FindCustomer(QString userName);
+    // Finds customer in list
+    //   Returns customer object
 
     Customer* ReturnCustomerPtr(QString userName);
+    // Returns customer pointer to calling function
+
     int FindCustomerLocation (QString userName);
-    Customer operator[](int index);
+    // Returns the integer location of customer
 
+    Customer operator[](int index) const;
 
+    CustomerList* operator=(const CustomerList&);
 
 
     bool isExist(Customer someCustomer);
