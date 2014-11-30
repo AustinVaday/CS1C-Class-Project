@@ -518,7 +518,7 @@ int CustomerList::FindCustomerLocation (QString userName)
         return index;
 }
 
-Customer CustomerList::operator[](int index)
+Customer CustomerList::operator[](int index) const
 {
     Node<Customer> * traversePtr;
 
@@ -602,5 +602,22 @@ bool CustomerList::isExist(Customer someCustomer)
         }
 
         return true;
+}
 
+
+CustomerList* CustomerList::operator=(const CustomerList& list)
+{
+        int index;
+        Customer copyCustomer;
+        index = 0;
+
+        while(index < list.Size())
+        {
+                 copyCustomer =list[index];
+
+                 this->Enqueue(copyCustomer);
+
+                index  = index + 1;
+        }
+        return this;
 }

@@ -120,6 +120,9 @@ template <class typeName>
 Node<typeName>::~Node()
 {
 qDebug() << "******Debugging: Deconstructor - _next node.******\n";
+
+
+
 }
 
 /**************************************************************************

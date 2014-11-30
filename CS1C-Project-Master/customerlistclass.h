@@ -151,9 +151,9 @@ public:
     int FindCustomerLocation (QString userName);
     // Returns the integer location of customer
 
-    Customer operator[](int index);
+    Customer operator[](int index) const;
 
-
+    CustomerList* operator=(const CustomerList&);
 
 
     bool isExist(Customer someCustomer);
