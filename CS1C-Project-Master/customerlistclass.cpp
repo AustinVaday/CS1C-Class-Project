@@ -609,15 +609,31 @@ CustomerList* CustomerList::operator=(const CustomerList& list)
 {
         int index;
         Customer copyCustomer;
+        Customer tempCustomer;
         index = 0;
 
-        while(index < list.Size())
+        // Checks to see if the current list is larger than the copying list. Will preserve the
+        //      last 2 as if it were overwritting the index it is supposed to be.
+        if(this->Size() > list.Size())
+        {
+                for(index = this->Size(); index > list.Size(); index--)
+                {
+                        tempCustomer = _tail->GetData();
+                        this->Enqueue(tempCustomer);
+                        this->Dequeue();
+
+                }
+        }
+
+
+// Only a temporary fix :( It's only adding to the queue not removing from it.
+        for(index = 0; index < list.Size(); index++)
         {
                  copyCustomer =list[index];
 
                  this->Enqueue(copyCustomer);
+                 this->Dequeue();
 
-                index  = index + 1;
         }
         return this;
 }
