@@ -16,11 +16,6 @@ class Customer : public User
         // Nondefault constructor
 
 
-
-        ~Customer();
-        // Deconstructor
-
-
         // Accessors
         // Product viewPricesAndPackages(Product currentProductLine) const;
         // Returns the

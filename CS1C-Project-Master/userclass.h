@@ -18,9 +18,6 @@ class User
                  long 	accountNum,
                  QString password);
 
-        ~User();
-        // deconstructor
-
         // Mutators
         bool operator&=(const User& otherUser);
         // Overloading the equality operator **FOR SIMILARITY**

@@ -25,20 +25,15 @@ User::User(QString name,
 
 }
 
-User::~User()
-{
-
-}
-
 void User:: setValues(QString newName,
          QString newEmail,
          long 	newAccountNum,
          QString newPassword)
 {
-    userName 		= newName;
-    userEmail 	= newEmail;
-    accountNum 	= newAccountNum;
-    userPassword 	= newPassword;
+    userName           = newName;
+    userEmail           = newEmail;
+    accountNum      = newAccountNum;
+    userPassword   = newPassword;
 
 }
 

@@ -163,8 +163,8 @@ void Admin::modifyHelpOptions()
 
  }
 
- void Admin::displayList(CustomerList &list)
- {
+ //void Admin::displayList(CustomerList &list)
+// {
 //	 DisplayListMenu selection;
 //
 //	 selection = DisplayListSelectionMenu();
@@ -188,7 +188,7 @@ void Admin::modifyHelpOptions()
 /* ~@#(!@$(!@#$!@#$!@#$ THIS IS THE CODE !(@#(!@#(!@#(!@(#!(@#
      //ADD UI....
        list.OutputList(ui); */
- }
+ //}
 
  Customer Admin::findCustomer(CustomerList &list, QString userName)
  {

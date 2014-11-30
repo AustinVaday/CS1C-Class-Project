@@ -41,13 +41,31 @@ CustomerList::CustomerList()
  **************************************************************************/
 CustomerList::~CustomerList()
 {
-    while(!isEmpty())
-    {
+        Node<Customer>* delCustomerPtr;
 
-qDebug() << "******Debugging: Deleting customer in list.******\n";
+        while(!isEmpty())
+        {
+                // Assigns pointer to head
+                delCustomerPtr = _head;
 
-        Dequeue();
-    }
+                // Sets head to the next item in list
+                _head = delCustomerPtr ->GetNext();
+
+               // Deletes customer in list
+                delete delCustomerPtr;
+
+                // Points delCustomerPtr one a head
+                delCustomerPtr = _head;
+        }
+
+// **** Previous code commented out - 11/29/14 - Erik ****
+//    while(!isEmpty())
+//    {
+
+//qDebug() << "******Debugging: Deleting customer in list.******\n";
+
+//        Dequeue();
+//    }
 }
 
 /**************************************************************************

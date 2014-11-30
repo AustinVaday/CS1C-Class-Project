@@ -75,8 +75,12 @@ NewActivatedList::~NewActivatedList()
 {
 qDebug() << "******Debugging: NewActivatedList - Deconstructor******\n";
 
-        delete ui;
+qDebug() << "******Debugging: NewActivatedList - Deleting custAddBook******\n";
         delete custAddBook;
+
+qDebug() << "******Debugging: NewActivatedList - Deleting ui******\n";
+        delete ui;
+
 //    customerList = 0;
 }
 

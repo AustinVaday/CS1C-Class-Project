@@ -119,10 +119,7 @@ Node<typeName>::Node()
 template <class typeName>
 Node<typeName>::~Node()
 {
-
-qDebug() << "******Debugging: Deleting _next node.******\n";
-
-    delete _next;
+qDebug() << "******Debugging: Deconstructor - _next node.******\n";
 }
 
 /**************************************************************************
