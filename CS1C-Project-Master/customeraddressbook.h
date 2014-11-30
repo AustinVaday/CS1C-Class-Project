@@ -66,7 +66,7 @@ private:
 
 
     // TEMP *for testing only*
-    CustomerList *customerList;
+    CustomerList customerList;
 
 };
 
