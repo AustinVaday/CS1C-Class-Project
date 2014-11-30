@@ -34,6 +34,7 @@ CustomerList::CustomerList()
     _listLimit = 100;
 }
 
+
 /**************************************************************************
  * D E S T R U C T O R
  * ------------------------------------------------------------------------
@@ -41,31 +42,7 @@ CustomerList::CustomerList()
  **************************************************************************/
 CustomerList::~CustomerList()
 {
-        Node<Customer>* delCustomerPtr;
-
-        while(!isEmpty())
-        {
-                // Assigns pointer to head
-                delCustomerPtr = _head;
-
-                // Sets head to the next item in list
-                _head = delCustomerPtr ->GetNext();
-
-               // Deletes customer in list
-                delete delCustomerPtr;
-
-                // Points delCustomerPtr one a head
-                delCustomerPtr = _head;
-        }
-
-// **** Previous code commented out - 11/29/14 - Erik ****
-//    while(!isEmpty())
-//    {
-
-//qDebug() << "******Debugging: Deleting customer in list.******\n";
-
-//        Dequeue();
-//    }
+        this->ClearList();
 }
 
 /**************************************************************************
@@ -168,16 +145,13 @@ QString CustomerList::OutputList () const
  **************************************************************************/
 void CustomerList::ClearList()
 {
+    while(!isEmpty())
+    {
 
-//    cout << endl << "***Clearing List***" << endl;
-    delete _head;
+qDebug() << "******Debugging: Deleting customer in list.******\n";
 
-    _head = NULL;
-    _tail = NULL;
-
-    _nodeCount = 0;
-
-
+        Dequeue();
+    }
 }
 
 /**************************************************************************
@@ -659,35 +633,41 @@ bool CustomerList::isExist(Customer someCustomer)
 }
 
 
-CustomerList* CustomerList::operator=(const CustomerList& list)
+CustomerList& CustomerList::operator=(const CustomerList& list)
 {
         int index;
         Customer copyCustomer;
-        Customer tempCustomer;
         index = 0;
 
-        // Checks to see if the current list is larger than the copying list. Will preserve the
-        //      last 2 as if it were overwritting the index it is supposed to be.
-        if(this->Size() > list.Size())
-        {
-                for(index = this->Size(); index > list.Size(); index--)
-                {
-                        tempCustomer = _tail->GetData();
-                        this->Enqueue(tempCustomer);
-                        this->Dequeue();
+//Before Assignment
 
-                }
-        }
+qDebug() << "Line 590: Before CustomerLIst Assignment: " << this->OutputList();
 
 
 // Only a temporary fix :( It's only adding to the queue not removing from it.
-        for(index = 0; index < list.Size(); index++)
+        if(!list.isEmpty())
         {
-                 copyCustomer =list[index];
+                if(!(this->isEmpty()))
+                {
+                        for(index = 0; index < list.Size(); index++)
+                        {
+                                 copyCustomer =list[index];
+                                 this->Enqueue(copyCustomer);
 
-                 this->Enqueue(copyCustomer);
-                 this->Dequeue();
-
+                                 this->Dequeue();
+                        }
+                }
+                else
+                {
+                        for(index = 0; index < list.Size(); index++)
+                        {
+                                 copyCustomer =list[index];
+                                 this->Enqueue(copyCustomer);
+                        }
+                }
         }
-        return this;
+// AFter
+qDebug() << "Line 616: After CustomerLIst Assignment: " << this->OutputList();
+
+        return *this;
 }

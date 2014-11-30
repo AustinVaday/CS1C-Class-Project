@@ -153,8 +153,7 @@ public:
 
     Customer operator[](int index) const;
 
-    CustomerList* operator=(const CustomerList&);
-
+    CustomerList& operator=(const CustomerList&);
 
     bool isExist(Customer someCustomer);
 

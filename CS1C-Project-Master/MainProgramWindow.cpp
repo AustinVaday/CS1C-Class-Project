@@ -8,8 +8,15 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
 
     ui->setupUi(this);
 
+    // Debug construct
+qDebug() << "Reading List!";
+
     //Create the customer list...
     ReadCustomerFile(customerList, ":/ActivatedListFile.txt");
+
+// Debug construct
+qDebug() << "Deconstructed!";
+
 
     // TEMPORARY DISPLAY!!
     ui->tempDisplay->setText(customerList.OutputList());
@@ -18,10 +25,18 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
     // Hard code of admin login
     Admin testAdmin("","admin1234@gmail.com", 1234, "");
 
+// Debuggin
+qDebug() << "Admin window: Output List, Line 22";
+qDebug() << customerList.OutputList();
+
     // Initialize
     hWindow = new HelpWindow;
     aWindow = new AdminWindow(this, customerList);
     bWindow = new BrochureWindow;
+
+    // ***DEBUG** List is read.
+qDebug() << customerList.OutputList() << "Main Program Window: "
+" customerList.OutputList - Line 27";
 
     connect(aWindow, SIGNAL(clicked()), this, SLOT(on_pushButton_Help_clicked()));
 
@@ -34,7 +49,7 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
 
 MainProgramWindow::~MainProgramWindow()
 {
-
+       customerList.ClearList();
 qDebug() << "MainProgramWindow -- Destructor Test #1";
     delete aWindow;
 

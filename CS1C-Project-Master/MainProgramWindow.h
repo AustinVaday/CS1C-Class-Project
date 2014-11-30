@@ -109,9 +109,9 @@ private:
     // Pointer of type HelpWindow
     //  Used to create a help window for the user
 
-    BrochureWindow* bWindow;
-    ProductList*    lst;
-    CustomerList customerList;
+    BrochureWindow*     bWindow;
+    ProductList*                 lst;
+    CustomerList               customerList;
 
     // SECTION LOGIN BOOLEANS
     //These boolean variables are used to determine what
