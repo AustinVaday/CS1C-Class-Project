@@ -55,15 +55,17 @@ qDebug() << "MainProgramWindow -- Destructor Test #5";
 
 void MainProgramWindow::on_pushButton_Login_clicked()
 {
-     Admin testAdmin("","admin1234@gmail.com", 1234, "");
+    Admin testAdmin("admin","admin1234@gmail.com", 1234, "password");
 
-    bool validInput = false;
-    QString tempName;
-    QString tempPassword;
-    Login loginWindow;
+    bool       validInput = false;
+    int        customerLocation;
+    QString    tempName;
+    QString    tempPassword;
+    Login      loginWindow;
     ErrorLogin errorWindow;
 
 
+        customerLocation = 0;
         loginWindow.setModal(true);
 
         loginWindow.exec();
@@ -73,23 +75,33 @@ void MainProgramWindow::on_pushButton_Login_clicked()
         SetUsername(tempName);
         SetPassword(tempPassword);
 
-        if(testAdmin.checkAdmin(tempName, tempPassword ))
+    if(testAdmin.checkAdmin(tempName, tempPassword ))
+    {
+         validInput = true;
+         SetAdminLogin(true);
+    }
+    else
+    {
+        try
         {
-            validInput = true;
-            SetAdminLogin(true);
+            customerLocation =  customerList.FindCustomerLocation(tempName);
+
+        }
+        catch(...)
+        {
+            QMessageBox::information(this, tr("Not Found"),
+                       tr("Enter it again."));
         }
 
-    if(tempName == "Customer" && tempPassword == "1234")
-    {
-        validInput = true;
-        SetCustomerLogin(true);
     }
 
-        if(!loginWindow.on_buttonBox_loginPress_rejected())
-        {
-            errorWindow.setModal(true);
-            errorWindow.exec();
-        }
+
+    if(!loginWindow.on_buttonBox_loginPress_rejected())
+    {
+        errorWindow.setModal(true);
+        errorWindow.exec();
+        errorWindow.show();
+    }
 
     if(validInput)
     {

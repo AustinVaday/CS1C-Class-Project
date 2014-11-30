@@ -20,6 +20,8 @@
 #include "ProductListClass.h"
 #include "ProductClass.h"
 #include "ViewProducts.h"
+#include "customerlistclass.h"
+#include "ExceptionHandlers.h"
 
 #include <QDebug>
 

@@ -30,9 +30,9 @@ class Node
  * The private section begins here
  **************************************************************************/
 private:
-    Node*    _next;
-    Node*    _previous;
-    typeName _data;
+    Node*     _next;
+    Node*     _previous;
+    typeName  _data;
 
     typeName* _dataPtr;
 

@@ -26,13 +26,13 @@ User::User(QString name,
 }
 
 void User:: setValues(QString newName,
-         QString newEmail,
-         long 	newAccountNum,
-         QString newPassword)
+                      QString newEmail,
+                      long 	newAccountNum,
+                      QString newPassword)
 {
-    userName           = newName;
-    userEmail           = newEmail;
-    accountNum      = newAccountNum;
+    userName       = newName;
+    userEmail      = newEmail;
+    accountNum     = newAccountNum;
     userPassword   = newPassword;
 
 }
