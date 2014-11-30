@@ -10,17 +10,25 @@ AdminWindow::AdminWindow(QWidget *parent, CustomerList &list) :
     QMainWindow(parent),
     ui(new Ui::AdminWindow)
 {
+
+qDebug() << "Admin window: Output list - Line 14";
+qDebug() << list.OutputList();
+
     /***********************************************************
      * This should be used in all windows except main window!
      ***********************************************************/
     connect(this, SIGNAL(customerListChanged(CustomerList*)), parent, SLOT(updateCustomerList(CustomerList*)));
+
     customerList = list;
 
 
     viewList = new NewActivatedList(this, customerList);
 
     ui->setupUi(this);
+    // ***DEBUG** List is read.
+qDebug() << "Admin window: Output customerList - Line 28";
 
+qDebug() << customerList.OutputList();
 
     // FOR PROJECT MAIN WINDOWx
 //    CustomerList activatedList;
@@ -37,6 +45,8 @@ AdminWindow::AdminWindow(QWidget *parent, CustomerList &list) :
 
 AdminWindow::~AdminWindow()
 {
+     customerList.ClearList();
+
     qDebug() << "AdminWindow -- Destructor Test #1";
     delete viewList;
     qDebug() << "AdminWindow -- Destructor Test #2";

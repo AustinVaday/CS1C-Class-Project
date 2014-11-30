@@ -134,7 +134,7 @@ qDebug() << "******Debugging: Deconstructor - _next node.******\n";
 template <class typeName>
 void Node<typeName>::Orphan()
 {
-    _next 	  = NULL;
+        _next 	  = NULL;
     _previous = NULL;
 }
 
@@ -202,7 +202,7 @@ void Node<typeName>::SetPointer(typeName* newPointer)
 template <class typeName>
 typeName Node<typeName>::GetData() const
 {
-    return _data;
+        return _data;
 }
 
 template <class typeName>

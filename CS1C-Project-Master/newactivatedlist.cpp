@@ -15,14 +15,21 @@ NewActivatedList::NewActivatedList(QWidget *parent, CustomerList &list) :
      * This should be used in all windows except main window!
      ***********************************************************/
 qDebug() << "Debugging: NewActivatedList connect #1";
-    connect(this, SIGNAL(customerListChanged(CustomerList)), parent, SLOT(updateCustomerList(CustomerList)));
+    connect(this, SIGNAL(customerListChanged(CustomerList*)), parent, SLOT(updateCustomerList(CustomerList*)));
 
     ui->setupUi(this);
-qDebug() << "Debugging: NewActivatedList connect #2";
+qDebug() << "Debugging: NewActivatedList connect #2 - Line 24";
     // when a list widget item is clicked, will call the function to output customer address book.
     connect(ui->listWidget,SIGNAL(itemClicked(QListWidgetItem*)),this,SLOT(on_listItem_clicked(QListWidgetItem*)));
 
     customerList = list;
+
+qDebug() << "1)NewActivatedList window: Output customerList - Line 29";
+qDebug() << customerList.OutputList();
+
+    // ***DEBUG** List is read.
+qDebug() << "2) Debugging: Admin NewActivatedlist window: Output customerList - Line 32";
+qDebug() << customerList.OutputList();
 
 //    ReadCustomerFile(customerList, ":/ActivatedListFile.txt");
 qDebug() << "Debugging: NewActivatedList - custAddBook : mem alloc\n";
@@ -32,12 +39,22 @@ qDebug() << "Debugging: NewActivatedList - custAddBook : after mem alloc\n";
 
 //    ui->listWidget->setSortingEnabled(true);
 
+        DisplayTheList(customerList);
+
 }
 
-void NewActivatedList::DisplayTheList(CustomerList &list)
+
+
+
+
+void NewActivatedList::DisplayTheList(CustomerList list)
 {
 qDebug() << "******Debugging: newactivatedlist - displayList******\n";
     ui->listWidget->clear();
+
+qDebug() << "NewActivatedList window: Output customerList.Display - Line 50";
+qDebug() << customerList.OutputList();
+
 
     for (int i = 0; i < list.Size(); i++)
     {
@@ -74,6 +91,8 @@ qDebug() << "******Debugging: newactivatedlist - displayList******\n";
 NewActivatedList::~NewActivatedList()
 {
 qDebug() << "******Debugging: NewActivatedList - Deconstructor******\n";
+        customerList.ClearList();
+
 
 qDebug() << "******Debugging: NewActivatedList - Deleting custAddBook******\n";
         delete custAddBook;
@@ -111,6 +130,10 @@ qDebug() << "******Debugging: NewActivatedList - custAddBook : Deconstructor****
 void NewActivatedList::updateCustomerList(CustomerList *list)
 {
     customerList = *list;
+
+
+// Debugging Display list in new activated list
+qDebug() << "NewActivatedList";
 
     DisplayTheList(customerList);
 
