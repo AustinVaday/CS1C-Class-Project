@@ -225,12 +225,13 @@ void MainProgramWindow::on_pushButton_Help_clicked()
     showHelpWindow();
 }
 
+// Help Button Clicked
 void MainProgramWindow::showHelpWindow()
 {
     hWindow->show();
 }
 
-
+// Menu Bar Help Option
 void MainProgramWindow::on_actionHelp_triggered()
 {
     hWindow->show();
@@ -238,12 +239,13 @@ void MainProgramWindow::on_actionHelp_triggered()
 
 void MainProgramWindow::updateCustomerList(CustomerList *list)
 {
+    customerList = *list;
+
     // TEMPORARY DISPLAY!!
     ui->tempDisplay->clear();
     ui->tempDisplay->setText(customerList.OutputList());
 
 
-    customerList = *list;
 
     qDebug() << "List has finally reached the MainProgramWindow!";
 }
