@@ -16,7 +16,14 @@ public:
     ~OrderProduct();
 
     void editText();
-private:
+
+signals:
+    void helpOrderChanged();
+
+        private slots:
+    void on_OrderingAProduct_textChanged();
+
+        private:
     Ui::OrderProduct *ui;
 };
 

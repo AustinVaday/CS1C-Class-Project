@@ -19,6 +19,8 @@ qDebug() << list.OutputList();
      ***********************************************************/
     connect(this, SIGNAL(customerListChanged(CustomerList*)), parent, SLOT(updateCustomerList(CustomerList*)));
 
+
+
     customerList = list;
 
 

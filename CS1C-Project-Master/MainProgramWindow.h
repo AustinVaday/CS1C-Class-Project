@@ -51,15 +51,25 @@ public:
      *
      * (read documentation above)
      ***************************************************************************/
-     bool GetAdminLoginState     ();
+     bool GetAdminLoginState        ();
      bool GetCustomerLoginState  ();
-     bool GetGuestLoginState     ();
-     bool GetCreateAccountState  ();
+     bool GetGuestLoginState          ();
+     bool GetCreateAccountState   ();
 
      ProductList* getProductList() const;
 
      QString GetUsername();
      QString GetPassword();
+
+
+
+// Erik's Addition - Help Options Persistence.
+//****************************************//
+     void writeHelpOptions();
+
+
+//****************************************//
+
 
     //  Accessors
      void SetUsername(QString newUsername);
@@ -115,8 +125,8 @@ private:
     //These boolean variables are used to determine what
     //  type of window to launch
 
-    bool adminLogin      = 0;
-    bool customerLogin   = 0;
+    bool adminLogin         = 0;
+    bool customerLogin  = 0;
     bool guestLogin      = 0;
     bool createAccount   = 0;
 
