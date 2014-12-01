@@ -12,7 +12,7 @@ void ReadCustomerFile(CustomerList& list, QString fileName)
     qDebug() << file.exists();
 
     //open the file
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
+    file.open(QIODevice::ReadWrite | QIODevice::Text);
 
 //    qDebug() << "Hi3";
 

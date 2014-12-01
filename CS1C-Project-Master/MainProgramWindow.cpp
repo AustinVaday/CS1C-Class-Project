@@ -245,15 +245,8 @@ void MainProgramWindow::updateCustomerList(CustomerList *list)
     ui->tempDisplay->clear();
     ui->tempDisplay->setText(customerList.OutputList());
 
-
-<<<<<<< HEAD
-<<<<<<< HEAD
     WriteToCustomerFile(customerList, ":/ActivatedListFile.txt");
 
-=======
->>>>>>> master
-=======
->>>>>>> 7957c7d46b1f8d9bc0bd846639c2c42a42baa98f
 
     qDebug() << "List has finally reached the MainProgramWindow!";
 }
