@@ -37,7 +37,8 @@ SOURCES += main.cpp\
     BrochureWindow.cpp \
     CustomerPlaceOrder.cpp \
     ViewProducts.cpp\
-    find.cpp
+    find.cpp \
+    customeraccountwindow.cpp
 
 HEADERS += MainProgramWindow.h \
         adminclass.h \
@@ -65,7 +66,8 @@ HEADERS += MainProgramWindow.h \
     BrochureWindow.h \
     CustomerPlaceOrder.h \
     ViewProducts.h\
-    find.h
+    find.h \
+    customeraccountwindow.h
 
 FORMS   += mainprogramwindow.ui \
         newactivatedlist.ui \
@@ -84,10 +86,12 @@ FORMS   += mainprogramwindow.ui \
     BrochureWindow.ui \
     CustomerPlaceOrder.ui \
     ViewProducts.ui\
-    find.ui
+    find.ui \
+    customeraccountwindow.ui
 
 RESOURCES += \
-    TextFilesFolder.qrc
+    TextFilesFolder.qrc \
+    Images.qrc
 
 OTHER_FILES +=
 
