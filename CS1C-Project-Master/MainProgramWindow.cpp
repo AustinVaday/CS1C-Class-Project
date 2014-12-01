@@ -70,9 +70,16 @@ qDebug() << "MainProgramWindow -- Destructor Test #5";
 
 void MainProgramWindow::on_pushButton_Login_clicked()
 {
+<<<<<<< HEAD
      Admin testAdmin("admin","admin1234@gmail.com", 1234, "password");
 
     bool validInput = false;
+=======
+    Admin testAdmin("admin","admin1234@gmail.com", 1234, "password");
+
+    bool       validInput = false;
+    int        customerLocation;
+>>>>>>> 98c3417152d179564a28b0b12a60cb0b01ab74d4
     QString    tempName;
     QString    tempPassword;
     Login      loginWindow;
@@ -80,6 +87,7 @@ void MainProgramWindow::on_pushButton_Login_clicked()
     Customer tempCustomer;
 
 
+        customerLocation = 0;
         loginWindow.setModal(true);
 
         loginWindow.exec();
@@ -89,6 +97,7 @@ void MainProgramWindow::on_pushButton_Login_clicked()
         SetUsername(tempName);
         SetPassword(tempPassword);
 
+<<<<<<< HEAD
         if(testAdmin.checkAdmin(tempName, tempPassword ))
         {
             validInput = true;
@@ -104,12 +113,35 @@ void MainProgramWindow::on_pushButton_Login_clicked()
                SetCustomerLogin(true);
            }
         }
-
-        if(!loginWindow.on_buttonBox_loginPress_rejected())
+=======
+    if(testAdmin.checkAdmin(tempName, tempPassword ))
+    {
+         validInput = true;
+         SetAdminLogin(true);
+    }
+    else
+    {
+        try
         {
-            errorWindow.setModal(true);
-            errorWindow.exec();
+            customerLocation =  customerList.FindCustomerLocation(tempName);
+>>>>>>> 98c3417152d179564a28b0b12a60cb0b01ab74d4
+
         }
+        catch(...)
+        {
+            QMessageBox::information(this, tr("Not Found"),
+                       tr("Enter it again."));
+        }
+
+    }
+
+
+    if(!loginWindow.on_buttonBox_loginPress_rejected())
+    {
+        errorWindow.setModal(true);
+        errorWindow.exec();
+        errorWindow.show();
+    }
 
     if(validInput)
     {
@@ -218,12 +250,13 @@ void MainProgramWindow::on_pushButton_Help_clicked()
     showHelpWindow();
 }
 
+// Help Button Clicked
 void MainProgramWindow::showHelpWindow()
 {
     hWindow->show();
 }
 
-
+// Menu Bar Help Option
 void MainProgramWindow::on_actionHelp_triggered()
 {
     hWindow->show();
@@ -231,12 +264,13 @@ void MainProgramWindow::on_actionHelp_triggered()
 
 void MainProgramWindow::updateCustomerList(CustomerList *list)
 {
+    customerList = *list;
+
     // TEMPORARY DISPLAY!!
     ui->tempDisplay->clear();
     ui->tempDisplay->setText(customerList.OutputList());
 
 
-    customerList = *list;
 
     qDebug() << "List has finally reached the MainProgramWindow!";
 }

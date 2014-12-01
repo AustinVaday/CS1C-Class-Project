@@ -36,10 +36,10 @@ class User
         QString     getUserName() 	const;
         QString     getEmail() 	 	const;
         long        getAccountNum()	const;
-        QString 	getPassword() const;
-        bool        getAccess() const;
+        QString 	getPassword()   const;
+        bool        getAccess()     const;
 
-        QString     OutputData() const;
+        QString     OutputData()    const;
 
     private:
         QString 	userName;
