@@ -89,5 +89,6 @@ FORMS   += mainprogramwindow.ui \
 RESOURCES += \
     TextFilesFolder.qrc
 
-OTHER_FILES +=
+OTHER_FILES += \
+    TestFile.txt
 

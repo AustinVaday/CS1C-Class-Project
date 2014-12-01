@@ -1,11 +1,14 @@
-    #include "Productlistclass.h"
+#include "Productlistclass.h"
 #include <QTextStream>
 #include <QMessageBox>
 #include "ExceptionHandlers.h"
 #include "activatedlist2.h"
 #include <QTextStream>
+#include <QFile>
+#include <QIODevice>
 
-/**************************************************************************
+
+/***********************************************************************
  * CS1C Class Project
  * -----------------------------------------------------------------------
  * ProductListSource
@@ -18,7 +21,7 @@
  *		Annie	Raichev
  *		Erik 	Karlsson
  *
- *************************************************************************/
+ **********************************************************************/
 
 
 /**************************************************************************
@@ -150,7 +153,7 @@ void ProductList::ClearList()
     delete _head;
 
     _head = NULL;
-    _tail = NULL;
+    _tail    = NULL;
 
     _nodeCount = 0;
 
@@ -426,7 +429,6 @@ QString ProductList::operator[](int index)
                 i != index)
         {
             traversePtr = traversePtr->GetNext();
-
             i++;
         }
 
@@ -444,5 +446,17 @@ QString ProductList::operator[](int index)
 
 void ProductList::WriteToFile()
 {
+        QFile productFile(":/ProductDatabase.txt");
 
+        if(productFile.open(QIODevice::ReadWrite))
+        {
+                QTextStream out(&productFile);
+
+                out << "list[index].getUserName()\n";
+                out << "list[index].getEmail()\n";
+                out << "list[index].getAccountNum()\n";
+                out << "list[index].getPassword()\n";
+
+                productFile.close();
+        }
 }

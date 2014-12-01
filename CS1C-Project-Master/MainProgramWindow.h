@@ -64,15 +64,6 @@ public:
      QString GetPassword();
 
 
-
-// Erik's Addition - Help Options Persistence.
-//****************************************//
-     void writeHelpOptions();
-
-
-//****************************************//
-
-
     //  Accessors
      void SetUsername(QString newUsername);
      // Sets user name

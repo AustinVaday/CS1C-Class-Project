@@ -5,9 +5,7 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainProgramWindow)
 {
-
     ui->setupUi(this);
-
     // Debug construct
 qDebug() << "Reading List!";
 
@@ -49,6 +47,17 @@ qDebug() << customerList.OutputList() << "Main Program Window: "
 
 MainProgramWindow::~MainProgramWindow()
 {
+       ProductList myList;
+
+        Product robot1("Guy", "<AR{P", 434.2, 432, 232341);
+
+        myList.Enqueue(robot1);
+
+        myList.WriteToFile();
+qDebug() << "Deconstructor Write to test file.";
+
+       WriteToCustomerFile(customerList, "::TestFile.txt");
+
        customerList.ClearList();
 qDebug() << "MainProgramWindow -- Destructor Test #1";
     delete aWindow;
