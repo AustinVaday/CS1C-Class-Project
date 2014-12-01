@@ -637,11 +637,14 @@ void CustomerList::SortList()
     int index;
     int temp;
 
-    for(index = 1; index < GetSize(); index++)
+    for(index = 1; index < Size(); index++)
     {
-        temp = index;
+        temp = index;['']
 
-        while()
+        while(true)
+        {
+
+        }
     }
 }
 

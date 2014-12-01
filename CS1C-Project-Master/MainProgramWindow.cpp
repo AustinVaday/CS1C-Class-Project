@@ -70,16 +70,14 @@ qDebug() << "MainProgramWindow -- Destructor Test #5";
 
 void MainProgramWindow::on_pushButton_Login_clicked()
 {
-<<<<<<< HEAD
+//<<<<<<< HEAD
     Admin testAdmin("admin","admin1234@gmail.com", 1234, "password");
 
-    bool       validInput = false;
     int        customerLocation;
-=======
-     Admin testAdmin("admin","admin1234@gmail.com", 1234, "password");
+//=======
 
     bool validInput = false;
->>>>>>> Customer-Product-Access
+//>>>>>>> Customer-Product-Access
     QString    tempName;
     QString    tempPassword;
     Login      loginWindow;
@@ -97,7 +95,7 @@ void MainProgramWindow::on_pushButton_Login_clicked()
         SetUsername(tempName);
         SetPassword(tempPassword);
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
     if(testAdmin.checkAdmin(tempName, tempPassword ))
     {
          validInput = true;
@@ -108,7 +106,7 @@ void MainProgramWindow::on_pushButton_Login_clicked()
         try
         {
             customerLocation =  customerList.FindCustomerLocation(tempName);
-=======
+//=======
         if(testAdmin.checkAdmin(tempName, tempPassword ))
         {
             validInput = true;
@@ -124,7 +122,7 @@ void MainProgramWindow::on_pushButton_Login_clicked()
                SetCustomerLogin(true);
            }
         }
->>>>>>> Customer-Product-Access
+//>>>>>>> Customer-Product-Access
 
         }
         catch(...)
