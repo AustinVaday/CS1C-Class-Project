@@ -227,7 +227,6 @@ DIST          = ../../../QT/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		../../../QT/5.3/clang_64/mkspecs/features/qt_config.prf \
 		../../../QT/5.3/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../QT/5.3/clang_64/mkspecs/features/spec_post.prf \
-		../CS1C-Project-Master/.qmake.stash \
 		../../../QT/5.3/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../QT/5.3/clang_64/mkspecs/features/default_pre.prf \
 		../../../QT/5.3/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -412,7 +411,6 @@ Makefile: ../CS1C-Project-Master/MainProgram.pro ../../../QT/5.3/clang_64/mkspec
 		../../../QT/5.3/clang_64/mkspecs/features/qt_config.prf \
 		../../../QT/5.3/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../QT/5.3/clang_64/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		../../../QT/5.3/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../QT/5.3/clang_64/mkspecs/features/default_pre.prf \
 		../../../QT/5.3/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -534,7 +532,6 @@ Makefile: ../CS1C-Project-Master/MainProgram.pro ../../../QT/5.3/clang_64/mkspec
 ../../../QT/5.3/clang_64/mkspecs/features/qt_config.prf:
 ../../../QT/5.3/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../../QT/5.3/clang_64/mkspecs/features/spec_post.prf:
-.qmake.stash:
 ../../../QT/5.3/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../../QT/5.3/clang_64/mkspecs/features/default_pre.prf:
 ../../../QT/5.3/clang_64/mkspecs/features/mac/default_pre.prf:
@@ -609,6 +606,7 @@ qrc_TextFilesFolder.cpp: ../CS1C-Project-Master/TextFilesFolder.qrc \
 		../CS1C-Project-Master/HelpOptionFile.txt \
 		../CS1C-Project-Master/ActivatedListFile.txt \
 		../CS1C-Project-Master/ProductDatabase.txt \
+		../CS1C-Project-Master/TestFile.txt \
 		../CS1C-Project-Master/DeactivatedListFile.txt
 	/Users/AustinVaday/QT/5.3/clang_64/bin/rcc -name TextFilesFolder ../CS1C-Project-Master/TextFilesFolder.qrc -o qrc_TextFilesFolder.cpp
 
@@ -626,6 +624,7 @@ moc_MainProgramWindow.cpp: ../../../QT/5.3/clang_64/lib/QtWidgets.framework/Vers
 		../CS1C-Project-Master/genericnodeclass.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		../CS1C-Project-Master/ExceptionHandlers.h \
 		../CS1C-Project-Master/login.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
@@ -658,7 +657,6 @@ moc_MainProgramWindow.cpp: ../../../QT/5.3/clang_64/lib/QtWidgets.framework/Vers
 		../CS1C-Project-Master/ProductListClass.h \
 		../CS1C-Project-Master/activatedlist.h \
 		../CS1C-Project-Master/ViewProducts.h \
-		../CS1C-Project-Master/ExceptionHandlers.h \
 		../CS1C-Project-Master/MainProgramWindow.h
 	/Users/AustinVaday/QT/5.3/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/AustinVaday/QT/5.3/clang_64/mkspecs/macx-clang -I/Users/AustinVaday/git/Class-Project/CS1C-Project-Master -I/Users/AustinVaday/QT/5.3/clang_64/lib/QtWidgets.framework/Headers -I/Users/AustinVaday/QT/5.3/clang_64/lib/QtGui.framework/Headers -I/Users/AustinVaday/QT/5.3/clang_64/lib/QtCore.framework/Headers -I. -F/Users/AustinVaday/QT/5.3/clang_64/lib ../CS1C-Project-Master/MainProgramWindow.h -o moc_MainProgramWindow.cpp
 
@@ -675,6 +673,7 @@ moc_newactivatedlist.cpp: ../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versi
 		../CS1C-Project-Master/genericnodeclass.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		../CS1C-Project-Master/ExceptionHandlers.h \
 		../CS1C-Project-Master/find.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
@@ -705,6 +704,7 @@ moc_AdminWindow.cpp: ../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5
 		../CS1C-Project-Master/genericnodeclass.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		../CS1C-Project-Master/ExceptionHandlers.h \
 		../CS1C-Project-Master/find.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
@@ -721,6 +721,7 @@ moc_customeraddressbook.cpp: ../../../QT/5.3/clang_64/lib/QtWidgets.framework/Ve
 		../CS1C-Project-Master/genericnodeclass.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		../CS1C-Project-Master/ExceptionHandlers.h \
 		../CS1C-Project-Master/find.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
@@ -780,6 +781,7 @@ moc_BrochureWindow.cpp: ../../../QT/5.3/clang_64/lib/QtWidgets.framework/Version
 		../CS1C-Project-Master/genericnodeclass.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		../CS1C-Project-Master/ExceptionHandlers.h \
 		../CS1C-Project-Master/activatedlist.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
@@ -803,6 +805,7 @@ moc_ViewProducts.cpp: ../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/
 		../CS1C-Project-Master/genericnodeclass.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		../CS1C-Project-Master/ExceptionHandlers.h \
 		../CS1C-Project-Master/activatedlist.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
@@ -894,6 +897,7 @@ main.o: ../CS1C-Project-Master/main.cpp ../CS1C-Project-Master/MainProgramWindow
 		../CS1C-Project-Master/genericnodeclass.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		../CS1C-Project-Master/ExceptionHandlers.h \
 		../CS1C-Project-Master/login.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
@@ -926,7 +930,6 @@ main.o: ../CS1C-Project-Master/main.cpp ../CS1C-Project-Master/MainProgramWindow
 		../CS1C-Project-Master/ProductListClass.h \
 		../CS1C-Project-Master/activatedlist.h \
 		../CS1C-Project-Master/ViewProducts.h \
-		../CS1C-Project-Master/ExceptionHandlers.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QApplication \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../CS1C-Project-Master/main.cpp
@@ -943,6 +946,7 @@ MainProgramWindow.o: ../CS1C-Project-Master/MainProgramWindow.cpp ../CS1C-Projec
 		../CS1C-Project-Master/genericnodeclass.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		../CS1C-Project-Master/ExceptionHandlers.h \
 		../CS1C-Project-Master/login.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
@@ -974,8 +978,7 @@ MainProgramWindow.o: ../CS1C-Project-Master/MainProgramWindow.cpp ../CS1C-Projec
 		../CS1C-Project-Master/ProductClass.h \
 		../CS1C-Project-Master/ProductListClass.h \
 		../CS1C-Project-Master/activatedlist.h \
-		../CS1C-Project-Master/ViewProducts.h \
-		../CS1C-Project-Master/ExceptionHandlers.h
+		../CS1C-Project-Master/ViewProducts.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MainProgramWindow.o ../CS1C-Project-Master/MainProgramWindow.cpp
 
 adminclass.o: ../CS1C-Project-Master/adminclass.cpp ../CS1C-Project-Master/adminclass.h \
@@ -986,7 +989,8 @@ adminclass.o: ../CS1C-Project-Master/adminclass.cpp ../CS1C-Project-Master/admin
 		../CS1C-Project-Master/customerlistclass.h \
 		../CS1C-Project-Master/genericnodeclass.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		../CS1C-Project-Master/ExceptionHandlers.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o adminclass.o ../CS1C-Project-Master/adminclass.cpp
 
 userclass.o: ../CS1C-Project-Master/userclass.cpp ../CS1C-Project-Master/userclass.h \
@@ -1004,11 +1008,11 @@ customerlistclass.o: ../CS1C-Project-Master/customerlistclass.cpp ../CS1C-Projec
 		../CS1C-Project-Master/genericnodeclass.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		../CS1C-Project-Master/ExceptionHandlers.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QTextStream \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qtextstream.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
-		../CS1C-Project-Master/ExceptionHandlers.h \
 		../CS1C-Project-Master/activatedlist2.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h
@@ -1029,6 +1033,7 @@ ReadCustomerFile.o: ../CS1C-Project-Master/ReadCustomerFile.cpp ../CS1C-Project-
 		../CS1C-Project-Master/genericnodeclass.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		../CS1C-Project-Master/ExceptionHandlers.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QTextStream \
@@ -1051,6 +1056,7 @@ newactivatedlist.o: ../CS1C-Project-Master/newactivatedlist.cpp ../CS1C-Project-
 		../CS1C-Project-Master/genericnodeclass.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		../CS1C-Project-Master/ExceptionHandlers.h \
 		../CS1C-Project-Master/find.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
@@ -1061,8 +1067,7 @@ newactivatedlist.o: ../CS1C-Project-Master/newactivatedlist.cpp ../CS1C-Project-
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QTextStream \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qtextstream.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLabel \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlabel.h \
-		../CS1C-Project-Master/ExceptionHandlers.h
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlabel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o newactivatedlist.o ../CS1C-Project-Master/newactivatedlist.cpp
 
 maindisplay.o: ../CS1C-Project-Master/maindisplay.cpp ../CS1C-Project-Master/maindisplay.h \
@@ -1091,6 +1096,7 @@ AdminWindow.o: ../CS1C-Project-Master/AdminWindow.cpp ../CS1C-Project-Master/Adm
 		../CS1C-Project-Master/genericnodeclass.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		../CS1C-Project-Master/ExceptionHandlers.h \
 		../CS1C-Project-Master/find.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
@@ -1118,6 +1124,7 @@ ProductListClass.o: ../CS1C-Project-Master/ProductListClass.cpp ../CS1C-Project-
 		../CS1C-Project-Master/genericnodeclass.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		../CS1C-Project-Master/ExceptionHandlers.h \
 		../CS1C-Project-Master/activatedlist.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
@@ -1125,8 +1132,11 @@ ProductListClass.o: ../CS1C-Project-Master/ProductListClass.cpp ../CS1C-Project-
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qtextstream.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
-		../CS1C-Project-Master/ExceptionHandlers.h \
-		../CS1C-Project-Master/activatedlist2.h
+		../CS1C-Project-Master/activatedlist2.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QIODevice \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qiodevice.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ProductListClass.o ../CS1C-Project-Master/ProductListClass.cpp
 
 customeraddressbook.o: ../CS1C-Project-Master/customeraddressbook.cpp ../CS1C-Project-Master/customeraddressbook.h \
@@ -1140,6 +1150,7 @@ customeraddressbook.o: ../CS1C-Project-Master/customeraddressbook.cpp ../CS1C-Pr
 		../CS1C-Project-Master/genericnodeclass.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		../CS1C-Project-Master/ExceptionHandlers.h \
 		../CS1C-Project-Master/find.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
@@ -1215,6 +1226,7 @@ BrochureWindow.o: ../CS1C-Project-Master/BrochureWindow.cpp ../CS1C-Project-Mast
 		../CS1C-Project-Master/genericnodeclass.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		../CS1C-Project-Master/ExceptionHandlers.h \
 		../CS1C-Project-Master/activatedlist.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
@@ -1240,6 +1252,7 @@ ViewProducts.o: ../CS1C-Project-Master/ViewProducts.cpp ../CS1C-Project-Master/V
 		../CS1C-Project-Master/genericnodeclass.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		../CS1C-Project-Master/ExceptionHandlers.h \
 		../CS1C-Project-Master/activatedlist.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
@@ -1256,7 +1269,22 @@ find.o: ../CS1C-Project-Master/find.cpp ../CS1C-Project-Master/find.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o find.o ../CS1C-Project-Master/find.cpp
 
-WriteToCustomerFile.o: ../CS1C-Project-Master/WriteToCustomerFile.cpp 
+WriteToCustomerFile.o: ../CS1C-Project-Master/WriteToCustomerFile.cpp ../CS1C-Project-Master/Header.h \
+		../CS1C-Project-Master/customerlistclass.h \
+		../CS1C-Project-Master/customerclass.h \
+		../CS1C-Project-Master/userclass.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
+		../CS1C-Project-Master/genericnodeclass.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		../CS1C-Project-Master/ExceptionHandlers.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QTextStream \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qtextstream.h \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLabel \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlabel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o WriteToCustomerFile.o ../CS1C-Project-Master/WriteToCustomerFile.cpp
 
 qrc_TextFilesFolder.o: qrc_TextFilesFolder.cpp 

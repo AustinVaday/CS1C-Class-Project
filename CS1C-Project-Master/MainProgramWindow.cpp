@@ -121,7 +121,8 @@ void MainProgramWindow::on_pushButton_Login_clicked()
            }
         }
 
-customerList.SortList(customerList.GetHead());
+// CAUSES THE PROGRAM TO CRASH
+//customerList.SortList(customerList.GetHead());
 
 
     if(!loginWindow.on_buttonBox_loginPress_rejected())
