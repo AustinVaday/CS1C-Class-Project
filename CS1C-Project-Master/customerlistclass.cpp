@@ -765,9 +765,16 @@ void CustomerList::SortList()
 
     for(index = 1; index < Size(); index++)
     {
-        temp = index;
+        temp = index;['']
 
+<<<<<<< HEAD
 //        while()
+=======
+        while(true)
+        {
+
+        }
+>>>>>>> master
     }
 }
 
