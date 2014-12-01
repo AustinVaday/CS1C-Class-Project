@@ -1,5 +1,7 @@
 #include "userclass.h"
 #include <QTextStream>
+#include <QDebug>
+
 // Default constructor
 User::User()
 {
@@ -114,6 +116,7 @@ bool User::operator ==(const User& otherUser)
 {
     bool same;
 
+    qDebug() << "INSIDE userclass.cpp .. operator= .. line 117";
     same = false;
 
     // Compares names and account numbers, if either are the same it will
@@ -125,7 +128,8 @@ bool User::operator ==(const User& otherUser)
     if(	  otherUser.getAccountNum() == this->getAccountNum()
        && otherUser.getUserName() 	== this->getUserName()
        && otherUser.getAccountNum() == this->getAccountNum()
-       && otherUser.getPassword()   == this->getPassword())
+       && otherUser.getPassword()   == this->getPassword()
+       && otherUser.getAccess()     == this->getAccess())
     {
         same = true;
     }
