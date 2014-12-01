@@ -50,12 +50,6 @@ qDebug() << "Debugging: NewActivatedList - custAddBook : after mem alloc\n";
     }
 }
 
-
-
-
-
-
-
 void NewActivatedList::DisplayTheList(const CustomerList& list)
 
 {
@@ -151,6 +145,16 @@ qDebug() << "NewActivatedList";
 
     // notify the AdminWindow that list has been changed
     emit customerListChanged(&customerList);
+
+    // if empty, show the add customer button
+    if (customerList.isEmpty())
+    {
+        ui->addCustomer->show();
+    }
+    else
+    {
+        ui->addCustomer->hide();
+    }
 
     qDebug() << "Emitting in NewActivatedList to AdminWindow!";
 }
