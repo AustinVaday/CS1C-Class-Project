@@ -41,6 +41,19 @@
     </layout>
    </widget>
   </widget>
+  <widget class="QPushButton" name="addCustomer">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>30</y>
+     <width>121</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Add Customer</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
