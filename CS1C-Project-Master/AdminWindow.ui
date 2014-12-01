@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1084</width>
-    <height>651</height>
+    <width>549</width>
+    <height>329</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,64 +17,10 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>220</y>
-      <width>219</width>
-      <height>236</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QPushButton" name="view_activated_customers">
-       <property name="text">
-        <string>View Activated Customers</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="view_deactivated_customers">
-       <property name="text">
-        <string>View Deactivated Customers</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="search_customer">
-       <property name="text">
-        <string>Search Customer</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="modify_help_options">
-       <property name="text">
-        <string>Modify Help Options</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="modify_customer_reviews">
-       <property name="text">
-        <string>Modify Customer Reviews</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="back_button">
-       <property name="text">
-        <string>Back </string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
+      <x>30</x>
       <y>60</y>
       <width>491</width>
-      <height>98</height>
+      <height>150</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -88,7 +34,7 @@
         </font>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family: Arial; font-size:28pt; font-weight:600;&quot;&gt;Welcome, &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:28pt;&quot;&gt;Welcome, &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
@@ -102,9 +48,27 @@
         </font>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Arial'; font-size:28pt; font-weight:600;&quot;&gt;UserName&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:28pt;&quot;&gt;UserName&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QPushButton" name="view_activated_customers">
+         <property name="text">
+          <string>View Customers</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="back_button">
+         <property name="text">
+          <string>Back </string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
    </widget>
@@ -123,7 +87,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1084</width>
+     <width>549</width>
      <height>22</height>
     </rect>
    </property>
