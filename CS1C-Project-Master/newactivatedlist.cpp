@@ -159,8 +159,6 @@ qDebug() << "NewActivatedList";
     qDebug() << "Emitting in NewActivatedList to AdminWindow!";
 }
 
-
-
 void NewActivatedList::on_addCustomer_clicked()
 {
 

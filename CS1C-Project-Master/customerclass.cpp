@@ -14,7 +14,7 @@ Customer::Customer(QString userName,
     User::setEmail(email);
     User::setAccountNum(accountNum);
     User::setPassword(password);
-    activate = false;
+//    activate = false;
 
 }
 

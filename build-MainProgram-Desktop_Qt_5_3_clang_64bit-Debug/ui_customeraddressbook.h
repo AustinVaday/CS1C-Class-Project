@@ -18,6 +18,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -49,10 +50,13 @@ public:
     QPushButton *cancelButton;
     QPushButton *submitButton;
     QLabel *warningLabel;
-    QWidget *widget;
+    QWidget *layoutWidget3;
     QHBoxLayout *horizontalLayout_2;
     QPushButton *prevCustomerButton;
     QPushButton *nextCustomerButton;
+    QWidget *layoutWidget4;
+    QHBoxLayout *horizontalLayout_4;
+    QRadioButton *ActivatedCustomer;
 
     void setupUi(QWidget *CustomerAddressBook)
     {
@@ -154,31 +158,41 @@ public:
         warningLabel = new QLabel(CustomerAddressBook);
         warningLabel->setObjectName(QStringLiteral("warningLabel"));
         warningLabel->setGeometry(QRect(10, 200, 391, 31));
-        widget = new QWidget(CustomerAddressBook);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(10, 150, 281, 32));
-        horizontalLayout_2 = new QHBoxLayout(widget);
+        layoutWidget3 = new QWidget(CustomerAddressBook);
+        layoutWidget3->setObjectName(QStringLiteral("layoutWidget3"));
+        layoutWidget3->setGeometry(QRect(10, 170, 297, 32));
+        horizontalLayout_2 = new QHBoxLayout(layoutWidget3);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        prevCustomerButton = new QPushButton(widget);
+        prevCustomerButton = new QPushButton(layoutWidget3);
         prevCustomerButton->setObjectName(QStringLiteral("prevCustomerButton"));
 
         horizontalLayout_2->addWidget(prevCustomerButton);
 
-        nextCustomerButton = new QPushButton(widget);
+        nextCustomerButton = new QPushButton(layoutWidget3);
         nextCustomerButton->setObjectName(QStringLiteral("nextCustomerButton"));
 
         horizontalLayout_2->addWidget(nextCustomerButton);
 
+        layoutWidget4 = new QWidget(CustomerAddressBook);
+        layoutWidget4->setObjectName(QStringLiteral("layoutWidget4"));
+        layoutWidget4->setGeometry(QRect(20, 140, 287, 20));
+        horizontalLayout_4 = new QHBoxLayout(layoutWidget4);
+        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
+        horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
+        ActivatedCustomer = new QRadioButton(layoutWidget4);
+        ActivatedCustomer->setObjectName(QStringLiteral("ActivatedCustomer"));
+
+        horizontalLayout_4->addWidget(ActivatedCustomer);
+
+        layoutWidget->raise();
+        layoutWidget->raise();
         layoutWidget->raise();
         layoutWidget->raise();
         layoutWidget->raise();
         addButton->raise();
         cancelButton->raise();
         submitButton->raise();
-        nextCustomerButton->raise();
-        prevCustomerButton->raise();
-        nextCustomerButton->raise();
         warningLabel->raise();
 
         retranslateUi(CustomerAddressBook);
@@ -202,6 +216,7 @@ public:
         warningLabel->setText(QString());
         prevCustomerButton->setText(QApplication::translate("CustomerAddressBook", "Previous Customer", 0));
         nextCustomerButton->setText(QApplication::translate("CustomerAddressBook", "Next Customer", 0));
+        ActivatedCustomer->setText(QApplication::translate("CustomerAddressBook", "Access To Brochure", 0));
     } // retranslateUi
 
 };

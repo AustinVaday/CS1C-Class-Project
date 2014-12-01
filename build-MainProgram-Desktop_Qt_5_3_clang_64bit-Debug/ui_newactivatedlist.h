@@ -15,6 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QScrollArea>
@@ -31,15 +32,21 @@ public:
     QVBoxLayout *verticalLayout;
     QListWidget *listWidget;
     QPushButton *addCustomer;
+    QScrollArea *scrollArea_2;
+    QWidget *scrollAreaWidgetContents_2;
+    QVBoxLayout *verticalLayout_2;
+    QListWidget *deactivatedListWidget;
+    QLabel *label;
+    QLabel *label_2;
 
     void setupUi(QDialog *NewActivatedList)
     {
         if (NewActivatedList->objectName().isEmpty())
             NewActivatedList->setObjectName(QStringLiteral("NewActivatedList"));
-        NewActivatedList->resize(955, 655);
+        NewActivatedList->resize(971, 739);
         scrollArea = new QScrollArea(NewActivatedList);
         scrollArea->setObjectName(QStringLiteral("scrollArea"));
-        scrollArea->setGeometry(QRect(40, 20, 361, 621));
+        scrollArea->setGeometry(QRect(40, 50, 361, 621));
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
@@ -54,7 +61,28 @@ public:
         scrollArea->setWidget(scrollAreaWidgetContents);
         addCustomer = new QPushButton(NewActivatedList);
         addCustomer->setObjectName(QStringLiteral("addCustomer"));
-        addCustomer->setGeometry(QRect(410, 30, 121, 32));
+        addCustomer->setGeometry(QRect(140, 690, 121, 32));
+        scrollArea_2 = new QScrollArea(NewActivatedList);
+        scrollArea_2->setObjectName(QStringLiteral("scrollArea_2"));
+        scrollArea_2->setGeometry(QRect(510, 50, 361, 621));
+        scrollArea_2->setWidgetResizable(true);
+        scrollAreaWidgetContents_2 = new QWidget();
+        scrollAreaWidgetContents_2->setObjectName(QStringLiteral("scrollAreaWidgetContents_2"));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 359, 619));
+        verticalLayout_2 = new QVBoxLayout(scrollAreaWidgetContents_2);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        deactivatedListWidget = new QListWidget(scrollAreaWidgetContents_2);
+        deactivatedListWidget->setObjectName(QStringLiteral("deactivatedListWidget"));
+
+        verticalLayout_2->addWidget(deactivatedListWidget);
+
+        scrollArea_2->setWidget(scrollAreaWidgetContents_2);
+        label = new QLabel(NewActivatedList);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(130, 20, 181, 20));
+        label_2 = new QLabel(NewActivatedList);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(590, 20, 191, 21));
 
         retranslateUi(NewActivatedList);
 
@@ -65,6 +93,8 @@ public:
     {
         NewActivatedList->setWindowTitle(QApplication::translate("NewActivatedList", "Dialog", 0));
         addCustomer->setText(QApplication::translate("NewActivatedList", "Add Customer", 0));
+        label->setText(QApplication::translate("NewActivatedList", "Activated List of Customers", 0));
+        label_2->setText(QApplication::translate("NewActivatedList", "Deactivated List of Customers", 0));
     } // retranslateUi
 
 };

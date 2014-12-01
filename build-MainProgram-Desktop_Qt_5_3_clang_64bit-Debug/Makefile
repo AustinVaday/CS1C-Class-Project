@@ -227,6 +227,7 @@ DIST          = ../../../QT/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		../../../QT/5.3/clang_64/mkspecs/features/qt_config.prf \
 		../../../QT/5.3/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../QT/5.3/clang_64/mkspecs/features/spec_post.prf \
+		../CS1C-Project-Master/.qmake.stash \
 		../../../QT/5.3/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../QT/5.3/clang_64/mkspecs/features/default_pre.prf \
 		../../../QT/5.3/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -411,6 +412,7 @@ Makefile: ../CS1C-Project-Master/MainProgram.pro ../../../QT/5.3/clang_64/mkspec
 		../../../QT/5.3/clang_64/mkspecs/features/qt_config.prf \
 		../../../QT/5.3/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../QT/5.3/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../QT/5.3/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../QT/5.3/clang_64/mkspecs/features/default_pre.prf \
 		../../../QT/5.3/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -532,6 +534,7 @@ Makefile: ../CS1C-Project-Master/MainProgram.pro ../../../QT/5.3/clang_64/mkspec
 ../../../QT/5.3/clang_64/mkspecs/features/qt_config.prf:
 ../../../QT/5.3/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../../QT/5.3/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../QT/5.3/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../../QT/5.3/clang_64/mkspecs/features/default_pre.prf:
 ../../../QT/5.3/clang_64/mkspecs/features/mac/default_pre.prf:
@@ -1253,21 +1256,7 @@ find.o: ../CS1C-Project-Master/find.cpp ../CS1C-Project-Master/find.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o find.o ../CS1C-Project-Master/find.cpp
 
-WriteToCustomerFile.o: ../CS1C-Project-Master/WriteToCustomerFile.cpp ../CS1C-Project-Master/Header.h \
-		../CS1C-Project-Master/customerlistclass.h \
-		../CS1C-Project-Master/customerclass.h \
-		../CS1C-Project-Master/userclass.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
-		../CS1C-Project-Master/genericnodeclass.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QTextStream \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qtextstream.h \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLabel \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlabel.h
+WriteToCustomerFile.o: ../CS1C-Project-Master/WriteToCustomerFile.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o WriteToCustomerFile.o ../CS1C-Project-Master/WriteToCustomerFile.cpp
 
 qrc_TextFilesFolder.o: qrc_TextFilesFolder.cpp 
