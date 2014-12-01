@@ -154,5 +154,6 @@ qDebug() << "NewActivatedList";
 
 void NewActivatedList::on_addCustomer_clicked()
 {
+
     custAddBook->show();
 }
