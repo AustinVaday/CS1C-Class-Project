@@ -39,15 +39,30 @@ qDebug() << "Debugging: NewActivatedList - custAddBook : after mem alloc\n";
 
 //    ui->listWidget->setSortingEnabled(true);
 
+    if (customerList.isEmpty())
+    {
+        ui->addCustomer->show();
+    }
+    else
+    {
+        ui->addCustomer->hide();
         DisplayTheList(customerList);
-
+    }
 }
 
 
 
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+void NewActivatedList::DisplayTheList(CustomerList&list)
+=======
 void NewActivatedList::DisplayTheList(const CustomerList& list)
+>>>>>>> master
+=======
+void NewActivatedList::DisplayTheList(const CustomerList& list)
+>>>>>>> 7957c7d46b1f8d9bc0bd846639c2c42a42baa98f
 {
 qDebug() << "******Debugging: newactivatedlist - displayList******\n";
     ui->listWidget->clear();
@@ -146,3 +161,9 @@ qDebug() << "NewActivatedList";
 }
 
 
+
+void NewActivatedList::on_addCustomer_clicked()
+{
+
+    custAddBook->show();
+}
