@@ -24,7 +24,7 @@ signals:
 
 public slots:
 
-    void changeOrderText(QString orderText);
+//    void changeOrderText(QString);
 
    void on_LoginHelp_clicked();
 

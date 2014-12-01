@@ -7,7 +7,7 @@ OrderProduct::OrderProduct(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    connect(this, SIGNAL(helpOrderChanged()), parent, SLOT(changeOrderText()));
+//    connect(this, SIGNAL(helpOrderChanged(QString&)), parent, SLOT(changeOrderText(QString&)));
 }
 
 OrderProduct::~OrderProduct()
@@ -20,7 +20,10 @@ void OrderProduct::editText()
     ui->OrderingAProduct->setReadOnly(true);
 }
 
-void OrderProduct::on_OrderingAProduct_textChanged()
-{
-    emit textChanged();
-}
+//QString OrderProduct::on_OrderingAProduct_textChanged()
+//{
+//        QString newText;
+
+//        newText = ui->OrderingAProduct
+//        emit helpOrderChanged();
+//}

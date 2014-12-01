@@ -589,28 +589,17 @@ CustomerList& CustomerList::operator=(const CustomerList& list)
 
 qDebug() << "Line 590: Before CustomerLIst Assignment: " << this->OutputList();
 
+this->ClearList();
 
 // Only a temporary fix :( It's only adding to the queue not removing from it.
         if(!list.isEmpty())
         {
-                if(!(this->isEmpty()))
+                for(index = 0; index < list.Size(); index++)
                 {
-                        for(index = 0; index < list.Size(); index++)
-                        {
-                                 copyCustomer =list[index];
-                                 this->Enqueue(copyCustomer);
+                        copyCustomer =list[index];
+                        this->Enqueue(copyCustomer);
+                }
 
-                                 this->Dequeue();
-                        }
-                }
-                else
-                {
-                        for(index = 0; index < list.Size(); index++)
-                        {
-                                 copyCustomer =list[index];
-                                 this->Enqueue(copyCustomer);
-                        }
-                }
         }
 // AFter
 qDebug() << "Line 616: After CustomerLIst Assignment: " << this->OutputList();

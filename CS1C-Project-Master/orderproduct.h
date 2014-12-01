@@ -18,10 +18,10 @@ public:
     void editText();
 
 signals:
-    void helpOrderChanged();
+//    void helpOrderChanged();
 
-        private slots:
-    void on_OrderingAProduct_textChanged();
+private slots:
+//   void on_OrderingAProduct_textChanged();
 
         private:
     Ui::OrderProduct *ui;
