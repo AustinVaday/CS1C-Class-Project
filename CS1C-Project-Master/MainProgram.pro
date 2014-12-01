@@ -37,7 +37,8 @@ SOURCES += main.cpp\
     BrochureWindow.cpp \
     CustomerPlaceOrder.cpp \
     ViewProducts.cpp\
-    find.cpp
+    find.cpp \
+    WriteToCustomerFile.cpp
 
 HEADERS += MainProgramWindow.h \
         adminclass.h \

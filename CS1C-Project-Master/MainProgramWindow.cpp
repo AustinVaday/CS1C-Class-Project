@@ -226,12 +226,15 @@ void MainProgramWindow::on_actionHelp_triggered()
 
 void MainProgramWindow::updateCustomerList(CustomerList *list)
 {
+    customerList = *list;
+
     // TEMPORARY DISPLAY!!
     ui->tempDisplay->clear();
     ui->tempDisplay->setText(customerList.OutputList());
 
 
-    customerList = *list;
+    WriteToCustomerFile(customerList, ":/ActivatedListFile.txt");
+
 
     qDebug() << "List has finally reached the MainProgramWindow!";
 }

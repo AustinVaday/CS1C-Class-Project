@@ -2,7 +2,7 @@
 #include "ui_customeraddressbook.h"
 
 
-CustomerAddressBook::CustomerAddressBook(QWidget *parent, CustomerList &list, int listNum) :
+CustomerAddressBook::CustomerAddressBook(QWidget *parent, CustomerList &list, int listNum):
     QDialog(parent),
     ui(new Ui::CustomerAddressBook)
 {

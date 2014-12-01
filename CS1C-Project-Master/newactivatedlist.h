@@ -20,7 +20,7 @@ public:
     NewActivatedList(QWidget *parent, CustomerList &list);
 
     ~NewActivatedList();
-    void DisplayTheList(CustomerList list);
+    void DisplayTheList(CustomerList &list);
 
 signals:
 
@@ -30,6 +30,9 @@ public slots:
     void on_listItem_clicked(QListWidgetItem* item);
     void updateCustomerList(CustomerList *list);
 
+
+private slots:
+    void on_addCustomer_clicked();
 
 private:
     Ui::NewActivatedList *ui;
