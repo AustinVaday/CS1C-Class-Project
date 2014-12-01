@@ -56,6 +56,10 @@ bool CustomerList::isFull() const
     return _nodeCount == _listLimit;
 }
 
+Node<Customer>* CustomerList::GetHead() const
+{
+    return _head;
+}
 
 /**************************************************************************
  * IncrementCount
@@ -148,7 +152,7 @@ void CustomerList::ClearList()
     while(!isEmpty())
     {
 
-qDebug() << "******Debugging: Deleting customer in list.******\n";
+        qDebug() << "******Debugging: Deleting customer in list.******\n";
 
         Dequeue();
     }
@@ -169,29 +173,7 @@ qDebug() << "******Debugging: Deleting customer in list.******\n";
 
  //Not sure if I need this anymore
 
-
-///**************************************************************************
-// * CreateObject
-// * ------------------------------------------------------------------------
-// * This method will create an object and fill it with data
-// **************************************************************************/
-//template <class typeName>
-//Node<typeName>* List<typeName>::CreateObject(typeName data)
-//{
-//	//D E C L A R A T I O N S
-//	Node<typeName>*  _createNew;   //CALC - used to create dynamic memory
-//
-//	//Creates new dynamic memory
-//	_createNew  = new Node<typeName>;
-//
-//	//Sets the data of the newly created node
-//	_createNew->SetData(data);
-//
-//	//Returns a pointer
-//	return _createNew;
-//}
-
-   /****************************************************************
+  /****************************************************************
   * Enqueue
   * ------------------------------------------------------------------------
   * This method will allow the user to add a node to the queue. The list
@@ -323,9 +305,10 @@ qDebug() << "******Debugging: Deleting customer in list.******\n";
  * ------------------------------------------------------------------------
  * Removes the first node from the list
  **************************************************************************/
-void CustomerList::Dequeue()
+Customer CustomerList::Dequeue()
 {
     Node<Customer>* temp;
+    Customer tempCustomer;
 
     if(isEmpty())
     {
@@ -345,10 +328,18 @@ void CustomerList::Dequeue()
 
 
         //Calls Orphan to set all pointers to NULL
+
         temp->Orphan();
+
+        tempCustomer = temp->GetData();
+
+
         delete temp;
 
         temp = NULL;
+
+        return tempCustomer;
+
     }
 }
 
@@ -579,8 +570,6 @@ Customer CustomerList::operator[](int index) const
         }
 
         return traversePtr->GetData();
-
-
 }
 
 
@@ -631,17 +620,59 @@ bool CustomerList::isExist(Customer someCustomer)
         return true;
 }
 
-void CustomerList::SortList()
+void CustomerList::SortList(Node<Customer>* head)
 {
+    Node<Customer>* tempHead;
     int index;
     int temp;
+
+
+    tempHead = head;
 
     for(index = 1; index < Size(); index++)
     {
         temp = index;
 
+        while(temp > 0 && tempHead[temp-1].GetData().getUserName()> tempHead[temp].GetData().getUserName())
+        {
+            Swap(&tempHead[temp-1], &tempHead[temp]);
+
+            qDebug() << "Checking Name!" << tempHead[temp].GetData().getUserName();
+
+            temp--;
+        }
+
+
     }
 }
+
+
+void CustomerList::Swap(Node<Customer>* objectOne, Node<Customer>* objectTwo)
+{
+    QString tempName;
+    QString tempEmail;
+    QString tempPassword;
+    long    tempAccountNumber;
+    \
+
+
+    tempName          = objectOne->GetData().getUserName();
+    tempEmail         = objectOne->GetData().getEmail();
+    tempAccountNumber = objectOne->GetData().getAccountNum();
+    tempPassword      = objectOne->GetData().getPassword();
+
+    objectOne->GetData().setUserName(objectTwo->GetData().getUserName());
+    objectOne->GetData().setEmail(objectTwo->GetData().getEmail());
+    objectOne->GetData().setPassword(objectTwo->GetData().getPassword());
+    objectOne->GetData().setAccountNum(objectTwo->GetData().getAccountNum());
+    objectTwo->GetData().setUserName(tempName);
+    objectTwo->GetData().setEmail(tempEmail);
+    objectTwo->GetData().setPassword(tempPassword);
+    objectTwo->GetData().setAccountNum(tempAccountNumber);
+
+
+}
+
 
 Customer CustomerList::VerifyCustomer(QString userName, QString password)
 {

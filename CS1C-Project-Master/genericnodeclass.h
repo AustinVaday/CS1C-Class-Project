@@ -2,6 +2,7 @@
 #define GENERICNODECLASS_H
 #include <QDebug>
 #include <QString>
+#include "ExceptionHandlers.h"
 
 /**************************************************************************
  * CS1C Class Project
@@ -90,13 +91,86 @@ public:
      **********************************************************************/
     typeName GetData() const;
 
-     typeName* GetDataPtr() const;
+    typeName* GetDataPtr() const;
 
     Node<typeName>* GetPrevious() const;
 
     Node<typeName>* GetNext() const;
 
+    Node<typeName>* operator[](int index) const;
+
+   int GetListSize();
+
+
 };
+
+
+
+
+template<class typeName>
+int Node<typeName>::GetListSize()
+{
+    //D E C L A R A T I O N S
+    int size;
+    Node<typeName>* traverse;
+
+    traverse = this;
+    //I N I T I A L I Z A T I O N S
+    size = 0;
+
+
+
+   while( traverse != NULL)
+   {
+       traverse = traverse->_next;
+       size++;
+   }
+
+   return size;
+
+}
+
+
+//template <class typeName>
+//Node<typeName>* Node<typeName>::operator[](int index) const
+//{
+//    Node<typeName>* traversePtr;
+
+//    //        if(this->_next == NULL)
+//    //        {
+//    //            throw EmptyList();
+//    //        }
+////        else if(this->GetListSize() < index)
+////        {
+////            throw OutOfRange();
+////        }
+
+//        traversePtr = this;
+
+//        // NEED TO MAKE SURE 2 ACCOUNT NUMBERS CANNOT BE THE SAME //
+
+//        int i = 0;
+//        while (traversePtr !=NULL &&
+//                i <= index)
+//        {
+//            traversePtr = traversePtr->GetNext();
+
+//            i++;
+//        }
+
+//        if (traversePtr == NULL)
+//        {
+//            // throw exception class if not found.
+//            traversePtr = NULL;
+//            throw NotFound();
+//        }
+
+//        return traversePtr;
+//}
+
+
+
+
 /**************************************************************************
  * Node Constructor
  * ------------------------------------------------------------------------

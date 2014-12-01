@@ -31,6 +31,7 @@ class User
         void setEmail(QString newEmail);
         void setAccountNum(long newId);
         void setPassword(QString newPassword);
+        void setAccountAccess(bool access);
 
         //Accessors
         QString     getUserName() 	const;

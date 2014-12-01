@@ -14,8 +14,20 @@ Customer::Customer(QString userName,
     User::setEmail(email);
     User::setAccountNum(accountNum);
     User::setPassword(password);
-    activate = false;
+//    activate = false;
 
+}
+
+
+
+
+bool Customer::operator >(const Customer& otherCustomer) const
+{
+    return this->getUserName() > otherCustomer.getUserName();
+}
+bool Customer::operator <(const Customer& otherCustomer) const
+{
+    return this->getUserName() < otherCustomer.getUserName();
 }
 
 //Customer::Customer()

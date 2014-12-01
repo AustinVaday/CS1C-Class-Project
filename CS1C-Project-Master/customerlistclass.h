@@ -18,9 +18,9 @@ class CustomerList
 private:
     //M E M B E R ~ D E C L A R A T I O N S
 
-    Node<Customer>*             _head;
-    Node<Customer>*             _tail;
-    Node<Customer>*             _ptr;
+    Node<Customer>*         _head;
+    Node<Customer>*         _tail;
+    Node<Customer>*         _ptr;
     int      		  	 	_nodeCount;
     int 			  		_listLimit;
 
@@ -54,14 +54,17 @@ public:
      **********************************************************************/
     void Enqueue(Customer data);
 
+    void Swap(Node<Customer>* objectOne, Node<Customer>* objectTwo);
 
     /**********************************************************************
      * Dequeue
      * --------------------------------------------------------------------
      * Removes the first node from the list
      **********************************************************************/
-    void Dequeue();
+    Customer Dequeue();
 
+
+    Node<Customer>* GetHead() const;
 
     /**********************************************************************
      * IncrementCount
@@ -133,7 +136,8 @@ public:
 
 
 
-    void SortList();
+
+   void SortList(Node<Customer>* head);
 
 //	CustomerNode* FindCustomer(Customer someCustomer) const;
 
