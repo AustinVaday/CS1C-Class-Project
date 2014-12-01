@@ -20,7 +20,11 @@ public:
     NewActivatedList(QWidget *parent, CustomerList &list);
 
     ~NewActivatedList();
+<<<<<<< HEAD
     void DisplayTheList(CustomerList &list);
+=======
+    void DisplayTheList(const CustomerList& list);
+>>>>>>> master
 
 signals:
 

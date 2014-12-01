@@ -31,7 +31,7 @@ CustomerList::CustomerList()
     _head      = NULL;
     _tail      = NULL;
     _nodeCount = 0;
-    _listLimit = 30;
+    _listLimit = 100;
 }
 
 
@@ -205,6 +205,10 @@ qDebug() << "******Debugging: Deleting customer in list.******\n";
         //D E C L A R A T I O N S
      Node<Customer>*  _createNew;   //CALC - used to create dynamic memory
 
+     //D E C L A R A T I O N S
+     bool continueTraverse;
+     Node<Customer>* _cursor;
+
 
     //Begin If only if the list is empty
     if(isEmpty())
@@ -221,36 +225,86 @@ qDebug() << "******Debugging: Deleting customer in list.******\n";
         _head = _createNew;
         _tail = _createNew;
 
- //		cout << "\nAdding " << _createNew->GetData() << " to the list.\n";
+        //		cout << "\nAdding " << _createNew->GetData() << " to the list.\n";
         //increments the _listCount
         IncrementCount();
     }
-    //Checks the current _nodeCount against the pre-set _listLimit and
-    //enters after the first node is added
     else if(_nodeCount < _listLimit)
     {
-        //Creates new dynamic memory
-        _createNew  = new Node<Customer>;
+        //I N I T I A L I Z A T I O N S
+            _cursor          = _head;
+            continueTraverse = true;
+            //Creates new dynamic memory
+            _createNew  = new Node<Customer>;
 
-                //Sets the data of the newly created node
-        _createNew->SetData(data);
+             //Sets the data of the newly created node
+             _createNew->SetData(data);
+            //This "if-statement" is designed to add a node when there is only ONE node currently in the list
+            // *
+             if(_cursor->GetNext() == NULL)
+             {
+                if(_createNew->GetData().getUserName() < _cursor->GetData().getUserName())
+                {
+                    _createNew->SetNext(_cursor);
+                    _head = _createNew;
 
-        //Creates a new Object and stores data within it
+                }
+                else
+                {
+                    _createNew->SetPrevious(_cursor);
+                    _cursor->SetNext(_createNew);
+                    _tail = _createNew;
+                }
+             }
+             else
+             {    _cursor = _cursor->GetNext();
+                //This loop is designed to traverse the current list and stop at a place to ensure
+                //the node is added to the list according to alphabetical order
+                while(_cursor != NULL && continueTraverse)
+                {
+                    if((_createNew->GetData().getUserName() < _cursor->GetData().getUserName()))
+                    {
+                        continueTraverse = false;
+                        _createNew->SetNext(_cursor);
+                        _createNew->SetPrevious(_cursor->GetPrevious());
+                        _cursor-> SetPrevious(_createNew);
+                        _createNew->GetPrevious()->SetNext(_createNew);
+                   }
+                    else
+                    {
+                        _cursor = _cursor->GetNext();
+                    }
+                }
+
+                if(continueTraverse)
+                {
+                    _createNew->SetPrevious(_tail);
+                    _tail->SetNext(_createNew);
+                   _tail = _createNew;
+                }
+
+             }
 
 
-        _createNew->SetPrevious(_tail);
 
 
-        //Sets the node affiliated with tail to the new object
-        _tail->SetNext(_createNew);
+//        //Creates a new Object and stores data within it
 
 
-        //tail now points to the newly created object
-        _tail = _createNew;
- //		cout << "\nAdding " << _createNew->GetData() << " to the list.\n";
+//        _createNew->SetPrevious(_tail);
+
+
+//        //Sets the node affiliated with tail to the new object
+//        _tail->SetNext(_createNew);
+
+
+//        //tail now points to the newly created object
+//        _tail = _createNew;
+// //		cout << "\nAdding " << _createNew->GetData() << " to the list.\n";
 
         //Increments the current Count
         IncrementCount();
+
 
     }
     else
@@ -589,28 +643,17 @@ CustomerList& CustomerList::operator=(const CustomerList& list)
 
 qDebug() << "Line 590: Before CustomerLIst Assignment: " << this->OutputList();
 
+this->ClearList();
 
 // Only a temporary fix :( It's only adding to the queue not removing from it.
         if(!list.isEmpty())
         {
-                if(!(this->isEmpty()))
+                for(index = 0; index < list.Size(); index++)
                 {
-                        for(index = 0; index < list.Size(); index++)
-                        {
-                                 copyCustomer =list[index];
-                                 this->Enqueue(copyCustomer);
+                        copyCustomer =list[index];
+                        this->Enqueue(copyCustomer);
+                }
 
-                                 this->Dequeue();
-                        }
-                }
-                else
-                {
-                        for(index = 0; index < list.Size(); index++)
-                        {
-                                 copyCustomer =list[index];
-                                 this->Enqueue(copyCustomer);
-                        }
-                }
         }
 // AFter
 qDebug() << "Line 616: After CustomerLIst Assignment: " << this->OutputList();

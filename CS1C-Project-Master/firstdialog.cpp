@@ -16,5 +16,5 @@ FirstDialog::~FirstDialog()
 
 void FirstDialog::editText()
 {
-    ui->textBrowser->setReadOnly(false);
+        ui->help_CreateAnAccount->setReadOnly(false);
 }

@@ -24,19 +24,16 @@ signals:
 
 public slots:
 
+//    void changeOrderText(QString);
+
    void on_LoginHelp_clicked();
 
 private slots:
    void on_CreatingAnAccount_clicked();
 
-
-//   void on_HowToOrderAProduct_clicked();
-
    void on_HowToOrderAProduct_clicked();
 
-
    void on_RequestingABrochure_clicked();
-
 
    void on_NavigatingApp_clicked();
 
