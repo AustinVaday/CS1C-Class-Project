@@ -14,6 +14,7 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
 <<<<<<< HEAD
+<<<<<<< HEAD
         MainProgramWindow.cpp \
         adminclass.cpp \
         userclass.cpp \
@@ -41,6 +42,8 @@ SOURCES += main.cpp\
     find.cpp \
     WriteToCustomerFile.cpp
 =======
+=======
+>>>>>>> 7957c7d46b1f8d9bc0bd846639c2c42a42baa98f
 	MainProgramWindow.cpp \
 	adminclass.cpp \
 	userclass.cpp \
@@ -65,7 +68,10 @@ SOURCES += main.cpp\
 	CustomerPlaceOrder.cpp \
 	ViewProducts.cpp\
 	find.cpp
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> 7957c7d46b1f8d9bc0bd846639c2c42a42baa98f
 
 HEADERS += MainProgramWindow.h \
 	adminclass.h \

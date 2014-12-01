@@ -21,10 +21,14 @@ public:
 
     ~NewActivatedList();
 <<<<<<< HEAD
+<<<<<<< HEAD
     void DisplayTheList(CustomerList &list);
 =======
     void DisplayTheList(const CustomerList& list);
 >>>>>>> master
+=======
+    void DisplayTheList(const CustomerList& list);
+>>>>>>> 7957c7d46b1f8d9bc0bd846639c2c42a42baa98f
 
 signals:
 
