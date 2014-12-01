@@ -50,6 +50,8 @@ private slots:
 
     void on_searchButton_clicked();
 
+     void on_ActivatedCustomer_clicked();
+
 signals:
     void customerListChanged(CustomerList* list);
 
@@ -59,6 +61,7 @@ private:
     QString oldEmail;
     QString oldId;
     QString oldPassword;
+    bool    oldIsActivated;
     Mode currentMode;
 
 

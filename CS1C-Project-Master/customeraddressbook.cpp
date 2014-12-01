@@ -8,10 +8,6 @@ CustomerAddressBook::CustomerAddressBook(QWidget *parent, CustomerList &list, in
 {
     customerList = list;
     Customer  customer;
-    // ***DEBUG** List is read.
-qDebug() << "2) Debugging: CustomerAddress window: Output customerList - Line 12";
-qDebug() << customerList.OutputList();
-
 
     // CONNECT THE EDIT, REMOVE, AND SUBMIT BUTTONS
     /***********************************************************
@@ -29,6 +25,7 @@ qDebug() << customerList.OutputList();
     ui->EmailEdit->setReadOnly(true);
     ui->AccountIdEdit->setReadOnly(true);
     ui->PasswordEdit->setReadOnly(true);
+    ui->ActivatedCustomer->setCheckable(false);
 
     ui->addButton->show();
     ui->submitButton->hide();
@@ -79,6 +76,8 @@ void CustomerAddressBook::updateInterface (Mode mode)
         ui->EmailEdit->setReadOnly(false);
         ui->AccountIdEdit->setReadOnly(false);
         ui->PasswordEdit->setReadOnly(false);
+        ui->ActivatedCustomer->setCheckable(true);
+
 
         ui->NameEdit->setFocus(Qt::OtherFocusReason);
 
@@ -104,6 +103,7 @@ void CustomerAddressBook::updateInterface (Mode mode)
             ui->EmailEdit->clear();
             ui->AccountIdEdit->clear();
             ui->PasswordEdit->clear();
+            ui->ActivatedCustomer->setChecked(false);
         }
 
         int number = customerList.Size();
@@ -113,6 +113,8 @@ void CustomerAddressBook::updateInterface (Mode mode)
         ui->removeButton->setEnabled(number>=1);
         ui->nextCustomerButton->setEnabled(number>1);
         ui->prevCustomerButton->setEnabled(number>1);
+
+//        ui->ActivatedCustomer->setCheckable(false);
 
         ui->addButton->setEnabled(true);
 
@@ -134,18 +136,26 @@ void CustomerAddressBook::SetCurrentDisplay(Customer* someCustomer)
     ui->EmailEdit->setText(someCustomer->getEmail());
     ui->AccountIdEdit->setText(QString::number(someCustomer->getAccountNum()));
     ui->PasswordEdit->setText(someCustomer->getPassword());
+    if(someCustomer->getAccess())
+    {
+        ui->ActivatedCustomer->setChecked(true);
+    }
+    else
+    {
+        ui->ActivatedCustomer->setChecked(false);
+    }
 }
 
 void CustomerAddressBook::on_addButton_clicked()
 {
 
     // store old information into variables
-    // (in case they cancel submition)
+    // (in case they submition)
     oldName = ui->NameEdit->text();
     oldEmail= ui->EmailEdit->text();
     oldId = ui->AccountIdEdit->text();
     oldPassword = ui->PasswordEdit->text();
-
+    oldIsActivated = ui->ActivatedCustomer->isChecked();
     //disable the next and previous buttons
     ui->nextCustomerButton->setEnabled(false);
     ui->prevCustomerButton->setEnabled(false);
@@ -155,6 +165,7 @@ void CustomerAddressBook::on_addButton_clicked()
     ui->EmailEdit->clear();
     ui->AccountIdEdit->clear();
     ui->PasswordEdit->clear();
+    ui->ActivatedCustomer->setChecked(false);
 
     updateInterface(ADDING_MODE);
 
@@ -168,6 +179,11 @@ void CustomerAddressBook::on_submitButton_clicked()
     QString email = ui->EmailEdit->text();
     QString idString = ui->AccountIdEdit->text();
     QString pass = ui->PasswordEdit->text();
+    bool  activationStatus = false;
+    if(ui->ActivatedCustomer->isChecked())
+    {
+        activationStatus = true;
+    }
 
     qDebug() << "ooo";
 
@@ -178,6 +194,7 @@ void CustomerAddressBook::on_submitButton_clicked()
 
 
         Customer customer (name, email, idString.toLong(), pass);
+        customer.setAccountAccess(activationStatus);
 
         qDebug() << "ooo2";
 
@@ -202,6 +219,12 @@ void CustomerAddressBook::on_submitButton_clicked()
         {
             QMessageBox::information(this, tr("Empty Field"),
                        tr("Please enter in a password."));
+        }
+        // check if both are not checked
+        else if (!ui->ActivatedCustomer->isChecked())
+        {
+            QMessageBox::information(this, tr("Empty Field"),
+                       tr("Please check for brochure access or not"));
         }
         else
          {
@@ -246,6 +269,7 @@ void CustomerAddressBook::on_submitButton_clicked()
             ui->EmailEdit->setReadOnly(true);
             ui->AccountIdEdit->setReadOnly(true);
             ui->PasswordEdit->setReadOnly(true);
+            ui->ActivatedCustomer->setCheckable(false);
 
 
          }
@@ -255,10 +279,10 @@ void CustomerAddressBook::on_submitButton_clicked()
     else if (currentMode == EDITING_MODE)
     {
         qDebug() << "ooo4";
-
+        bool change = true;
 
         Customer newCust (name, email, idString.toLong(), pass);
-        bool change = true;
+        newCust.setAccountAccess(activationStatus);
 
          Customer* customerPtr = customerList.ReturnCustomerPtr(oldName);
 
@@ -280,6 +304,10 @@ void CustomerAddressBook::on_submitButton_clicked()
         else if (oldPassword!= pass)
         {
             customerPtr->setPassword(pass);
+        }
+        else if (oldIsActivated != activationStatus)
+        {
+            ui->ActivatedCustomer->setChecked(true);
         }
         else if (customerList.isExist(newCust))
         {
@@ -317,6 +345,14 @@ void CustomerAddressBook::on_cancelButton_clicked()
     ui->EmailEdit->setText(oldEmail);
     ui->AccountIdEdit->setText(oldId);
     ui->PasswordEdit->setText(oldPassword);
+    if (oldIsActivated)
+    {
+        ui->ActivatedCustomer->setChecked(true);
+    }
+    else
+    {
+        ui->ActivatedCustomer->setChecked(false);
+    }
 
 //    // set read only text on construct
 //    ui->NameEdit->setReadOnly(true);
@@ -504,6 +540,17 @@ void CustomerAddressBook::on_searchButton_clicked()
 
 }
 
+void CustomerAddressBook::on_ActivatedCustomer_clicked()
+{
+    QString name = ui->NameEdit->text();
+
+    Customer *custPtr = customerList.ReturnCustomerPtr(name);
+
+    custPtr->setAccountAccess(true);
+
+    custPtr = NULL;
+
+}
 
 
 // XTRA DOCUMENTATION!!!!!!!
@@ -532,3 +579,16 @@ void CustomerAddressBook::on_searchButton_clicked()
 
 
 
+//void CustomerAddressBook::on_ActivatedCustomer_clicked()
+//{
+//    QString name = ui->NameEdit->text();
+
+//    Customer *custPtr = customerList.ReturnCustomerPtr(name);
+
+//    custPtr->SetActivationStatus(true);
+//}
+
+//void CustomerAddressBook::on_DeactivatedCustomer_clicked()
+//{
+
+//}

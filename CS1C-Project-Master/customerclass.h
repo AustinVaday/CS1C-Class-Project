@@ -28,12 +28,12 @@ class Customer : public User
         //	into the transaction history of the software for the
         //	administrator to utilize
 
-        bool requestBrochure() const;
+//        bool requestBrochure() const;
 
 
     private:
+        //none
 
-        bool activate;
 };
 
 
