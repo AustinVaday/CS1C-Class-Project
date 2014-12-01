@@ -131,6 +131,10 @@ public:
      **********************************************************************/
     QString   OutputList() const;
 
+
+
+    void SortList();
+
 //	CustomerNode* FindCustomer(Customer someCustomer) const;
 
     // overload
@@ -147,6 +151,9 @@ public:
 
     Customer* ReturnCustomerPtr(QString userName);
     // Returns customer pointer to calling function
+
+    Customer VerifyCustomer(QString userName, QString password);
+
 
     int FindCustomerLocation (QString userName);
     // Returns the integer location of customer

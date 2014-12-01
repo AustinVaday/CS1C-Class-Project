@@ -70,13 +70,14 @@ qDebug() << "MainProgramWindow -- Destructor Test #5";
 
 void MainProgramWindow::on_pushButton_Login_clicked()
 {
-     Admin testAdmin("","admin1234@gmail.com", 1234, "");
+     Admin testAdmin("admin","admin1234@gmail.com", 1234, "password");
 
     bool validInput = false;
-    QString tempName;
-    QString tempPassword;
-    Login loginWindow;
+    QString    tempName;
+    QString    tempPassword;
+    Login      loginWindow;
     ErrorLogin errorWindow;
+    Customer tempCustomer;
 
 
         loginWindow.setModal(true);
@@ -93,12 +94,16 @@ void MainProgramWindow::on_pushButton_Login_clicked()
             validInput = true;
             SetAdminLogin(true);
         }
+        else
+        {
+           tempCustomer =  customerList.VerifyCustomer(tempName, tempPassword);
 
-    if(tempName == "Customer" && tempPassword == "1234")
-    {
-        validInput = true;
-        SetCustomerLogin(true);
-    }
+           if(tempCustomer.getUserName() != " ")
+           {
+               validInput = true;
+               SetCustomerLogin(true);
+           }
+        }
 
         if(!loginWindow.on_buttonBox_loginPress_rejected())
         {

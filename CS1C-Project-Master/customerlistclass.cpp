@@ -578,6 +578,56 @@ bool CustomerList::isExist(Customer someCustomer)
         return true;
 }
 
+void CustomerList::SortList()
+{
+    int index;
+    int temp;
+
+    for(index = 1; index < GetSize(); index++)
+    {
+        temp = index;
+
+        while()
+    }
+}
+
+Customer CustomerList::VerifyCustomer(QString userName, QString password)
+{
+   Node<Customer>* cursor;
+   Customer        tempCustomer;
+   QString         name;
+   QString         pw;
+
+   tempCustomer.setValues(" "," ",0," ");
+
+   bool found;
+
+   cursor = _head;
+   found  = false;
+
+
+
+   while(cursor != NULL && !found)
+   {
+
+        name = cursor->GetData().getUserName();
+        pw   = cursor->GetData().getPassword();
+
+       if((name == userName) && (pw == password))
+       {
+           tempCustomer = cursor->GetData();
+           found = true;
+
+       }
+       else
+       {
+           cursor = cursor->GetNext();
+       }
+   }
+    cursor = NULL;
+
+   return tempCustomer;
+}
 
 CustomerList& CustomerList::operator=(const CustomerList& list)
 {
