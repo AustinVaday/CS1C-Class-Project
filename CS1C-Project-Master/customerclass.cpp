@@ -18,6 +18,18 @@ Customer::Customer(QString userName,
 
 }
 
+
+
+
+bool Customer::operator >(const Customer& otherCustomer) const
+{
+    return this->getUserName() > otherCustomer.getUserName();
+}
+bool Customer::operator <(const Customer& otherCustomer) const
+{
+    return this->getUserName() < otherCustomer.getUserName();
+}
+
 //Customer::Customer()
 //{
 //

@@ -438,6 +438,11 @@ void CustomerAddressBook::on_editButton_clicked()
     oldPassword = ui->PasswordEdit->text();
 
     updateInterface(EDITING_MODE);
+
+    customerList.SortList(customerList.GetHead());
+
+
+
 }
 
 void CustomerAddressBook::on_removeButton_clicked()

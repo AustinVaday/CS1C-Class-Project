@@ -15,6 +15,9 @@ class Customer : public User
                  QString password);
         // Nondefault constructor
 
+        bool operator >(const Customer& otherCustomer) const;
+        bool operator <(const Customer& otherCustomer) const;
+
 
         // Accessors
         // Product viewPricesAndPackages(Product currentProductLine) const;
