@@ -10,6 +10,7 @@ LoginHelp::LoginHelp(QWidget *parent) :
 
 LoginHelp::~LoginHelp()
 {
+
     delete ui;
 }
 

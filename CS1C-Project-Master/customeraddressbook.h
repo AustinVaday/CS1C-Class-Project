@@ -5,9 +5,6 @@
 #include <QDialog>
 #include "customerlistclass.h"
 #include "customerclass.h"
-
-//#include "newactivatedlist.h"
-
 #include "find.h"
 #include <QMessageBox>
 #include <QString>

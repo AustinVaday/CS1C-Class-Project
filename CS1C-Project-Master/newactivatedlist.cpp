@@ -47,7 +47,7 @@ qDebug() << "Debugging: NewActivatedList - custAddBook : after mem alloc\n";
 
 
 
-void NewActivatedList::DisplayTheList(CustomerList list)
+void NewActivatedList::DisplayTheList(const CustomerList& list)
 {
 qDebug() << "******Debugging: newactivatedlist - displayList******\n";
     ui->listWidget->clear();
@@ -110,13 +110,15 @@ void NewActivatedList::on_listItem_clicked(QListWidgetItem* item)
 //   custAddBook->setModal(true);
 //   custAddBook->exec();
 
+//qDebug() <<
+
 qDebug() << "******Debugging: NewActivatedList - custAddBook : Deconstructor******\n";
    delete custAddBook;
 
    // find current list number
    int listItemNum = ui->listWidget->row(item);
 
-   qDebug() << "Num is: " << listItemNum;
+   qDebug() << "CustAddBook Num is: " << listItemNum;
 
    custAddBook = new CustomerAddressBook(this, customerList, listItemNum);
 
