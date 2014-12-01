@@ -13,6 +13,37 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
+<<<<<<< HEAD
+<<<<<<< HEAD
+        MainProgramWindow.cpp \
+        adminclass.cpp \
+        userclass.cpp \
+        customerlistclass.cpp \
+        customerclass.cpp \
+        ReadCustomerFile.cpp \
+        newactivatedlist.cpp\
+        maindisplay.cpp \
+        AdminWindow.cpp \
+        ProductClass.cpp \
+        ProductListClass.cpp\
+        customeraddressbook.cpp\
+        errorlogin.cpp\
+        editHelpText.cpp\
+        firstdialog.cpp \
+        helpwindow.cpp \
+        login.cpp \
+        loginhelp.cpp \
+        navigatingapp.cpp \
+        requestbrochure.cpp\
+        orderproduct.cpp \
+    BrochureWindow.cpp \
+    CustomerPlaceOrder.cpp \
+    ViewProducts.cpp\
+    find.cpp \
+    WriteToCustomerFile.cpp
+=======
+=======
+>>>>>>> 7957c7d46b1f8d9bc0bd846639c2c42a42baa98f
 	MainProgramWindow.cpp \
 	adminclass.cpp \
 	userclass.cpp \
@@ -37,6 +68,10 @@ SOURCES += main.cpp\
 	CustomerPlaceOrder.cpp \
 	ViewProducts.cpp\
 	find.cpp
+<<<<<<< HEAD
+>>>>>>> master
+=======
+>>>>>>> 7957c7d46b1f8d9bc0bd846639c2c42a42baa98f
 
 HEADERS += MainProgramWindow.h \
 	adminclass.h \
