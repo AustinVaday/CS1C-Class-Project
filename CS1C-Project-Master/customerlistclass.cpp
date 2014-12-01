@@ -572,44 +572,44 @@ Customer CustomerList::operator[](int index) const
         return traversePtr->GetData();
 }
 
+bool CustomerList::isExistSameName(QString name)
+{
+    for (int i = 0; i < this->Size(); i++)
+    {
+        if (operator[](i).getUserName() == name)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
 
 bool CustomerList::isExist(Customer someCustomer)
 {
         Node<Customer> * traversePtr;
 
-        qDebug() << "ooo0009";
-
         if(isEmpty())
         {
             return false;
         }
-        qDebug() << "ooo00010";
 
         // NEED TO MAKE SURE 2 ACCOUNT NUMBERS CANNOT BE THE SAME //
         traversePtr = _head;
         int i = 0;
-        qDebug() << Size() << _head;
+
         while (i < Size() && traversePtr !=NULL)
         {
-            qDebug() << "outputting\n" << traversePtr->GetData().OutputData();
-            qDebug() << "ooo11";
-
-
 
             if (someCustomer == traversePtr->GetData())
             {
-                qDebug() << "ooo12";
                 return true;
             }
 
-            qDebug() << "ooo13";
-
             traversePtr = traversePtr->GetNext();
-            qDebug() << "ooo14";
 
             i++;
         }
-        qDebug() << "ooo11";
 
         if (traversePtr == NULL)
         {

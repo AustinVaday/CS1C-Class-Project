@@ -166,6 +166,8 @@ public:
 
     CustomerList& operator=(const CustomerList&);
 
+    bool isExistSameName(QString name);
+
     bool isExist(Customer someCustomer);
 
 
