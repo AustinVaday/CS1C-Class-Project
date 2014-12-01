@@ -70,26 +70,14 @@ qDebug() << "MainProgramWindow -- Destructor Test #5";
 
 void MainProgramWindow::on_pushButton_Login_clicked()
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-     Admin testAdmin("admin","admin1234@gmail.com", 1234, "password");
 
-    bool validInput = false;
-=======
-=======
-//<<<<<<< HEAD
->>>>>>> master
     Admin testAdmin("admin","admin1234@gmail.com", 1234, "password");
 
     int        customerLocation;
-<<<<<<< HEAD
->>>>>>> 98c3417152d179564a28b0b12a60cb0b01ab74d4
-=======
-//=======
 
     bool validInput = false;
-//>>>>>>> Customer-Product-Access
->>>>>>> master
+
+
     QString    tempName;
     QString    tempPassword;
     Login      loginWindow;
@@ -107,22 +95,7 @@ void MainProgramWindow::on_pushButton_Login_clicked()
         SetUsername(tempName);
         SetPassword(tempPassword);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-//<<<<<<< HEAD
-    if(testAdmin.checkAdmin(tempName, tempPassword ))
-    {
-         validInput = true;
-         SetAdminLogin(true);
-    }
-    else
-    {
-        try
-        {
-            customerLocation =  customerList.FindCustomerLocation(tempName);
-//=======
->>>>>>> master
+
         if(testAdmin.checkAdmin(tempName, tempPassword ))
         {
             validInput = true;
@@ -138,31 +111,8 @@ void MainProgramWindow::on_pushButton_Login_clicked()
                SetCustomerLogin(true);
            }
         }
-<<<<<<< HEAD
-=======
-    if(testAdmin.checkAdmin(tempName, tempPassword ))
-    {
-         validInput = true;
-         SetAdminLogin(true);
-    }
-    else
-    {
-        try
-        {
-            customerLocation =  customerList.FindCustomerLocation(tempName);
->>>>>>> 98c3417152d179564a28b0b12a60cb0b01ab74d4
-=======
-//>>>>>>> Customer-Product-Access
->>>>>>> master
 
-        }
-        catch(...)
-        {
-            QMessageBox::information(this, tr("Not Found"),
-                       tr("Enter it again."));
-        }
 
-    }
 
 
     if(!loginWindow.on_buttonBox_loginPress_rejected())
