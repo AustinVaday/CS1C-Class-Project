@@ -57,6 +57,11 @@ void User::setPassword(QString newPassword)
     userPassword = newPassword;
 }
 
+void User::setAccountAccess(bool access)
+{
+    accountAccess = access;
+}
+
 long User::getAccountNum() const
 {
     return accountNum;
@@ -138,6 +143,7 @@ QString  User::OutputData() const
     out << "Email address: " << userEmail << endl;
     out << "Account number: " <<  accountNum << endl;
     out << "Password: " << userPassword << endl;
+    out << "Temp... Account Access: " << accountAccess << endl;
     out << "........................................................\n";
 
     return str;
