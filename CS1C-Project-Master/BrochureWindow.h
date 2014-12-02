@@ -5,6 +5,7 @@
 #include "ProductClass.h"
 #include "ProductListClass.h"
 #include "ViewProducts.h"
+#include "ImageViewer.h"
 
 namespace Ui {
 class BrochureWindow;
@@ -31,6 +32,7 @@ private slots:
 private:
     Ui::BrochureWindow* ui;
     ViewProducts*       vpWindow;
+    ImageViewer*        image;
 };
 
 #endif // BROCHUREWINDOW_H

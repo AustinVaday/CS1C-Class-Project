@@ -6,6 +6,7 @@ BrochureWindow::BrochureWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::BrochureWindow)
 {
+    image    = new ImageViewer;
     vpWindow = new ViewProducts;
     ui->setupUi(this);
 }
@@ -22,5 +23,6 @@ void BrochureWindow::on_actionHELP_triggered()
 
 void BrochureWindow::on_button_viewProducts_clicked()
 {
+    image->show();
     vpWindow->show();
 }
