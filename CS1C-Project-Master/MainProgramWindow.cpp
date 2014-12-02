@@ -220,3 +220,11 @@ void MainProgramWindow::updateCustomerList(CustomerList *list)
 
     qDebug() << "List has finally reached the MainProgramWindow!";
 }
+
+void MainProgramWindow::on_pushButton_Guest_clicked()
+{
+    SellPoint sellWindow;
+
+    sellWindow.setModal(true);
+    sellWindow.exec();
+}

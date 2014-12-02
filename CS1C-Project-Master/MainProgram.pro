@@ -40,7 +40,8 @@ SOURCES += main.cpp\
     ViewProducts.cpp\
     find.cpp \
     customeraccountwindow.cpp \
-    ImageViewer.cpp
+    ImageViewer.cpp \
+    sellpoint.cpp
 
 HEADERS += MainProgramWindow.h \
         adminclass.h \
@@ -70,7 +71,8 @@ HEADERS += MainProgramWindow.h \
     ViewProducts.h\
     find.h \
     customeraccountwindow.h \
-    ImageViewer.h
+    ImageViewer.h \
+    sellpoint.h
 
 FORMS   += mainprogramwindow.ui \
         newactivatedlist.ui \
@@ -91,7 +93,8 @@ FORMS   += mainprogramwindow.ui \
     ViewProducts.ui\
     find.ui \
     customeraccountwindow.ui \
-    ImageViewer.ui
+    ImageViewer.ui \
+    sellpoint.ui
 
 RESOURCES += \
     TextFilesFolder.qrc \

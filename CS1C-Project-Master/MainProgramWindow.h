@@ -20,6 +20,7 @@
 #include "ProductListClass.h"
 #include "ProductClass.h"
 #include "ViewProducts.h"
+#include "sellpoint.h"
 
 #include <QDebug>
 
@@ -93,6 +94,8 @@ private slots:
     void on_pushButton_Login_clicked();
 
     void on_actionHelp_triggered();
+
+    void on_pushButton_Guest_clicked();
 
 private:
     Ui::MainProgramWindow *ui;
