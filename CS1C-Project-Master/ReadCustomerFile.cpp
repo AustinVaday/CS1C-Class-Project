@@ -39,8 +39,6 @@ void ReadCustomerFile(CustomerList& list, QString fileName)
 
     }
 
-
     file.close();
-
 
 }
