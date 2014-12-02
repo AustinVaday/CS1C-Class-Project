@@ -20,8 +20,11 @@
 #include "ProductListClass.h"
 #include "ProductClass.h"
 #include "ViewProducts.h"
-#include "customerlistclass.h"
+//#include "customerlistclass.h"
 #include "ExceptionHandlers.h"
+#include "sellpoint.h"
+#include "guarantee.h"
+#include "guestwindow.h"
 
 #include <QDebug>
 
@@ -97,6 +100,8 @@ private slots:
 
     void on_actionHelp_triggered();
 
+    void on_pushButton_Guest_clicked();
+
 private:
     Ui::MainProgramWindow *ui;
 
@@ -107,6 +112,8 @@ private:
     // Customer / Brochure Data Memeber Placeholder
 
     HelpWindow  *hWindow;
+
+    GuestWindow *gWindow;
     // Pointer of type HelpWindow
     //  Used to create a help window for the user
 

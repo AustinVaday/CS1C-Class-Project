@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -38,8 +39,11 @@ SOURCES += main.cpp\
     ViewProducts.cpp\
     find.cpp \
     WriteToCustomerFile.cpp \
-
-
+    customeraccountwindow.cpp \
+    ImageViewer.cpp \
+    sellpoint.cpp \
+    guarantee.cpp \
+    guestwindow.cpp
 
 HEADERS += MainProgramWindow.h \
 	adminclass.h \
@@ -66,7 +70,12 @@ HEADERS += MainProgramWindow.h \
     BrochureWindow.h \
     CustomerPlaceOrder.h \
     ViewProducts.h\
-    find.h
+    find.h \
+    customeraccountwindow.h \
+    ImageViewer.h \
+    sellpoint.h \
+    guarantee.h \
+    guestwindow.h
 
 FORMS   += mainprogramwindow.ui \
 	newactivatedlist.ui \
@@ -84,10 +93,16 @@ FORMS   += mainprogramwindow.ui \
     BrochureWindow.ui \
     CustomerPlaceOrder.ui \
     ViewProducts.ui\
-    find.ui
+    find.ui \
+    customeraccountwindow.ui \
+    ImageViewer.ui \
+    sellpoint.ui \
+    guarantee.ui \
+    guestwindow.ui
 
 RESOURCES += \
-    TextFilesFolder.qrc
+    TextFilesFolder.qrc \
+    Images.qrc
 
 OTHER_FILES += \
     TestFile.txt

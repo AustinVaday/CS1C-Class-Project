@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "ProductClass.h"
 #include "ProductListClass.h"
+#include "ImageViewer.h"
 
 namespace Ui {
 class ViewProducts;
@@ -14,14 +15,20 @@ class ViewProducts : public QWidget
     Q_OBJECT
 
 public:
-    explicit ViewProducts(QWidget *parent = 0, ProductList* lst = 0);
+    explicit ViewProducts(QWidget *parent = 0);
+
+
+
     ~ViewProducts();
 
-signals:
+
+private slots:
 
 
 private:
     Ui::ViewProducts *ui;
+    ImageViewer* image1;
+
 };
 
 #endif // VIEWPRODUCTS_H
