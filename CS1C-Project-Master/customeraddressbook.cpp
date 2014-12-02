@@ -71,13 +71,22 @@ void CustomerAddressBook::updateInterface (Mode mode)
     {
     case ADDING_MODE:
     case EDITING_MODE:
+        qDebug() << "Line 74 customerAddressBook.cpp";
+
         // set read only text on construct
         ui->NameEdit->setReadOnly(false);
         ui->EmailEdit->setReadOnly(false);
         ui->AccountIdEdit->setReadOnly(false);
         ui->PasswordEdit->setReadOnly(false);
-        ui->ActivatedCustomer->setEnabled(true);
 
+        if (currentMode == EDITING_MODE)
+        {
+            ui->ActivatedCustomer->setEnabled(true);
+        }
+        else
+        {
+            ui->ActivatedCustomer->hide();
+        }
 
         ui->NameEdit->setFocus(Qt::OtherFocusReason);
 
@@ -99,6 +108,7 @@ void CustomerAddressBook::updateInterface (Mode mode)
 
     case NAVIGATION_MODE:
 
+        ui->ActivatedCustomer->show();
         if (customerList.isEmpty())
         {
             ui->NameEdit->clear();
@@ -173,7 +183,9 @@ void CustomerAddressBook::on_addButton_clicked()
     ui->PasswordEdit->clear();
     ui->ActivatedCustomer->setChecked(false);
 
+    qDebug() << "CustomerAddressBook.cpp -- on_addButton_clicked() -- line 176";
     updateInterface(ADDING_MODE);
+    qDebug() << "CustomerAddressBook.cpp -- on_addButton_clicked() -- line 178";
 
 
 }
@@ -300,7 +312,7 @@ void CustomerAddressBook::on_submitButton_clicked()
 
          }
 
-         if (customerList.isExist(newCust))
+         if (customerList.isExist(newCust) && !change)
          {
              QMessageBox::information(this, tr("Edit Unsuccessful"),
                tr("Sorry, \"%1\" is already in your address book.").arg(name));

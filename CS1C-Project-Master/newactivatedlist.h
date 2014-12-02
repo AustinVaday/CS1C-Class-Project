@@ -23,6 +23,9 @@ public:
 
     void DisplayTheList(const CustomerList& list);
 
+    int UpdateNumDeactivatedCustomers();
+    int UpdateNumActivatedCustomers();
+
 signals:
 
     void customerListChanged(CustomerList* list);
@@ -34,6 +37,15 @@ public slots:
 
 private slots:
     void on_addCustomer_clicked();
+
+//    void on_addToActivatedListButton_clicked();
+
+    void on_addToDeactivatedListButton_clicked();
+
+
+    void on_addToActivatedListButton_clicked();
+
+    void on_masterModeButton_clicked();
 
 private:
     Ui::NewActivatedList *ui;
