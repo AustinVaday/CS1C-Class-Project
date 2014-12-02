@@ -144,36 +144,36 @@ qDebug() << "******Debugging: NewActivatedList - Deleting custAddBook******\n";
 
 qDebug() << "******Debugging: NewActivatedList - Deleting ui******\n";
         delete ui;
-
+qDebug() << "****AFTER DELETING UI******";
 
 
 //    customerList = 0;
 }
 
-void NewActivatedList::on_listItem_clicked(QListWidgetItem* item)
-{
+//void NewActivatedList::on_listItem_clicked(QListWidgetItem* item)
+//{
 //   QMessageBox::information(this,"Hello!","You clicked\n \""+item->text()+"\"");
 
-//   custAddBook->setModal(true);
-//   custAddBook->exec();
+////   custAddBook->setModal(true);
+////   custAddBook->exec();
 
-//qDebug() <<
+////qDebug() <<
 
-qDebug() << "******Debugging: NewActivatedList - custAddBook : Deconstructor******\n";
-   delete custAddBook;
+//qDebug() << "******Debugging: NewActivatedList - custAddBook : Deconstructor******\n";
+//   delete custAddBook;
 
-   // find current list number
-   int listItemNum = ui->listWidget->row(item);
+//   // find current list number
+//   int listItemNum = ui->listWidget->row(item);
 
-   qDebug() << "CustAddBook Num is: " << listItemNum;
+//   qDebug() << "CustAddBook Num is: " << listItemNum;
 
-   custAddBook = new CustomerAddressBook(this, customerList, listItemNum);
-
-
-   custAddBook->show();
+//   custAddBook = new CustomerAddressBook(this, customerList, listItemNum);
 
 
-}
+//   custAddBook->show();
+
+
+//}
 
 
 void NewActivatedList::updateCustomerList(CustomerList *list)

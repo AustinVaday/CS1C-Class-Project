@@ -586,7 +586,7 @@ bool CustomerList::isExistSameName(QString name)
     }
     catch(NotFound)
     {
-        qDebug() << "customerListClass.cpp -- line 589";
+        qDebug() << "CATCH : customerListClass.cpp -- line 589";
     }
 
     return false;
@@ -601,7 +601,6 @@ bool CustomerList::isExist(Customer someCustomer)
             return false;
         }
 
-        // NEED TO MAKE SURE 2 ACCOUNT NUMBERS CANNOT BE THE SAME //
         traversePtr = _head;
         int i = 0;
 
