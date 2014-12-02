@@ -118,6 +118,14 @@ void CustomerAddressBook::updateInterface (Mode mode)
             ui->ActivatedCustomer->setChecked(false);
         }
 
+        // set read only text on construct
+        ui->NameEdit->setReadOnly(true);
+        ui->EmailEdit->setReadOnly(true);
+        ui->AccountIdEdit->setReadOnly(true);
+        ui->PasswordEdit->setReadOnly(true);
+        ui->ActivatedCustomer->setEnabled(false);
+
+
         int number = customerList.Size();
 
         // enables
@@ -126,7 +134,6 @@ void CustomerAddressBook::updateInterface (Mode mode)
         ui->nextCustomerButton->setEnabled(number>1);
         ui->prevCustomerButton->setEnabled(number>1);
 
-        ui->ActivatedCustomer->setEnabled(false);
 
 //        ui->ActivatedCustomer->(false);
 
@@ -208,35 +215,40 @@ void CustomerAddressBook::on_submitButton_clicked()
 
     if (currentMode == ADDING_MODE)
     {
-        qDebug() << "ooo1";
-
 
         Customer customer (name, email, idString.toLong(), pass);
         customer.setAccountAccess(activationStatus);
 
-        qDebug() << "ooo2";
-
         // check if any field is empty
         if (name.isEmpty())
         {
+
             QMessageBox::information(this, tr("Empty Field"),
                        tr("Please enter in a name."));
+            on_cancelButton_clicked();
+
 
         }
         else if (email.isEmpty())
         {
             QMessageBox::information(this, tr("Empty Field"),
                        tr("Please enter in an email address."));
+            on_cancelButton_clicked();
+
         }
         else if (idString.isEmpty())
         {
             QMessageBox::information(this, tr("Empty Field"),
                        tr("Please enter in an ID number."));
+            on_cancelButton_clicked();
+
         }
         else if (pass.isEmpty())
         {
             QMessageBox::information(this, tr("Empty Field"),
                        tr("Please enter in a password."));
+            on_cancelButton_clicked();
+
         }
         else
          {
@@ -252,6 +264,9 @@ void CustomerAddressBook::on_submitButton_clicked()
 
                QMessageBox::information(this, tr("Add Successful"),
                 tr("\"%1\" has been added to the customer list.").arg(name));
+
+               // SIGNALS & SLOTS
+               emit customerListChanged(&customerList);
 
             }
            else if (customerList.isExistSameName(name))
@@ -271,7 +286,7 @@ void CustomerAddressBook::on_submitButton_clicked()
 
             }
 
-
+  }
             //Restore the buttons to their normal state.
             ui->addButton->setEnabled(true);
             ui->submitButton->hide();
@@ -290,8 +305,7 @@ void CustomerAddressBook::on_submitButton_clicked()
             ui->ActivatedCustomer->setEnabled(false);
 
 
-         }
-        qDebug() << "ooo3";
+
 
     }
     else if (currentMode == EDITING_MODE)
@@ -302,6 +316,8 @@ void CustomerAddressBook::on_submitButton_clicked()
         Customer newCust (name, email, idString.toLong(), pass);
         newCust.setAccountAccess(activationStatus);
 
+        try
+        {
          Customer* customerPtr = customerList.ReturnCustomerPtr(oldName);
          customerPtr->setAccountAccess(oldIsActivated);
 
@@ -312,15 +328,50 @@ void CustomerAddressBook::on_submitButton_clicked()
 
          }
 
-         if (customerList.isExist(newCust) && !change)
+         // check if any field is empty
+         if (name.isEmpty())
          {
-             QMessageBox::information(this, tr("Edit Unsuccessful"),
-               tr("Sorry, \"%1\" is already in your address book.").arg(name));
+
+             QMessageBox::information(this, tr("Empty Field"),
+                        tr("Please enter in a name."));
+             on_cancelButton_clicked();
+
+
+         }
+         else if (email.isEmpty())
+         {
+             QMessageBox::information(this, tr("Empty Field"),
+                        tr("Please enter in an email address."));
+             on_cancelButton_clicked();
+
+         }
+         else if (idString.isEmpty())
+         {
+             QMessageBox::information(this, tr("Empty Field"),
+                        tr("Please enter in an ID number."));
+             on_cancelButton_clicked();
+
+         }
+         else if (pass.isEmpty())
+         {
+             QMessageBox::information(this, tr("Empty Field"),
+                        tr("Please enter in a password."));
+             on_cancelButton_clicked();
+
          }
          else if (!change)
          {
              QMessageBox::information(this, tr("Edit Unsuccessful"),
                tr("No changes were made."));
+             on_cancelButton_clicked();
+
+         }
+         else if (customerList.isExist(newCust))
+         {
+             QMessageBox::information(this, tr("Edit Unsuccessful"),
+               tr("Sorry, \"%1\" is already in your address book.").arg(name));
+             on_cancelButton_clicked();
+
          }
          else
          {
@@ -328,24 +379,38 @@ void CustomerAddressBook::on_submitButton_clicked()
                tr("\"%1\" has been edited in your address book.").arg(oldName));
 
              // change any updates!!
+                            qDebug() << "customerAddressBook.cpp line 350";
               customerPtr->setUserName(name);
+                            qDebug() << "customerAddressBook.cpp line 352";
               customerPtr->setEmail(email);
+                           qDebug() << "customerAddressBook.cpp line 354";
               customerPtr->setAccountNum(idString.toLong());
+                          qDebug() << "customerAddressBook.cpp line 356";
               customerPtr->setPassword(pass);
+                         qDebug() << "customerAddressBook.cpp line 358";
               customerPtr->setAccountAccess(activationStatus);
+                          qDebug() << "customerAddressBook.cpp line 360";
 
+              // SIGNALS & SLOTS
+              emit customerListChanged(&customerList);
 
          }
 
+         customerPtr = NULL;
 
+        }
+        catch (...)
+        {
+            QMessageBox::information(this, tr("Edit Unsuccessful"),
+              tr("Sorry, \"%1\" an exception/error has occured.").arg(name));
+            on_cancelButton_clicked();
 
+        }
 
-
-        customerPtr = NULL;
     }
 
-    // SIGNALS & SLOTS
-    emit customerListChanged(&customerList);
+//    // SIGNALS & SLOTS
+//    emit customerListChanged(&customerList);
     updateInterface(NAVIGATION_MODE);
 
 }
@@ -552,8 +617,14 @@ void CustomerAddressBook::on_searchButton_clicked()
     }
     catch (...)
     {
-        QMessageBox::information(this, tr("Sorry"),
-                         tr("\"%1\" was not found").arg(name));
+
+        if (name != "")
+        {
+            QMessageBox::information(this, tr("Sorry"),
+                             tr("\"%1\" was not found").arg(name));
+        }
+
+
     }
 
 }
