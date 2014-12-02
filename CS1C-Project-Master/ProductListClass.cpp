@@ -444,19 +444,59 @@ QString ProductList::operator[](int index)
 
 }
 
-void ProductList::WriteToFile()
+bool ProductList::WriteToFile()
 {
-        QFile productFile(":/ProductDatabase.txt");
+<<<<<<< HEAD
+qDebug() << "****Debuggin ProductList::WriteToFile - line 449, before Declarations";
+        QFile productFile("ProductDatabase.txt");
 
+qDebug() << "****Debuggin ProductList::WriteToFile - line 452, before File Open";
         if(productFile.open(QIODevice::ReadWrite))
         {
+qDebug() << "****Debuggin ProductList::WriteToFile - line 449,"
+            "before Declarations";
                 QTextStream out(&productFile);
+=======
+    QFile productFile(":/ProductDatabase.txt");
 
-                out << "list[index].getUserName()\n";
-                out << "list[index].getEmail()\n";
-                out << "list[index].getAccountNum()\n";
-                out << "list[index].getPassword()\n";
+    if(!productFile.open(QIODevice::WriteOnly | QIODevice::Text))
+    {
+        qWarning("Couldn't open product file.");
+        return false;
+    }
+>>>>>>> Product-Functionality
 
-                productFile.close();
+    QTextStream out(&productFile);
+    out << "The magic number is: " << 49 << "\n";
+
+<<<<<<< HEAD
+
         }
+=======
+    productFile.close();
+    return true;
+>>>>>>> Product-Functionality
 }
+
+
+
+//bool Game::saveGame(Game::SaveFormat saveFormat) const
+//{
+//    QFile saveFile(saveFormat == Json
+//        ? QStringLiteral("save.json")
+//        : QStringLiteral("save.dat"));
+
+//    if (!saveFile.open(QIODevice::WriteOnly)) {
+//        qWarning("Couldn't open save file.");
+//        return false;
+//    }
+
+//    QJsonObject gameObject;
+//    write(gameObject);
+//    QJsonDocument saveDoc(gameObject);
+//    saveFile.write(saveFormat == Json
+//        ? saveDoc.toJson()
+//        : saveDoc.toBinaryData());
+
+//    return true;
+//}
