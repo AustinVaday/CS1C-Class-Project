@@ -249,7 +249,6 @@ DIST          = ../../../QT/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		../../../QT/5.3/clang_64/mkspecs/features/qt_config.prf \
 		../../../QT/5.3/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../QT/5.3/clang_64/mkspecs/features/spec_post.prf \
-		../CS1C-Project-Master/.qmake.stash \
 		../../../QT/5.3/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../QT/5.3/clang_64/mkspecs/features/default_pre.prf \
 		../../../QT/5.3/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -439,7 +438,6 @@ Makefile: ../CS1C-Project-Master/MainProgram.pro ../../../QT/5.3/clang_64/mkspec
 		../../../QT/5.3/clang_64/mkspecs/features/qt_config.prf \
 		../../../QT/5.3/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../QT/5.3/clang_64/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		../../../QT/5.3/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../QT/5.3/clang_64/mkspecs/features/default_pre.prf \
 		../../../QT/5.3/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -563,7 +561,6 @@ Makefile: ../CS1C-Project-Master/MainProgram.pro ../../../QT/5.3/clang_64/mkspec
 ../../../QT/5.3/clang_64/mkspecs/features/qt_config.prf:
 ../../../QT/5.3/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../../QT/5.3/clang_64/mkspecs/features/spec_post.prf:
-.qmake.stash:
 ../../../QT/5.3/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../../QT/5.3/clang_64/mkspecs/features/default_pre.prf:
 ../../../QT/5.3/clang_64/mkspecs/features/mac/default_pre.prf:

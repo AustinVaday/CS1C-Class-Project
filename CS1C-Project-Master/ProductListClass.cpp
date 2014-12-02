@@ -446,17 +446,17 @@ QString ProductList::operator[](int index)
 
 bool ProductList::WriteToFile()
 {
-<<<<<<< HEAD
-qDebug() << "****Debuggin ProductList::WriteToFile - line 449, before Declarations";
-        QFile productFile("ProductDatabase.txt");
+//<<<<<<< HEAD
+//qDebug() << "****Debuggin ProductList::WriteToFile - line 449, before Declarations";
+//        QFile productFile("ProductDatabase.txt");
 
-qDebug() << "****Debuggin ProductList::WriteToFile - line 452, before File Open";
-        if(productFile.open(QIODevice::ReadWrite))
-        {
-qDebug() << "****Debuggin ProductList::WriteToFile - line 449,"
-            "before Declarations";
-                QTextStream out(&productFile);
-=======
+//qDebug() << "****Debuggin ProductList::WriteToFile - line 452, before File Open";
+//        if(productFile.open(QIODevice::ReadWrite))
+//        {
+//qDebug() << "****Debuggin ProductList::WriteToFile - line 449,"
+//            "before Declarations";
+//                QTextStream out(&productFile);
+//=======
     QFile productFile(":/ProductDatabase.txt");
 
     if(!productFile.open(QIODevice::WriteOnly | QIODevice::Text))
@@ -464,18 +464,18 @@ qDebug() << "****Debuggin ProductList::WriteToFile - line 449,"
         qWarning("Couldn't open product file.");
         return false;
     }
->>>>>>> Product-Functionality
+//>>>>>>> Product-Functionality
 
-    QTextStream out(&productFile);
-    out << "The magic number is: " << 49 << "\n";
+//    QTextStream out(&productFile);
+//    out << "The magic number is: " << 49 << "\n";
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 
-        }
-=======
+//        }
+//=======
     productFile.close();
     return true;
->>>>>>> Product-Functionality
+//>>>>>>> Product-Functionality
 }
 
 
