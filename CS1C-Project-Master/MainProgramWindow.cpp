@@ -223,8 +223,7 @@ void MainProgramWindow::updateCustomerList(CustomerList *list)
 
 void MainProgramWindow::on_pushButton_Guest_clicked()
 {
-    SellPoint sellWindow;
+    gWindow = new GuestWindow;
 
-    sellWindow.setModal(true);
-    sellWindow.exec();
+    gWindow->show();
 }

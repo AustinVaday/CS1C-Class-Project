@@ -41,7 +41,9 @@ SOURCES += main.cpp\
     find.cpp \
     customeraccountwindow.cpp \
     ImageViewer.cpp \
-    sellpoint.cpp
+    sellpoint.cpp \
+    guarantee.cpp \
+    guestwindow.cpp
 
 HEADERS += MainProgramWindow.h \
         adminclass.h \
@@ -72,7 +74,9 @@ HEADERS += MainProgramWindow.h \
     find.h \
     customeraccountwindow.h \
     ImageViewer.h \
-    sellpoint.h
+    sellpoint.h \
+    guarantee.h \
+    guestwindow.h
 
 FORMS   += mainprogramwindow.ui \
         newactivatedlist.ui \
@@ -94,7 +98,9 @@ FORMS   += mainprogramwindow.ui \
     find.ui \
     customeraccountwindow.ui \
     ImageViewer.ui \
-    sellpoint.ui
+    sellpoint.ui \
+    guarantee.ui \
+    guestwindow.ui
 
 RESOURCES += \
     TextFilesFolder.qrc \

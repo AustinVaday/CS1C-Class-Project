@@ -21,6 +21,8 @@
 #include "ProductClass.h"
 #include "ViewProducts.h"
 #include "sellpoint.h"
+#include "guarantee.h"
+#include "guestwindow.h"
 
 #include <QDebug>
 
@@ -107,6 +109,8 @@ private:
     // Customer / Brochure Data Memeber Placeholder
 
     HelpWindow  *hWindow;
+
+    GuestWindow *gWindow;
     // Pointer of type HelpWindow
     //  Used to create a help window for the user
 
