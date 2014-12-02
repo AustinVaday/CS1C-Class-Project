@@ -574,12 +574,19 @@ Customer CustomerList::operator[](int index) const
 
 bool CustomerList::isExistSameName(QString name)
 {
-    for (int i = 0; i < this->Size(); i++)
+    try
     {
-        if (operator[](i).getUserName() == name)
+        for (int i = 0; i < this->Size(); i++)
         {
-            return true;
+            if (this->operator[](i).getUserName() == name)
+            {
+                return true;
+            }
         }
+    }
+    catch(NotFound)
+    {
+        qDebug() << "customerListClass.cpp -- line 589";
     }
 
     return false;

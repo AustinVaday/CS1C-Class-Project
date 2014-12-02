@@ -6,6 +6,7 @@
 #include "ExceptionHandlers.h"
 #include <QMessageBox>
 #include <QDebug>
+#include <QModelIndexList>
 
 NewActivatedList::NewActivatedList(QWidget *parent, CustomerList &list) :
     QDialog(parent),
@@ -14,30 +15,32 @@ NewActivatedList::NewActivatedList(QWidget *parent, CustomerList &list) :
     /***********************************************************
      * This should be used in all windows except main window!
      ***********************************************************/
-qDebug() << "Debugging: NewActivatedList connect #1";
     connect(this, SIGNAL(customerListChanged(CustomerList*)), parent, SLOT(updateCustomerList(CustomerList*)));
 
     ui->setupUi(this);
-qDebug() << "Debugging: NewActivatedList connect #2 - Line 24";
+
+    ui->listWidget->setSelectionMode(QAbstractItemView::MultiSelection );
+    ui->deactivatedListWidget->setSelectionMode(QAbstractItemView::MultiSelection );
+
     // when a list widget item is clicked, will call the function to output customer address book.
-    connect(ui->listWidget,SIGNAL(itemClicked(QListWidgetItem*)),this,SLOT(on_listItem_clicked(QListWidgetItem*)));
+//    connect(ui->listWidget,SIGNAL(itemDoubleClicked(QListWidgetItem*)),this,SLOT(on_listItem_clicked()));
+//    connect(ui->deactivatedListWidget,SIGNAL(itemDoubleClicked(QListWidgetItem*)),this,SLOT(on_listItem_clicked()));
+
+    //connect
+//    connect(ui->addToActivatedListButton, SIGNAL(clicked()), ui->listWidget, SLOT(performAction(QListWidget*)));
+
+
+//     connect(ui->listWidget, SIGNAL(itemClicked(QListWidgetItem*)), ui->addToDeactivatedListButton, SLOT(setFocus()));
+//    connect(ui->listWidget, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(on_addToDeactivatedListButton_clicked(QListWidgetItem*)));
+
+
 
     customerList = list;
 
-qDebug() << "1)NewActivatedList window: Output customerList - Line 29";
-qDebug() << customerList.OutputList();
 
-    // ***DEBUG** List is read.
-qDebug() << "2) Debugging: Admin NewActivatedlist window: Output customerList - Line 32";
-qDebug() << customerList.OutputList();
 
-//    ReadCustomerFile(customerList, ":/ActivatedListFile.txt");
-qDebug() << "Debugging: NewActivatedList - custAddBook : mem alloc\n";
     custAddBook = new CustomerAddressBook(this, customerList, 0);
-qDebug() << "Debugging: NewActivatedList - custAddBook : after mem alloc\n";
-//    ReadCustomerFile(deactivatedList, "://DeactivatedListFile.txt");
 
-//    ui->listWidget->setSortingEnabled(true);
 
     if (customerList.isEmpty())
     {
@@ -53,19 +56,27 @@ qDebug() << "Debugging: NewActivatedList - custAddBook : after mem alloc\n";
 void NewActivatedList::DisplayTheList(const CustomerList& list)
 
 {
-qDebug() << "******Debugging: newactivatedlist - displayList******\n";
     ui->listWidget->clear();
-
-qDebug() << "NewActivatedList window: Output customerList.Display - Line 50";
-qDebug() << customerList.OutputList();
+    ui->deactivatedListWidget->clear();
 
 
+qDebug() << "Inside 'DisplayTheList'";
     for (int i = 0; i < list.Size(); i++)
     {
         try
         {
-            // no longer returns a string
-            ui->listWidget->addItem((list)[i].OutputData());
+            // if the customer has access to brochure, add to
+            // activated customer list.
+            if(list[i].getAccess())
+            {
+                 qDebug () << "64";
+              ui->listWidget->addItem((list)[i].OutputData());
+            }
+            else
+            {
+                qDebug () << "68";
+                ui->deactivatedListWidget->addItem((list)[i].OutputData());
+            }
         }
         catch(const NotFound&)
         {
@@ -90,11 +101,41 @@ qDebug() << customerList.OutputList();
         }
     }
 
+
+}
+int NewActivatedList::UpdateNumDeactivatedCustomers()
+{
+    int number = 0;
+    for (int i = 0; i < customerList.Size(); i++)
+    {
+        if (!customerList[i].getAccess())
+        {
+            number++;
+        }
+    }
+
+    return number;
+}
+
+int NewActivatedList::UpdateNumActivatedCustomers()
+{
+    int number = 0;
+    for (int i = 0; i < customerList.Size(); i++)
+    {
+        if (customerList[i].getAccess())
+        {
+            number++;
+        }
+    }
+
+    return number;
 }
 
 NewActivatedList::~NewActivatedList()
 {
 qDebug() << "******Debugging: NewActivatedList - Deconstructor******\n";
+
+        updateCustomerList(&customerList);
         customerList.ClearList();
 
 
@@ -103,6 +144,8 @@ qDebug() << "******Debugging: NewActivatedList - Deleting custAddBook******\n";
 
 qDebug() << "******Debugging: NewActivatedList - Deleting ui******\n";
         delete ui;
+
+
 
 //    customerList = 0;
 }
@@ -161,6 +204,119 @@ qDebug() << "NewActivatedList";
 
 void NewActivatedList::on_addCustomer_clicked()
 {
+
+    custAddBook->show();
+}
+
+
+void NewActivatedList::on_addToDeactivatedListButton_clicked()
+{
+    Customer customer;
+    Customer* custPtr;
+
+    QModelIndexList listIndeces = ui->listWidget->selectedIndexes();
+
+    int rowIndex = ui->listWidget->currentRow() ;
+
+
+    // if something is selected
+    if (rowIndex != -1)
+    {
+
+        for (int numRows = 0; numRows < listIndeces.count(); numRows++)
+       {
+
+            int i = 0;
+            while(ui->listWidget->item(listIndeces[numRows].row())->text() != customerList[i].OutputData() && i < customerList.Size())
+            {
+                i++;
+            }
+
+            customer = customerList[i];
+            custPtr = customerList.ReturnCustomerPtr(customer.getUserName());
+            custPtr->setAccountAccess(false);
+
+            if (listIndeces.count() == 1)
+            {
+                ui->deactivatedListWidget->addItem(ui->deactivatedListWidget->item(rowIndex));
+                ui->listWidget->removeItemWidget(ui->deactivatedListWidget->item(rowIndex));
+            }
+            else
+            {
+
+                ui->deactivatedListWidget->addItem(ui->deactivatedListWidget->item(listIndeces[numRows].row()));
+                ui->listWidget->removeItemWidget(ui->deactivatedListWidget->item(listIndeces[numRows].row()));
+            }
+        }
+
+
+
+        custPtr = NULL;
+
+
+        DisplayTheList(customerList);
+
+
+
+    }
+
+
+}
+
+void NewActivatedList::on_addToActivatedListButton_clicked()
+{
+
+        Customer customer;
+        Customer* custPtr;
+
+        QModelIndexList listIndeces = ui->deactivatedListWidget->selectedIndexes();
+
+        int rowIndex = ui->deactivatedListWidget->currentRow() ;
+
+    if (rowIndex != -1)
+    {
+        for (int numRows = 0; numRows < listIndeces.count(); numRows++)
+        {
+            int i = 0;
+            while(ui->deactivatedListWidget->item(listIndeces[numRows].row())->text() != customerList[i].OutputData() && i < customerList.Size())
+            {
+                i++;
+            }
+
+            customer = customerList[i];
+            custPtr = customerList.ReturnCustomerPtr(customer.getUserName());
+            custPtr->setAccountAccess(true);
+
+            if (listIndeces.count() == 1)
+            {
+                ui->listWidget->addItem(ui->listWidget->item(rowIndex));
+                ui->deactivatedListWidget->removeItemWidget(ui->listWidget->item(rowIndex));
+            }
+            else
+            {
+
+                ui->listWidget->addItem(ui->listWidget->item(listIndeces[numRows].row()));
+                ui->deactivatedListWidget->removeItemWidget(ui->listWidget->item(listIndeces[numRows].row()));
+            }
+
+        }
+     }
+
+            custPtr = NULL;
+
+
+            DisplayTheList(customerList);
+}
+
+void NewActivatedList::on_masterModeButton_clicked()
+{
+    delete custAddBook;
+
+    // find current list number
+//    int listItemNum = ui->listWidget->row(item);
+
+    custAddBook = new CustomerAddressBook(this, customerList, 0);
+
 
     custAddBook->show();
 }
