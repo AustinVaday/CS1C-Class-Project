@@ -446,10 +446,14 @@ QString ProductList::operator[](int index)
 
 void ProductList::WriteToFile()
 {
-        QFile productFile(":/ProductDatabase.txt");
+qDebug() << "****Debuggin ProductList::WriteToFile - line 449, before Declarations";
+        QFile productFile("ProductDatabase.txt");
 
+qDebug() << "****Debuggin ProductList::WriteToFile - line 452, before File Open";
         if(productFile.open(QIODevice::ReadWrite))
         {
+qDebug() << "****Debuggin ProductList::WriteToFile - line 449,"
+            "before Declarations";
                 QTextStream out(&productFile);
 
                 out << "list[index].getUserName()\n";
@@ -457,6 +461,6 @@ void ProductList::WriteToFile()
                 out << "list[index].getAccountNum()\n";
                 out << "list[index].getPassword()\n";
 
-                productFile.close();
+
         }
 }
