@@ -11,39 +11,24 @@ AdminWindow::AdminWindow(QWidget *parent, CustomerList &list) :
     ui(new Ui::AdminWindow)
 {
 
-qDebug() << "Admin window: Output list - Line 14";
-qDebug() << list.OutputList();
-
     /***********************************************************
      * This should be used in all windows except main window!
      ***********************************************************/
     connect(this, SIGNAL(customerListChanged(CustomerList*)), parent, SLOT(updateCustomerList(CustomerList*)));
 
-
-
     customerList = list;
-
 
     viewList = new NewActivatedList(this, customerList);
 
     ui->setupUi(this);
-    // ***DEBUG** List is read.
-qDebug() << "Admin window: Output customerList - Line 28";
 
-qDebug() << customerList.OutputList();
-
-    // FOR PROJECT MAIN WINDOWx
-//    CustomerList activatedList;
-//    CustomerList deactivatedList;
-
-//    ReadCustomerFile(activatedList, "ActivatedListFile.txt");
-
-//    ReadCustomerFile(deactivatedList, "DeactivatedListFile.txt");
+    ui->graphicsView->setStyleSheet("background-image: url(:/Resources/guest.jpg)");
 
 
-    // FOR ADMIN WINDOW
-    on_user_name_label_linkActivated("Administrator");
-}
+
+
+
+   }
 
 AdminWindow::~AdminWindow()
 {
@@ -54,16 +39,6 @@ AdminWindow::~AdminWindow()
     qDebug() << "AdminWindow -- Destructor Test #2";
     delete ui;
      qDebug() << "AdminWindow -- Destructor Test #3";
-}
-
-void AdminWindow::on_user_name_label_linkActivated(const QString &link)
-{
-
-    ui->user_name_label->setText(link);
-
-    QFont font("Arial", 28, QFont::Bold);
-
-    ui->user_name_label->setFont(font);
 }
 
 void AdminWindow::on_back_button_clicked()
