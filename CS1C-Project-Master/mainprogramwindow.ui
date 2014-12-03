@@ -127,6 +127,7 @@
     </property>
     <addaction name="actionHelp"/>
     <addaction name="actionExit"/>
+    <addaction name="actionHgh"/>
    </widget>
    <addaction name="menuExtreme_Robo_Cat_Coderz"/>
   </widget>
@@ -152,6 +153,11 @@
   <action name="actionExit">
    <property name="text">
     <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionHgh">
+   <property name="text">
+    <string>hgh</string>
    </property>
   </action>
  </widget>

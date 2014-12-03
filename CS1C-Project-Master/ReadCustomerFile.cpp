@@ -7,35 +7,31 @@ void ReadCustomerFile(CustomerList& list, QString fileName)
     QTextStream in(&file);
     QString line;
     long numberLine;
-    Customer *customer;
+    Customer customer;
 //    qDebug() << "Hi2";
     qDebug() << file.exists();
 
     //open the file
     file.open(QIODevice::ReadOnly | QIODevice::Text);
 
-//    qDebug() << "Hi3";
-
     while (!in.atEnd() )
     {
-        customer = new Customer;
+        line = in.readLine();
+        customer.setUserName(line);
 
         line = in.readLine();
-        customer->setUserName(line);
-
-        line = in.readLine();
-        customer->setEmail(line);
+        customer.setEmail(line);
 
         line = in.readLine();
         numberLine = line.toLong();
-        customer->setAccountNum(numberLine);
+        customer.setAccountNum(numberLine);
 
         line = in.readLine();
-        customer->setPassword(line);
+        customer.setPassword(line);
 
         line = in.readLine();
 
-        list.Enqueue(*customer);
+        list.Enqueue(customer);
 
     }
 
