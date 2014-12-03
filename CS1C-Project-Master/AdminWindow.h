@@ -36,8 +36,6 @@ public slots:
 
 
 private slots:
-    void on_user_name_label_linkActivated(const QString &link);
-
     void on_back_button_clicked();
 
     void on_view_activated_customers_clicked();

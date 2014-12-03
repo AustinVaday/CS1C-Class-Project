@@ -6,24 +6,33 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>569</width>
-    <height>463</height>
+    <width>582</width>
+    <height>480</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>0</y>
-     <width>571</width>
-     <height>461</height>
+     <y>30</y>
+     <width>581</width>
+     <height>441</height>
     </rect>
    </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="Product1">
     <attribute name="title">
@@ -35,14 +44,17 @@
        <x>160</x>
        <y>0</y>
        <width>231</width>
-       <height>211</height>
+       <height>201</height>
       </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
      </property>
      <property name="text">
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>:/Resources/cat robot.jpg</pixmap>
+      <pixmap resource="Images.qrc">:/Resources/cat robot.jpg</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
@@ -51,11 +63,17 @@
     <widget class="QTextBrowser" name="text1">
      <property name="geometry">
       <rect>
-       <x>130</x>
-       <y>210</y>
+       <x>140</x>
+       <y>200</y>
        <width>291</width>
        <height>221</height>
       </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
      </property>
     </widget>
    </widget>
@@ -76,7 +94,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>:/Resources/images.jpeg</pixmap>
+      <pixmap resource="Images.qrc">:/Resources/images.jpeg</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
@@ -110,7 +128,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>:/Resources/H51s.jpg</pixmap>
+      <pixmap resource="Images.qrc">:/Resources/H51s.jpg</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
@@ -128,7 +146,25 @@
     </widget>
    </widget>
   </widget>
+  <widget class="QPushButton" name="MaintPlan">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>0</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Maintanence Plan</string>
+   </property>
+  </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="Images.qrc"/>
+ </resources>
  <connections/>
 </ui>

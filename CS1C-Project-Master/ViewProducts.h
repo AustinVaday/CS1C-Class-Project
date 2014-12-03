@@ -5,6 +5,7 @@
 #include "ProductClass.h"
 #include "ProductListClass.h"
 #include "ImageViewer.h"
+#include "maintplan.h"
 
 namespace Ui {
 class ViewProducts;
@@ -24,6 +25,8 @@ public:
 
 private slots:
 
+
+    void on_MaintPlan_clicked();
 
 private:
     Ui::ViewProducts *ui;
