@@ -1,8 +1,5 @@
 #include "Header.h"
-#include <QFile>
-#include <QTextStream>
-#include <QLabel>
-#include <QDebug>
+
 void ReadCustomerFile(CustomerList& list, QString fileName)
 {
     QFile file(fileName);
@@ -11,7 +8,6 @@ void ReadCustomerFile(CustomerList& list, QString fileName)
     QString line;
     long numberLine;
     Customer *customer;
-
 //    qDebug() << "Hi2";
     qDebug() << file.exists();
 
@@ -43,8 +39,6 @@ void ReadCustomerFile(CustomerList& list, QString fileName)
 
     }
 
-
     file.close();
-
 
 }

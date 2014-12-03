@@ -1,5 +1,7 @@
 #include "userclass.h"
 #include <QTextStream>
+#include <QDebug>
+
 // Default constructor
 User::User()
 {
@@ -26,13 +28,13 @@ User::User(QString name,
 }
 
 void User:: setValues(QString newName,
-         QString newEmail,
-         long 	newAccountNum,
-         QString newPassword)
+                      QString newEmail,
+                      long 	newAccountNum,
+                      QString newPassword)
 {
-    userName           = newName;
-    userEmail           = newEmail;
-    accountNum      = newAccountNum;
+    userName       = newName;
+    userEmail      = newEmail;
+    accountNum     = newAccountNum;
     userPassword   = newPassword;
 
 }
@@ -55,6 +57,11 @@ void User::setEmail(QString newEmail)
 void User::setPassword(QString newPassword)
 {
     userPassword = newPassword;
+}
+
+void User::setAccountAccess(bool access)
+{
+    accountAccess = access;
 }
 
 long User::getAccountNum() const
@@ -109,6 +116,7 @@ bool User::operator ==(const User& otherUser)
 {
     bool same;
 
+    qDebug() << "INSIDE userclass.cpp .. operator= .. line 117";
     same = false;
 
     // Compares names and account numbers, if either are the same it will
@@ -120,7 +128,8 @@ bool User::operator ==(const User& otherUser)
     if(	  otherUser.getAccountNum() == this->getAccountNum()
        && otherUser.getUserName() 	== this->getUserName()
        && otherUser.getAccountNum() == this->getAccountNum()
-       && otherUser.getPassword()   == this->getPassword())
+       && otherUser.getPassword()   == this->getPassword()
+       && otherUser.getAccess()     == this->getAccess())
     {
         same = true;
     }
@@ -138,6 +147,7 @@ QString  User::OutputData() const
     out << "Email address: " << userEmail << endl;
     out << "Account number: " <<  accountNum << endl;
     out << "Password: " << userPassword << endl;
+    out << "Temp... Account Access: " << accountAccess << endl;
     out << "........................................................\n";
 
     return str;

@@ -31,15 +31,16 @@ class User
         void setEmail(QString newEmail);
         void setAccountNum(long newId);
         void setPassword(QString newPassword);
+        void setAccountAccess(bool access);
 
         //Accessors
         QString     getUserName() 	const;
         QString     getEmail() 	 	const;
         long        getAccountNum()	const;
-        QString 	getPassword() const;
-        bool        getAccess() const;
+        QString 	getPassword()   const;
+        bool        getAccess()     const;
 
-        QString     OutputData() const;
+        QString     OutputData()    const;
 
     private:
         QString 	userName;

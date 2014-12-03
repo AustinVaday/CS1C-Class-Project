@@ -20,18 +20,32 @@ public:
     NewActivatedList(QWidget *parent, CustomerList &list);
 
     ~NewActivatedList();
-    void DisplayTheList(CustomerList &list);
+
+    void DisplayTheList(const CustomerList& list);
+
+    int UpdateNumDeactivatedCustomers();
+    int UpdateNumActivatedCustomers();
 
 signals:
 
-    void customerListChanged(CustomerList *list);
-
-    void customerListChanged(CustomerList list);
+    void customerListChanged(CustomerList* list);
 
 public slots:
-    void on_listItem_clicked(QListWidgetItem* item);
+//    void on_listItem_clicked(QListWidgetItem* item);
     void updateCustomerList(CustomerList *list);
 
+
+private slots:
+    void on_addCustomer_clicked();
+
+//    void on_addToActivatedListButton_clicked();
+
+    void on_addToDeactivatedListButton_clicked();
+
+
+    void on_addToActivatedListButton_clicked();
+
+    void on_masterModeButton_clicked();
 
 private:
     Ui::NewActivatedList *ui;

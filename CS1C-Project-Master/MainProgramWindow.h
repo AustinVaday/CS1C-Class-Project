@@ -20,6 +20,8 @@
 #include "ProductListClass.h"
 #include "ProductClass.h"
 #include "ViewProducts.h"
+//#include "customerlistclass.h"
+#include "ExceptionHandlers.h"
 #include "sellpoint.h"
 #include "guarantee.h"
 #include "guestwindow.h"
@@ -56,15 +58,16 @@ public:
      *
      * (read documentation above)
      ***************************************************************************/
-     bool GetAdminLoginState     ();
+     bool GetAdminLoginState        ();
      bool GetCustomerLoginState  ();
-     bool GetGuestLoginState     ();
-     bool GetCreateAccountState  ();
+     bool GetGuestLoginState          ();
+     bool GetCreateAccountState   ();
 
      ProductList* getProductList() const;
 
      QString GetUsername();
      QString GetPassword();
+
 
     //  Accessors
      void SetUsername(QString newUsername);
@@ -116,16 +119,16 @@ private:
     // Pointer of type HelpWindow
     //  Used to create a help window for the user
 
-    BrochureWindow* bWindow;
-    ProductList*    lst;
-    CustomerList customerList;
+    BrochureWindow*     bWindow;
+    ProductList*        lst;
+    CustomerList        customerList;
 
     // SECTION LOGIN BOOLEANS
     //These boolean variables are used to determine what
     //  type of window to launch
 
-    bool adminLogin      = 0;
-    bool customerLogin   = 0;
+    bool adminLogin         = 0;
+    bool customerLogin  = 0;
     bool guestLogin      = 0;
     bool createAccount   = 0;
 

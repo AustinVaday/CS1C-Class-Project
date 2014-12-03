@@ -5,11 +5,16 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainProgramWindow)
 {
-
     ui->setupUi(this);
+    // Debug construct
+qDebug() << "Reading List!";
 
     //Create the customer list...
     ReadCustomerFile(customerList, ":/ActivatedListFile.txt");
+
+// Debug construct
+qDebug() << "Deconstructed!";
+
 
     // TEMPORARY DISPLAY!!
     ui->tempDisplay->setText(customerList.OutputList());
@@ -18,10 +23,18 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
     // Hard code of admin login
     Admin testAdmin("","admin1234@gmail.com", 1234, "");
 
+// Debuggin
+qDebug() << "Admin window: Output List, Line 22";
+qDebug() << customerList.OutputList();
+
     // Initialize
     hWindow = new HelpWindow;
     aWindow = new AdminWindow(this, customerList);
     bWindow = new BrochureWindow;
+
+    // ***DEBUG** List is read.
+qDebug() << customerList.OutputList() << "Main Program Window: "
+" customerList.OutputList - Line 27";
 
     connect(aWindow, SIGNAL(clicked()), this, SLOT(on_pushButton_Help_clicked()));
 
@@ -34,7 +47,18 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
 
 MainProgramWindow::~MainProgramWindow()
 {
+       ProductList myList;
 
+        Product robot1("Guy", "<AR{P", 434.2, 432, 232341);
+
+        myList.Enqueue(robot1);
+
+        myList.WriteToFile();
+qDebug() << "Deconstructor Write to test file.";
+
+       WriteToCustomerFile(customerList, "::TestFile.txt");
+
+       customerList.ClearList();
 qDebug() << "MainProgramWindow -- Destructor Test #1";
     delete aWindow;
 
@@ -55,15 +79,22 @@ qDebug() << "MainProgramWindow -- Destructor Test #5";
 
 void MainProgramWindow::on_pushButton_Login_clicked()
 {
-     Admin testAdmin("","admin1234@gmail.com", 1234, "");
+
+    Admin testAdmin("admin","admin1234@gmail.com", 1234, "password");
+
+    int        customerLocation;
 
     bool validInput = false;
-    QString tempName;
-    QString tempPassword;
-    Login loginWindow;
+
+
+    QString    tempName;
+    QString    tempPassword;
+    Login      loginWindow;
     ErrorLogin errorWindow;
+    Customer tempCustomer;
 
 
+        customerLocation = 0;
         loginWindow.setModal(true);
 
         loginWindow.exec();
@@ -73,23 +104,33 @@ void MainProgramWindow::on_pushButton_Login_clicked()
         SetUsername(tempName);
         SetPassword(tempPassword);
 
+
         if(testAdmin.checkAdmin(tempName, tempPassword ))
         {
             validInput = true;
             SetAdminLogin(true);
         }
-
-    if(tempName == "Customer" && tempPassword == "1234")
-    {
-        validInput = true;
-        SetCustomerLogin(true);
-    }
-
-        if(!loginWindow.on_buttonBox_loginPress_rejected())
+        else
         {
-            errorWindow.setModal(true);
-            errorWindow.exec();
+           tempCustomer =  customerList.VerifyCustomer(tempName, tempPassword);
+
+           if(tempCustomer.getUserName() != " ")
+           {
+               validInput = true;
+               SetCustomerLogin(true);
+           }
         }
+
+// CAUSES THE PROGRAM TO CRASH
+//customerList.SortList(customerList.GetHead());
+
+
+    if(!loginWindow.on_buttonBox_loginPress_rejected())
+    {
+        errorWindow.setModal(true);
+        errorWindow.exec();
+        errorWindow.show();
+    }
 
     if(validInput)
     {
@@ -198,12 +239,13 @@ void MainProgramWindow::on_pushButton_Help_clicked()
     showHelpWindow();
 }
 
+// Help Button Clicked
 void MainProgramWindow::showHelpWindow()
 {
     hWindow->show();
 }
 
-
+// Menu Bar Help Option
 void MainProgramWindow::on_actionHelp_triggered()
 {
     hWindow->show();
@@ -211,12 +253,14 @@ void MainProgramWindow::on_actionHelp_triggered()
 
 void MainProgramWindow::updateCustomerList(CustomerList *list)
 {
+    customerList = *list;
+
     // TEMPORARY DISPLAY!!
     ui->tempDisplay->clear();
     ui->tempDisplay->setText(customerList.OutputList());
 
+    WriteToCustomerFile(customerList, ":/ActivatedListFile.txt");
 
-    customerList = *list;
 
     qDebug() << "List has finally reached the MainProgramWindow!";
 }

@@ -1,11 +1,14 @@
-    #include "Productlistclass.h"
+#include "Productlistclass.h"
 #include <QTextStream>
 #include <QMessageBox>
 #include "ExceptionHandlers.h"
 #include "activatedlist2.h"
 #include <QTextStream>
+#include <QFile>
+#include <QIODevice>
 
-/**************************************************************************
+
+/***********************************************************************
  * CS1C Class Project
  * -----------------------------------------------------------------------
  * ProductListSource
@@ -18,7 +21,7 @@
  *		Annie	Raichev
  *		Erik 	Karlsson
  *
- *************************************************************************/
+ **********************************************************************/
 
 
 /**************************************************************************
@@ -150,7 +153,7 @@ void ProductList::ClearList()
     delete _head;
 
     _head = NULL;
-    _tail = NULL;
+    _tail    = NULL;
 
     _nodeCount = 0;
 
@@ -426,7 +429,6 @@ QString ProductList::operator[](int index)
                 i != index)
         {
             traversePtr = traversePtr->GetNext();
-
             i++;
         }
 
@@ -442,7 +444,59 @@ QString ProductList::operator[](int index)
 
 }
 
-void ProductList::WriteToFile()
+bool ProductList::WriteToFile()
 {
+//<<<<<<< HEAD
+//qDebug() << "****Debuggin ProductList::WriteToFile - line 449, before Declarations";
+//        QFile productFile("ProductDatabase.txt");
 
+//qDebug() << "****Debuggin ProductList::WriteToFile - line 452, before File Open";
+//        if(productFile.open(QIODevice::ReadWrite))
+//        {
+//qDebug() << "****Debuggin ProductList::WriteToFile - line 449,"
+//            "before Declarations";
+//                QTextStream out(&productFile);
+//=======
+    QFile productFile(":/ProductDatabase.txt");
+
+    if(!productFile.open(QIODevice::WriteOnly | QIODevice::Text))
+    {
+        qWarning("Couldn't open product file.");
+        return false;
+    }
+//>>>>>>> Product-Functionality
+
+//    QTextStream out(&productFile);
+//    out << "The magic number is: " << 49 << "\n";
+
+//<<<<<<< HEAD
+
+//        }
+//=======
+    productFile.close();
+    return true;
+//>>>>>>> Product-Functionality
 }
+
+
+
+//bool Game::saveGame(Game::SaveFormat saveFormat) const
+//{
+//    QFile saveFile(saveFormat == Json
+//        ? QStringLiteral("save.json")
+//        : QStringLiteral("save.dat"));
+
+//    if (!saveFile.open(QIODevice::WriteOnly)) {
+//        qWarning("Couldn't open save file.");
+//        return false;
+//    }
+
+//    QJsonObject gameObject;
+//    write(gameObject);
+//    QJsonDocument saveDoc(gameObject);
+//    saveFile.write(saveFormat == Json
+//        ? saveDoc.toJson()
+//        : saveDoc.toBinaryData());
+
+//    return true;
+//}

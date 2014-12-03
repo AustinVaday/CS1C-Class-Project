@@ -5,9 +5,6 @@
 #include <QDialog>
 #include "customerlistclass.h"
 #include "customerclass.h"
-
-//#include "newactivatedlist.h"
-
 #include "find.h"
 #include <QMessageBox>
 #include <QString>
@@ -53,6 +50,8 @@ private slots:
 
     void on_searchButton_clicked();
 
+     void on_ActivatedCustomer_clicked();
+
 signals:
     void customerListChanged(CustomerList* list);
 
@@ -62,11 +61,12 @@ private:
     QString oldEmail;
     QString oldId;
     QString oldPassword;
+    bool    oldIsActivated;
     Mode currentMode;
 
 
     // TEMP *for testing only*
-    CustomerList *customerList;
+    CustomerList customerList;
 
 };
 

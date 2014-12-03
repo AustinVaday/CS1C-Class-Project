@@ -32,6 +32,7 @@ void HelpWindow::on_CreatingAnAccount_clicked()
 
     button.setModal(true);
     button.exec();
+
 }
 
 

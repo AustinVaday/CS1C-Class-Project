@@ -2,13 +2,12 @@
 #include "ui_customeraddressbook.h"
 
 
-CustomerAddressBook::CustomerAddressBook(QWidget *parent, CustomerList &list, int listNum) :
+CustomerAddressBook::CustomerAddressBook(QWidget *parent, CustomerList &list, int listNum):
     QDialog(parent),
     ui(new Ui::CustomerAddressBook)
 {
-    customerList = &list;
+    customerList = list;
     Customer  customer;
-
 
     // CONNECT THE EDIT, REMOVE, AND SUBMIT BUTTONS
     /***********************************************************
@@ -26,6 +25,7 @@ CustomerAddressBook::CustomerAddressBook(QWidget *parent, CustomerList &list, in
     ui->EmailEdit->setReadOnly(true);
     ui->AccountIdEdit->setReadOnly(true);
     ui->PasswordEdit->setReadOnly(true);
+    ui->ActivatedCustomer->setEnabled(false);
 
     ui->addButton->show();
     ui->submitButton->hide();
@@ -44,10 +44,10 @@ CustomerAddressBook::CustomerAddressBook(QWidget *parent, CustomerList &list, in
    else
     {
         // set the current display to whatever was clicked!!
-        if (listNum >= 0 && listNum <= customerList->Size())
+        if (listNum >= 0 && listNum <= customerList.Size())
         {
             // both lists start at 0
-           customer = (*customerList)[listNum];
+           customer = customerList[listNum];
 
            SetCurrentDisplay(&customer);
         }
@@ -60,7 +60,7 @@ CustomerAddressBook::~CustomerAddressBook()
 {
 qDebug() << "Debugging: CustomerAddressBook - Deconstructors\n";
 
-    customerList = 0;
+    customerList.ClearList();
     delete ui;
 }
 
@@ -71,11 +71,22 @@ void CustomerAddressBook::updateInterface (Mode mode)
     {
     case ADDING_MODE:
     case EDITING_MODE:
+        qDebug() << "Line 74 customerAddressBook.cpp";
+
         // set read only text on construct
         ui->NameEdit->setReadOnly(false);
         ui->EmailEdit->setReadOnly(false);
         ui->AccountIdEdit->setReadOnly(false);
         ui->PasswordEdit->setReadOnly(false);
+
+        if (currentMode == EDITING_MODE)
+        {
+            ui->ActivatedCustomer->setEnabled(true);
+        }
+        else
+        {
+            ui->ActivatedCustomer->hide();
+        }
 
         ui->NameEdit->setFocus(Qt::OtherFocusReason);
 
@@ -91,25 +102,41 @@ void CustomerAddressBook::updateInterface (Mode mode)
         ui->submitButton->show();
         ui->cancelButton->show();
 
+        qDebug() << "Line 96 customerAddressBook.cpp";
+
         break;
 
     case NAVIGATION_MODE:
 
-        if (customerList->isEmpty())
+        ui->ActivatedCustomer->show();
+        if (customerList.isEmpty())
         {
             ui->NameEdit->clear();
             ui->EmailEdit->clear();
             ui->AccountIdEdit->clear();
             ui->PasswordEdit->clear();
+            ui->ActivatedCustomer->setChecked(false);
         }
 
-        int number = customerList->Size();
+        // set read only text on construct
+        ui->NameEdit->setReadOnly(true);
+        ui->EmailEdit->setReadOnly(true);
+        ui->AccountIdEdit->setReadOnly(true);
+        ui->PasswordEdit->setReadOnly(true);
+        ui->ActivatedCustomer->setEnabled(false);
+
+
+        int number = customerList.Size();
 
         // enables
         ui->editButton->setEnabled(number>=1);
         ui->removeButton->setEnabled(number>=1);
         ui->nextCustomerButton->setEnabled(number>1);
         ui->prevCustomerButton->setEnabled(number>1);
+
+
+//        ui->ActivatedCustomer->(false);
+
 
         ui->addButton->setEnabled(true);
 
@@ -121,7 +148,7 @@ void CustomerAddressBook::updateInterface (Mode mode)
 
 void CustomerAddressBook::importList(CustomerList list)
 {
-    customerList = &list;
+    customerList = list;
 }
 
 void CustomerAddressBook::SetCurrentDisplay(Customer* someCustomer)
@@ -131,17 +158,26 @@ void CustomerAddressBook::SetCurrentDisplay(Customer* someCustomer)
     ui->EmailEdit->setText(someCustomer->getEmail());
     ui->AccountIdEdit->setText(QString::number(someCustomer->getAccountNum()));
     ui->PasswordEdit->setText(someCustomer->getPassword());
+    if(someCustomer->getAccess())
+    {
+        ui->ActivatedCustomer->setChecked(true);
+    }
+    else
+    {
+        ui->ActivatedCustomer->setChecked(false);
+    }
 }
 
 void CustomerAddressBook::on_addButton_clicked()
 {
 
     // store old information into variables
-    // (in case they cancel submition)
+    // (in case they submition)
     oldName = ui->NameEdit->text();
     oldEmail= ui->EmailEdit->text();
     oldId = ui->AccountIdEdit->text();
     oldPassword = ui->PasswordEdit->text();
+    oldIsActivated = ui->ActivatedCustomer->isChecked();
 
     //disable the next and previous buttons
     ui->nextCustomerButton->setEnabled(false);
@@ -152,8 +188,11 @@ void CustomerAddressBook::on_addButton_clicked()
     ui->EmailEdit->clear();
     ui->AccountIdEdit->clear();
     ui->PasswordEdit->clear();
+    ui->ActivatedCustomer->setChecked(false);
 
+    qDebug() << "CustomerAddressBook.cpp -- on_addButton_clicked() -- line 176";
     updateInterface(ADDING_MODE);
+    qDebug() << "CustomerAddressBook.cpp -- on_addButton_clicked() -- line 178";
 
 
 }
@@ -165,76 +204,96 @@ void CustomerAddressBook::on_submitButton_clicked()
     QString email = ui->EmailEdit->text();
     QString idString = ui->AccountIdEdit->text();
     QString pass = ui->PasswordEdit->text();
+    bool  activationStatus = false;
+    if(ui->ActivatedCustomer->isChecked())
+    {
+        activationStatus = true;
+    }
 
-    qDebug() << "ooo";
+    qDebug() << "ActivationStatus you entered is: " << activationStatus;
 
 
     if (currentMode == ADDING_MODE)
     {
-        qDebug() << "ooo1";
-
 
         Customer customer (name, email, idString.toLong(), pass);
-
-        qDebug() << "ooo2";
+        customer.setAccountAccess(activationStatus);
 
         // check if any field is empty
         if (name.isEmpty())
         {
+
             QMessageBox::information(this, tr("Empty Field"),
                        tr("Please enter in a name."));
+            on_cancelButton_clicked();
+
 
         }
         else if (email.isEmpty())
         {
             QMessageBox::information(this, tr("Empty Field"),
                        tr("Please enter in an email address."));
+            on_cancelButton_clicked();
+
         }
         else if (idString.isEmpty())
         {
             QMessageBox::information(this, tr("Empty Field"),
                        tr("Please enter in an ID number."));
+            on_cancelButton_clicked();
+
         }
         else if (pass.isEmpty())
         {
             QMessageBox::information(this, tr("Empty Field"),
                        tr("Please enter in a password."));
+            on_cancelButton_clicked();
+
         }
         else
          {
-            qDebug() << "ooo7";
 
 
             // check if the customer is not taken
-           if (!customerList->isExist(customer))
+           if (!customerList.isExist(customer) && !customerList.isExistSameName(name))
            {
 
-               qDebug() << "ooo8";
 
-               customerList->Enqueue(customer);
+               customerList.Enqueue(customer);
 
-               qDebug() << "ooo9";
 
                QMessageBox::information(this, tr("Add Successful"),
                 tr("\"%1\" has been added to the customer list.").arg(name));
 
+               // SIGNALS & SLOTS
+               emit customerListChanged(&customerList);
+
             }
+           else if (customerList.isExistSameName(name))
+           {
+               QMessageBox::information(this, tr("Add Unsuccessful"),
+                tr("Please enter in another name, \"%1\" is already in your customer list.").arg(name));
+               on_cancelButton_clicked();
+
+           }
            else
             {
 
                QMessageBox::information(this, tr("Add Unsuccessful"),
                 tr("\"%1\" is already in your customer list.").arg(name));
 
+               on_cancelButton_clicked();
+
             }
 
-
+  }
             //Restore the buttons to their normal state.
             ui->addButton->setEnabled(true);
             ui->submitButton->hide();
             ui->cancelButton->hide();
 
             // if list greater than one, enable the next and prev buttons
-            int sizeList = customerList->Size();
+            int sizeList = customerList.Size();
             ui->nextCustomerButton->setEnabled(sizeList>1);
             ui->prevCustomerButton->setEnabled(sizeList>1);
 
@@ -243,66 +302,115 @@ void CustomerAddressBook::on_submitButton_clicked()
             ui->EmailEdit->setReadOnly(true);
             ui->AccountIdEdit->setReadOnly(true);
             ui->PasswordEdit->setReadOnly(true);
+            ui->ActivatedCustomer->setEnabled(false);
 
 
-         }
-        qDebug() << "ooo3";
+
 
     }
     else if (currentMode == EDITING_MODE)
     {
         qDebug() << "ooo4";
-
+        bool change = false;
 
         Customer newCust (name, email, idString.toLong(), pass);
-        bool change = true;
+        newCust.setAccountAccess(activationStatus);
 
-         Customer* customerPtr = customerList->ReturnCustomerPtr(oldName);
+        try
+        {
+         Customer* customerPtr = customerList.ReturnCustomerPtr(oldName);
+         customerPtr->setAccountAccess(oldIsActivated);
+
+         if (oldName != name || oldEmail != email || oldId != idString || oldPassword != pass || oldIsActivated != activationStatus)
+         {
+
+             change = true;
+
+         }
+
+         // check if any field is empty
+         if (name.isEmpty())
+         {
+
+             QMessageBox::information(this, tr("Empty Field"),
+                        tr("Please enter in a name."));
+             on_cancelButton_clicked();
 
 
-        // change any updates!!
-        if (oldName != name)
-        {
-            customerPtr->setUserName(name);
-        }
-        else if (oldEmail != email)
-        {
-            customerPtr->setEmail(email);
-        }
-        else if (oldId!= idString)
-        {
-            customerPtr->setAccountNum(idString.toLong());
+         }
+         else if (email.isEmpty())
+         {
+             QMessageBox::information(this, tr("Empty Field"),
+                        tr("Please enter in an email address."));
+             on_cancelButton_clicked();
+
+         }
+         else if (idString.isEmpty())
+         {
+             QMessageBox::information(this, tr("Empty Field"),
+                        tr("Please enter in an ID number."));
+             on_cancelButton_clicked();
+
+         }
+         else if (pass.isEmpty())
+         {
+             QMessageBox::information(this, tr("Empty Field"),
+                        tr("Please enter in a password."));
+             on_cancelButton_clicked();
+
+         }
+         else if (!change)
+         {
+             QMessageBox::information(this, tr("Edit Unsuccessful"),
+               tr("No changes were made."));
+             on_cancelButton_clicked();
+
+         }
+         else if (customerList.isExist(newCust))
+         {
+             QMessageBox::information(this, tr("Edit Unsuccessful"),
+               tr("Sorry, \"%1\" is already in your address book.").arg(name));
+             on_cancelButton_clicked();
+
+         }
+         else
+         {
+             QMessageBox::information(this, tr("Edit Successful"),
+               tr("\"%1\" has been edited in your address book.").arg(oldName));
+
+             // change any updates!!
+                            qDebug() << "customerAddressBook.cpp line 350";
+              customerPtr->setUserName(name);
+                            qDebug() << "customerAddressBook.cpp line 352";
+              customerPtr->setEmail(email);
+                           qDebug() << "customerAddressBook.cpp line 354";
+              customerPtr->setAccountNum(idString.toLong());
+                          qDebug() << "customerAddressBook.cpp line 356";
+              customerPtr->setPassword(pass);
+                         qDebug() << "customerAddressBook.cpp line 358";
+              customerPtr->setAccountAccess(activationStatus);
+                          qDebug() << "customerAddressBook.cpp line 360";
+
+              // SIGNALS & SLOTS
+              emit customerListChanged(&customerList);
+
+         }
+
+         customerPtr = NULL;
 
         }
-        else if (oldPassword!= pass)
+        catch (...)
         {
-            customerPtr->setPassword(pass);
-        }
-        else if (customerList->isExist(newCust))
-        {
-            change = false;
             QMessageBox::information(this, tr("Edit Unsuccessful"),
-              tr("Sorry, \"%1\" is already in your address book.").arg(name));
-        }
-        else
-        {
-            change = false;
-            QMessageBox::information(this, tr("Edit Unsuccessful"),
-              tr("No changes were made."));
-        }
-
-        if (change)
-        {
-            QMessageBox::information(this, tr("Edit Successful"),
-              tr("\"%1\" has been edited in your address book.").arg(oldName));
+              tr("Sorry, \"%1\" an exception/error has occured.").arg(name));
+            on_cancelButton_clicked();
 
         }
 
-        customerPtr = NULL;
     }
 
-    // SIGNALS & SLOTS
-    emit customerListChanged(customerList);
+//    // SIGNALS & SLOTS
+//    emit customerListChanged(&customerList);
     updateInterface(NAVIGATION_MODE);
 
 }
@@ -314,6 +422,14 @@ void CustomerAddressBook::on_cancelButton_clicked()
     ui->EmailEdit->setText(oldEmail);
     ui->AccountIdEdit->setText(oldId);
     ui->PasswordEdit->setText(oldPassword);
+    if (oldIsActivated)
+    {
+        ui->ActivatedCustomer->setChecked(true);
+    }
+    else
+    {
+        ui->ActivatedCustomer->setChecked(false);
+    }
 
 //    // set read only text on construct
 //    ui->NameEdit->setReadOnly(true);
@@ -341,23 +457,23 @@ void CustomerAddressBook::on_nextCustomerButton_clicked()
 
     try
     {
-        int index = customerList->FindCustomerLocation(name);
+        int index = customerList.FindCustomerLocation(name);
 
-        if (!customerList->isEmpty() && customerList->Size() != 1)
+        if (!customerList.isEmpty() && customerList.Size() != 1)
          {
             // if index is the last one, start from beginning of list.
-            if ((index+1) == customerList->Size())
+            if ((index+1) == customerList.Size())
             {
 
 
-                someCustomer = (*customerList)[0];
+                someCustomer = customerList[0];
                 ui->warningLabel->setText("You've reached the end of the list, re-starting from the beginning!");
             }
             else
             {
                 // get next customer!
 
-                someCustomer = (*customerList)[++index];
+                someCustomer = customerList[++index];
                 // LOL. not: *(customerList)[++index];
 
 
@@ -395,22 +511,22 @@ void CustomerAddressBook::on_prevCustomerButton_clicked()
 
     QString name = ui->NameEdit->text();
     Customer someCustomer;
-    int index = customerList->FindCustomerLocation(name);
+    int index = customerList.FindCustomerLocation(name);
 
 
-    if (!customerList->isEmpty() && customerList->Size() != 1)
+    if (!customerList.isEmpty() && customerList.Size() != 1)
     {
         // if index is the first one, start from end of list.
         if (index == 0)
         {
 
-            someCustomer = (*customerList)[customerList->Size() - 1];
+            someCustomer = customerList[customerList.Size() - 1];
             ui->warningLabel->setText("You've reached the beginning of the list, re-starting from the end!");
         }
         else
         {
             // get next customer!
-            someCustomer = (*customerList)[--index];
+            someCustomer = customerList[--index];
             ui->warningLabel->setText("");
         }
 
@@ -433,8 +549,14 @@ void CustomerAddressBook::on_editButton_clicked()
     oldEmail= ui->EmailEdit->text();
     oldId = ui->AccountIdEdit->text();
     oldPassword = ui->PasswordEdit->text();
+    oldIsActivated = ui->ActivatedCustomer->isChecked();
 
     updateInterface(EDITING_MODE);
+
+//    customerList.SortList(customerList.GetHead());
+
+
+
 }
 
 void CustomerAddressBook::on_removeButton_clicked()
@@ -444,7 +566,7 @@ void CustomerAddressBook::on_removeButton_clicked()
     QString idString = ui->AccountIdEdit->text();
     QString pass = ui->PasswordEdit->text();
     Customer customer (name, email, idString.toLong(), pass);
-    if (customerList->isExist(customer))
+    if (customerList.isExist(customer))
     {
         int button = QMessageBox::question(this,
         tr("Confirm Remove"),
@@ -455,13 +577,13 @@ void CustomerAddressBook::on_removeButton_clicked()
         {
             on_prevCustomerButton_clicked();
 
-            customerList->RemoveCustomer(customer);
+            customerList.RemoveCustomer(customer);
 
 
             QMessageBox::information(this, tr("Remove Successful"),
                              tr("\"%1\" has been removed from your address book.").arg(name));
 
-            emit customerListChanged(customerList);
+            emit customerListChanged(&customerList);
         }
     }
 
@@ -482,12 +604,12 @@ void CustomerAddressBook::on_searchButton_clicked()
 
     try
     {
-        customerList->FindCustomer(name);
+        customerList.FindCustomer(name);
 
         QMessageBox::information(this, tr("Success!"),
                          tr("\"%1\" was found!").arg(name));
 
-        someCustomer = customerList->ReturnCustomerPtr(name);
+        someCustomer = customerList.ReturnCustomerPtr(name);
 
         SetCurrentDisplay(someCustomer);
 
@@ -495,12 +617,29 @@ void CustomerAddressBook::on_searchButton_clicked()
     }
     catch (...)
     {
-        QMessageBox::information(this, tr("Sorry"),
-                         tr("\"%1\" was not found").arg(name));
+
+        if (name != "")
+        {
+            QMessageBox::information(this, tr("Sorry"),
+                             tr("\"%1\" was not found").arg(name));
+        }
+
+
     }
 
 }
 
+void CustomerAddressBook::on_ActivatedCustomer_clicked()
+{
+    QString name = ui->NameEdit->text();
+
+    Customer *custPtr = customerList.ReturnCustomerPtr(name);
+
+    custPtr->setAccountAccess(true);
+
+    custPtr = NULL;
+
+}
 
 
 // XTRA DOCUMENTATION!!!!!!!
@@ -529,3 +668,16 @@ void CustomerAddressBook::on_searchButton_clicked()
 
 
 
+//void CustomerAddressBook::on_ActivatedCustomer_clicked()
+//{
+//    QString name = ui->NameEdit->text();
+
+//    Customer *custPtr = customerList.ReturnCustomerPtr(name);
+
+//    custPtr->SetActivationStatus(true);
+//}
+
+//void CustomerAddressBook::on_DeactivatedCustomer_clicked()
+//{
+
+//}

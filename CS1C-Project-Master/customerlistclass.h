@@ -18,9 +18,9 @@ class CustomerList
 private:
     //M E M B E R ~ D E C L A R A T I O N S
 
-    Node<Customer>*             _head;
-    Node<Customer>*             _tail;
-    Node<Customer>*             _ptr;
+    Node<Customer>*         _head;
+    Node<Customer>*         _tail;
+    Node<Customer>*         _ptr;
     int      		  	 	_nodeCount;
     int 			  		_listLimit;
 
@@ -54,14 +54,17 @@ public:
      **********************************************************************/
     void Enqueue(Customer data);
 
+    void Swap(Node<Customer>* objectOne, Node<Customer>* objectTwo);
 
     /**********************************************************************
      * Dequeue
      * --------------------------------------------------------------------
      * Removes the first node from the list
      **********************************************************************/
-    void Dequeue();
+    Customer Dequeue();
 
+
+    Node<Customer>* GetHead() const;
 
     /**********************************************************************
      * IncrementCount
@@ -131,6 +134,11 @@ public:
      **********************************************************************/
     QString   OutputList() const;
 
+
+
+
+   void SortList(Node<Customer>* head);
+
 //	CustomerNode* FindCustomer(Customer someCustomer) const;
 
     // overload
@@ -148,13 +156,17 @@ public:
     Customer* ReturnCustomerPtr(QString userName);
     // Returns customer pointer to calling function
 
+    Customer VerifyCustomer(QString userName, QString password);
+
+
     int FindCustomerLocation (QString userName);
     // Returns the integer location of customer
 
     Customer operator[](int index) const;
 
-    CustomerList* operator=(const CustomerList&);
+    CustomerList& operator=(const CustomerList&);
 
+    bool isExistSameName(QString name);
 
     bool isExist(Customer someCustomer);
 
