@@ -6,6 +6,7 @@
 #include <QTextStream>
 #include <QFile>
 #include <QIODevice>
+#include <QDir>
 
 
 /***********************************************************************
@@ -444,59 +445,132 @@ QString ProductList::operator[](int index)
 
 }
 
+
+// Returns true only if it successfully writes
+//  Returns false if it fails to open, write or if there are
+//  no products in the list.
 bool ProductList::WriteToFile()
 {
-//<<<<<<< HEAD
-//qDebug() << "****Debuggin ProductList::WriteToFile - line 449, before Declarations";
-//        QFile productFile("ProductDatabase.txt");
+    Node<Product>* _productPtr;
+    QDir dataDir;
+    bool writeSuccessFull;
 
-//qDebug() << "****Debuggin ProductList::WriteToFile - line 452, before File Open";
-//        if(productFile.open(QIODevice::ReadWrite))
-//        {
-//qDebug() << "****Debuggin ProductList::WriteToFile - line 449,"
-//            "before Declarations";
-//                QTextStream out(&productFile);
-//=======
-    QFile productFile(":/ProductDatabase.txt");
+    // This calls on QDir to return the path of the home folder of the user
+    //  who executed the program then concatenates
+    dataDir = QDir::home().path() + "/E.R.C.K/ProductData.txt";
 
-    if(!productFile.open(QIODevice::WriteOnly | QIODevice::Text))
+    // If the path doesn't exist, the program will create another, if it was lost during execution.
+    if(!dataDir.exists())
     {
-        qWarning("Couldn't open product file.");
-        return false;
+        dataDir.mkpath(dataDir.path());
     }
-//>>>>>>> Product-Functionality
 
-//    QTextStream out(&productFile);
-//    out << "The magic number is: " << 49 << "\n";
+    // A QFile is the created or opeth.
+    QFile productDataFile(dataDir.path());
 
-//<<<<<<< HEAD
+    // Initialize write to false
+    writeSuccessFull = false;
 
-//        }
-//=======
-    productFile.close();
-    return true;
-//>>>>>>> Product-Functionality
+    if(productDataFile.open(QIODevice::ReadWrite | QIODevice::Text) && !isEmpty())
+    {
+
+        QTextStream out(&productDataFile);
+
+        _productPtr = _head;
+
+        while(_productPtr != 0)
+        {
+            out << _productPtr->GetData().getName();
+            out << _productPtr->GetData().getDescription();
+            out << _productPtr->GetData().getCost();
+            out << _productPtr->GetData().getModelNumber();
+            out << _productPtr->GetData().getReleaseDate();
+        }
+
+        writeSuccessFull = true;
+
+    }
+
+    productDataFile.flush();
+    productDataFile.close();
+
+    return writeSuccessFull;
+
 }
 
 
+bool ProductList::ReadFile()
+{
+    QDir dataDir;
+    bool readSuccessFull;
+    Product* newProduct;
 
-//bool Game::saveGame(Game::SaveFormat saveFormat) const
-//{
-//    QFile saveFile(saveFormat == Json
-//        ? QStringLiteral("save.json")
-//        : QStringLiteral("save.dat"));
+    // Initialize write to false
+    readSuccessFull = false;
 
-//    if (!saveFile.open(QIODevice::WriteOnly)) {
-//        qWarning("Couldn't open save file.");
-//        return false;
-//    }
+    // This calls on QDir to return the path of the home folder of the user
+    //  who executed the program then concatenates
+    dataDir = QDir::home().path() + "/E.R.C.K/ProductData.txt";
 
-//    QJsonObject gameObject;
-//    write(gameObject);
-//    QJsonDocument saveDoc(gameObject);
-//    saveFile.write(saveFormat == Json
-//        ? saveDoc.toJson()
-//        : saveDoc.toBinaryData());
+    // If the path doesn't exist, the program will create another, if it was lost during execution.
+    if(!dataDir.exists())
+    {
+        dataDir.mkpath(dataDir.path());
+    }
 
-//    return true;
-//}
+    // A QFile is the created or opened
+    QFile productDataFile(dataDir.path());
+
+    // This checks if the file opens, if it does not, it will display an
+    //  error message
+    if(productDataFile.open(QIODevice::ReadWrite | QIODevice::Text))
+    {
+        // Testing index
+        int index = 0;
+        QString inputData[5];
+
+        // Points Text stream to input file to read in.
+        QTextStream inFile(&productDataFile);
+        while(!inFile.atEnd() && isFull())
+        {
+            // Name
+            inputData[0] = inFile.readLine();
+
+            // Cost
+            inputData[1] = inFile.readLine();
+
+            // Description
+            inputData[2] = inFile.readLine();
+
+            // Model Number
+            inputData[3] = inFile.readLine();
+
+            // Date Released
+            inputData[4] = inFile.readLine();
+
+            newProduct = new Product(inputData[0],inputData[1],inputData[2].toFloat(),inputData[3].toInt(),inputData[4].toInt());
+
+            this->Enqueue(*newProduct);
+
+        }
+
+// ************************************************************
+// * This will be used for when I have the data read in from the products
+// ************************************************************
+//        QTextStream inFile(&productDataFile);
+//        while(!inFile.atEnd())
+//        {
+//            QString data = inFile.readLine();
+//            proccess_line(data);
+//        }
+
+
+        readSuccessFull = true;
+    }
+
+    productDataFile.flush();
+    productDataFile.close();
+
+    return readSuccessFull;
+
+}

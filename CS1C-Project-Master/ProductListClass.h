@@ -22,9 +22,11 @@ private:
 
     Node<Product>*    _head;
     Node<Product>*    _tail;
-    Node<Product>*    _ptr;
     int      		  _nodeCount;
     int 			  _listLimit;
+
+    // TEMPORARY DATA FOR TESTING READING AND WRITING
+    QString           data;
 
 /**************************************************************************
  * P U B L I C
@@ -142,7 +144,7 @@ public:
 
     bool    WriteToFile();
 
-    void    ReadFile();
+    bool    ReadFile();
 
     void    RemoveProduct(Product &someProduct);
 

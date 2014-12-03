@@ -120,7 +120,7 @@ private:
     //  Used to create a help window for the user
 
     BrochureWindow*     bWindow;
-    ProductList*        lst;
+    ProductList        robotList;
     CustomerList        customerList;
 
     // SECTION LOGIN BOOLEANS

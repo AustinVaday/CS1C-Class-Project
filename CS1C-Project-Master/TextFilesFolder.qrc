@@ -2,8 +2,6 @@
     <qresource prefix="/">
         <file>ActivatedListFile.txt</file>
         <file>DeactivatedListFile.txt</file>
-        <file>ProductDatabase.txt</file>
         <file>HelpOptionFile.txt</file>
-        <file>TestFile.txt</file>
     </qresource>
 </RCC>

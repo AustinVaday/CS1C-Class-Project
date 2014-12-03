@@ -110,6 +110,5 @@ RESOURCES += \
     TextFilesFolder.qrc \
     Images.qrc
 
-OTHER_FILES += \
-    TestFile.txt
+OTHER_FILES +=
 

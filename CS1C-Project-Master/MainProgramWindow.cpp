@@ -16,6 +16,19 @@ qDebug() << "Reading List!";
 qDebug() << "Deconstructed!";
 
 
+
+/**************************************************************/
+/*                     Erik Testing                           */
+/**************************************************************/
+        Product robot1("Guy", "<AR{P", 434.2, 432, 232341);
+
+        robotList.Enqueue(robot1);
+
+/**************************************************************/
+
+
+
+
     // TEMPORARY DISPLAY!!
     ui->tempDisplay->setText(customerList.OutputList());
 
@@ -47,13 +60,7 @@ qDebug() << customerList.OutputList() << "Main Program Window: "
 
 MainProgramWindow::~MainProgramWindow()
 {
-       ProductList myList;
-
-        Product robot1("Guy", "<AR{P", 434.2, 432, 232341);
-
-        myList.Enqueue(robot1);
-
-        myList.WriteToFile();
+        robotList.WriteToFile();
 qDebug() << "Deconstructor Write to test file.";
 
        WriteToCustomerFile(customerList, "::TestFile.txt");
