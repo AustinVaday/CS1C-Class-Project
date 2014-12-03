@@ -31,3 +31,11 @@ void GuestWindow::on_sellButton_clicked()
     sellWindow.setModal(true);
     sellWindow.exec();
 }
+
+void GuestWindow::on_EnviroButton_clicked()
+{
+    Environments eWindow;
+
+    eWindow.setModal(true);
+    eWindow.exec();
+}

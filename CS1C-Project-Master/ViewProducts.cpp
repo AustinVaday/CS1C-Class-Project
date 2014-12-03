@@ -7,13 +7,13 @@ ViewProducts::ViewProducts(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    Product robo1("Meowzers", "Meows every five seconds", 5000.00, 342, 111413);
+    Product robo1("Meowzers", "Robot is disquised as a cat\nvery efficient in difficult terrains\nvery agile & stealthy robot", 5000.00, 666, 111413);
     ui->text1->insertPlainText(robo1.OutputData());
 
-    Product robo2("Flower Bomb", "Blows up with daisies to\n spread world peace", 100000.99, 666, 122112 );
+    Product robo2("iRobot 6000", "Can bounce into action after being thrown out of building\nhas a manipulator arm in order to cut wires\nvery durable can keep running after being dropped 100 ft", 100000.99, 342, 122112 );
     ui->text2->insertPlainText(robo2.OutputData());
 
-    Product robo3("Soviet Bomb", "Old bomb from Soviet\n Russia comes with complimentary bottle of vodka", 500.56, 234, 81285);
+    Product robo3("Soviet Attackers", "if cold war ever happens again robot is very efficient\nmade special to detect Soviet threats\ncan transmit video and sudio", 500.56, 234, 81285);
     ui->text3->insertPlainText(robo3.OutputData());
 }
 
@@ -23,3 +23,11 @@ ViewProducts::~ViewProducts()
 }
 
 
+
+void ViewProducts::on_MaintPlan_clicked()
+{
+    MaintPlan mWindow;
+
+    mWindow.setModal(true);
+    mWindow.exec();
+}

@@ -25,6 +25,8 @@
 #include "sellpoint.h"
 #include "guarantee.h"
 #include "guestwindow.h"
+#include "maintplan.h"
+#include "environments.h"
 
 #include <QDebug>
 
