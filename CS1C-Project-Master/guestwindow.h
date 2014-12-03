@@ -5,6 +5,7 @@
 #include <QMainWindow>
 #include "guarantee.h"
 #include "sellpoint.h"
+#include "environments.h"
 
 namespace Ui {
 class GuestWindow;
@@ -22,6 +23,8 @@ private slots:
     void on_guaranteeButton_clicked();
 
     void on_sellButton_clicked();
+
+    void on_EnviroButton_clicked();
 
 private:
     Ui::GuestWindow *ui;
