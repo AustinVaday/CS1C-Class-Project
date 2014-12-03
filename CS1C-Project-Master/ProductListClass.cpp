@@ -473,18 +473,19 @@ bool ProductList::WriteToFile()
 
     if(productDataFile.open(QIODevice::ReadWrite | QIODevice::Text) && !isEmpty())
     {
-
+qDebug() << "Debugging:: WRITE :::  It opened ::: ";
         QTextStream out(&productDataFile);
 
         _productPtr = _head;
 
         while(_productPtr != 0)
         {
-            out << _productPtr->GetData().getName();
-            out << _productPtr->GetData().getDescription();
-            out << _productPtr->GetData().getCost();
-            out << _productPtr->GetData().getModelNumber();
-            out << _productPtr->GetData().getReleaseDate();
+            out << _productPtr->GetData().getName() << " 1 + \n";
+            out << _productPtr->GetData().getDescription()  << " 2 + \n";
+            out << _productPtr->GetData().getCost() << " 3 + \n";
+            out << _productPtr->GetData().getModelNumber() << " 4 + \n";
+            out << _productPtr->GetData().getReleaseDate() << " 5 + \n";
+            _productPtr = _productPtr->GetNext();
         }
 
         writeSuccessFull = true;
@@ -503,7 +504,6 @@ bool ProductList::ReadFile()
 {
     QDir dataDir;
     bool readSuccessFull;
-    Product* newProduct;
 
     // Initialize write to false
     readSuccessFull = false;
@@ -515,7 +515,7 @@ bool ProductList::ReadFile()
     // If the path doesn't exist, the program will create another, if it was lost during execution.
     if(!dataDir.exists())
     {
-        dataDir.mkpath(dataDir.path());
+qDebug() << "Product File: " << !dataDir.exists();
     }
 
     // A QFile is the created or opened
@@ -525,51 +525,39 @@ bool ProductList::ReadFile()
     //  error message
     if(productDataFile.open(QIODevice::ReadWrite | QIODevice::Text))
     {
-        // Testing index
-        int index = 0;
         QString inputData[5];
 
         // Points Text stream to input file to read in.
         QTextStream inFile(&productDataFile);
-        while(!inFile.atEnd() && isFull())
+        while(!inFile.atEnd() && !isFull())
         {
+qDebug() << "Debugging:: Open Success :: Reading data...";
             // Name
-            inputData[0] = inFile.readLine();
-
+            inputData[0] = inFile.readLine() + " 1 + ";
+qDebug() << "Name: " << inputData[0];
             // Cost
-            inputData[1] = inFile.readLine();
-
+            inputData[1] = inFile.readLine() + " 2 + ";
+qDebug() << "Description: " << inputData[1];
             // Description
-            inputData[2] = inFile.readLine();
-
+            inputData[2] = inFile.readLine() + " 3 + ";
+qDebug() << "Cost: " << inputData[2];
             // Model Number
-            inputData[3] = inFile.readLine();
-
+            inputData[3] = inFile.readLine() + " 4 + ";
+qDebug() << "Model Number: " << inputData[3];
             // Date Released
-            inputData[4] = inFile.readLine();
+            inputData[4] = inFile.readLine() + " 5 + ";
+qDebug() << "Date Released: " << inputData[4];
+            Product newProduct(inputData[0],inputData[1],inputData[2].toFloat(),inputData[3].toInt(),inputData[4].toInt());
 
-            newProduct = new Product(inputData[0],inputData[1],inputData[2].toFloat(),inputData[3].toInt(),inputData[4].toInt());
-
-            this->Enqueue(*newProduct);
+            this->Enqueue(newProduct);
 
         }
-
-// ************************************************************
-// * This will be used for when I have the data read in from the products
-// ************************************************************
-//        QTextStream inFile(&productDataFile);
-//        while(!inFile.atEnd())
-//        {
-//            QString data = inFile.readLine();
-//            proccess_line(data);
-//        }
-
-
         readSuccessFull = true;
     }
 
-    productDataFile.flush();
-    productDataFile.close();
+qDebug() << "Flush: " << productDataFile.flush();
+productDataFile.close();
+qDebug() << "Close: " << !productDataFile.isOpen();
 
     return readSuccessFull;
 

@@ -20,10 +20,7 @@ qDebug() << "Deconstructed!";
 /**************************************************************/
 /*                     Erik Testing                           */
 /**************************************************************/
-        Product robot1("Guy", "<AR{P", 434.2, 432, 232341);
-
-        robotList.Enqueue(robot1);
-
+    robotList.ReadFile();
 /**************************************************************/
 
 
@@ -60,7 +57,16 @@ qDebug() << customerList.OutputList() << "Main Program Window: "
 
 MainProgramWindow::~MainProgramWindow()
 {
-        robotList.WriteToFile();
+        if(robotList.isEmpty())
+        {
+            QMessageBox error;
+            error.setText("List is empty");
+            error.exec();
+        }
+        else
+        {
+            robotList.WriteToFile();
+        }
 qDebug() << "Deconstructor Write to test file.";
 
        WriteToCustomerFile(customerList, "::TestFile.txt");
