@@ -10,7 +10,7 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     // Debug construct
-qDebug() << "Reading List!";
+    qDebug() << "Reading List!";
 
 
     //Create the customer list...
@@ -283,5 +283,64 @@ void MainProgramWindow::on_pushButton_Guest_clicked()
 
 void MainProgramWindow::on_pushButton_RequestBrochure_clicked()
 {
-    sWindow->show();
+
+//    Admin testAdmin("admin","admin1234@gmail.com", 1234, "password");
+
+//    Customer customer;
+//    int        customerLocation;
+
+//    bool validInput = false;
+
+////    LoginWindow wind;
+//    QString    tempName;
+//    QString    tempPassword;
+//    ErrorLogin  errorWindow;
+//    Customer tempCustomer;
+
+
+
+//        customerLocation = 0;
+        sWindow->setModal(true);
+
+        sWindow->exec();
+
+//        loginWindow.on_buttonBox_loginPress_accepted(tempName, tempPassword);
+
+//        SetUsername(tempName);
+//        SetPassword(tempPassword);
+
+
+//        if(testAdmin.checkAdmin(tempName, tempPassword ))
+//        {
+//            validInput = true;
+//            SetAdminLogin(true);
+//        }
+//        else
+//        {
+//           tempCustomer =  customerList.VerifyCustomer(tempName, tempPassword);
+
+//           if(tempCustomer.getUserName() != " ")
+//           {
+//               validInput = true;
+//               SetCustomerLogin(true);
+//           }
+//        }
+
+//// CAUSES THE PROGRAM TO CRASH
+////customerList.SortList(customerList.GetHead());
+
+
+//    if(!loginWindow.on_buttonBox_loginPress_rejected())
+//    {
+//        errorWindow.setModal(true);
+//        errorWindow.exec();
+//        errorWindow.show();
+//    }
+
+//    if(validInput)
+//    {
+//        Launcher();
+//    }
+
+
 }
