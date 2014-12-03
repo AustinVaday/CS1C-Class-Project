@@ -1,13 +1,17 @@
 #include "MainProgramWindow.h"
 
-
 MainProgramWindow::MainProgramWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainProgramWindow)
+    ui(new Ui::MainProgramWindow),
+     adminLogin(false),
+     customerLogin(false),
+     guestLogin(false),
+     createAccount(false)
 {
     ui->setupUi(this);
     // Debug construct
 qDebug() << "Reading List!";
+
 
     //Create the customer list...
     ReadCustomerFile(customerList, ":/ActivatedListFile.txt");
@@ -41,6 +45,8 @@ qDebug() << customerList.OutputList();
     hWindow = new HelpWindow;
     aWindow = new AdminWindow(this, customerList);
     bWindow = new BrochureWindow;
+    gWindow = new GuestWindow;
+    sWindow = new SignUp;
 
     // ***DEBUG** List is read.
 qDebug() << customerList.OutputList() << "Main Program Window: "
@@ -72,20 +78,12 @@ qDebug() << "Deconstructor Write to test file.";
        WriteToCustomerFile(customerList, "::TestFile.txt");
 
        customerList.ClearList();
-qDebug() << "MainProgramWindow -- Destructor Test #1";
-    delete aWindow;
-
-qDebug() << "MainProgramWindow -- Destructor Test #2";
-
-    delete bWindow;
-
-qDebug() << "MainProgramWindow -- Destructor Test #3";
-
-    delete hWindow;
-qDebug() << "MainProgramWindow -- Destructor Test #4";
-
-    delete ui;
-qDebug() << "MainProgramWindow -- Destructor Test #5";
+        delete aWindow;
+        delete bWindow;
+        delete hWindow;
+        delete gWindow;
+        delete sWindow;
+        delete ui;
 
 
 }
@@ -280,7 +278,10 @@ void MainProgramWindow::updateCustomerList(CustomerList *list)
 
 void MainProgramWindow::on_pushButton_Guest_clicked()
 {
-    gWindow = new GuestWindow;
-
     gWindow->show();
+}
+
+void MainProgramWindow::on_pushButton_RequestBrochure_clicked()
+{
+    sWindow->show();
 }

@@ -27,6 +27,7 @@
 #include "guestwindow.h"
 #include "maintplan.h"
 #include "environments.h"
+#include "signup.h"
 
 #include <QDebug>
 
@@ -104,6 +105,8 @@ private slots:
 
     void on_pushButton_Guest_clicked();
 
+    void on_pushButton_RequestBrochure_clicked();
+
 private:
     Ui::MainProgramWindow *ui;
 
@@ -114,12 +117,12 @@ private:
     // Customer / Brochure Data Memeber Placeholder
 
     HelpWindow  *hWindow;
-
     GuestWindow *gWindow;
     // Pointer of type HelpWindow
     //  Used to create a help window for the user
 
     BrochureWindow*     bWindow;
+    SignUp* sWindow;
     ProductList        robotList;
     CustomerList        customerList;
 
@@ -127,10 +130,10 @@ private:
     //These boolean variables are used to determine what
     //  type of window to launch
 
-    bool adminLogin         = 0;
-    bool customerLogin  = 0;
-    bool guestLogin      = 0;
-    bool createAccount   = 0;
+    bool adminLogin;
+    bool customerLogin;
+    bool guestLogin;
+    bool createAccount;
 
     QString userName;
     QString password;
