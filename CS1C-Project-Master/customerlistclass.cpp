@@ -235,7 +235,7 @@ void CustomerList::ClearList()
              {
                  qDebug() << "DEBUG:: CustomerListClass.cpp :: Enqueue :: Line 233";
 
-                if(_createNew->GetData().getUserName() < _cursor->GetData().getUserName())
+                if(_createNew->GetData().getUserName().toUpper() < _cursor->GetData().getUserName().toUpper())
                 {
                     qDebug() << "DEBUG:: CustomerListClass.cpp :: Enqueue :: Line 237";
 
@@ -270,7 +270,7 @@ void CustomerList::ClearList()
                 //the node is added to the list according to alphabetical order
                 while(_cursor != NULL && continueTraverse)
                 {
-                    if((_createNew->GetData().getUserName() < _cursor->GetData().getUserName()))
+                    if((_createNew->GetData().getUserName().toUpper() < _cursor->GetData().getUserName().toUpper()))
                     {
                         continueTraverse = false;
                         _createNew->SetNext(_cursor);
@@ -750,6 +750,9 @@ Customer CustomerList::VerifyCustomer(QString userName, QString password)
 
 CustomerList& CustomerList::operator=(const CustomerList& list)
 {
+
+    if (this != &list)
+    {
         int index;
         Customer copyCustomer;
         index = 0;
@@ -773,5 +776,6 @@ this->ClearList();
 // AFter
 qDebug() << "Line 616: After CustomerLIst Assignment: " << this->OutputList();
 
+    }
         return *this;
 }

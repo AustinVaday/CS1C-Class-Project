@@ -27,7 +27,7 @@
 #include "guestwindow.h"
 #include "maintplan.h"
 #include "environments.h"
-#include "signup.h"
+#include "signupwindow.h"
 
 #include <QDebug>
 
@@ -122,7 +122,7 @@ private:
     //  Used to create a help window for the user
 
     BrochureWindow*     bWindow;
-    SignUp* sWindow;
+    SignUpWindow* sWindow;
     ProductList        robotList;
     CustomerList        customerList;
 

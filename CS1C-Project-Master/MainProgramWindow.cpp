@@ -46,7 +46,7 @@ qDebug() << customerList.OutputList();
     aWindow = new AdminWindow(this, customerList);
     bWindow = new BrochureWindow;
     gWindow = new GuestWindow;
-    sWindow = new SignUp;
+    sWindow = new SignUpWindow;
 
     // ***DEBUG** List is read.
 qDebug() << customerList.OutputList() << "Main Program Window: "
@@ -90,6 +90,7 @@ qDebug() << "Deconstructor Write to test file.";
 
 void MainProgramWindow::on_pushButton_Login_clicked()
 {
+
 
     Admin testAdmin("admin","admin1234@gmail.com", 1234, "password");
 
@@ -264,13 +265,22 @@ void MainProgramWindow::on_actionHelp_triggered()
 
 void MainProgramWindow::updateCustomerList(CustomerList *list)
 {
+
+    // if adminwindow is not open, update it's customer list.
+    if (!aWindow->isVisible())
+    {
+//        delete aWindow; /* CRASHES THE PROGRAM FOR SOME REASON!?!?! */
+
+        aWindow = new AdminWindow(this, customerList);
+    }
+
     customerList = *list;
 
     // TEMPORARY DISPLAY!!
     ui->tempDisplay->clear();
     ui->tempDisplay->setText(customerList.OutputList());
 
-    WriteToCustomerFile(customerList, ":/ActivatedListFile.txt");
+//    WriteToCustomerFile(customerList, ":/ActivatedListFile.txt");
 
 
     qDebug() << "List has finally reached the MainProgramWindow!";
@@ -283,64 +293,52 @@ void MainProgramWindow::on_pushButton_Guest_clicked()
 
 void MainProgramWindow::on_pushButton_RequestBrochure_clicked()
 {
-
-//    Admin testAdmin("admin","admin1234@gmail.com", 1234, "password");
-
-//    Customer customer;
-//    int        customerLocation;
-
-//    bool validInput = false;
-
-////    LoginWindow wind;
-//    QString    tempName;
-//    QString    tempPassword;
-//    ErrorLogin  errorWindow;
-//    Customer tempCustomer;
-
-
-
-//        customerLocation = 0;
+        Customer customer;
+        bool properFields = false;
         sWindow->setModal(true);
 
-        sWindow->exec();
 
-//        loginWindow.on_buttonBox_loginPress_accepted(tempName, tempPassword);
+        int submitSuccess = sWindow->exec();
 
-//        SetUsername(tempName);
-//        SetPassword(tempPassword);
+        if (submitSuccess)
+        {
+            sWindow->on_buttonBox_accepted(customer, properFields);
 
-
-//        if(testAdmin.checkAdmin(tempName, tempPassword ))
-//        {
-//            validInput = true;
-//            SetAdminLogin(true);
-//        }
-//        else
-//        {
-//           tempCustomer =  customerList.VerifyCustomer(tempName, tempPassword);
-
-//           if(tempCustomer.getUserName() != " ")
-//           {
-//               validInput = true;
-//               SetCustomerLogin(true);
-//           }
-//        }
-
-//// CAUSES THE PROGRAM TO CRASH
-////customerList.SortList(customerList.GetHead());
+            if (properFields)
+            {
+                 // check if the customer is not taken
+                 if (!customerList.isExist(customer) && !customerList.isExistSameName(customer.getUserName()))
+                 {
 
 
-//    if(!loginWindow.on_buttonBox_loginPress_rejected())
-//    {
-//        errorWindow.setModal(true);
-//        errorWindow.exec();
-//        errorWindow.show();
-//    }
+                     customerList.Enqueue(customer);
 
-//    if(validInput)
-//    {
-//        Launcher();
-//    }
+                     updateCustomerList(&customerList);
+
+                     QMessageBox::information(this, tr("Registration Successful"),
+                      tr("\"%1\", you will be notified shortly whether you have been accepted or rejected.").arg(customer.getUserName()));
+
+                     // SIGNALS & SLOTS
+    //                 emit customerListChanged(&customerList);
+
+                  }
+                 else if (customerList.isExistSameName(customer.getUserName()))
+                 {
+                     QMessageBox::information(this, tr("Registration Unsuccessful"),
+                      tr("Please enter in another name, \"%1\" is already taken").arg(customer.getUserName()));
+                 }
+                 else
+                  {
+
+                     QMessageBox::information(this, tr("Registration Unsuccessful"),
+                      tr("\"%1\" is already in your customer list.").arg(customer.getUserName()));
+
+                  }
+                }
+
+
+                qDebug() << customer.OutputData();
+        }
 
 
 }
