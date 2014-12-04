@@ -126,8 +126,8 @@
      <string>Extreme Robo Cat Coderz</string>
     </property>
     <addaction name="actionHelp"/>
+    <addaction name="actionContactUS"/>
     <addaction name="actionExit"/>
-    <addaction name="actionHgh"/>
    </widget>
    <addaction name="menuExtreme_Robo_Cat_Coderz"/>
   </widget>
@@ -146,6 +146,9 @@
    </property>
   </action>
   <action name="actionHelp">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Help</string>
    </property>
@@ -155,9 +158,12 @@
     <string>Exit</string>
    </property>
   </action>
-  <action name="actionHgh">
+  <action name="actionContactUS">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
    <property name="text">
-    <string>hgh</string>
+    <string>Contact Us</string>
    </property>
   </action>
  </widget>

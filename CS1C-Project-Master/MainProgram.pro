@@ -46,7 +46,8 @@ SOURCES += main.cpp\
     guestwindow.cpp \
     maintplan.cpp \
     environments.cpp \
-    signupwindow.cpp
+    signupwindow.cpp \
+    contactus.cpp
 
 HEADERS += MainProgramWindow.h \
 	adminclass.h \
@@ -81,7 +82,8 @@ HEADERS += MainProgramWindow.h \
     guestwindow.h \
     maintplan.h \
     environments.h \
-    signupwindow.h
+    signupwindow.h \
+    contactus.h
 
 FORMS   += mainprogramwindow.ui \
 	newactivatedlist.ui \
@@ -107,7 +109,8 @@ FORMS   += mainprogramwindow.ui \
     guestwindow.ui \
     maintplan.ui \
     environments.ui \
-    signupwindow.ui
+    signupwindow.ui \
+    contactus.ui
 
 RESOURCES += \
     TextFilesFolder.qrc \

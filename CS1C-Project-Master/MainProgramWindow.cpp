@@ -47,6 +47,7 @@ qDebug() << customerList.OutputList();
     bWindow = new BrochureWindow;
     gWindow = new GuestWindow;
     sWindow = new SignUpWindow;
+    cWindow = new ContactUs;
 
     // ***DEBUG** List is read.
 qDebug() << customerList.OutputList() << "Main Program Window: "
@@ -83,6 +84,7 @@ qDebug() << "Deconstructor Write to test file.";
         delete hWindow;
         delete gWindow;
         delete sWindow;
+        delete cWindow;
         delete ui;
 
 
@@ -341,4 +343,9 @@ void MainProgramWindow::on_pushButton_RequestBrochure_clicked()
         }
 
 
+}
+
+void MainProgramWindow::on_actionContactUS_triggered()
+{
+    cWindow->show();
 }
