@@ -47,7 +47,7 @@ qDebug() << customerList.OutputList();
     bWindow = new BrochureWindow;
     gWindow = new GuestWindow;
     sWindow = new SignUpWindow;
-    cWindow = new ContactUs;
+    cWindow = new ContactUs(this);
 
     // ***DEBUG** List is read.
 qDebug() << customerList.OutputList() << "Main Program Window: "
