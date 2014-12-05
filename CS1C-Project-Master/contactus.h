@@ -17,9 +17,16 @@ public:
 
 private slots:
     void on_sendButton_clicked();
+    void generateResponse();
+
+
+
+signals:
+//    void send_update_messages(QString message, QString name);
 
 private:
     Ui::ContactUs *ui;
+    QString question;
 };
 
 #endif // CONTACTUS_H
