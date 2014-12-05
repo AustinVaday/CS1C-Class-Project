@@ -38,10 +38,12 @@ class MainProgramWindow : public QMainWindow
 {
     Q_OBJECT
 
+friend bool CreateDatabase(MainProgramWindow &program);
+
 public:
     explicit MainProgramWindow(QWidget *parent = 0);
 
-    /***************************************************************************
+    /************************************************************
      * These set methods are used to set the state of the private boolean
      * variables. The boolean variables are our new approach to launching a
      * specific widgets/windows. For example, if adminLogin is true, launch an
@@ -58,10 +60,10 @@ public:
      *
      * (read documentation above)
      ***************************************************************************/
-     bool GetAdminLoginState        ();
-     bool GetCustomerLoginState  ();
-     bool GetGuestLoginState          ();
-     bool GetCreateAccountState   ();
+     bool GetAdminLoginState();
+     bool GetCustomerLoginState();
+     bool GetGuestLoginState();
+     bool GetCreateAccountState();
 
      ProductList* getProductList() const;
 
@@ -127,10 +129,10 @@ private:
     //These boolean variables are used to determine what
     //  type of window to launch
 
-    bool adminLogin         = 0;
-    bool customerLogin  = 0;
-    bool guestLogin      = 0;
-    bool createAccount   = 0;
+    bool adminLogin;
+    bool customerLogin;
+    bool guestLogin;
+    bool createAccount;
 
     QString userName;
     QString password;

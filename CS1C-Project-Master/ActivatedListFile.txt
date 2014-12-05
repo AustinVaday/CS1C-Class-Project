@@ -1,24 +1,35 @@
-Austin
-austinvaday@gmail.com
-10100011
-password123
+Los Angeles Airport
+12345 Main
+El Segundo, CA 90245
+very interested
+key
 
-Bob
-boadaaday@gmail.com
-10202011
-password222
+Secret Service
+12345 Pennsylvania
+Reston, VA  12345
+very interested
+key
 
-Sammy
-samaday@gmail.com
-23123333
-123pass123
+FBI
+1 Lincoln Ave.
+Washington D.C. 00234
+somewhat interested
+key
 
-Billy
-billy@yahoo.com
-333333333
-1234pass
+CIA
+987 Jefferson Blvd
+Baltimore, MD 00754
+very interested
+key
 
-Marcus
-Marco@gmail.com
-22229999
-12349passswordd
+Saddleback College
+28000 Marguerite Pkwy
+Mission Viejo, CA 92692
+not  interested
+nice to have
+
+Los Angeles Dodgers
+12345 Chevaz Ravine
+Los Angeles, CA 90277
+very interested
+nice to have

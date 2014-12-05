@@ -2,40 +2,47 @@
 #define CUSTOMERCLASS_H
 #include "userclass.h"
 #include <QString>
+#include <AddressClass.h>
+#include <QTextStream>
 
 class Customer : public User
 {
+
     public:
         Customer();
         // default constructor
 
         Customer(QString userName,
+                 QString customerAddress,
+                 QString initInterest,
+                 QString key,
+                 QString password,
                  QString email,
-                 long 	accountNum,
-                 QString password);
+                 long    accountNum,
+                 bool    activated);
         // Nondefault constructor
 
         bool operator >(const Customer& otherCustomer) const;
+        // Overloading comparison operator greater than
+
         bool operator <(const Customer& otherCustomer) const;
+        // Overloading comparison operator less than
 
+        // ACCESSORS
 
-        // Accessors
-        // Product viewPricesAndPackages(Product currentProductLine) const;
-        // Returns the
-        // Might want to reconsider this method with what annie is doing
-        //	if the interface class
+        QString getAddress()  const;
+        QString getKey()      const;
+        QString getInterest() const;
 
-        // Product orderRobots(Product currentProductLine);
-        // Prompts user to input which product the want, it will be process
-        //	and stored into the the user's purchase history and be recorded
-        //	into the transaction history of the software for the
-        //	administrator to utilize
-
-//        bool requestBrochure() const;
-
+        // ACCESSORS
+        void setInterest(QString interest);
+        void setAddress(QString newAddress);
+        void setKey(QString key);
 
     private:
-        //none
+        QString address;
+        QString interest;
+        QString keyCustomer;
 
 };
 

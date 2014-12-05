@@ -5,6 +5,12 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainProgramWindow)
 {
+    // DECLARATIONS
+    adminLogin    = 0;
+    customerLogin = 0;
+    guestLogin    = 0;
+    createAccount = 0;
+
     ui->setupUi(this);
     // Debug construct
 qDebug() << "Reading List!";
@@ -12,18 +18,12 @@ qDebug() << "Reading List!";
     //Create the customer list...
     ReadCustomerFile(customerList, ":/ActivatedListFile.txt");
 
-// Debug construct
-qDebug() << "Deconstructed!";
-
-
-
-/**************************************************************/
-/*                     Erik Testing                           */
-/**************************************************************/
-    robotList.ReadFile();
-/**************************************************************/
-
-
+    // Reads in the robot list and will output an error message
+    //  if the file was either not open or file was not created
+    if(!robotList.ReadFile())
+    {
+        qDebug() << "File read fail!";
+    }
 
 
     // TEMPORARY DISPLAY!!
@@ -283,4 +283,27 @@ void MainProgramWindow::on_pushButton_Guest_clicked()
     gWindow = new GuestWindow;
 
     gWindow->show();
+}
+
+
+/*******************************************************************************
+ *  CreateDatabase
+ * -----------------------------------------------------------------------------
+ * Instantiates the default database for each customer. Database will be update
+ *  when a full execution cycle occurs, e.g. run executable, modify data,
+ *  terminate program and repeat.
+ * --------------------------------------------------------------------------
+ * Returns boolean
+ ************************************************************************/
+bool CreateDatabase(MainProgramWindow &program)
+{
+
+    bool writeSuccess;
+    writeSuccess = false;
+
+    if(program.MainProgramWindow::robotList.ReadFile())
+    {
+        writeSuccess = true;
+    }
+
 }

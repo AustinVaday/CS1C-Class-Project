@@ -4,6 +4,9 @@
 #include "ExceptionHandlers.h"
 #include "activatedlist2.h"
 #include <QDebug>
+#include <QDir>
+#include "customerclass.h"
+#include <QFile>
 
 /**************************************************************************
  * CS1C Class Project
@@ -745,3 +748,139 @@ qDebug() << "Line 616: After CustomerLIst Assignment: " << this->OutputList();
 
         return *this;
 }
+
+
+// Returns true only if it successfully writes
+//  Returns false if it fails to open, write or if there are
+//  no products in the list.
+bool CustomerList::WriteToFile()
+{
+    Node<Customer>* _customerPtr;
+    QDir dataDir;
+    bool writeSuccessFull;
+
+    // This calls on QDir to return the path of the home folder of the user
+    //  who executed the program then concatenates
+    dataDir = QDir::home().path() + "/ERCK/ActivatedListFile.txt";
+
+    // If the path doesn't exist, the program will create another, if it was lost during execution.
+    if(!dataDir.exists())
+    {
+        dataDir.mkpath(dataDir.path());
+    }
+
+    // A QFile is the created or opeth.
+    QFile customerDataFile(dataDir.path());
+
+    // Initialize write to false
+    writeSuccessFull = false;
+
+    if(customerDataFile.open(QIODevice::ReadWrite | QIODevice::Text) && !isEmpty())
+    {
+qDebug() << "Debugging:: WRITE :::  It opened ::: ";
+        QTextStream out(&customerDataFile);
+
+        _customerPtr = _head;
+
+        while(_customerPtr != 0)
+        {
+            out << _customerPtr->GetData().getUserName() << "\n";
+
+            out << _customerPtr->GetData().getAddress()  << "\n";
+
+            out << _customerPtr->GetData().getInterest() << "\n";
+
+            out << _customerPtr->GetData().getKey()      << "\n";
+
+            out << _customerPtr->GetData().getPassword() << "\n";
+
+            out << _customerPtr->GetData().getAccountNum() << "\n";
+
+            out << _customerPtr->GetData().getEmail() << "\n";
+
+            _customerPtr = _customerPtr->GetNext();
+        }
+
+        writeSuccessFull = true;
+
+    }
+
+    customerDataFile.flush();
+    customerDataFile.close();
+
+    return writeSuccessFull;
+
+}
+
+
+bool CustomerList::ReadFile()
+{
+    QDir dataDir;
+    bool readSuccessFull;
+
+    // Initialize write to false
+    readSuccessFull = false;
+
+    // This calls on QDir to return the path of the home folder of the user
+    //  who executed the program then concatenates
+    dataDir = QDir::home().path() + "/ERCK/ActivatedList.txt";
+
+    // If the path doesn't exist, the program will create another, if it was lost during execution.
+    if(!dataDir.exists())
+    {
+qDebug() << "Activate List: " << !dataDir.exists();
+    }
+
+    // A QFile is the created or opened
+    QFile customerDataFile(dataDir.path());
+
+    // This checks if the file opens, if it does not, it will display an
+    //  error message
+    if(customerDataFile.open(QIODevice::ReadWrite | QIODevice::Text))
+    {
+        QString inputData[5];
+
+        // Points Text stream to input file to read in.
+        QTextStream inFile(&customerDataFile);
+        while(!inFile.atEnd() && !isFull())
+        {
+qDebug() << "Debugging:: Open Success :: Reading data...";
+
+            // Customer Name
+            inputData[0] = inFile.readLine() + " 1 + ";
+qDebug() << "Customer Name: " << inputData[0];
+
+            // Street
+            inputData[1] = inFile.readLine() + " 2 + ";
+qDebug() << "Street: " << inputData[1];
+
+            // City, State and Zip
+            inputData[2] = inFile.readLine() + " 3 + ";
+qDebug() << "Cost: " << inputData[2];
+
+            // Model Number
+            inputData[3] = inFile.readLine() + " 4 + ";
+qDebug() << "Model Number: " << inputData[3];
+
+            // Date Released
+            inputData[4] = inFile.readLine() + " 5 + ";
+qDebug() << "Date Released: " << inputData[4];
+
+//             newProduct(inputData[0],inputData[1],inputData[2].toFloat(),inputData[3].toInt(),inputData[4].toInt());
+
+//            this->Enqueue(newProduct);
+
+        }
+        readSuccessFull = true;
+    }
+
+qDebug() << "Flush: " <<  customerDataFile.flush();
+                          customerDataFile.close();
+qDebug() << "Close: " << !customerDataFile.isOpen();
+
+    return readSuccessFull;
+
+}
+
+
+

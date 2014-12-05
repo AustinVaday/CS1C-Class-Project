@@ -45,7 +45,8 @@ SOURCES += main.cpp\
     guarantee.cpp \
     guestwindow.cpp \
     maintplan.cpp \
-    environments.cpp
+    environments.cpp \
+    AddressClass.cpp
 
 HEADERS += MainProgramWindow.h \
 	adminclass.h \
@@ -79,7 +80,8 @@ HEADERS += MainProgramWindow.h \
     guarantee.h \
     guestwindow.h \
     maintplan.h \
-    environments.h
+    environments.h \
+    AddressClass.h
 
 FORMS   += mainprogramwindow.ui \
 	newactivatedlist.ui \
@@ -110,5 +112,6 @@ RESOURCES += \
     TextFilesFolder.qrc \
     Images.qrc
 
-OTHER_FILES +=
+OTHER_FILES += \
+    ProductDatabase.txt
 

@@ -3,7 +3,7 @@
 
 #include "customerclass.h"
 #include "genericnodeclass.h"
-//#include "newactivatedlist.h"
+
 /**************************************************************************
  * 							[L I S T ~ C L A S S]
  **************************************************************************/
@@ -170,45 +170,10 @@ public:
 
     bool isExist(Customer someCustomer);
 
+    bool    WriteToFile();
+
+    bool    ReadFile();
 
 };
-
-//CustomerNode& CustomerList::operator[] (const int index)
-//{
-//
-//	return _head[index];
-//}
-//
-
-
-
-
-
-//CustomerNode* CustomerList::FindCustomer(Customer someCustomer) const
-//{
-//	CustomerNode * traversePtr;
-//
-//	traversePtr = _head;
-//	int index = 0;
-//	while (index < _listLimit && traversePtr != NULL)
-//	{
-//		// overloaded operator
-//		if (traversePtr->GetData() == someCustomer)
-//		{
-//			return traversePtr;
-//		}
-//	}
-//
-//
-//	if (index == _listLimit && traversePtr == NULL)
-//	{
-//		// throw exception class if not found.
-//		traversePtr = NULL;
-//		throw NotFound();
-//	}
-//
-//
-//
-//}
 
 #endif // CUSTOMERLISTCLASS_H

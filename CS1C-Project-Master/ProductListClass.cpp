@@ -532,18 +532,23 @@ qDebug() << "Product File: " << !dataDir.exists();
         while(!inFile.atEnd() && !isFull())
         {
 qDebug() << "Debugging:: Open Success :: Reading data...";
+
             // Name
             inputData[0] = inFile.readLine() + " 1 + ";
 qDebug() << "Name: " << inputData[0];
+
             // Cost
             inputData[1] = inFile.readLine() + " 2 + ";
 qDebug() << "Description: " << inputData[1];
+
             // Description
             inputData[2] = inFile.readLine() + " 3 + ";
 qDebug() << "Cost: " << inputData[2];
+
             // Model Number
             inputData[3] = inFile.readLine() + " 4 + ";
 qDebug() << "Model Number: " << inputData[3];
+
             // Date Released
             inputData[4] = inFile.readLine() + " 5 + ";
 qDebug() << "Date Released: " << inputData[4];
@@ -556,7 +561,9 @@ qDebug() << "Date Released: " << inputData[4];
     }
 
 qDebug() << "Flush: " << productDataFile.flush();
+
 productDataFile.close();
+
 qDebug() << "Close: " << !productDataFile.isOpen();
 
     return readSuccessFull;

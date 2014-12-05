@@ -3,5 +3,6 @@
         <file>ActivatedListFile.txt</file>
         <file>DeactivatedListFile.txt</file>
         <file>HelpOptionFile.txt</file>
+        <file>ProductDatabase.txt</file>
     </qresource>
 </RCC>

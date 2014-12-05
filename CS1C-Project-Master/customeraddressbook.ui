@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>411</width>
-    <height>301</height>
+    <width>473</width>
+    <height>366</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,17 +18,24 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>291</width>
-     <height>121</height>
+     <width>351</width>
+     <height>251</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
+   <layout class="QHBoxLayout" name="InputLayout">
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
+     <layout class="QVBoxLayout" name="inputLabels">
       <item>
        <widget class="QLabel" name="label">
         <property name="text">
          <string>Name: </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="CustomerAddress">
+        <property name="text">
+         <string>Address:</string>
         </property>
        </widget>
       </item>
@@ -53,12 +60,29 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Interest</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>Key Value</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout">
+     <layout class="QVBoxLayout" name="lineEdits">
       <item>
        <widget class="QLineEdit" name="NameEdit"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="addressEdit"/>
       </item>
       <item>
        <widget class="QLineEdit" name="EmailEdit"/>
@@ -69,6 +93,12 @@
       <item>
        <widget class="QLineEdit" name="PasswordEdit"/>
       </item>
+      <item>
+       <widget class="QLineEdit" name="interestEdit"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="keyValueEdit"/>
+      </item>
      </layout>
     </item>
    </layout>
@@ -76,24 +106,46 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>0</y>
-     <width>86</width>
-     <height>100</height>
+     <x>380</x>
+     <y>10</y>
+     <width>91</width>
+     <height>121</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_3"/>
+   <layout class="QVBoxLayout" name="addSubmitCancelLayout">
+    <item>
+     <widget class="QPushButton" name="addButton">
+      <property name="text">
+       <string>Add</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="submitButton">
+      <property name="text">
+       <string>Submit</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="cancelButton">
+      <property name="text">
+       <string>Cancel</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>100</y>
-     <width>92</width>
-     <height>100</height>
+     <x>380</x>
+     <y>140</y>
+     <width>93</width>
+     <height>121</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_4">
+   <layout class="QVBoxLayout" name="EditRemoveSearch">
     <item>
      <widget class="QPushButton" name="editButton">
       <property name="text">
@@ -117,50 +169,11 @@
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="addButton">
-   <property name="geometry">
-    <rect>
-     <x>320</x>
-     <y>0</y>
-     <width>86</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Add</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="cancelButton">
-   <property name="geometry">
-    <rect>
-     <x>320</x>
-     <y>68</y>
-     <width>86</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Cancel</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="submitButton">
-   <property name="geometry">
-    <rect>
-     <x>320</x>
-     <y>34</y>
-     <width>86</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Submit</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="warningLabel">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>200</y>
+     <x>0</x>
+     <y>260</y>
      <width>391</width>
      <height>31</height>
     </rect>
@@ -172,13 +185,13 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>170</y>
-     <width>297</width>
-     <height>32</height>
+     <x>20</x>
+     <y>320</y>
+     <width>381</width>
+     <height>41</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_2">
+   <layout class="QHBoxLayout" name="PrevNextButton">
     <item>
      <widget class="QPushButton" name="prevCustomerButton">
       <property name="text">
@@ -199,12 +212,12 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>140</y>
+     <y>290</y>
      <width>287</width>
-     <height>20</height>
+     <height>22</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_4">
+   <layout class="QHBoxLayout" name="toggleAccess">
     <item>
      <widget class="QRadioButton" name="ActivatedCustomer">
       <property name="text">
@@ -219,9 +232,6 @@
   <zorder>layoutWidget</zorder>
   <zorder>layoutWidget</zorder>
   <zorder>layoutWidget</zorder>
-  <zorder>addButton</zorder>
-  <zorder>cancelButton</zorder>
-  <zorder>submitButton</zorder>
   <zorder>warningLabel</zorder>
  </widget>
  <resources/>

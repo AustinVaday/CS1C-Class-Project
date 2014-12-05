@@ -200,10 +200,10 @@ void CustomerAddressBook::on_addButton_clicked()
 void CustomerAddressBook::on_submitButton_clicked()
 {
     // store new contact details in variables
-    QString name = ui->NameEdit->text();
-    QString email = ui->EmailEdit->text();
+    QString name     = ui->NameEdit->text();
+    QString email    = ui->EmailEdit->text();
     QString idString = ui->AccountIdEdit->text();
-    QString pass = ui->PasswordEdit->text();
+    QString pass     = ui->PasswordEdit->text();
     bool  activationStatus = false;
     if(ui->ActivatedCustomer->isChecked())
     {

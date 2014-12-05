@@ -2,35 +2,50 @@
 
 Customer::Customer()
 {
+
 }
 
-
 Customer::Customer(QString userName,
-         QString email,
-         long 	accountNum,
-         QString password)
+                   QString customerAddress,
+                   QString initInterest,
+                   QString key,
+                   QString password,
+                   QString email,
+                   long    accountNum,
+                   bool    activated)
 {
     User::setUserName(userName);
     User::setEmail(email);
     User::setAccountNum(accountNum);
     User::setPassword(password);
-//    activate = false;
+    User::setAccountAccess(activated);
 
+    address     = customerAddress;
+    interest    = initInterest;
+    keyCustomer = key;
 }
-
-
-
 
 bool Customer::operator >(const Customer& otherCustomer) const
 {
     return this->getUserName() > otherCustomer.getUserName();
 }
+
 bool Customer::operator <(const Customer& otherCustomer) const
 {
     return this->getUserName() < otherCustomer.getUserName();
 }
 
-//Customer::Customer()
-//{
-//
-//}
+QString Customer::getAddress() const
+{
+    return address;
+}
+
+QString Customer::getInterest() const
+{
+    return interest;
+}
+
+QString Customer::getKey() const
+{
+    return keyCustomer;
+}
