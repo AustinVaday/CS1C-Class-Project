@@ -565,25 +565,42 @@ void CustomerAddressBook::on_removeButton_clicked()
     QString email = ui->EmailEdit->text();
     QString idString = ui->AccountIdEdit->text();
     QString pass = ui->PasswordEdit->text();
+    bool  activationStatus = false;
+    if(ui->ActivatedCustomer->isChecked())
+    {
+        activationStatus = true;
+    }
+
     Customer customer (name, email, idString.toLong(), pass);
+    customer.setAccountAccess(activationStatus);
+
     if (customerList.isExist(customer))
     {
-        int button = QMessageBox::question(this,
-        tr("Confirm Remove"),
-        tr("Are you sure you want to remove \"%1\"?").arg(name),
-        QMessageBox::Yes | QMessageBox::No);
-
-        if (button == QMessageBox::Yes)
+        if (customer.getAccess())
         {
-            on_prevCustomerButton_clicked();
+            QMessageBox::information(this, "Remove Insuccessful", "Sorry, you can only delete deactivated customers.\n If you wish to delete this customer, please deactivate it first. ");
+        }
+        else
+        {
+            int button = QMessageBox::question(this,
+            tr("Confirm Remove"),
+            tr("Are you sure you want to remove \"%1\"?").arg(name),
+            QMessageBox::Yes | QMessageBox::No);
 
-            customerList.RemoveCustomer(customer);
+            if (button == QMessageBox::Yes)
+            {
+
+                on_prevCustomerButton_clicked();
+
+                customerList.RemoveCustomer(customer);
 
 
-            QMessageBox::information(this, tr("Remove Successful"),
-                             tr("\"%1\" has been removed from your address book.").arg(name));
+                QMessageBox::information(this, tr("Remove Successful"),
+                                 tr("\"%1\" has been removed from your address book.").arg(name));
 
-            emit customerListChanged(&customerList);
+                emit customerListChanged(&customerList);
+
+            }
         }
     }
 

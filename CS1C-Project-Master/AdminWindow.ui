@@ -62,6 +62,13 @@
         </widget>
        </item>
        <item>
+        <widget class="QPushButton" name="unreadMessagesButton">
+         <property name="text">
+          <string>Unread Messages</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="back_button">
          <property name="text">
           <string>Back </string>

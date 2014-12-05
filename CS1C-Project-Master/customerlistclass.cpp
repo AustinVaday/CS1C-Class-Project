@@ -198,6 +198,8 @@ void CustomerList::ClearList()
     //Begin If only if the list is empty
     if(isEmpty())
     {
+        qDebug() << "DEBUG:: CustomerListClass.cpp :: Enqueue :: Line 198";
+
         //Creates new dynamic memory
         _createNew  = new Node<Customer>;
 
@@ -212,10 +214,16 @@ void CustomerList::ClearList()
 
         //		cout << "\nAdding " << _createNew->GetData() << " to the list.\n";
         //increments the _listCount
+
+        _createNew = NULL;  /* ADDED BY AUSTIN */
+
         IncrementCount();
     }
     else if(_nodeCount < _listLimit)
     {
+
+        qDebug() << "DEBUG:: CustomerListClass.cpp :: Enqueue :: Line 217";
+
         //I N I T I A L I Z A T I O N S
             _cursor          = _head;
             continueTraverse = true;
@@ -228,26 +236,44 @@ void CustomerList::ClearList()
             // *
              if(_cursor->GetNext() == NULL)
              {
-                if(_createNew->GetData().getUserName() < _cursor->GetData().getUserName())
+                 qDebug() << "DEBUG:: CustomerListClass.cpp :: Enqueue :: Line 233";
+
+                if(_createNew->GetData().getUserName().toUpper() < _cursor->GetData().getUserName().toUpper())
                 {
+                    qDebug() << "DEBUG:: CustomerListClass.cpp :: Enqueue :: Line 237";
+
                     _createNew->SetNext(_cursor);
+
+                    _cursor->SetPrevious(_createNew); /* ADDED BY AUSTIN */
+
                     _head = _createNew;
+
 
                 }
                 else
                 {
+
+                    qDebug() << "DEBUG:: CustomerListClass.cpp :: Enqueue :: Line 246";
+
                     _createNew->SetPrevious(_cursor);
                     _cursor->SetNext(_createNew);
                     _tail = _createNew;
                 }
+
+                _createNew = NULL; /* ADDED BY AUSTIN */
+
              }
-             else
-             {    _cursor = _cursor->GetNext();
-                //This loop is designed to traverse the current list and stop at a place to ensure
+             else // if _cursor->GetNext() != NULL
+             {
+                 qDebug() << "DEBUG:: CustomerListClass.cpp :: Enqueue :: Line 255";
+
+                 _cursor = _cursor->GetNext();
+
+                 //This loop is designed to traverse the current list and stop at a place to ensure
                 //the node is added to the list according to alphabetical order
                 while(_cursor != NULL && continueTraverse)
                 {
-                    if((_createNew->GetData().getUserName() < _cursor->GetData().getUserName()))
+                    if((_createNew->GetData().getUserName().toUpper() < _cursor->GetData().getUserName().toUpper()))
                     {
                         continueTraverse = false;
                         _createNew->SetNext(_cursor);
@@ -267,6 +293,10 @@ void CustomerList::ClearList()
                     _tail->SetNext(_createNew);
                    _tail = _createNew;
                 }
+
+
+                qDebug() << "DEBUG:: CustomerListClass.cpp :: Enqueue :: Line 284";
+
 
              }
 
@@ -723,6 +753,9 @@ Customer CustomerList::VerifyCustomer(QString userName, QString password)
 
 CustomerList& CustomerList::operator=(const CustomerList& list)
 {
+
+    if (this != &list)
+    {
         int index;
         Customer copyCustomer;
         index = 0;
@@ -746,6 +779,7 @@ this->ClearList();
 // AFter
 qDebug() << "Line 616: After CustomerLIst Assignment: " << this->OutputList();
 
+    }
         return *this;
 }
 

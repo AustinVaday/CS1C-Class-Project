@@ -214,7 +214,7 @@ void NewActivatedList::on_addToDeactivatedListButton_clicked()
     Customer customer;
     Customer* custPtr;
 
-    QModelIndexList listIndeces = ui->listWidget->selectedIndexes();
+    QModelIndexList listIndeces = ui->listWidget->selectionModel()->selectedIndexes();
 
     int rowIndex = ui->listWidget->currentRow() ;
 
@@ -269,7 +269,7 @@ void NewActivatedList::on_addToActivatedListButton_clicked()
         Customer customer;
         Customer* custPtr;
 
-        QModelIndexList listIndeces = ui->deactivatedListWidget->selectedIndexes();
+        QModelIndexList listIndeces = ui->deactivatedListWidget->selectionModel()->selectedIndexes();
 
         int rowIndex = ui->deactivatedListWidget->currentRow() ;
 

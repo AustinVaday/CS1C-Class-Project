@@ -33,7 +33,7 @@ AdminWindow::AdminWindow(QWidget *parent, CustomerList &list) :
 AdminWindow::~AdminWindow()
 {
      customerList.ClearList();
-
+//    delete messageView;
     qDebug() << "AdminWindow -- Destructor Test #1";
     delete viewList;
     qDebug() << "AdminWindow -- Destructor Test #2";
@@ -93,11 +93,6 @@ void AdminWindow::on_search_customer_clicked()
 
 }
 
-//void AdminWindow::customerListChanged(CustomerList* list)
-//{
-
-//}
-
 void AdminWindow::updateCustomerList(CustomerList *list)
 {
     customerList = *list;
@@ -107,3 +102,4 @@ void AdminWindow::updateCustomerList(CustomerList *list)
 
     qDebug() << "Emitting in AdminWindow to MainWindow!";
 }
+

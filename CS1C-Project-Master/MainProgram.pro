@@ -46,7 +46,12 @@ SOURCES += main.cpp\
     guestwindow.cpp \
     maintplan.cpp \
     environments.cpp \
+<<<<<<< HEAD
     AddressClass.cpp
+=======
+    signupwindow.cpp \
+    contactus.cpp
+>>>>>>> f4caf30960ca53f1d0675d3a5854d84138572967
 
 HEADERS += MainProgramWindow.h \
 	adminclass.h \
@@ -81,7 +86,12 @@ HEADERS += MainProgramWindow.h \
     guestwindow.h \
     maintplan.h \
     environments.h \
+<<<<<<< HEAD
     AddressClass.h
+=======
+    signupwindow.h \
+    contactus.h
+>>>>>>> f4caf30960ca53f1d0675d3a5854d84138572967
 
 FORMS   += mainprogramwindow.ui \
 	newactivatedlist.ui \
@@ -106,7 +116,9 @@ FORMS   += mainprogramwindow.ui \
     guarantee.ui \
     guestwindow.ui \
     maintplan.ui \
-    environments.ui
+    environments.ui \
+    signupwindow.ui \
+    contactus.ui
 
 RESOURCES += \
     TextFilesFolder.qrc \

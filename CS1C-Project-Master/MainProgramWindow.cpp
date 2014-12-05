@@ -1,9 +1,12 @@
 #include "MainProgramWindow.h"
 
-
 MainProgramWindow::MainProgramWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainProgramWindow)
+    ui(new Ui::MainProgramWindow),
+     adminLogin(false),
+     customerLogin(false),
+     guestLogin(false),
+     createAccount(false)
 {
     // DECLARATIONS
     adminLogin    = 0;
@@ -13,7 +16,8 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
 
     ui->setupUi(this);
     // Debug construct
-qDebug() << "Reading List!";
+    qDebug() << "Reading List!";
+
 
     //Create the customer list...
     ReadCustomerFile(customerList, ":/ActivatedListFile.txt");
@@ -41,6 +45,9 @@ qDebug() << customerList.OutputList();
     hWindow = new HelpWindow;
     aWindow = new AdminWindow(this, customerList);
     bWindow = new BrochureWindow;
+    gWindow = new GuestWindow;
+    sWindow = new SignUpWindow;
+    cWindow = new ContactUs(this);
 
     // ***DEBUG** List is read.
 qDebug() << customerList.OutputList() << "Main Program Window: "
@@ -72,26 +79,20 @@ qDebug() << "Deconstructor Write to test file.";
        WriteToCustomerFile(customerList, "::TestFile.txt");
 
        customerList.ClearList();
-qDebug() << "MainProgramWindow -- Destructor Test #1";
-    delete aWindow;
-
-qDebug() << "MainProgramWindow -- Destructor Test #2";
-
-    delete bWindow;
-
-qDebug() << "MainProgramWindow -- Destructor Test #3";
-
-    delete hWindow;
-qDebug() << "MainProgramWindow -- Destructor Test #4";
-
-    delete ui;
-qDebug() << "MainProgramWindow -- Destructor Test #5";
+        delete aWindow;
+        delete bWindow;
+        delete hWindow;
+        delete gWindow;
+        delete sWindow;
+        delete cWindow;
+        delete ui;
 
 
 }
 
 void MainProgramWindow::on_pushButton_Login_clicked()
 {
+
 
     Admin testAdmin("admin","admin1234@gmail.com", 1234, "password");
 
@@ -266,13 +267,22 @@ void MainProgramWindow::on_actionHelp_triggered()
 
 void MainProgramWindow::updateCustomerList(CustomerList *list)
 {
+
+    // if adminwindow is not open, update it's customer list.
+    if (!aWindow->isVisible())
+    {
+//        delete aWindow; /* CRASHES THE PROGRAM FOR SOME REASON!?!?! */
+
+        aWindow = new AdminWindow(this, customerList);
+    }
+
     customerList = *list;
 
     // TEMPORARY DISPLAY!!
     ui->tempDisplay->clear();
     ui->tempDisplay->setText(customerList.OutputList());
 
-    WriteToCustomerFile(customerList, ":/ActivatedListFile.txt");
+//    WriteToCustomerFile(customerList, ":/ActivatedListFile.txt");
 
 
     qDebug() << "List has finally reached the MainProgramWindow!";
@@ -280,11 +290,10 @@ void MainProgramWindow::updateCustomerList(CustomerList *list)
 
 void MainProgramWindow::on_pushButton_Guest_clicked()
 {
-    gWindow = new GuestWindow;
-
     gWindow->show();
 }
 
+<<<<<<< HEAD
 
 /*******************************************************************************
  *  CreateDatabase
@@ -306,4 +315,61 @@ bool CreateDatabase(MainProgramWindow &program)
         writeSuccess = true;
     }
 
+=======
+void MainProgramWindow::on_pushButton_RequestBrochure_clicked()
+{
+        Customer customer;
+        bool properFields = false;
+        sWindow->setModal(true);
+
+
+        int submitSuccess = sWindow->exec();
+
+        if (submitSuccess)
+        {
+            sWindow->on_buttonBox_accepted(customer, properFields);
+
+            if (properFields)
+            {
+                 // check if the customer is not taken
+                 if (!customerList.isExist(customer) && !customerList.isExistSameName(customer.getUserName()))
+                 {
+
+
+                     customerList.Enqueue(customer);
+
+                     updateCustomerList(&customerList);
+
+                     QMessageBox::information(this, tr("Registration Successful"),
+                      tr("\"%1\", you will be notified shortly whether you have been accepted or rejected.").arg(customer.getUserName()));
+
+                     // SIGNALS & SLOTS
+    //                 emit customerListChanged(&customerList);
+
+                  }
+                 else if (customerList.isExistSameName(customer.getUserName()))
+                 {
+                     QMessageBox::information(this, tr("Registration Unsuccessful"),
+                      tr("Please enter in another name, \"%1\" is already taken").arg(customer.getUserName()));
+                 }
+                 else
+                  {
+
+                     QMessageBox::information(this, tr("Registration Unsuccessful"),
+                      tr("\"%1\" is already in your customer list.").arg(customer.getUserName()));
+
+                  }
+                }
+
+
+                qDebug() << customer.OutputData();
+        }
+
+
+}
+
+void MainProgramWindow::on_actionContactUS_triggered()
+{
+    cWindow->show();
+>>>>>>> f4caf30960ca53f1d0675d3a5854d84138572967
 }

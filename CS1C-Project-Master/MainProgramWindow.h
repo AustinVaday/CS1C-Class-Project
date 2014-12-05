@@ -27,6 +27,8 @@
 #include "guestwindow.h"
 #include "maintplan.h"
 #include "environments.h"
+#include "signupwindow.h"
+#include "contactus.h"
 
 #include <QDebug>
 
@@ -106,6 +108,10 @@ private slots:
 
     void on_pushButton_Guest_clicked();
 
+    void on_pushButton_RequestBrochure_clicked();
+
+    void on_actionContactUS_triggered();
+
 private:
     Ui::MainProgramWindow *ui;
 
@@ -116,12 +122,14 @@ private:
     // Customer / Brochure Data Memeber Placeholder
 
     HelpWindow  *hWindow;
-
     GuestWindow *gWindow;
     // Pointer of type HelpWindow
     //  Used to create a help window for the user
 
     BrochureWindow*     bWindow;
+    SignUpWindow* sWindow;
+    ContactUs * cWindow;
+
     ProductList        robotList;
     CustomerList        customerList;
 

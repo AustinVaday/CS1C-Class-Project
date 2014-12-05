@@ -52,9 +52,9 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_RequestBrochure_2">
+      <widget class="QPushButton" name="pushButton_RequestBrochure">
        <property name="text">
-        <string>Create Account</string>
+        <string>Request Account/Brochure</string>
        </property>
       </widget>
      </item>
@@ -126,6 +126,7 @@
      <string>Extreme Robo Cat Coderz</string>
     </property>
     <addaction name="actionHelp"/>
+    <addaction name="actionContactUS"/>
     <addaction name="actionExit"/>
    </widget>
    <addaction name="menuExtreme_Robo_Cat_Coderz"/>
@@ -145,6 +146,9 @@
    </property>
   </action>
   <action name="actionHelp">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Help</string>
    </property>
@@ -152,6 +156,14 @@
   <action name="actionExit">
    <property name="text">
     <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionContactUS">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Contact Us</string>
    </property>
   </action>
  </widget>
