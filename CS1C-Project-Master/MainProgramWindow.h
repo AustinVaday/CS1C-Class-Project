@@ -40,7 +40,6 @@ class MainProgramWindow : public QMainWindow
 {
     Q_OBJECT
 
-friend bool CreateDatabase(MainProgramWindow &program);
 
 public:
     explicit MainProgramWindow(QWidget *parent = 0);
@@ -72,6 +71,7 @@ public:
      QString GetUsername();
      QString GetPassword();
 
+     bool CreateDatabase();
 
     //  Accessors
      void SetUsername(QString newUsername);
@@ -131,7 +131,7 @@ private:
     ContactUs * cWindow;
 
     ProductList        robotList;
-    CustomerList        customerList;
+    CustomerList    customerList;
 
     // SECTION LOGIN BOOLEANS
     //These boolean variables are used to determine what

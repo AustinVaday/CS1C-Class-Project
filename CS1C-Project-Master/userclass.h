@@ -36,7 +36,7 @@ class User
         //Accessors
         QString     getUserName() 	const;
         QString     getEmail() 	 	const;
-        long        getAccountNum()	const;
+        long           getAccountNum()	const;
         QString 	getPassword()   const;
         bool        getAccess()     const;
 

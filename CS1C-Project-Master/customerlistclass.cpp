@@ -751,6 +751,12 @@ Customer CustomerList::VerifyCustomer(QString userName, QString password)
    return tempCustomer;
 }
 
+
+/****************************************************************
+ * Overload =    (assignment operators)
+ * ------------------------------------------------------------------------------------
+ *
+ *****************************************************************/
 CustomerList& CustomerList::operator=(const CustomerList& list)
 {
 
@@ -762,7 +768,7 @@ CustomerList& CustomerList::operator=(const CustomerList& list)
 
 //Before Assignment
 
-qDebug() << "Line 590: Before CustomerLIst Assignment: " << this->OutputList();
+qDebug() << "Line 765 : Before CustomerLIst Assignment: " << this->OutputList();
 
 this->ClearList();
 
@@ -784,10 +790,18 @@ qDebug() << "Line 616: After CustomerLIst Assignment: " << this->OutputList();
 }
 
 
-// Returns true only if it successfully writes
-//  Returns false if it fails to open, write or if there are
-//  no products in the list.
-bool CustomerList::WriteToFile()
+/************************************************************
+ * WriteToFile (Overloaded, allows to specify filePath)
+ * --------------------------------------------------------------------------------
+ * Returns true only if it successfully writes
+ * Returns false if it fails to open, write or if there are
+ *  no customers in the list.
+ * --------------------------------------------------------------------------------
+ * Allows to choose the filePath, currently only being used when
+ *  creating the initial database
+ ************************************************************/
+
+bool CustomerList::WriteToFile(QString filePath)
 {
     Node<Customer>* _customerPtr;
     QDir dataDir;
@@ -795,7 +809,7 @@ bool CustomerList::WriteToFile()
 
     // This calls on QDir to return the path of the home folder of the user
     //  who executed the program then concatenates
-    dataDir = QDir::home().path() + "/ERCK/ActivatedListFile.txt";
+    dataDir = ":/" + filePath;
 
     // If the path doesn't exist, the program will create another, if it was lost during execution.
     if(!dataDir.exists())
@@ -820,7 +834,9 @@ qDebug() << "Debugging:: WRITE :::  It opened ::: ";
         {
             out << _customerPtr->GetData().getUserName() << "\n";
 
-            out << _customerPtr->GetData().getAddress()  << "\n";
+            out << _customerPtr->GetData().getAddressLine1()  << "\n";
+
+            out << _customerPtr->GetData().getAddressLine2()  << "\n";
 
             out << _customerPtr->GetData().getInterest() << "\n";
 
@@ -847,6 +863,85 @@ qDebug() << "Debugging:: WRITE :::  It opened ::: ";
 }
 
 
+/************************************************************
+ * WriteToFile (Overloaded, DOES NOT allow to specify filePath)
+ * --------------------------------------------------------------------------------
+ * Returns true only if it successfully writes
+ * Returns false if it fails to open, write or if there are
+ *  no customers in the list.
+ * --------------------------------------------------------------------------------
+ * File path is set when first establishing the database
+ *************************************************************/
+bool CustomerList::WriteToFile()
+{
+    Node<Customer>* _customerPtr;
+    QDir dataDir;
+    bool writeSuccessFull;
+
+    // This calls on QDir to return the path of the home folder of the user
+    //  who executed the program then concatenates
+    dataDir = QDir::home().path() + "/ERCK/CustomerDatabase.txt";
+
+    // If the path doesn't exist, the program will create another, if it was lost during execution.
+    if(!dataDir.exists())
+    {
+        dataDir.mkpath(dataDir.path());
+    }
+
+    // A QFile is the created or opeth.
+    QFile customerDataFile(dataDir.path());
+
+    // Initialize write to false
+    writeSuccessFull = false;
+
+    if(customerDataFile.open(QIODevice::ReadWrite | QIODevice::Text) && !isEmpty())
+    {
+qDebug() << "Debugging:: WRITE :::  It opened ::: ";
+        QTextStream out(&customerDataFile);
+
+        _customerPtr = _head;
+
+        while(_customerPtr != 0)
+        {
+            out << _customerPtr->GetData().getUserName() << "\n";
+
+            out << _customerPtr->GetData().getAddressLine1()  << "\n";
+
+            out << _customerPtr->GetData().getAddressLine2()  << "\n";
+
+            out << _customerPtr->GetData().getInterest() << "\n";
+
+            out << _customerPtr->GetData().getKey()      << "\n";
+
+            out << _customerPtr->GetData().getPassword() << "\n";
+
+            out << _customerPtr->GetData().getAccountNum() << "\n";
+
+            out << _customerPtr->GetData().getEmail() << "\n";
+
+            _customerPtr = _customerPtr->GetNext();
+        }
+
+        writeSuccessFull = true;
+
+    }
+
+    customerDataFile.flush();
+    customerDataFile.close();
+
+    return writeSuccessFull;
+
+}
+
+/************************************************************
+ * ReadFile (Overloaded, DOES NOT allow to specify filePath)
+ * --------------------------------------------------------------------------------
+ * Returns true only if it successfully reads
+ * Returns false if it fails to open, read or if there are no customers
+ *      in the database
+ * --------------------------------------------------------------------------------
+ * File path is set when first establishing the database
+ *************************************************************/
 bool CustomerList::ReadFile()
 {
     QDir dataDir;
@@ -857,12 +952,13 @@ bool CustomerList::ReadFile()
 
     // This calls on QDir to return the path of the home folder of the user
     //  who executed the program then concatenates
-    dataDir = QDir::home().path() + "/ERCK/ActivatedList.txt";
+    //      -- Initial File / Directory location --
+    dataDir = QDir::home().path() + "/ERCK/CustomerDatabase.txt";
 
     // If the path doesn't exist, the program will create another, if it was lost during execution.
     if(!dataDir.exists())
     {
-qDebug() << "Activate List: " << !dataDir.exists();
+qDebug() << "Customer Database: " << !dataDir.exists();
     }
 
     // A QFile is the created or opened
@@ -878,31 +974,79 @@ qDebug() << "Activate List: " << !dataDir.exists();
         QTextStream inFile(&customerDataFile);
         while(!inFile.atEnd() && !isFull())
         {
+            /*******************************************************
+             * Reading Data Key
+             * ------------------------------------------------------------------------
+             * inputData[] - QString Array, will read in any data type
+             *                               and store it.
+             * inFile             - Input file, first time execution it will create
+             *                              the file in the specified directory
+             *  ------------------------------------------------------------------------
+             * input variable |           Read Data                | File Line Order
+             * ------------------------------------------------------------------------
+             * inputData[0]     |   Customer Name           | Line 1
+             * inputData[1]     |   Address Part 1             | Line 2
+             * inputData[2]     |   Address Part 2             | Line 3
+             *                                |       ^ combined with     | Line 4
+             *                                |           inputData[1]         | Line 5
+             * inputData[3]     |   Customer Interest       | Line 6
+             * inputData[4]     |   Customer Key               | Line 7
+             * inputData[5]     |   Password                        | Line 8
+             * inputData[6]     |   Email                                | Line 9
+             * inputData[7]     |   Account ID                      | Line 10
+             *******************************************************/
+
 qDebug() << "Debugging:: Open Success :: Reading data...";
 
             // Customer Name
-            inputData[0] = inFile.readLine() + " 1 + ";
+            inputData[0] = inFile.readLine();
+
 qDebug() << "Customer Name: " << inputData[0];
 
-            // Street
-            inputData[1] = inFile.readLine() + " 2 + ";
+            // Address Line 1 - Street
+            inputData[1] = inFile.readLine();
+
 qDebug() << "Street: " << inputData[1];
 
-            // City, State and Zip
-            inputData[2] = inFile.readLine() + " 3 + ";
-qDebug() << "Cost: " << inputData[2];
+            // Address Line 2 - City, State and Zip
+            inputData[2] = inFile.readLine();
 
-            // Model Number
-            inputData[3] = inFile.readLine() + " 4 + ";
-qDebug() << "Model Number: " << inputData[3];
+qDebug() << "City, State and Zip: " << inputData[2];
 
-            // Date Released
-            inputData[4] = inFile.readLine() + " 5 + ";
-qDebug() << "Date Released: " << inputData[4];
+            // Concatenating inputData 1 & 2 as 1 string for address.
+            inputData[1] = inputData[1] + "\n" + inputData[2];
 
-//             newProduct(inputData[0],inputData[1],inputData[2].toFloat(),inputData[3].toInt(),inputData[4].toInt());
+qDebug() << "Customer Full Address: " << inputData[1];
 
-//            this->Enqueue(newProduct);
+            // Customer Interest
+            inputData[3] = inFile.readLine();
+
+qDebug() << "Customer Interest: " << inputData[3];
+
+            // Key Customer
+            inputData[4] = inFile.readLine();
+
+qDebug() << "Customer Key: " << inputData[4];
+
+            // Password
+            inputData[5] = inFile.readLine();
+
+qDebug() << "Password: " << inputData[5];
+
+            // Email
+            inputData[6] = inFile.readLine();
+
+qDebug() << "Customer Email: " << inputData[6];
+
+            // Account ID
+            inputData[7] = inFile.readLine();
+qDebug() << "Customer Key: " << inputData[7];
+
+inFile.readLine();
+
+Customer newCustomer(inputData[0],inputData[1],inputData[3], inputData[4], inputData[5], inputData[6], inputData[7].toInt());
+
+            this->Enqueue(newCustomer);
 
         }
         readSuccessFull = true;
@@ -916,5 +1060,114 @@ qDebug() << "Close: " << !customerDataFile.isOpen();
 
 }
 
+bool CustomerList::ReadFile(QString filePath)
+{
+    QDir dataDir;
+    bool readSuccessFull;
+
+    // Initialize write to false
+    readSuccessFull = false;
+
+    // This calls on QDir to return the path of the home folder of the user
+    //  who executed the program then concatenates
+    //      -- Initial File / Directory location --
+    dataDir = ":/" + filePath;
+
+    // If the path doesn't exist, the program will create another, if it was lost during execution.
+    if(!dataDir.exists())
+    {
+qDebug() << "Customer Database: " << !dataDir.exists();
+    }
+
+    // A QFile is the created or opened
+    QFile customerDataFile(dataDir.path());
+
+    // This checks if the file opens, if it does not, it will display an
+    //  error message
+    if(customerDataFile.open(QIODevice::ReadWrite | QIODevice::Text))
+    {
+        QString inputData[5];
+
+        // Points Text stream to input file to read in.
+        QTextStream inFile(&customerDataFile);
+        while(!inFile.atEnd() && !isFull())
+        {
+            /*******************************************************
+             * Reading Data Key
+             * ------------------------------------------------------------------------
+             * inputData[] - QString Array, will read in any data type
+             *                               and store it.
+             * inFile             - Input file, first time execution it will create
+             *                              the file in the specified directory
+             *  ------------------------------------------------------------------------
+             * input variable |           Read Data                | File Line Order
+             * ------------------------------------------------------------------------
+             * inputData[0]     |   Customer Name           | Line 1
+             * inputData[1]     |   Address Part 1             | Line 2
+             * inputData[2]     |   Address Part 2             | Line 3
+             *                                |       ^ combined with     | Line 4
+             *                                |           inputData[1]         | Line 5
+             * inputData[3]     |   Customer Interest       | Line 6
+             * inputData[4]     |   Customer Key               | Line 7
+             * inputData[5]     |   Password                        | Line 8
+             * inputData[6]     |   Email                                | Line 9
+             * inputData[7]     |   Account ID                      | Line 10
+             *******************************************************/
+
+qDebug() << "Debugging:: Open Success :: Reading data...";
+
+            // Customer Name
+            inputData[0] = inFile.readLine();
+qDebug() << "Customer Name: " << inputData[0];
+
+            // Address Line 1 - Street
+            inputData[1] = inFile.readLine();
+qDebug() << "Street: " << inputData[1];
+
+            // Address Line 2 - City, State and Zip
+            inputData[2] = inFile.readLine();
+qDebug() << "City, State and Zip: " << inputData[2];
+
+            // Concatenating inputData 1 & 2 as 1 string for address.
+            inputData[1] = inputData[1] + "\n" + inputData[2];
+qDebug() << "Customer Full Address: " << inputData[1];
+
+            // Customer Interest
+            inputData[3] = inFile.readLine();
+qDebug() << "Customer Interest: " << inputData[3];
+
+            // Key Customer
+            inputData[4] = inFile.readLine();
+qDebug() << "Customer Key: " << inputData[4];
+
+            // Password
+inputData[5] = inFile.readLine();
+qDebug() << "Password: " << inputData[5];
+
+            // Email
+inputData[6] = inFile.readLine();
+qDebug() << "Customer Email: " << inputData[6];
+
+            // Account ID
+inputData[7] = inFile.readLine();
+qDebug() << "Customer Key: " << inputData[7];
+
+inFile.readLine();
+
+Customer newCustomer(inputData[0],inputData[1],inputData[3], inputData[4], inputData[5], inputData[6], inputData[7].toInt());
+
+            this->Enqueue(newCustomer);
+
+        }
+        readSuccessFull = true;
+    }
+
+qDebug() << "Flush: " <<  customerDataFile.flush();
+                          customerDataFile.close();
+qDebug() << "Close: " << !customerDataFile.isOpen();
+
+    return readSuccessFull;
+
+}
 
 

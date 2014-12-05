@@ -139,11 +139,6 @@ public:
 
    void SortList(Node<Customer>* head);
 
-//	CustomerNode* FindCustomer(Customer someCustomer) const;
-
-    // overload
-//	CustomerNode& operator[] (const int index);
-
 
     void RemoveCustomer(Customer &someCustomer);
     // Removes customer from list
@@ -172,7 +167,11 @@ public:
 
     bool    WriteToFile();
 
+    bool    WriteToFile(QString filePath);
+
     bool    ReadFile();
+
+    bool    ReadFile(QString filePath);
 
 };
 

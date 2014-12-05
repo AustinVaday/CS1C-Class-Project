@@ -21,15 +21,15 @@ CustomerAddressBook::CustomerAddressBook(QWidget *parent, CustomerList &list, in
     setWindowTitle(tr("List of Customers"));
 
     // set read only text on construct
-    ui->NameEdit->setReadOnly(true);
-    ui->EmailEdit->setReadOnly(true);
-    ui->AccountIdEdit->setReadOnly(true);
-    ui->PasswordEdit->setReadOnly(true);
+    ui->EDIT_name->setReadOnly(true);
+    ui->EDIT_email->setReadOnly(true);
+    ui->EDIT_account->setReadOnly(true);
+    ui->EDIT_password->setReadOnly(true);
     ui->ActivatedCustomer->setEnabled(false);
-    ui->addressEdit->setEnabled(true);
-    ui->interestEdit->setEnabled(true);
-    ui->keyValueEdit->setEnabled(true);
-
+    ui->EDIT_addressLine1->setEnabled(true);
+    ui->EDIT_addressLine2->setEnabled(true);
+    ui->EDIT_interest->setEnabled(true);
+    ui->EDIT_value->setEnabled(true);
     ui->addButton->show();
     ui->submitButton->hide();
     ui->cancelButton->hide();
@@ -77,13 +77,14 @@ void CustomerAddressBook::updateInterface (Mode mode)
         qDebug() << "Line 74 customerAddressBook.cpp";
 
         // set read only text on construct
-        ui->NameEdit->setReadOnly(false);
-        ui->EmailEdit->setReadOnly(false);
-        ui->AccountIdEdit->setReadOnly(false);
-        ui->PasswordEdit->setReadOnly(false);
-        ui->addressEdit->setReadOnly(false);
-        ui->keyValueEdit->setReadOnly(false);
-        ui->interestEdit->setReadOnly(false);
+        ui->EDIT_name->setReadOnly(false);
+        ui->EDIT_email->setReadOnly(false);
+        ui->EDIT_account->setReadOnly(false);
+        ui->EDIT_password->setReadOnly(false);
+        ui->EDIT_addressLine1->setReadOnly(false);
+        ui->EDIT_addressLine2->setReadOnly(false);
+        ui->EDIT_value->setReadOnly(false);
+        ui->EDIT_interest->setReadOnly(false);
 
         if (currentMode == EDITING_MODE)
         {
@@ -94,7 +95,7 @@ void CustomerAddressBook::updateInterface (Mode mode)
             ui->ActivatedCustomer->hide();
         }
 
-        ui->NameEdit->setFocus(Qt::OtherFocusReason);
+        ui->EDIT_name->setFocus(Qt::OtherFocusReason);
 
         ui->addButton->setEnabled(false);
         ui->editButton->setEnabled(false);
@@ -117,25 +118,27 @@ void CustomerAddressBook::updateInterface (Mode mode)
         ui->ActivatedCustomer->show();
         if (customerList.isEmpty())
         {
-            ui->NameEdit->clear();
-            ui->EmailEdit->clear();
-            ui->AccountIdEdit->clear();
-            ui->PasswordEdit->clear();
-            ui->addressEdit->clear();
-            ui->interestEdit->clear();
-            ui->keyValueEdit->clear();
+            ui->EDIT_name->clear();
+            ui->EDIT_email->clear();
+            ui->EDIT_account->clear();
+            ui->EDIT_password->clear();
+            ui->EDIT_addressLine1->clear();
+            ui->EDIT_addressLine2->clear();
+            ui->EDIT_interest->clear();
+            ui->EDIT_value->clear();
             ui->ActivatedCustomer->setChecked(false);
         }
 
         // set read only text on construct
-        ui->NameEdit->setReadOnly(true);
-        ui->EmailEdit->setReadOnly(true);
-        ui->AccountIdEdit->setReadOnly(true);
-        ui->PasswordEdit->setReadOnly(true);
+        ui->EDIT_name->setReadOnly(true);
+        ui->EDIT_email->setReadOnly(true);
+        ui->EDIT_account->setReadOnly(true);
+        ui->EDIT_password->setReadOnly(true);
         ui->ActivatedCustomer->setEnabled(false);
-        ui->addressEdit->setReadOnly(true);
-        ui->keyValueEdit->setReadOnly(true);
-        ui->interestEdit->setReadOnly(true);
+        ui->EDIT_addressLine1->setEnabled(true);
+        ui->EDIT_addressLine2->setEnabled(true);
+        ui->EDIT_value->setReadOnly(true);
+        ui->EDIT_interest->setReadOnly(true);
 
 
         int number = customerList.Size();
@@ -166,13 +169,14 @@ void CustomerAddressBook::importList(CustomerList list)
 void CustomerAddressBook::SetCurrentDisplay(Customer* someCustomer)
 {
     // update the fields with next customer!
-    ui->NameEdit->setText(someCustomer->getUserName());
-    ui->EmailEdit->setText(someCustomer->getEmail());
-    ui->AccountIdEdit->setText(QString::number(someCustomer->getAccountNum()));
-    ui->PasswordEdit->setText(someCustomer->getPassword());
-    ui->addressEdit->setText(someCustomer->getAddress());
-    ui->keyValueEdit->setText(someCustomer->getKey());
-    ui->interestEdit->setText(someCustomer->getInterest());
+    ui->EDIT_name->setText(someCustomer->getUserName());
+    ui->EDIT_email->setText(someCustomer->getEmail());
+    ui->EDIT_account->setText(QString::number(someCustomer->getAccountNum()));
+    ui->EDIT_password->setText(someCustomer->getPassword());
+    ui->EDIT_addressLine1->setText(someCustomer->getAddressLine1());
+    ui->EDIT_addressLine2->setText(someCustomer->getAddressLine2());
+    ui->EDIT_value->setText(someCustomer->getKey());
+    ui->EDIT_interest->setText(someCustomer->getInterest());
 
     if(someCustomer->getAccess())
     {
@@ -189,13 +193,14 @@ void CustomerAddressBook::on_addButton_clicked()
 
     // store old information into variables
     // (in case they submition)
-    oldName = ui->NameEdit->text();
-    oldEmail= ui->EmailEdit->text();
-    oldId = ui->AccountIdEdit->text();
-    oldPassword = ui->PasswordEdit->text();
-    oldAddress = ui->addressEdit->text();
-    oldKey = ui->keyValueEdit->text();
-    oldInterest = ui->interestEdit->text();
+    oldName = ui->EDIT_name->text();
+    oldEmail= ui->EDIT_email->text();
+    oldId = ui->EDIT_account->text();
+    oldPassword = ui->EDIT_password->text();
+    oldAddressLine1 = ui->EDIT_addressLine1->text();
+    oldAddressLine2 = ui->EDIT_addressLine2->text();
+    oldKey = ui->EDIT_value->text();
+    oldInterest = ui->EDIT_interest->text();
 
     oldIsActivated = ui->ActivatedCustomer->isChecked();
 
@@ -204,13 +209,14 @@ void CustomerAddressBook::on_addButton_clicked()
     ui->prevCustomerButton->setEnabled(false);
 
     // clear the fields, prepare for new entry
-    ui->NameEdit->clear();
-    ui->EmailEdit->clear();
-    ui->AccountIdEdit->clear();
-    ui->PasswordEdit->clear();
-    ui->addressEdit->clear();
-    ui->interestEdit->clear();
-    ui->keyValueEdit->clear();
+    ui->EDIT_name->clear();
+    ui->EDIT_email->clear();
+    ui->EDIT_account->clear();
+    ui->EDIT_password->clear();
+    ui->EDIT_addressLine1->clear();
+    ui->EDIT_addressLine2->clear();
+    ui->EDIT_interest->clear();
+    ui->EDIT_value->clear();
     ui->ActivatedCustomer->setChecked(false);
 
     qDebug() << "CustomerAddressBook.cpp -- on_addButton_clicked() -- line 176";
@@ -223,13 +229,15 @@ void CustomerAddressBook::on_addButton_clicked()
 void CustomerAddressBook::on_submitButton_clicked()
 {
     // store new contact details in variables
-    QString name     = ui->NameEdit->text();
-    QString email    = ui->EmailEdit->text();
-    QString idString = ui->AccountIdEdit->text();
-    QString pass     = ui->PasswordEdit->text();
-    QString address  = ui->addressEdit->text();
-    QString interest = ui->interestEdit->text();
-    QString key      = ui->keyValueEdit->text();
+    QString name     = ui->EDIT_name->text();
+    QString email    = ui->EDIT_email->text();
+    QString idString = ui->EDIT_account->text();
+    QString pass     = ui->EDIT_password->text();
+    QString addressLine1 = ui->EDIT_addressLine1->text() + "\n";
+    QString addressLine2 = ui->EDIT_addressLine2->text() + "\n";
+    QString interest = ui->EDIT_interest->text();
+    QString key      = ui->EDIT_value->text();
+    QString address = addressLine1 + addressLine2;
 
 
     bool  activationStatus = false;
@@ -326,14 +334,15 @@ void CustomerAddressBook::on_submitButton_clicked()
             ui->prevCustomerButton->setEnabled(sizeList>1);
 
             // set read only text on construct
-            ui->NameEdit->setReadOnly(true);
-            ui->EmailEdit->setReadOnly(true);
-            ui->AccountIdEdit->setReadOnly(true);
-            ui->PasswordEdit->setReadOnly(true);
+            ui->EDIT_name->setReadOnly(true);
+            ui->EDIT_email->setReadOnly(true);
+            ui->EDIT_account->setReadOnly(true);
+            ui->EDIT_password->setReadOnly(true);
             ui->ActivatedCustomer->setEnabled(false);
-            ui->interestEdit->setEnabled(true);
-            ui->keyValueEdit->setEnabled(true);
-            ui->addressEdit->setEnabled(true);
+            ui->EDIT_interest->setEnabled(true);
+            ui->EDIT_value->setEnabled(true);
+            ui->EDIT_addressLine1->setEnabled(true);
+            ui->EDIT_addressLine2->setEnabled(true);
 
 
 
@@ -397,7 +406,7 @@ void CustomerAddressBook::on_submitButton_clicked()
                         tr("Please enter in a key value."));
              on_cancelButton_clicked();
          }
-         else if (address.isEmpty())
+         else if (addressLine1.isEmpty() || addressLine2.isEmpty())
          {
             QMessageBox::information(this, tr("Empty Field"),
                         tr("Please enter in an address."));
@@ -472,13 +481,14 @@ void CustomerAddressBook::on_submitButton_clicked()
 void CustomerAddressBook::on_cancelButton_clicked()
 {
     // reset all old data
-    ui->NameEdit->setText(oldName);
-    ui->EmailEdit->setText(oldEmail);
-    ui->AccountIdEdit->setText(oldId);
-    ui->PasswordEdit->setText(oldPassword);
-    ui->addressEdit->setText(oldAddress);
-    ui->interestEdit->setText(oldInterest);
-    ui->keyValueEdit->setText(oldKey);
+    ui->EDIT_name->setText(oldName);
+    ui->EDIT_email->setText(oldEmail);
+    ui->EDIT_account->setText(oldId);
+    ui->EDIT_password->setText(oldPassword);
+    ui->EDIT_addressLine1->setText(oldAddressLine1);
+    ui->EDIT_addressLine2->setText(oldAddressLine2);
+    ui->EDIT_interest->setText(oldInterest);
+    ui->EDIT_value->setText(oldKey);
 
     if (oldIsActivated)
     {
@@ -490,10 +500,10 @@ void CustomerAddressBook::on_cancelButton_clicked()
     }
 
 //    // set read only text on construct
-//    ui->NameEdit->setReadOnly(true);
-//    ui->EmailEdit->setReadOnly(true);
-//    ui->AccountIdEdit->setReadOnly(true);
-//    ui->PasswordEdit->setReadOnly(true);
+//    ui->EDIT_name->setReadOnly(true);
+//    ui->EDIT_email->setReadOnly(true);
+//    ui->EDIT_account->setReadOnly(true);
+//    ui->EDIT_password->setReadOnly(true);
 
 //    ui->addButton->setEnabled(true);
 //    ui->submitButton->hide();
@@ -510,7 +520,7 @@ void CustomerAddressBook::on_cancelButton_clicked()
 void CustomerAddressBook::on_nextCustomerButton_clicked()
 {
     // get the next element, if out of range... re-loop...
-    QString name = ui->NameEdit->text();
+    QString name = ui->EDIT_name->text();
     Customer someCustomer;
 
     try
@@ -540,10 +550,10 @@ void CustomerAddressBook::on_nextCustomerButton_clicked()
 
             }
 //            // update the fields with next customer!
-//            ui->NameEdit->setText(someCustomer->getUserName());
-//            ui->EmailEdit->setText(someCustomer->getEmail());
-//            ui->AccountIdEdit->setText(QString::number(someCustomer->getAccountNum()));
-//            ui->PasswordEdit->setText(someCustomer->getPassword());
+//            ui->EDIT_name->setText(someCustomer->getUserName());
+//            ui->EDIT_email->setText(someCustomer->getEmail());
+//            ui->EDIT_account->setText(QString::number(someCustomer->getAccountNum()));
+//            ui->EDIT_password->setText(someCustomer->getPassword());
 
               SetCurrentDisplay(&someCustomer);
 
@@ -567,7 +577,7 @@ void CustomerAddressBook::on_prevCustomerButton_clicked()
 {
     // get the next element, if out of range... re-loop...
 
-    QString name = ui->NameEdit->text();
+    QString name = ui->EDIT_name->text();
     Customer someCustomer;
     int index = customerList.FindCustomerLocation(name);
 
@@ -603,10 +613,10 @@ void CustomerAddressBook::on_editButton_clicked()
 {
     // store old information into variables
     // (in case they cancel edit)
-    oldName = ui->NameEdit->text();
-    oldEmail= ui->EmailEdit->text();
-    oldId = ui->AccountIdEdit->text();
-    oldPassword = ui->PasswordEdit->text();
+    oldName = ui->EDIT_name->text();
+    oldEmail= ui->EDIT_email->text();
+    oldId = ui->EDIT_account->text();
+    oldPassword = ui->EDIT_password->text();
     oldIsActivated = ui->ActivatedCustomer->isChecked();
 
     updateInterface(EDITING_MODE);
@@ -619,13 +629,15 @@ void CustomerAddressBook::on_editButton_clicked()
 
 void CustomerAddressBook::on_removeButton_clicked()
 {
-    QString name = ui->NameEdit->text();
-    QString email = ui->EmailEdit->text();
-    QString idString = ui->AccountIdEdit->text();
-    QString pass = ui->PasswordEdit->text();
-    QString address = ui->addressEdit->text();
-    QString interest = ui->interestEdit->text();
-    QString key      = ui->keyValueEdit->text();
+    QString name = ui->EDIT_name->text();
+    QString email = ui->EDIT_email->text();
+    QString idString = ui->EDIT_account->text();
+    QString pass = ui->EDIT_password->text();
+    QString addressLine1 = ui->EDIT_addressLine1->text() + "\n";
+    QString addressLine2 = ui->EDIT_addressLine2->text() + "\n";
+    QString interest = ui->EDIT_interest->text();
+    QString key      = ui->EDIT_value->text();
+    QString address = addressLine1 + addressLine2;
 
     bool  activationStatus = false;
     if(ui->ActivatedCustomer->isChecked())
@@ -710,7 +722,7 @@ void CustomerAddressBook::on_searchButton_clicked()
 
 void CustomerAddressBook::on_ActivatedCustomer_clicked()
 {
-    QString name = ui->NameEdit->text();
+    QString name = ui->EDIT_name->text();
 
     Customer *custPtr = customerList.ReturnCustomerPtr(name);
 
@@ -749,7 +761,7 @@ void CustomerAddressBook::on_ActivatedCustomer_clicked()
 
 //void CustomerAddressBook::on_ActivatedCustomer_clicked()
 //{
-//    QString name = ui->NameEdit->text();
+//    QString name = ui->EDIT_name->text();
 
 //    Customer *custPtr = customerList.ReturnCustomerPtr(name);
 

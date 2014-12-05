@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>ActivatedListFile.txt</file>
+        <file>CustomerDatabase.txt</file>
         <file>DeactivatedListFile.txt</file>
         <file>HelpOptionFile.txt</file>
         <file>ProductDatabase.txt</file>

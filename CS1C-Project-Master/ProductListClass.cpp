@@ -20,7 +20,7 @@
  *		Austin 	Vaday
  *		Anthony Ramirez
  *		Annie	Raichev
- *		Erik 	Karlsson
+ *		Erik 	Karlssonm
  *
  **********************************************************************/
 
@@ -445,10 +445,15 @@ QString ProductList::operator[](int index)
 
 }
 
-
-// Returns true only if it successfully writes
-//  Returns false if it fails to open, write or if there are
-//  no products in the list.
+/************************************************************
+ * WriteToFile (Overloaded, DOES NOT allow to specify filePath)
+ * --------------------------------------------------------------------------------
+ * Returns true only if it successfully writes
+ * Returns false if it fails to open, write or if there are
+ *  no products in the list.
+ * --------------------------------------------------------------------------------
+ * File path is set when first establishing the database
+ *************************************************************/
 bool ProductList::WriteToFile()
 {
     Node<Product>* _productPtr;
@@ -457,7 +462,66 @@ bool ProductList::WriteToFile()
 
     // This calls on QDir to return the path of the home folder of the user
     //  who executed the program then concatenates
-    dataDir = QDir::home().path() + "/E.R.C.K/ProductData.txt";
+    dataDir = QDir::home().path() + "/E.R.C.K/";
+
+    // If the path doesn't exist, the program will create another, if it was lost during execution.
+    if(!dataDir.exists())
+    {
+        dataDir.mkpath(dataDir.path());
+    }
+
+    // A QFile is the created or opeth.
+    QFile productDataFile(dataDir.path() + "ProductData.txt");
+
+    // Initialize write to false
+    writeSuccessFull = false;
+
+    if(productDataFile.open(QIODevice::ReadWrite | QIODevice::Text) && !isEmpty())
+    {
+qDebug() << "Debugging:: WRITE :::  It opened ::: ";
+        QTextStream out(&productDataFile);
+
+        _productPtr = _head;
+
+        while(_productPtr != 0)
+        {
+            out << _productPtr->GetData().getName() << " 1 + \n";
+            out << _productPtr->GetData().getDescription()  << " 2 + \n";
+            out << _productPtr->GetData().getCost() << " 3 + \n";
+            out << _productPtr->GetData().getModelNumber() << " 4 + \n";
+            out << _productPtr->GetData().getReleaseDate() << " 5 + \n";
+            _productPtr = _productPtr->GetNext();
+        }
+
+        writeSuccessFull = true;
+
+    }
+
+    productDataFile.flush();
+    productDataFile.close();
+
+    return writeSuccessFull;
+
+}
+
+/************************************************************
+ * WriteToFile (Overloaded, allow to specify filePath)
+ * --------------------------------------------------------------------------------
+ * Returns true only if it successfully writes
+ * Returns false if it fails to open, write or if there are
+ *  no products in the list.
+ * --------------------------------------------------------------------------------
+ * File path is set when first establishing the database
+ *************************************************************/
+bool ProductList::WriteToFile(QString filePath)
+{
+    Node<Product>* _productPtr;
+    QDir dataDir;
+    bool writeSuccessFull;
+
+    // This calls on QDir to return the path of the home folder of the user
+    //  who executed the program then concatenates
+    dataDir = ":/" + filePath;
 
     // If the path doesn't exist, the program will create another, if it was lost during execution.
     if(!dataDir.exists())
@@ -500,6 +564,15 @@ qDebug() << "Debugging:: WRITE :::  It opened ::: ";
 }
 
 
+/************************************************************
+ * ReadFile (Overloaded, DOES NOT allow to specify filePath)
+ * --------------------------------------------------------------------------------
+ * Returns true only if it successfully reads
+ * Returns false if it fails to open, read or if there are no productss
+ *      in the database
+ * --------------------------------------------------------------------------------
+ * File path is set when first establishing the database
+ *************************************************************/
 bool ProductList::ReadFile()
 {
     QDir dataDir;
@@ -511,6 +584,85 @@ bool ProductList::ReadFile()
     // This calls on QDir to return the path of the home folder of the user
     //  who executed the program then concatenates
     dataDir = QDir::home().path() + "/E.R.C.K/ProductData.txt";
+
+    // If the path doesn't exist, the program will create another, if it was lost during execution.
+    if(!dataDir.exists())
+    {
+qDebug() << "Product File: " << !dataDir.exists();
+    }
+
+    // A QFile is the created or opened
+    QFile productDataFile(dataDir.path());
+
+    // This checks if the file opens, if it does not, it will display an
+    //  error message
+    if(productDataFile.open(QIODevice::ReadWrite | QIODevice::Text))
+    {
+        QString inputData[5];
+
+        // Points Text stream to input file to read in.
+        QTextStream inFile(&productDataFile);
+        while(!inFile.atEnd() && !isFull())
+        {
+qDebug() << "Debugging:: Open Success :: Reading data...";
+
+            // Name
+            inputData[0] = inFile.readLine() + " 1 + ";
+qDebug() << "Name: " << inputData[0];
+
+            // Cost
+            inputData[1] = inFile.readLine() + " 2 + ";
+qDebug() << "Description: " << inputData[1];
+
+            // Description
+            inputData[2] = inFile.readLine() + " 3 + ";
+qDebug() << "Cost: " << inputData[2];
+
+            // Model Number
+            inputData[3] = inFile.readLine() + " 4 + ";
+qDebug() << "Model Number: " << inputData[3];
+
+            // Date Released
+            inputData[4] = inFile.readLine() + " 5 + ";
+qDebug() << "Date Released: " << inputData[4];
+            Product newProduct(inputData[0],inputData[1],inputData[2].toFloat(),inputData[3].toInt(),inputData[4].toInt());
+
+            this->Enqueue(newProduct);
+
+        }
+        readSuccessFull = true;
+    }
+
+qDebug() << "Flush: " << productDataFile.flush();
+
+productDataFile.close();
+
+qDebug() << "Close: " << !productDataFile.isOpen();
+
+    return readSuccessFull;
+
+}
+
+/************************************************************
+ * ReadFile (Overloaded, ALLOWS to specify filePath)
+ * --------------------------------------------------------------------------------
+ * Returns true only if it successfully reads
+ * Returns false if it fails to open, read or if there are no products
+ *      in the database
+ * --------------------------------------------------------------------------------
+ * File path is set when first establishing the database
+ *************************************************************/
+bool ProductList::ReadFile(QString filePath)
+{
+    QDir dataDir;
+    bool readSuccessFull;
+
+    // Initialize write to false
+    readSuccessFull = false;
+
+    // This calls on QDir to return the path of the home folder of the user
+    //  who executed the program then concatenates
+    dataDir = ":/" + filePath;
 
     // If the path doesn't exist, the program will create another, if it was lost during execution.
     if(!dataDir.exists())

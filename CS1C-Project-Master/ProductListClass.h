@@ -144,7 +144,11 @@ public:
 
     bool    WriteToFile();
 
+    bool    WriteToFile(QString filePath);
+
     bool    ReadFile();
+
+    bool    ReadFile(QString filePath);
 
     void    RemoveProduct(Product &someProduct);
 

@@ -2,7 +2,6 @@
 #define CUSTOMERCLASS_H
 #include "userclass.h"
 #include <QString>
-#include <AddressClass.h>
 #include <QTextStream>
 
 class Customer : public User
@@ -13,12 +12,12 @@ class Customer : public User
         // default constructor
 
         Customer(QString userName,
-                 QString customerAddress,
-                 QString initInterest,
-                 QString key,
-                 QString password,
-                 QString email,
-                 long    accountNum);
+                             QString customerAddress,
+                             QString initInterest,
+                             QString key,
+                             QString password,
+                             QString email,
+                             long    accountNum);
         // Nondefault constructor
 
         bool operator >(const Customer& otherCustomer) const;
@@ -29,17 +28,23 @@ class Customer : public User
 
         // ACCESSORS
 
-        QString getAddress()  const;
-        QString getKey()      const;
-        QString getInterest() const;
+        QString getFullAddress()  const;
+        QString getAddressLine1() const;
+        QString getAddressLine2() const;
+        QString getKey()           const;
+        QString getInterest()   const;
 
-        // ACCESSORS
+        // MUTATORS
         void setInterest(QString newInterest);
         void setAddress(QString newAddress);
+        void setAddressLine1(QString customerAddress);
+        void setAddressLine2(QString customerAddress);
         void setKey(QString key);
+        void separateAddress();
 
     private:
-        QString address;
+        QString address1;
+        QString address2;
         QString interest;
         QString keyCustomer;
 

@@ -18,7 +18,8 @@ Customer::Customer(QString userName,
     User::setAccountNum(accountNum);
     User::setPassword(password);
 
-    address     = customerAddress;
+    setAddress(customerAddress);
+
     interest    = initInterest;
     keyCustomer = key;
 }
@@ -33,9 +34,19 @@ bool Customer::operator <(const Customer& otherCustomer) const
     return this->getUserName() < otherCustomer.getUserName();
 }
 
-QString Customer::getAddress() const
+QString Customer::getFullAddress() const
 {
-    return address;
+    return address1 + "\n" + address2 + "\n";
+}
+
+QString Customer::getAddressLine1() const
+{
+    return address1;
+}
+
+QString Customer::getAddressLine2() const
+{
+    return address2;
 }
 
 QString Customer::getInterest() const
@@ -48,9 +59,45 @@ QString Customer::getKey() const
     return keyCustomer;
 }
 
-void Customer::setAddress(QString newAddress)
+void Customer::setAddress(QString customerAddress)
 {
-    address = newAddress;
+
+    int index;
+    int stringIterator;
+
+    QString inputString;
+
+    index = 0;
+    stringIterator = 0;
+    while(index < customerAddress.size() && customerAddress[index] != '\n')
+    {
+        inputString[stringIterator] = customerAddress[index];
+        index++;
+        stringIterator ++;
+    }
+    address1 = inputString;
+
+    stringIterator = 0;
+
+    while(index < customerAddress.size() && customerAddress[index] != '\n')
+    {
+        inputString[stringIterator] = customerAddress[index];
+        index++;
+        stringIterator++;
+    }
+
+    address2 = inputString;
+
+}
+
+void Customer::setAddressLine1(QString newAddress)
+{
+    address1 = newAddress;
+}
+
+void Customer::setAddressLine2(QString newAddress)
+{
+    address2 = newAddress;
 }
 
 void Customer::setInterest(QString newInterest)
@@ -62,3 +109,4 @@ void Customer::setKey(QString key)
 {
     keyCustomer = key;
 }
+

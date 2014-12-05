@@ -61,7 +61,8 @@ private:
     QString oldEmail;
     QString oldId;
     QString oldPassword;
-    QString oldAddress;
+    QString oldAddressLine1;
+    QString oldAddressLine2;
     QString oldKey;
     QString oldInterest;
     bool    oldIsActivated;

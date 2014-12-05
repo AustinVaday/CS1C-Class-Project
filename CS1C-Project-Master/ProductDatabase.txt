@@ -1,18 +1,17 @@
-Product Name: 	KillerKat
-Description: 	Super awesome megafreakazoid bomb diffusor
-Cost: 		$15000.00
-Model Number: 	2344
-Date Released11/22/14
+KillerKat
+Super awesome megafreakazoid bomb diffusor
+$15000.00
+2344
+112214
 
-Product Name:	Edward the Monstorous
-Description:	If there was a robot dog to dismantle a bomb, this
-                  would be it!
-Cost:		$ 20000.00
-Model Number:	1449
-Date Released:	11/14/14
+Edward the Monstorous
+If there was a robot dog to dismantle a bomb, this would be it!
+$20000.00
+1449
+11/14/14
 
-Product Name:	R.Bot Jr.
-Description:	Comes in all sizes! Kids of all ages!
-Cost:		$550.00
-Model Number:	0941
-Date Released:	12/24/14
+R.Bot Jr.
+Comes in all sizes! Kids of all ages!
+$550.00
+0941
+122414
