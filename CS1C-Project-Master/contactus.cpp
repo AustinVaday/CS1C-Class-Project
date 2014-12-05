@@ -32,6 +32,8 @@ void ContactUs::generateResponse()
     QString responseString;
     QString wholeString;
 
+    responseString.clear();
+
     if (!question.isEmpty())
     {
         if
@@ -48,7 +50,7 @@ void ContactUs::generateResponse()
         ||question.contains("log-in", Qt::CaseInsensitive) || question.contains("log in", Qt::CaseInsensitive)
         ||(question.contains("access", Qt::CaseInsensitive) && question.contains("brochure", Qt::CaseInsensitive)))
         {
-            responseString = "Great question! To log in, you must go"
+            responseString = "Great question! To log in/access the brochure, you must go"
                     " to the main window and click on the 'Log In' button! "
                     " for further information, please see the Help options! Do you need anything else?";
 
@@ -56,13 +58,23 @@ void ContactUs::generateResponse()
         else if
         ((question.contains("How", Qt::CaseInsensitive) && question.contains("create", Qt::CaseInsensitive)
         &&question.contains("account", Qt::CaseInsensitive)) || (question.contains("How", Qt::CaseInsensitive)
-        &&question.contains("access", Qt::CaseInsensitive) && question.contains("brochure", Qt::CaseInsensitive))
+        &&question.contains("activate", Qt::CaseInsensitive) && question.contains("brochure", Qt::CaseInsensitive))
         ||(question.contains("How", Qt::CaseInsensitive) && question.contains("can", Qt::CaseInsensitive)
         && question.contains("sign up", Qt::CaseInsensitive)) || question.contains("sign up",Qt::CaseInsensitive))
         {
-            responseString = "To create an account you must enter all required fields"
+            responseString = "To create an account (sign up) you must enter all required fields"
                               " in the account creation menu. Fill in the required information"
                               " and the account will be processed and reviewed. Do you need anything else?";
+        }
+        else if
+                ((question.contains("How", Qt::CaseInsensitive) && question.contains("view", Qt::CaseInsensitive)
+                &&question.contains("pricing", Qt::CaseInsensitive)) || ((question.contains("How", Qt::CaseInsensitive)
+                &&question.contains("price", Qt::CaseInsensitive)) || ((question.contains("how", Qt::CaseInsensitive)
+                &&(question.contains("find item", Qt::CaseInsensitive))) )))
+        {
+            responseString = "Great question! To view the pricing of our products, you will need to"
+                                " first have access to the brochure. Once this is done, please log"
+                               " in and select the 'View Products' button! Do you need anything else?";
         }
         else if
         ((question.contains("How", Qt::CaseInsensitive) && question.contains("place", Qt::CaseInsensitive)
@@ -95,7 +107,7 @@ void ContactUs::generateResponse()
         else
         {
             responseString = "Sorry, I don't know the answer to that yet! Let me "
-                             "contact my colleagues and see what they think. Please"
+                             "do more research and I'll be better prepared for next time! Please"
                              " check the help options for further reference.";
         }
 
