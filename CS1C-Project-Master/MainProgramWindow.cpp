@@ -293,7 +293,6 @@ void MainProgramWindow::on_pushButton_Guest_clicked()
     gWindow->show();
 }
 
-<<<<<<< HEAD
 
 /*******************************************************************************
  *  CreateDatabase
@@ -314,8 +313,7 @@ bool CreateDatabase(MainProgramWindow &program)
     {
         writeSuccess = true;
     }
-
-=======
+}
 void MainProgramWindow::on_pushButton_RequestBrochure_clicked()
 {
         Customer customer;
@@ -371,5 +369,4 @@ void MainProgramWindow::on_pushButton_RequestBrochure_clicked()
 void MainProgramWindow::on_actionContactUS_triggered()
 {
     cWindow->show();
->>>>>>> f4caf30960ca53f1d0675d3a5854d84138572967
 }

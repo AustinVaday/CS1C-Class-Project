@@ -18,8 +18,7 @@ class Customer : public User
                  QString key,
                  QString password,
                  QString email,
-                 long    accountNum,
-                 bool    activated);
+                 long    accountNum);
         // Nondefault constructor
 
         bool operator >(const Customer& otherCustomer) const;
@@ -35,7 +34,7 @@ class Customer : public User
         QString getInterest() const;
 
         // ACCESSORS
-        void setInterest(QString interest);
+        void setInterest(QString newInterest);
         void setAddress(QString newAddress);
         void setKey(QString key);
 

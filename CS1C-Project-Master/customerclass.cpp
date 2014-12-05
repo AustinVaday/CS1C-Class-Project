@@ -11,14 +11,12 @@ Customer::Customer(QString userName,
                    QString key,
                    QString password,
                    QString email,
-                   long    accountNum,
-                   bool    activated)
+                   long    accountNum)
 {
     User::setUserName(userName);
     User::setEmail(email);
     User::setAccountNum(accountNum);
     User::setPassword(password);
-    User::setAccountAccess(activated);
 
     address     = customerAddress;
     interest    = initInterest;
@@ -48,4 +46,19 @@ QString Customer::getInterest() const
 QString Customer::getKey() const
 {
     return keyCustomer;
+}
+
+void Customer::setAddress(QString newAddress)
+{
+    address = newAddress;
+}
+
+void Customer::setInterest(QString newInterest)
+{
+    interest = newInterest;
+}
+
+void Customer::setKey(QString key)
+{
+    keyCustomer = key;
 }
