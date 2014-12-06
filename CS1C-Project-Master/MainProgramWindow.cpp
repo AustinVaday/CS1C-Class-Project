@@ -224,38 +224,47 @@ void MainProgramWindow::on_pushButton_Guest_clicked()
 bool MainProgramWindow::CreateDatabase()
 {
 	QMessageBox writeFail;
-	bool writeSuccess;
-	writeSuccess = false;
+	bool writeStatus;
+	writeStatus = false;
 
 	// Sets writeFail Window Title
 	writeFail.setWindowTitle("*** > WARNING < ***");
 
+
+
 	// Reads from default list
 	if(this->robotList.ReadFile())
 	{
-		writeSuccess = true;
+		writeFail.setText("Product Database Initialized!");
+		writeFail.setModal(true);
+		writeFail.exec();
+		writeStatus = true;
+		writeStatus = true;
 	}
 	else
 	{
 		writeFail.setText("Failed to initialize Product Database!");
 		writeFail.setModal(true);
 		writeFail.exec();
-		writeSuccess = false;
+		writeStatus = false;
 	}
 
 	if(this->customerList.ReadFile())
 	{
-		writeSuccess = true;
+		writeFail.setText("Customer Database Initialized!");
+		writeFail.setModal(true);
+		writeFail.exec();
+		writeStatus = true;
 	}
 	else
 	{
 		writeFail.setText("Failed to initialize Customer Database!");
 		writeFail.setModal(true);
 		writeFail.exec();
-		writeSuccess = false;
+		writeStatus = false;
 	}
 
-	return writeSuccess;
+	return writeStatus;
 }
 void MainProgramWindow::on_pushButton_RequestBrochure_clicked()
 {
@@ -273,38 +282,32 @@ void MainProgramWindow::on_pushButton_RequestBrochure_clicked()
 		if (properFields)
 		{
 			// check if the customer is not taken
-			if (!customerList.isExist(customer) && !customerList.isExistSameName(customer.getUserName()))
+			if (!customerList.isExist(customer)
+			&& !customerList.isExistSameName(customer.getUserName()))
 			{
-
-
 				customerList.Enqueue(customer);
-
 				updateCustomerList(&customerList);
+				QMessageBox::information(this, tr("Registration Successful"),tr("\"%1\", you will be notified shortly whether you have been accepted or rejected.").arg(customer.getUserName()));
 
-				QMessageBox::information(this, tr("Registration Successful"),
-										 tr("\"%1\", you will be notified shortly whether you have been accepted or rejected.").arg(customer.getUserName()));
-
-				// SIGNALS & SLOTS
-				//                 emit customerListChanged(&customerList);
+			// SIGNALS & SLOTS
+			// emit customerListChanged(&customerList);
 
 			}
 			else if (customerList.isExistSameName(customer.getUserName()))
 			{
-				QMessageBox::information(this, tr("Registration Unsuccessful"),
-										 tr("Please enter in another name, \"%1\" is already taken").arg(customer.getUserName()));
+				QMessageBox::information(this, tr("Registration Unsuccessful"),tr("Please enter in another name,""\"%1\" is already taken").arg(customer.getUserName()));
 			}
 			else
 			{
 
 				QMessageBox::information(this, tr("Registration Unsuccessful"),
-										 tr("\"%1\" is already in your customer list.").arg(customer.getUserName()));
+					tr("\"%1\" is already in your "
+					"customer list.").arg(customer.getUserName()));
 
 			}
 		}
 		qDebug() << customer.OutputData();
 	}
-
-
 }
 
 void MainProgramWindow::on_actionContactUS_triggered()
