@@ -3,12 +3,8 @@
 void WriteToCustomerFile(CustomerList& list, QString fileName)
 {
 
-    QFile file(":\TestFile.txt");
+    QFile file(":/TestFile.txt");
     QTextStream out(&file);
-    QString line;
-    long numberLine;
-    Customer *customer;
-    int index = 0;
     qDebug() << "\nFile Exists: "<<file.exists();
 
     qDebug () << "**WriteToCustomerFile** Line 16";

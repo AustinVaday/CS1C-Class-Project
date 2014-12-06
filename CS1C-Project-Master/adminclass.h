@@ -26,15 +26,16 @@ class Admin : public User
               QString password
              );
         // non-default
-        ~Admin();
 
+        ~Admin();
+        //  Deconstructor
+
+        // Accessors
         QString GetUserName();
         QString GetEmail();
         long GetAccountNum();
         QString GetPassword();
         bool activationStatus();
-
-
 
         //Mutators
 
@@ -50,15 +51,9 @@ class Admin : public User
         void wipeList (CustomerList &list);
         // wipes out the whole list of deactivated customers.
 
-        void modifyHelpOptions();
-        // admin opportunity to modify help options
-
-
         void modifyCustomerReviews();
          // allow the admin to access, delete, or modify any
          // customer reviews.
-
-        //void displayList(CustomerList &list);
 
         Customer findCustomer(CustomerList &list, QString userName);
 

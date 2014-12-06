@@ -6,7 +6,8 @@
 #include <QLabel>
 #include <QDebug>
 
-void ReadCustomerFile(CustomerList& list, QString fileName);
+
+void ReadCustomerFile(CustomerList& list, QString fileName = "/CustomerList.txt");
 
 void WriteToCustomerFile(CustomerList&list, QString fileName);
 

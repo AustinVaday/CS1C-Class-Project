@@ -8,27 +8,28 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
      guestLogin(false),
      createAccount(false)
 {
+    // DECLARATIONS
+    adminLogin    = 0;
+    customerLogin = 0;
+    guestLogin    = 0;
+    createAccount = 0;
+
+
     ui->setupUi(this);
     // Debug construct
-    qDebug() << "Reading List!";
+qDebug() << "MainProgramWindow - Reading List! - Line 19";
 
-
-    //Create the customer list...
-    ReadCustomerFile(customerList, ":/ActivatedListFile.txt");
-
-// Debug construct
-qDebug() << "Deconstructed!";
-
-
-
-/**************************************************************/
-/*                     Erik Testing                           */
-/**************************************************************/
-    robotList.ReadFile();
-/**************************************************************/
-
-
-
+    if(!databaseCreated)
+    {
+        if(!CreateDatabase())
+        {
+            qWarning("Missing Data");
+        }
+        else
+        {
+            databaseCreated = true;
+        }
+    }
 
     // TEMPORARY DISPLAY!!
     ui->tempDisplay->setText(customerList.OutputList());
@@ -38,7 +39,7 @@ qDebug() << "Deconstructed!";
     Admin testAdmin("","admin1234@gmail.com", 1234, "");
 
 // Debuggin
-qDebug() << "Admin window: Output List, Line 22";
+qDebug() << "Admin window: Output List, Line 36";
 qDebug() << customerList.OutputList();
 
     // Initialize
@@ -64,21 +65,21 @@ qDebug() << customerList.OutputList() << "Main Program Window: "
 
 MainProgramWindow::~MainProgramWindow()
 {
-        if(robotList.isEmpty())
-        {
-            QMessageBox error;
-            error.setText("List is empty");
-            error.exec();
-        }
-        else
+        if(!robotList.isEmpty())
         {
             robotList.WriteToFile();
+            robotList.ClearList();
+        }
+
+        if(!customerList.isEmpty())
+        {
+            customerList.WriteToFile();
+            customerList.ClearList();
         }
 qDebug() << "Deconstructor Write to test file.";
 
-       WriteToCustomerFile(customerList, "::TestFile.txt");
 
-       customerList.ClearList();
+
         delete aWindow;
         delete bWindow;
         delete hWindow;
@@ -86,8 +87,6 @@ qDebug() << "Deconstructor Write to test file.";
         delete sWindow;
         delete cWindow;
         delete ui;
-
-
 }
 
 void MainProgramWindow::on_pushButton_Login_clicked()
@@ -135,9 +134,6 @@ void MainProgramWindow::on_pushButton_Login_clicked()
            }
         }
 
-// CAUSES THE PROGRAM TO CRASH
-//customerList.SortList(customerList.GetHead());
-
 
     if(!loginWindow.on_buttonBox_loginPress_rejected())
     {
@@ -151,21 +147,13 @@ void MainProgramWindow::on_pushButton_Login_clicked()
         Launcher();
     }
 
-
-//    qDebug() << "TESTING" << tempName << tempPassword;
-//        loginWindow.exec();
-
-//    loginWindow.close();
-
-
-
 }
 
+// Launches Window depending which button is clicked
 void MainProgramWindow::Launcher()
 {
     if(adminLogin)
     {
-        hWindow->editText();
         aWindow->show();
     }
     else if(customerLogin)
@@ -174,6 +162,7 @@ void MainProgramWindow::Launcher()
     }
 
 }
+
 
 void MainProgramWindow::on_exitProgram_clicked()
 {
@@ -282,8 +271,7 @@ void MainProgramWindow::updateCustomerList(CustomerList *list)
     ui->tempDisplay->clear();
     ui->tempDisplay->setText(customerList.OutputList());
 
-//    WriteToCustomerFile(customerList, ":/ActivatedListFile.txt");
-
+    customerList.WriteToFile();
 
     qDebug() << "List has finally reached the MainProgramWindow!";
 }
@@ -293,6 +281,53 @@ void MainProgramWindow::on_pushButton_Guest_clicked()
     gWindow->show();
 }
 
+
+/*******************************************************************************
+ *  CreateDatabase
+ * -----------------------------------------------------------------------------
+ * Instantiates the default database for each customer. Database will be update
+ *  when a full execution cycle occurs, e.g. run executable, modify data,
+ *  terminate program and repeat.
+ * --------------------------------------------------------------------------
+ * Returns boolean
+ ************************************************************************/
+bool MainProgramWindow::CreateDatabase()
+{
+    QMessageBox writeFail;
+    bool writeSuccess;
+    writeSuccess = false;
+
+    // Sets writeFail Window Title
+    writeFail.setWindowTitle("*** > WARNING < ***");
+
+    if(this->robotList.ReadFile())
+    {
+qDebug() << "CreateDatabase Product Write";
+        writeSuccess = true;
+    }
+    else
+    {
+        writeFail.setText("Failed to initialize Product Database!");
+        writeFail.setModal(true);
+        writeFail.exec();
+        writeSuccess = false;
+    }
+
+    if(this->customerList.ReadFile())
+    {
+        qDebug() << "CreateDatabase Customer Write";
+        writeSuccess = true;
+    }
+    else
+    {
+        writeFail.setText("Failed to initialize Customer Database!");
+        writeFail.setModal(true);
+        writeFail.exec();
+        writeSuccess = false;
+    }
+
+    return writeSuccess;
+}
 void MainProgramWindow::on_pushButton_RequestBrochure_clicked()
 {
         Customer customer;
@@ -337,8 +372,6 @@ void MainProgramWindow::on_pushButton_RequestBrochure_clicked()
 
                   }
                 }
-
-
                 qDebug() << customer.OutputData();
         }
 

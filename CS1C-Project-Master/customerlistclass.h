@@ -2,8 +2,12 @@
 #define CUSTOMERLISTCLASS_H
 
 #include "customerclass.h"
+
+#include <QDebug>
+#include <QDir>
+#include <QFile>
 #include "genericnodeclass.h"
-//#include "newactivatedlist.h"
+
 /**************************************************************************
  * 							[L I S T ~ C L A S S]
  **************************************************************************/
@@ -139,11 +143,6 @@ public:
 
    void SortList(Node<Customer>* head);
 
-//	CustomerNode* FindCustomer(Customer someCustomer) const;
-
-    // overload
-//	CustomerNode& operator[] (const int index);
-
 
     void RemoveCustomer(Customer &someCustomer);
     // Removes customer from list
@@ -170,45 +169,16 @@ public:
 
     bool isExist(Customer someCustomer);
 
+    bool    WriteToFile();
+
+    bool    WriteToFile(QString filePath);
+
+    bool    ReadFile();
+
+    bool    ReadFile(QString filePath);
+
+    QString FindDirectory(QDir path);
 
 };
-
-//CustomerNode& CustomerList::operator[] (const int index)
-//{
-//
-//	return _head[index];
-//}
-//
-
-
-
-
-
-//CustomerNode* CustomerList::FindCustomer(Customer someCustomer) const
-//{
-//	CustomerNode * traversePtr;
-//
-//	traversePtr = _head;
-//	int index = 0;
-//	while (index < _listLimit && traversePtr != NULL)
-//	{
-//		// overloaded operator
-//		if (traversePtr->GetData() == someCustomer)
-//		{
-//			return traversePtr;
-//		}
-//	}
-//
-//
-//	if (index == _listLimit && traversePtr == NULL)
-//	{
-//		// throw exception class if not found.
-//		traversePtr = NULL;
-//		throw NotFound();
-//	}
-//
-//
-//
-//}
 
 #endif // CUSTOMERLISTCLASS_H

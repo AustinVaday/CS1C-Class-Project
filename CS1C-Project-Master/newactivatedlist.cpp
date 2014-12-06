@@ -33,15 +33,12 @@ NewActivatedList::NewActivatedList(QWidget *parent, CustomerList &list) :
 //     connect(ui->listWidget, SIGNAL(itemClicked(QListWidgetItem*)), ui->addToDeactivatedListButton, SLOT(setFocus()));
 //    connect(ui->listWidget, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(on_addToDeactivatedListButton_clicked(QListWidgetItem*)));
 
-
-
     customerList = list;
 
-
-
+    // Creates new customer address book
     custAddBook = new CustomerAddressBook(this, customerList, 0);
 
-
+        // Checks if List is empty
     if (customerList.isEmpty())
     {
         ui->addCustomer->show();

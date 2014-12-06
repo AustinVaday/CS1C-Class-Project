@@ -6,18 +6,24 @@
 #include <QTextStream>
 #include <QMessageBox>
 
+
+
 int main(int argc, char *argv[])
 {
     // DECLARATIONS
     QApplication a(argc, argv);
+    MainProgramWindow MainProgramWindow;
     QDir dir = QDir::home();
     QString projectPath;
-    QString defaultPath = "/E.R.C.K";
+    QString defaultPath = "/ERCK";
     QMessageBox noDir;
 
-    // This determines if the path directory required for data persistence exist, if it doesn't it will create it
+
+    // Combines current home path and default program path this determines
+    //  if the path directory required for data persistence exists, if it /
+    //  doesn't it will create it.
     projectPath = dir.path() + defaultPath;
-    dir = projectPath;
+    dir         = projectPath;
 
     if(!dir.exists())
     {
@@ -26,16 +32,20 @@ int main(int argc, char *argv[])
         noDir.exec();
 
         qWarning("Cannot find the Project directory.");
-
         dir.mkpath(projectPath);
+
+        // Reads Default Database text file from binary file.
+        //  Default database cannot be modified once compile and executed.
+        //  Application will read and write from the set directory path
+
+        noDir.setText("Initiating Database...");
+        noDir.exec();
 
     }
 
 
-    MainProgramWindow MainProgramWindow;
-
-
-
     MainProgramWindow.show();
+
+
     return a.exec();
 }

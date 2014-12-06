@@ -116,5 +116,6 @@ RESOURCES += \
     TextFilesFolder.qrc \
     Images.qrc
 
-OTHER_FILES +=
+OTHER_FILES += \
+    ProductDatabase.txt
 
