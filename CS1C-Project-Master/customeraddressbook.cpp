@@ -237,7 +237,7 @@ void CustomerAddressBook::on_submitButton_clicked()
     QString addressLine2 = ui->EDIT_addressLine2->text() + "\n";
     QString interest = ui->EDIT_interest->text();
     QString key      = ui->EDIT_value->text();
-    QString address = addressLine1 + addressLine2;
+    QString address = addressLine1 + "\n" + addressLine2;
 
 
 qDebug() << "Customer Address Book submitting : " << address;
@@ -369,8 +369,6 @@ bool  activationStatus = false;
             ui->EDIT_value->setEnabled(true);
             ui->EDIT_addressLine1->setEnabled(true);
             ui->EDIT_addressLine2->setEnabled(true);
-
-
 
 
     }
@@ -672,6 +670,7 @@ void CustomerAddressBook::on_removeButton_clicked()
     }
 
     Customer customer (name, address, interest,key, pass, email, idString.toLong());
+
     customer.setAccountAccess(activationStatus);
 
     if (customerList.isExist(customer))

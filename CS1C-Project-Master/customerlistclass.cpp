@@ -876,11 +876,16 @@ qDebug() << "Debugging:: WRITE Customer :::  It opened ::: ";
 
             out << _customerPtr->GetData().getPassword() << "\n";
 
+            out << _customerPtr->GetData().getEmail() << "\n";
+
             out << _customerPtr->GetData().getAccountNum() << "\n";
 
-            out << _customerPtr->GetData().getEmail() << "\n" << "\n";
 
-            _customerPtr = _customerPtr->GetNext();
+
+            if((_customerPtr = _customerPtr->GetNext()) != 0)
+            {
+                    out << "\n";
+            }
 
             out.flush();
 
@@ -888,12 +893,8 @@ qDebug() << "Debugging:: WRITE Customer :::  It opened ::: ";
 
             writeSuccessFull = true;
 
-
-
-        } // END IF CUSTOMER PTR == NULL
-
     } // END OPEN FILE IF
-    customerDataFile.flush();
+     customerDataFile.flush();
 
     customerDataFile.close();
     return writeSuccessFull;
@@ -1008,7 +1009,6 @@ qDebug() << "Customer Email: " << inputData[6];
 qDebug() << "Account ID: " << inputData[7];
 
             inFile.skipWhiteSpace();
-                    inFile.flush();
 
             this->Enqueue(Customer(inputData[0],
                                                                 inputData[1],

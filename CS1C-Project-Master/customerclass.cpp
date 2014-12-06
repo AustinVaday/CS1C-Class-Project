@@ -81,7 +81,7 @@ void Customer::setAddress(QString customerAddress)
 
 qDebug() << "Setting Customer Address 1 : " << inputString;
 
-    address1 = inputString;
+    this->setAddressLine1(inputString);
 
     inputString.clear();
 
@@ -96,7 +96,10 @@ qDebug() << "Setting Customer Address 1 : " << inputString;
 
 qDebug() << "Setting Customer Address 2 : " << inputString;
 
-    address2 = inputString;
+    this->setAddressLine2(inputString);
+
+    inputString.clear();
+
 
 }
 
