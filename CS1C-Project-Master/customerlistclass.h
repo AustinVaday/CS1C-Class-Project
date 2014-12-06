@@ -2,71 +2,50 @@
 #define CUSTOMERLISTCLASS_H
 
 #include "customerclass.h"
-
 #include <QDebug>
 #include <QDir>
 #include <QFile>
 #include "genericnodeclass.h"
 
-/**************************************************************************
- * 							[L I S T ~ C L A S S]
- **************************************************************************/
+/******************************************************************
+ * Customer list
+ * --------------------------------------------------------------
+ *
+ *****************************************************************/
+
 
 class CustomerList
 {
-/**************************************************************************
- * P R I V A T E
- * ------------------------------------------------------------------------
- * The private section begins here
- **************************************************************************/
+ // P R I V A T E
 private:
     //M E M B E R ~ D E C L A R A T I O N S
 
     Node<Customer>*         _head;
     Node<Customer>*         _tail;
-    Node<Customer>*         _ptr;
     int      		  	 	_nodeCount;
     int 			  		_listLimit;
 
-/**************************************************************************
- * P U B L I C
- * ------------------------------------------------------------------------
- * The public section begins here
- **************************************************************************/
+//P U B L I C
 public:
-
-/*******************
- * M U T A T O R S *
- *******************/
-    /**********************************************************************
-     * C O N S T R U C T O R
-     * --------------------------------------------------------------------
-     * Constructs an object and initializes
-     **********************************************************************/
+// M U T A T O R S
+    // C O N S T R U C T O R
     CustomerList();
+    // Constructs an object and initializes
 
-    /**********************************************************************
-     * D E S T R U C T O R
-     * --------------------------------------------------------------------
-     * Destructs a list
-     **********************************************************************/
+     // D E S T R U C T O R
     ~CustomerList();
-    /**********************************************************************
-     * Enqueue
-     * --------------------------------------------------------------------
-     * Adds a node to the end of the list
-     **********************************************************************/
+    // Destructs a list
+
     void Enqueue(Customer data);
+    // Adds a node to the end of the list, copy daya members into list node
+    //      Returns: Nothing, node stays in list*
 
     void Swap(Node<Customer>* objectOne, Node<Customer>* objectTwo);
+    // Swaps the values of both the customer pointers to data members
+    //      Pointers Return: Objects have swapped identical values permanently
 
-    /**********************************************************************
-     * Dequeue
-     * --------------------------------------------------------------------
-     * Removes the first node from the list
-     **********************************************************************/
     Customer Dequeue();
-
+    // Removes the first node from the list
 
     Node<Customer>* GetHead() const;
 
@@ -100,49 +79,28 @@ public:
 
 
 
-/*********************
- * A C C E S S O R S *
- *********************/
-    /**********************************************************************
-     * Front
-     * --------------------------------------------------------------------
-     * Returns the
-     **********************************************************************/
+
+// A C C E S S O R S
+
+
     Customer Front() const;
+    // Returns the Front customer of the list
+    //      returns customer value
 
-    /**********************************************************************
-     * Size
-     * --------------------------------------------------------------------
-     * This method will return the size of the list
-     **********************************************************************/
     int      Size() const;
+    // This method will return the size of the list
+    //      returns integer
 
-    /**********************************************************************
-     * IsEmpty
-     * --------------------------------------------------------------------
-     * This method will check to see if the list is Empty
-     **********************************************************************/
     bool     isEmpty() const;
+    //This method will check to see if the list is Empty
 
-    /**********************************************************************
-     * isFull
-     * --------------------------------------------------------------------
-     * This method will check to see if the list is full
-     **********************************************************************/
     bool     isFull() const;
+    // This method will check to see if the list is full
 
-    /**********************************************************************
-     * OutputList
-     * --------------------------------------------------------------------
-     * This method will return a QString containing the list
-     **********************************************************************/
     QString   OutputList() const;
+    // This method will return a QString containing the list
 
-
-
-
-   void SortList(Node<Customer>* head);
-
+    void SortList(Node<Customer>* head);
 
     void RemoveCustomer(Customer &someCustomer);
     // Removes customer from list
@@ -179,6 +137,7 @@ public:
 
     QString FindDirectory(QDir path);
 
+    class pathFail{};
 };
 
 #endif // CUSTOMERLISTCLASS_H

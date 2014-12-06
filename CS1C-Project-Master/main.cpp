@@ -14,16 +14,17 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainProgramWindow MainProgramWindow;
     QDir dir = QDir::home();
-    QString projectPath;
-    QString defaultPath = "/ERCK";
+    QString resourcePath;
     QMessageBox noDir;
 
+qDebug() << "Current directory: " << dir.current();
 
     // Combines current home path and default program path this determines
     //  if the path directory required for data persistence exists, if it /
     //  doesn't it will create it.
-    projectPath = dir.path() + defaultPath;
-    dir         = projectPath;
+    dir  = dir.path() + "/Resources";
+
+    resourcePath= dir.path();
 
     if(!dir.exists())
     {
@@ -32,7 +33,7 @@ int main(int argc, char *argv[])
         noDir.exec();
 
         qWarning("Cannot find the Project directory.");
-        dir.mkpath(projectPath);
+        dir.mkpath(resourcePath);
 
         // Reads Default Database text file from binary file.
         //  Default database cannot be modified once compile and executed.

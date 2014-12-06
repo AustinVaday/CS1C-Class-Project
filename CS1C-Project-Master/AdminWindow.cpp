@@ -17,28 +17,17 @@ AdminWindow::AdminWindow(QWidget *parent, CustomerList &list) :
     connect(this, SIGNAL(customerListChanged(CustomerList*)), parent, SLOT(updateCustomerList(CustomerList*)));
 
     customerList = list;
-
     viewList = new NewActivatedList(this, customerList);
-
     ui->setupUi(this);
-
     ui->graphicsView->setStyleSheet("background-image: url(:/Resources/guest.jpg)");
-
-
-
-
-
    }
 
 AdminWindow::~AdminWindow()
 {
-     customerList.ClearList();
-//    delete messageView;
-    qDebug() << "AdminWindow -- Destructor Test #1";
-    delete viewList;
-    qDebug() << "AdminWindow -- Destructor Test #2";
-    delete ui;
-     qDebug() << "AdminWindow -- Destructor Test #3";
+	// POINTERS IN CUSTOMER LIST
+	customerList.ClearList();
+	delete viewList;
+	delete ui;
 }
 
 void AdminWindow::on_back_button_clicked()
@@ -47,59 +36,21 @@ void AdminWindow::on_back_button_clicked()
 }
 void AdminWindow::on_view_activated_customers_clicked()
 {
-//    QWidget *viewActivatedCustomers = new QWidget;
-
-//    viewActivatedCustomers->show();
-
-
-
-
-
     viewList->show();
-
-//    CustomerList customerList2;
-//    Customer Bob("Bob", "a", 0, "a");
-//    customerList2.Enqueue(Bob);
-//    CustomerAddressBook* custAddBook = new CustomerAddressBook(0, customerList2);
-//    custAddBook->setModal(true);
-//    custAddBook->exec();
-
-//    CustomerAddressBook *custAddBook = new CustomerAddressBook();
-
-//    custAddBook->showNormal();
-
-//    custAddBook->activateWindow();
-
-//    custAddBook->show();
 }
-
-
-
-
-
-
 void AdminWindow::on_modify_help_options_clicked()
 {
     emit clicked();
 }
-
 void AdminWindow::on_actionHelp_triggered()
 {
     emit clicked();
 }
-
-void AdminWindow::on_search_customer_clicked()
-{
-
-}
-
 void AdminWindow::updateCustomerList(CustomerList *list)
 {
+	// Notifies the AdminWindow list changed and returns list
     customerList = *list;
-
-    // notify the AdminWindow that list has been changed
     emit customerListChanged(&customerList);
 
-    qDebug() << "Emitting in AdminWindow to MainWindow!";
 }
 

@@ -22,39 +22,22 @@ public:
 
 signals:
     void clicked();
-
     void adminAccess();
-
     void customerListChanged(CustomerList* list);
 
-//    void
-
 public slots:
-
     void on_modify_help_options_clicked();
-
     void updateCustomerList(CustomerList *list);
-
-//    void update_messages(QString message, Qstring name);
-
-
 
 private slots:
     void on_back_button_clicked();
-
     void on_view_activated_customers_clicked();
-
     void on_actionHelp_triggered();
 
-
-    void on_search_customer_clicked();
-
-//    void on_unreadMessagesButton_clicked();
-
 private:
-    Ui::AdminWindow *ui;
+	Ui::AdminWindow  *ui;
     NewActivatedList *viewList;
-    CustomerList customerList;
+	CustomerList	  customerList;
 };
 
 #endif // ADMINWINDOW_H
