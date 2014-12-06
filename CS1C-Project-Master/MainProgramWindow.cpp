@@ -20,9 +20,7 @@ qDebug() << "MainProgramWindow - Reading List! - Line 19";
 
     if(!CreateDatabase())
     {
-        QMessageBox error;
-        error.setText("Missing Data");
-        error.setModal(true);
+        qWarning("Missing Data");
     }
 
     // TEMPORARY DISPLAY!!
@@ -74,7 +72,6 @@ qDebug() << "Deconstructor Write to test file.";
 
 
 
-
         delete aWindow;
         delete bWindow;
         delete hWindow;
@@ -82,8 +79,6 @@ qDebug() << "Deconstructor Write to test file.";
         delete sWindow;
         delete cWindow;
         delete ui;
-
-
 }
 
 void MainProgramWindow::on_pushButton_Login_clicked()
@@ -306,25 +301,29 @@ bool MainProgramWindow::CreateDatabase()
     // Sets writeFail Window Title
     writeFail.setWindowTitle("*** > WARNING < ***");
 
-    if(this->robotList.ReadFile("ProductDatabase.txt"))
+    if(this->robotList.ReadFile())
     {
+qDebug() << "CreateDatabase Product Write";
         writeSuccess = true;
     }
     else
     {
         writeFail.setText("Failed to initialize Product Database!");
         writeFail.setModal(true);
+        writeFail.exec();
         writeSuccess = false;
     }
 
-    if(this->customerList.ReadFile("ProductDatabase.txt"))
+    if(this->customerList.ReadFile())
     {
+        qDebug() << "CreateDatabase Customer Write";
         writeSuccess = true;
     }
     else
     {
         writeFail.setText("Failed to initialize Customer Database!");
         writeFail.setModal(true);
+        writeFail.exec();
         writeSuccess = false;
     }
 

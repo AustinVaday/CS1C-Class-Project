@@ -457,21 +457,21 @@ QString ProductList::operator[](int index)
 bool ProductList::WriteToFile()
 {
     Node<Product>* _productPtr;
-    QDir dataDir;
+    QDir dataPath;
     bool writeSuccessFull;
 
     // This calls on QDir to return the path of the home folder of the user
     //  who executed the program then concatenates
-    dataDir = QDir::home().path() + "/E.R.C.K/";
+    dataPath = QDir::home().path() + "/E.R.C.K/";
 
     // If the path doesn't exist, the program will create another, if it was lost during execution.
-    if(!dataDir.exists())
+    if(!dataPath.exists())
     {
-        dataDir.mkpath(dataDir.path());
+        dataPath.mkpath(dataPath.path());
     }
 
     // A QFile is the created or opeth.
-    QFile productDataFile(dataDir.path() + "ProductData.txt");
+    QFile productDataFile(dataPath.path() + "ProductData.txt");
 
     // Initialize write to false
     writeSuccessFull = false;
@@ -516,21 +516,21 @@ qDebug() << "Debugging:: WRITE :::  It opened ::: ";
 bool ProductList::WriteToFile(QString filePath)
 {
     Node<Product>* _productPtr;
-    QDir dataDir;
+    QDir dataPath;
     bool writeSuccessFull;
 
     // This calls on QDir to return the path of the home folder of the user
     //  who executed the program then concatenates
-    dataDir = ":/" + filePath;
+    dataPath = ":/" + filePath;
 
     // If the path doesn't exist, the program will create another, if it was lost during execution.
-    if(!dataDir.exists())
+    if(!dataPath.exists())
     {
-        dataDir.mkpath(dataDir.path());
+        dataPath.mkpath(dataPath.path());
     }
 
     // A QFile is the created or opeth.
-    QFile productDataFile(dataDir.path());
+    QFile productDataFile(dataPath.path());
 
     // Initialize write to false
     writeSuccessFull = false;
@@ -575,7 +575,7 @@ qDebug() << "Debugging:: WRITE :::  It opened ::: ";
  *************************************************************/
 bool ProductList::ReadFile()
 {
-    QDir dataDir;
+    QDir dataPath;
     bool readSuccessFull;
 
     // Initialize write to false
@@ -583,16 +583,16 @@ bool ProductList::ReadFile()
 
     // This calls on QDir to return the path of the home folder of the user
     //  who executed the program then concatenates
-    dataDir = QDir::home().path() + "/E.R.C.K/ProductData.txt";
+    dataPath = QDir::currentPath();
 
     // If the path doesn't exist, the program will create another, if it was lost during execution.
-    if(!dataDir.exists())
+    if(!dataPath.exists())
     {
-qDebug() << "Product File: " << !dataDir.exists();
+qDebug() << "Patch Exists: " << dataPath.exists();
     }
 
     // A QFile is the created or opened
-    QFile productDataFile(dataDir.path());
+    QFile productDataFile(dataPath.path() + "/ProductData.txt");
 
     // This checks if the file opens, if it does not, it will display an
     //  error message
@@ -654,7 +654,7 @@ qDebug() << "Close: " << !productDataFile.isOpen();
  *************************************************************/
 bool ProductList::ReadFile(QString filePath)
 {
-    QDir dataDir;
+    QDir dataPath;
     bool readSuccessFull;
 
     // Initialize write to false
@@ -662,16 +662,20 @@ bool ProductList::ReadFile(QString filePath)
 
     // This calls on QDir to return the path of the home folder of the user
     //  who executed the program then concatenates
-    dataDir = ":/" + filePath;
+    dataPath = QDir::currentPath();
+qDebug() << "Current Path to application : " << QDir::currentPath();
 
-    // If the path doesn't exist, the program will create another, if it was lost during execution.
-    if(!dataDir.exists())
+
+// If the path doesn't exist, the program will create another, if it was lost during execution.
+    if(!dataPath.exists(filePath))
     {
-qDebug() << "Product File: " << !dataDir.exists();
+qDebug() << "Product File: " << dataPath.exists(filePath);
     }
 
     // A QFile is the created or opened
-    QFile productDataFile(dataDir.path());
+    QFile productDataFile(dataPath.path() + "/" + filePath);
+
+qDebug() << "Product File Path : " << dataPath.path() << "";
 
     // This checks if the file opens, if it does not, it will display an
     //  error message
@@ -686,37 +690,40 @@ qDebug() << "Product File: " << !dataDir.exists();
 qDebug() << "Debugging:: Open Success :: Reading data...";
 
             // Name
-            inputData[0] = inFile.readLine() + " 1 + ";
+            inputData[0] = inFile.readLine();
 qDebug() << "Name: " << inputData[0];
 
             // Cost
-            inputData[1] = inFile.readLine() + " 2 + ";
+            inputData[1] = inFile.readLine();
 qDebug() << "Description: " << inputData[1];
 
             // Description
-            inputData[2] = inFile.readLine() + " 3 + ";
+            inputData[2] = inFile.readLine();
 qDebug() << "Cost: " << inputData[2];
 
             // Model Number
-            inputData[3] = inFile.readLine() + " 4 + ";
+            inputData[3] = inFile.readLine();
 qDebug() << "Model Number: " << inputData[3];
 
             // Date Released
-            inputData[4] = inFile.readLine() + " 5 + ";
+            inputData[4] = inFile.readLine();
 qDebug() << "Date Released: " << inputData[4];
             Product newProduct(inputData[0],inputData[1],inputData[2].toFloat(),inputData[3].toInt(),inputData[4].toInt());
 
             this->Enqueue(newProduct);
 
         }
+
         readSuccessFull = true;
+
+        qDebug() << "Flush: " << productDataFile.flush();
+
+        productDataFile.close();
+
+        qDebug() << "Close: " << !productDataFile.isOpen();
     }
 
-qDebug() << "Flush: " << productDataFile.flush();
 
-productDataFile.close();
-
-qDebug() << "Close: " << !productDataFile.isOpen();
 
     return readSuccessFull;
 

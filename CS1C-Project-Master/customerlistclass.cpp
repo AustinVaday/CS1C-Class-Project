@@ -3,10 +3,7 @@
 #include <QMessageBox>
 #include "ExceptionHandlers.h"
 #include "activatedlist2.h"
-#include <QDebug>
-#include <QDir>
 #include "customerclass.h"
-#include <QFile>
 
 /**************************************************************************
  * CS1C Class Project
@@ -830,33 +827,40 @@ qDebug() << "Debugging:: WRITE :::  It opened ::: ";
 
         _customerPtr = _head;
 
-        while(_customerPtr != 0)
+        if(_customerPtr != 0)
         {
-            out << _customerPtr->GetData().getUserName() << "\n";
+            do
+            {
+                out << _customerPtr->GetData().getUserName() << "\n";
 
-            out << _customerPtr->GetData().getAddressLine1()  << "\n";
+                out << _customerPtr->GetData().getAddressLine1()  << "\n";
 
-            out << _customerPtr->GetData().getAddressLine2()  << "\n";
+                out << _customerPtr->GetData().getAddressLine2()  << "\n";
 
-            out << _customerPtr->GetData().getInterest() << "\n";
+                out << _customerPtr->GetData().getInterest() << "\n";
 
-            out << _customerPtr->GetData().getKey()      << "\n";
+                out << _customerPtr->GetData().getKey()      << "\n";
 
-            out << _customerPtr->GetData().getPassword() << "\n";
+                out << _customerPtr->GetData().getPassword() << "\n";
 
-            out << _customerPtr->GetData().getAccountNum() << "\n";
+                out << _customerPtr->GetData().getAccountNum() << "\n";
 
-            out << _customerPtr->GetData().getEmail() << "\n";
+                out << _customerPtr->GetData().getEmail() << "\n";
 
-            _customerPtr = _customerPtr->GetNext();
-        }
+                _customerPtr = _customerPtr->GetNext();
 
-        writeSuccessFull = true;
+            }  while(_customerPtr->GetNext() != 0); // END DO WHILE
 
-    }
+            writeSuccessFull = true;
 
-    customerDataFile.flush();
-    customerDataFile.close();
+            customerDataFile.flush();
+
+            customerDataFile.close();
+
+        } // END IF CUSTOMER PTR == NULL
+
+    } // END OPEN FILE IF
+
 
     return writeSuccessFull;
 
@@ -880,16 +884,11 @@ bool CustomerList::WriteToFile()
 
     // This calls on QDir to return the path of the home folder of the user
     //  who executed the program then concatenates
-    dataDir = QDir::home().path() + "/ERCK/CustomerDatabase.txt";
+    dataDir = QDir::currentPath();
 
-    // If the path doesn't exist, the program will create another, if it was lost during execution.
-    if(!dataDir.exists())
-    {
-        dataDir.mkpath(dataDir.path());
-    }
 
     // A QFile is the created or opeth.
-    QFile customerDataFile(dataDir.path());
+    QFile customerDataFile(dataDir.path() + "/CustomerDatabase.txt");
 
     // Initialize write to false
     writeSuccessFull = false;
@@ -901,33 +900,39 @@ qDebug() << "Debugging:: WRITE :::  It opened ::: ";
 
         _customerPtr = _head;
 
-        while(_customerPtr != 0)
+        if(_customerPtr != 0)
         {
-            out << _customerPtr->GetData().getUserName() << "\n";
+            do
+            {
+                out << _customerPtr->GetData().getUserName() << "\n";
 
-            out << _customerPtr->GetData().getAddressLine1()  << "\n";
+                out << _customerPtr->GetData().getAddressLine1()  << "\n";
 
-            out << _customerPtr->GetData().getAddressLine2()  << "\n";
+                out << _customerPtr->GetData().getAddressLine2()  << "\n";
 
-            out << _customerPtr->GetData().getInterest() << "\n";
+                out << _customerPtr->GetData().getInterest() << "\n";
 
-            out << _customerPtr->GetData().getKey()      << "\n";
+                out << _customerPtr->GetData().getKey()      << "\n";
 
-            out << _customerPtr->GetData().getPassword() << "\n";
+                out << _customerPtr->GetData().getPassword() << "\n";
 
-            out << _customerPtr->GetData().getAccountNum() << "\n";
+                out << _customerPtr->GetData().getAccountNum() << "\n";
 
-            out << _customerPtr->GetData().getEmail() << "\n";
+                out << _customerPtr->GetData().getEmail() << "\n";
 
-            _customerPtr = _customerPtr->GetNext();
-        }
+                _customerPtr = _customerPtr->GetNext();
 
-        writeSuccessFull = true;
+            }  while(_customerPtr->GetNext() != 0); // END DO WHILE
 
-    }
+            writeSuccessFull = true;
 
-    customerDataFile.flush();
-    customerDataFile.close();
+            customerDataFile.flush();
+
+            customerDataFile.close();
+
+        } // END IF CUSTOMER PTR == NULL
+
+    } // END OPEN FILE IF
 
     return writeSuccessFull;
 
@@ -953,26 +958,25 @@ bool CustomerList::ReadFile()
     // This calls on QDir to return the path of the home folder of the user
     //  who executed the program then concatenates
     //      -- Initial File / Directory location --
-    dataDir = QDir::home().path() + "/ERCK/CustomerDatabase.txt";
+    dataDir = QDir::currentPath();
 
-    // If the path doesn't exist, the program will create another, if it was lost during execution.
-    if(!dataDir.exists())
-    {
-qDebug() << "Customer Database: " << !dataDir.exists();
-    }
+    dataDir.cd("../CS1C-Project-Master");
+
+    qDebug() << "Current Path: " << dataDir.path();
+
 
     // A QFile is the created or opened
-    QFile customerDataFile(dataDir.path());
+    QFile customerDataFile(dataDir.path() + "/CustomerDatabase.txt");
 
     // This checks if the file opens, if it does not, it will display an
     //  error message
     if(customerDataFile.open(QIODevice::ReadWrite | QIODevice::Text))
     {
-        QString inputData[5];
+        QString inputData[8];
 
         // Points Text stream to input file to read in.
         QTextStream inFile(&customerDataFile);
-        while(!inFile.atEnd() && !isFull())
+        while(!inFile.atEnd() && !this->isFull())
         {
             /*******************************************************
              * Reading Data Key
@@ -1040,21 +1044,23 @@ qDebug() << "Customer Email: " << inputData[6];
 
             // Account ID
             inputData[7] = inFile.readLine();
-qDebug() << "Customer Key: " << inputData[7];
+qDebug() << "Account ID: " << inputData[7];
 
-inFile.readLine();
+            inFile.skipWhiteSpace();
 
-Customer newCustomer(inputData[0],inputData[1],inputData[3], inputData[4], inputData[5], inputData[6], inputData[7].toInt());
+
+
+Customer newCustomer(inputData[0],inputData[1],inputData[3], inputData[4], inputData[5], inputData[6], inputData[7].toLong());
 
             this->Enqueue(newCustomer);
 
         }
         readSuccessFull = true;
-    }
 
-qDebug() << "Flush: " <<  customerDataFile.flush();
-                          customerDataFile.close();
-qDebug() << "Close: " << !customerDataFile.isOpen();
+        qDebug() << "Flush: " <<  customerDataFile.flush();
+                                  customerDataFile.close();
+        qDebug() << "Close: " << !customerDataFile.isOpen();
+        }
 
     return readSuccessFull;
 
@@ -1068,19 +1074,10 @@ bool CustomerList::ReadFile(QString filePath)
     // Initialize write to false
     readSuccessFull = false;
 
-    // This calls on QDir to return the path of the home folder of the user
-    //  who executed the program then concatenates
-    //      -- Initial File / Directory location --
-    dataDir = ":/" + filePath;
-
-    // If the path doesn't exist, the program will create another, if it was lost during execution.
-    if(!dataDir.exists())
-    {
-qDebug() << "Customer Database: " << !dataDir.exists();
-    }
+    dataDir = filePath;
 
     // A QFile is the created or opened
-    QFile customerDataFile(dataDir.path());
+    QFile customerDataFile(dataDir.path() + filePath);
 
     // This checks if the file opens, if it does not, it will display an
     //  error message
@@ -1170,4 +1167,32 @@ qDebug() << "Close: " << !customerDataFile.isOpen();
 
 }
 
+QString CustomerList::FindDirectory(QDir dataDir)
+{
+    QString filePath;
+    // Checks if the file path exists.
 
+
+    // If the path doesn't exist, the program will create another, if it was lost during
+    //      execution.
+
+    if(!dataDir.exists())
+    {
+
+qDebug() << "Customer Directory Exists : " << !dataDir.exists();
+
+        // Moves the directory path up one folder
+        dataDir.cdUp();
+        if(!dataDir.exists())
+        {
+            filePath = dataDir.path();
+            qDebug() << "Checking file path  : " << filePath;
+        }
+
+
+        // Calls on finding directory once more
+        filePath = FindDirectory(dataDir);
+    }
+
+    return filePath;
+}

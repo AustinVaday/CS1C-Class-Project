@@ -41,11 +41,11 @@ int main(int argc, char *argv[])
         noDir.setText("Initiating Database...");
         noDir.exec();
 
-
     }
 
 
     MainProgramWindow.show();
+
 
     return a.exec();
 }

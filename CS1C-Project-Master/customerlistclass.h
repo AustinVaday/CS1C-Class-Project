@@ -2,6 +2,10 @@
 #define CUSTOMERLISTCLASS_H
 
 #include "customerclass.h"
+
+#include <QDebug>
+#include <QDir>
+#include <QFile>
 #include "genericnodeclass.h"
 
 /**************************************************************************
@@ -172,6 +176,8 @@ public:
     bool    ReadFile();
 
     bool    ReadFile(QString filePath);
+
+    QString FindDirectory(QDir path);
 
 };
 
