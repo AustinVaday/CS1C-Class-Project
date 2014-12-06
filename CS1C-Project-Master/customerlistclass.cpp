@@ -862,31 +862,29 @@ qDebug() << "Debugging:: WRITE Customer :::  It opened ::: ";
 
         _customerPtr = _head;
 
-        if(_customerPtr != 0)
+        while(_customerPtr != 0)
         {
-            do
-            {
-                out << _customerPtr->GetData().getUserName() << "\n";
+            out << _customerPtr->GetData().getUserName() << "\n";
 
-                out << _customerPtr->GetData().getAddressLine1()  << "\n";
+            out << _customerPtr->GetData().getAddressLine1()  << "\n";
 
-                out << _customerPtr->GetData().getAddressLine2()  << "\n";
+            out << _customerPtr->GetData().getAddressLine2()  << "\n";
 
-                out << _customerPtr->GetData().getInterest() << "\n";
+            out << _customerPtr->GetData().getInterest() << "\n";
 
-                out << _customerPtr->GetData().getKey()      << "\n";
+            out << _customerPtr->GetData().getKey()      << "\n";
 
-                out << _customerPtr->GetData().getPassword() << "\n";
+            out << _customerPtr->GetData().getPassword() << "\n";
 
-                out << _customerPtr->GetData().getAccountNum() << "\n";
+            out << _customerPtr->GetData().getAccountNum() << "\n";
 
-                out << _customerPtr->GetData().getEmail() << "\n" << "\n";
+            out << _customerPtr->GetData().getEmail() << "\n" << "\n";
 
-                _customerPtr = _customerPtr->GetNext();
+            _customerPtr = _customerPtr->GetNext();
 
-                out.flush();
+            out.flush();
 
-            }  while(_customerPtr->GetNext() != 0); // END DO WHILE
+        }// END WHILE
 
             writeSuccessFull = true;
 
