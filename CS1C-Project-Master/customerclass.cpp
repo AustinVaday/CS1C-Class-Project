@@ -77,6 +77,7 @@ void Customer::setAddress(QString customerAddress)
         stringIterator ++;
     }
 
+    index++;
 
 qDebug() << "Setting Customer Address 1 : " << inputString;
 

@@ -14,13 +14,21 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
     guestLogin    = 0;
     createAccount = 0;
 
+
     ui->setupUi(this);
     // Debug construct
 qDebug() << "MainProgramWindow - Reading List! - Line 19";
 
-    if(!CreateDatabase())
+    if(!databaseCreated)
     {
-        qWarning("Missing Data");
+        if(!CreateDatabase())
+        {
+            qWarning("Missing Data");
+        }
+        else
+        {
+            databaseCreated = true;
+        }
     }
 
     // TEMPORARY DISPLAY!!
@@ -126,9 +134,6 @@ void MainProgramWindow::on_pushButton_Login_clicked()
            }
         }
 
-// CAUSES THE PROGRAM TO CRASH
-//customerList.SortList(customerList.GetHead());
-
 
     if(!loginWindow.on_buttonBox_loginPress_rejected())
     {
@@ -142,16 +147,9 @@ void MainProgramWindow::on_pushButton_Login_clicked()
         Launcher();
     }
 
-
-//    qDebug() << "TESTING" << tempName << tempPassword;
-//        loginWindow.exec();
-
-//    loginWindow.close();
-
-
-
 }
 
+// Launches Window depending which button is clicked
 void MainProgramWindow::Launcher()
 {
     if(adminLogin)
@@ -164,6 +162,7 @@ void MainProgramWindow::Launcher()
     }
 
 }
+
 
 void MainProgramWindow::on_exitProgram_clicked()
 {
@@ -373,8 +372,6 @@ void MainProgramWindow::on_pushButton_RequestBrochure_clicked()
 
                   }
                 }
-
-
                 qDebug() << customer.OutputData();
         }
 

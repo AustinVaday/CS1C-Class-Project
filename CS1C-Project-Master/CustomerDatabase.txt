@@ -1,65 +1,11 @@
-Los Angeles Airport
-12345 Main
-El Segundo, CA 90245
-Very Interested
-Key
-loveplanes
-lax@airport.gov
-1555433
-
-Secret Service
-12345 Pennsylvania
-Reston, VA  12345
-Very Interested
-Key
-savethepresident
-secrets@cia.gov
-77564221
-
 FBI
 1 Lincoln Ave.
 Washington D.C. 00234
 Somewhat Interested
 Key
 investigate
-superinvestigators@FBI.gov
 99955533
-
-CIA
-987 Jefferson Blvd
-Baltimore, MD 00754
-Very Interested
-Key
-nocomment
-We-Werent-Here@noneyabusiness.gov
-10000001
-
-Saddleback College
-28000 Marguerite Pkwy
-Mission Viejo, CA 92692
-not  Interested
-Nice to Have
-education
-Educated@saddleback.edu
-45513220
-
-Los Angeles Dodgers
-12345 Chevaz Ravine
-Los Angeles, CA 90277
-very Interested
-Nice to Have
-baseball
-worldchamps@dodgers.com
-43224445
-
-Austin
-28000 Marguerite Pkwy
-Mission Viejo, CA 92692
-Somewhat Interested
-Key
-password123
-austinvaday@gmail.com
-10100011
+superinvestigators@FBI.gov
 
 Goofy - AKA " Dippy Dawg"
 1800 Pluto Drive
@@ -67,8 +13,44 @@ Disney World, FL 05446
 Very Interested
 Key
 password222
-stopgoofing@gmail.com
 10202011
+stopgoofing@gmail.com
+
+Los Angeles Airport
+12345 Main
+El Segundo, CA 90245
+Very Interested
+Key
+loveplanes
+1555433
+lax@airport.gov
+
+Los Angeles Dodgers
+12345 Chevaz Ravine
+Los Angeles, CA 90277
+very Interested
+Nice to Have
+baseball
+43224445
+worldchamps@dodgers.com
+
+Marcus Aurelius
+1 Emperor Way
+Rome, Italy
+Very Interested
+Key
+irule
+22229999
+ruletheworld@rome.com
+
+Saddleback College
+28000 Marguerite Pkwy
+Mission Viejo, CA 92692
+not  Interested
+Nice to Have
+education
+45513220
+Educated@saddleback.edu
 
 Sammy Hagar
 115 Rocker
@@ -76,7 +58,28 @@ Salinas, CA 92237
 Somewhat Interested
 Nice to Have
 rocknroll
+23123333
 partytillyoudrop@hardcore.com
+
+agar
+115 Rocker
+Salinas, CA 92237
+Somewhat Interested
+Nice to Have
+rocknroll
+23123333
+partytillyoudrop@hardcore.com
+
+gar
+115 Rocker
+Salinas, CA 92237
+Somewhat Interested
+Nice to Have
+rocknroll
+23123333
+partytillyoudrop@hardcore.com
+
+re.com
 23123333
 
 Billy The Kid

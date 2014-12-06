@@ -680,14 +680,14 @@ void CustomerList::SortList(Node<Customer>* head)
 
 
     }
-}
+}// **** END METHOD **** //
 
 
 void CustomerList::Swap(Node<Customer>* objectOne, Node<Customer>* objectTwo)
 {
         QString tempString;
-        long    tempLong;
-        bool activated;
+        long        tempLong;
+        bool        tempBool;
 
         tempString = objectOne->GetData().getUserName();
         objectOne->GetData().setUserName(objectTwo->GetData().getUserName());
@@ -721,7 +721,9 @@ void CustomerList::Swap(Node<Customer>* objectOne, Node<Customer>* objectTwo)
         objectOne->GetData().setKey(objectTwo->GetData().getKey());
         objectTwo->GetData().setKey(tempString);
 
-
+        tempBool = objectOne->GetData().getAccess();
+        objectOne->GetData().setAccountAccess(objectTwo->GetData().getAccess());
+        objectTwo->GetData().setAccountAccess(tempBool);
 
 // *********** ORIGINAL *************
 //    QString tempName;
@@ -783,7 +785,7 @@ Customer CustomerList::VerifyCustomer(QString userName, QString password)
     cursor = NULL;
 
    return tempCustomer;
-}
+}// **** END METHOD **** //
 
 
 /****************************************************************
@@ -821,87 +823,8 @@ qDebug() << "Line 616: After CustomerLIst Assignment: " << this->OutputList();
 
     }
         return *this;
-}
+}// **** END METHOD **** //
 
-
-/************************************************************
- * WriteToFile (Overloaded, allows to specify filePath)
- * --------------------------------------------------------------------------------
- * Returns true only if it successfully writes
- * Returns false if it fails to open, write or if there are
- *  no customers in the list.
- * --------------------------------------------------------------------------------
- * Allows to choose the filePath, currently only being used when
- *  creating the initial database
- ************************************************************/
-
-bool CustomerList::WriteToFile(QString filePath)
-{
-    Node<Customer>* _customerPtr;
-    QDir dataDir;
-    bool writeSuccessFull;
-
-    // This calls on QDir to return the path of the home folder of the user
-    //  who executed the program then concatenates
-    dataDir = ":/" + filePath;
-
-    // If the path doesn't exist, the program will create another, if it was lost during execution.
-    if(!dataDir.exists())
-    {
-        dataDir.mkpath(dataDir.path());
-    }
-
-    // A QFile is the created or opeth.
-    QFile customerDataFile(dataDir.path());
-
-    // Initialize write to false
-    writeSuccessFull = false;
-
-    if(customerDataFile.open(QIODevice::ReadWrite | QIODevice::Text) && !isEmpty())
-    {
-qDebug() << "Debugging:: WRITE :::  It opened ::: ";
-        QTextStream out(&customerDataFile);
-
-        _customerPtr = _head;
-
-        if(_customerPtr != 0)
-        {
-            do
-            {
-                out << _customerPtr->GetData().getUserName() << "\n";
-
-                out << _customerPtr->GetData().getAddressLine1()  << "\n";
-
-                out << _customerPtr->GetData().getAddressLine2()  << "\n";
-
-                out << _customerPtr->GetData().getInterest() << "\n";
-
-                out << _customerPtr->GetData().getKey()      << "\n";
-
-                out << _customerPtr->GetData().getPassword() << "\n";
-
-                out << _customerPtr->GetData().getAccountNum() << "\n";
-
-                out << _customerPtr->GetData().getEmail() << "\n";
-
-                _customerPtr = _customerPtr->GetNext();
-
-            }  while(_customerPtr->GetNext() != 0); // END DO WHILE
-
-            writeSuccessFull = true;
-
-            customerDataFile.flush();
-
-            customerDataFile.close();
-
-        } // END IF CUSTOMER PTR == NULL
-
-    } // END OPEN FILE IF
-
-
-    return writeSuccessFull;
-
-}
 
 
 /************************************************************
@@ -923,16 +846,18 @@ bool CustomerList::WriteToFile()
     //  who executed the program then concatenates
     dataDir = QDir::currentPath();
 
+    dataDir.cd("../CS1C-Project-Master");
 
     // A QFile is the created or opeth.
     QFile customerDataFile(dataDir.path() + "/CustomerDatabase.txt");
+qDebug() << "\n\n\n****************The file path of Customer Database is : " << dataDir.path() << "****************\n\n\n";
 
     // Initialize write to false
     writeSuccessFull = false;
 
     if(customerDataFile.open(QIODevice::ReadWrite | QIODevice::Text) && !isEmpty())
     {
-qDebug() << "Debugging:: WRITE :::  It opened ::: ";
+qDebug() << "Debugging:: WRITE Customer :::  It opened ::: ";
         QTextStream out(&customerDataFile);
 
         _customerPtr = _head;
@@ -955,25 +880,27 @@ qDebug() << "Debugging:: WRITE :::  It opened ::: ";
 
                 out << _customerPtr->GetData().getAccountNum() << "\n";
 
-                out << _customerPtr->GetData().getEmail() << "\n";
+                out << _customerPtr->GetData().getEmail() << "\n" << "\n";
 
                 _customerPtr = _customerPtr->GetNext();
+
+                out.flush();
 
             }  while(_customerPtr->GetNext() != 0); // END DO WHILE
 
             writeSuccessFull = true;
 
-            customerDataFile.flush();
 
-            customerDataFile.close();
 
         } // END IF CUSTOMER PTR == NULL
 
     } // END OPEN FILE IF
+    customerDataFile.flush();
 
+    customerDataFile.close();
     return writeSuccessFull;
 
-}
+}// **** END METHOD **** //
 
 /************************************************************
  * ReadFile (Overloaded, DOES NOT allow to specify filePath)
@@ -1009,7 +936,8 @@ bool CustomerList::ReadFile()
     //  error message
     if(customerDataFile.open(QIODevice::ReadWrite | QIODevice::Text))
     {
-        QString inputData[8];
+        QString inputData[9];
+qDebug() << "Debugging:: Open Success :: Reading data...";
 
         // Points Text stream to input file to read in.
         QTextStream inFile(&customerDataFile);
@@ -1036,8 +964,6 @@ bool CustomerList::ReadFile()
              * inputData[6]     |   Email                                | Line 9
              * inputData[7]     |   Account ID                      | Line 10
              *******************************************************/
-
-qDebug() << "Debugging:: Open Success :: Reading data...";
 
             // Customer Name
             inputData[0] = inFile.readLine();
@@ -1084,7 +1010,7 @@ qDebug() << "Customer Email: " << inputData[6];
 qDebug() << "Account ID: " << inputData[7];
 
             inFile.skipWhiteSpace();
-            inFile.flush();
+                    inFile.flush();
 
             this->Enqueue(Customer(inputData[0],
                                                                 inputData[1],
@@ -1094,18 +1020,27 @@ qDebug() << "Account ID: " << inputData[7];
                                                                 inputData[6],
                                                                 inputData[7].toLong()));
 
-        }
+            }
         readSuccessFull = true;
 
-        qDebug() << "Flush: " <<  customerDataFile.flush();
-                                  customerDataFile.close();
-        qDebug() << "Close: " << !customerDataFile.isOpen();
+        inFile.flush();
         }
-
+    qDebug() << "Flush: " <<  customerDataFile.flush();
+                              customerDataFile.close();
+    qDebug() << "Close: " << !customerDataFile.isOpen();
     return readSuccessFull;
 
-}
+}// **** END METHOD **** //
 
+/*****************************************************************
+ * ReadFile (Overloaded, DOES NOT allow to specify filePath)
+ * --------------------------------------------------------------------------------
+ * Returns true only if it successfully reads
+ * Returns false if it fails to open, read or if there are no customers
+ *      in the database
+ * --------------------------------------------------------------------------------
+ * File path is set when first establishing the database
+ *****************************************************************/
 bool CustomerList::ReadFile(QString filePath)
 {
     QDir dataDir;
@@ -1197,6 +1132,7 @@ Customer newCustomer(inputData[0],inputData[1],inputData[3], inputData[4], input
 
         }
         readSuccessFull = true;
+                inFile.flush();
     }
 
 qDebug() << "Flush: " <<  customerDataFile.flush();
@@ -1204,14 +1140,90 @@ qDebug() << "Flush: " <<  customerDataFile.flush();
 qDebug() << "Close: " << !customerDataFile.isOpen();
 
     return readSuccessFull;
+} // **** END METHOD **** //
 
-}
+/************************************************************
+ * WriteToFile (Overloaded, allows to specify filePath)
+ * --------------------------------------------------------------------------------
+ * Returns true only if it successfully writes
+ * Returns false if it fails to open, write or if there are
+ *  no customers in the list.
+ * --------------------------------------------------------------------------------
+ * Allows to choose the filePath, currently only being used when
+ *  creating the initial database
+ ************************************************************/
+
+bool CustomerList::WriteToFile(QString filePath)
+{
+    Node<Customer>* _customerPtr;
+    QDir dataDir;
+    bool writeSuccessFull;
+
+    // This calls on QDir to return the path of the home folder of the user
+    //  who executed the program then concatenates
+    dataDir = ":/" + filePath;
+
+    // If the path doesn't exist, the program will create another, if it was lost during execution.
+    if(!dataDir.exists())
+    {
+        dataDir.mkpath(dataDir.path());
+    }
+
+    // A QFile is the created or opeth.
+    QFile customerDataFile(dataDir.path());
+
+    // Initialize write to false
+    writeSuccessFull = false;
+
+    if(customerDataFile.open(QIODevice::ReadWrite | QIODevice::Text) && !isEmpty())
+    {
+qDebug() << "Debugging:: WRITE :::  It opened ::: ";
+        QTextStream out(&customerDataFile);
+
+        _customerPtr = _head;
+
+        if(_customerPtr != 0)
+        {
+            do
+            {
+                out << _customerPtr->GetData().getUserName() << "\n";
+
+                out << _customerPtr->GetData().getAddressLine1()  << "\n";
+
+                out << _customerPtr->GetData().getAddressLine2()  << "\n";
+
+                out << _customerPtr->GetData().getInterest() << "\n";
+
+                out << _customerPtr->GetData().getKey()      << "\n";
+
+                out << _customerPtr->GetData().getPassword() << "\n";
+
+                out << _customerPtr->GetData().getAccountNum() << "\n";
+
+                out << _customerPtr->GetData().getEmail() << "\n";
+
+                _customerPtr = _customerPtr->GetNext();
+
+            }  while(_customerPtr->GetNext() != 0); // END DO WHILE
+
+            writeSuccessFull = true;
+
+
+        } // END IF CUSTOMER PTR == NULL
+
+    } // END OPEN FILE IF
+
+    customerDataFile.flush();
+
+    customerDataFile.close();
+    return writeSuccessFull;
+}// **** END METHOD **** //
+
+
 
 QString CustomerList::FindDirectory(QDir dataDir)
 {
     QString filePath;
-    // Checks if the file path exists.
-
 
     // If the path doesn't exist, the program will create another, if it was lost during
     //      execution.
@@ -1235,4 +1247,4 @@ qDebug() << "Customer Directory Exists : " << !dataDir.exists();
     }
 
     return filePath;
-}
+}// **** END METHOD **** //

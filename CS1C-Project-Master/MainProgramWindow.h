@@ -132,6 +132,7 @@ private:
 
     ProductList        robotList;
     CustomerList    customerList;
+    bool                     databaseCreated = false;
 
     // SECTION LOGIN BOOLEANS
     //These boolean variables are used to determine what
