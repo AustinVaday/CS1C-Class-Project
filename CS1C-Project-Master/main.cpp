@@ -6,34 +6,40 @@
 #include <QTextStream>
 #include <QMessageBox>
 
-
-
 int main(int argc, char *argv[])
 {
-    // DECLARATIONS
-    QApplication a(argc, argv);
-    MainProgramWindow MainProgramWindow;
-    QDir dir = QDir::home();
-    QString resourcePath;
-    QMessageBox noDir;
+	// DECLARATIONS BEFORE APPLICATION STARTS
+	QApplication a(argc, argv);
+	QDir			  dir = QDir::home();
+	QString			  resourcePath;
+	QMessageBox		  noDir;
 
-qDebug() << "Current directory: " << dir.current();
+
+
+qDebug() << "Current directory: " << dir.dirName();
 
     // Combines current home path and default program path this determines
     //  if the path directory required for data persistence exists, if it /
     //  doesn't it will create it.
-    dir  = dir.path() + "/Resources";
+	resourcePath = "/CS_PROJECT_RESOURCES";
+	dir.cd("Documents");
 
-    resourcePath= dir.path();
+qDebug() << "Current directory: " << dir.dirName();
 
-    if(!dir.exists())
+	if(!dir.cd(resourcePath))
     {
         // Sets text for message box then displays
         noDir.setText("Directory not found.\n Initiating....");
         noDir.exec();
 
         qWarning("Cannot find the Project directory.");
-        dir.mkpath(resourcePath);
+		dir.mkdir(resourcePath);
+		dir.mkpath(resourcePath);
+
+		dir.cd(resourcePath);
+
+
+qDebug() << "Current directory: " << dir.dirName();
 
         // Reads Default Database text file from binary file.
         //  Default database cannot be modified once compile and executed.
@@ -43,6 +49,11 @@ qDebug() << "Current directory: " << dir.current();
         noDir.exec();
 
     }
+
+qDebug() << "Current directory: " << dir.dirName();
+
+	// MAIN WINDOW HAS TO STAY DOWN HERE
+	MainProgramWindow MainProgramWindow;
 
 
     MainProgramWindow.show();

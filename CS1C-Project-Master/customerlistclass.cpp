@@ -367,10 +367,8 @@ Customer CustomerList::Dequeue()
 		delete temp;
 
 		temp = NULL;
-
-		return tempCustomer;
-
-	}
+		}
+	return tempCustomer;
 }
 
 /**************************************************************************
@@ -689,81 +687,65 @@ void CustomerList::Swap(Node<Customer>* objectOne, Node<Customer>* objectTwo)
 	long        tempLong;
 	bool        tempBool;
 
+	// SWAP USERNAME
 	tempString = objectOne->GetData().getUserName();
 	objectOne->GetData().setUserName(objectTwo->GetData().getUserName());
 	objectTwo->GetData().setUserName(tempString);
 
+	// SWAP EMAIL
 	tempString = objectOne->GetData().getEmail();
 	objectOne->GetData().setEmail(objectTwo->GetData().getEmail());
 	objectTwo->GetData().setEmail(tempString);
 
+	// SWAP PASSWORD
 	tempString = objectOne->GetData().getPassword();
 	objectOne->GetData().setPassword(objectTwo->GetData().getPassword());
 	objectTwo->GetData().setPassword(tempString);
 
+	// SWAP ACCOUNT NUM
 	tempLong = objectOne->GetData().getAccountNum();
 	objectOne->GetData().setAccountNum(objectTwo->GetData().getAccountNum());
 	objectTwo->GetData().setAccountNum(tempLong);
 
+	// SWAP ADDRESS LINE 1
 	tempString = objectOne->GetData().getAddressLine1();
 	objectOne->GetData().setAddressLine1(objectTwo->GetData().getAddressLine1());
 	objectTwo->GetData().setAddressLine1(tempString);
 
+	// SWAP ADDRESS LINE 2
 	tempString = objectOne->GetData().getAddressLine2();
 	objectOne->GetData().setAddressLine2(objectTwo->GetData().getAddressLine2());
 	objectTwo->GetData().setAddressLine2(tempString);
 
+	// SWAP INTEREST
 	tempString = objectOne->GetData().getInterest();
 	objectOne->GetData().setInterest(objectTwo->GetData().getInterest());
 	objectTwo->GetData().setInterest(tempString);
 
+	// SWAP KEY
 	tempString = objectOne->GetData().getKey();
 	objectOne->GetData().setKey(objectTwo->GetData().getKey());
 	objectTwo->GetData().setKey(tempString);
 
+	// SWAP ACTIVATED STATUS
 	tempBool = objectOne->GetData().getAccess();
 	objectOne->GetData().setAccountAccess(objectTwo->GetData().getAccess());
 	objectTwo->GetData().setAccountAccess(tempBool);
-
-	// *********** ORIGINAL *************
-	//    QString tempName;
-	//    QString tempEmail;
-	//    QString tempPassword;
-
-	//    tempEmail         = objectOne->GetData().getEmail();
-	//    tempAccountNumber = objectOne->GetData().getAccountNum();
-	//    tempPassword      = objectOne->GetData().getPassword();
-
-	//    objectOne->GetData().setUserName(objectTwo->GetData().getUserName());
-	//    objectOne->GetData().setEmail(objectTwo->GetData().getEmail());
-	//    objectOne->GetData().setPassword(objectTwo->GetData().getPassword());
-	//    objectOne->GetData().setAccountNum(objectTwo->GetData().getAccountNum());
-	//    objectOne->GetData().setAddressLine1(objectTwo->GetData().getAddressLine1());
-	//    objectOne->GetData().setAddressLine2(objectTwo->GetData().getAddressLine2());
-	//    objectOne->GetData().getInterest(objectTwo->GetData().getInterest());
-	//    objectOne->GetData().getKey(objectTwo->GetData().getKey());
-	//    objectTwo->GetData().setUserName(tempName);
-	//    objectTwo->GetData().setEmail(tempEmail);
-	//    objectTwo->GetData().setPassword(tempPassword);
-	//    objectTwo->GetData().setAccountNum(tempAccountNumber);
 
 }
 
 Customer CustomerList::VerifyCustomer(QString userName, QString password)
 {
+	// DECLARATIONS
 	Node<Customer>* cursor;
 	Customer        tempCustomer;
 	QString         name;
 	QString         pw;
+	bool			found;
 
 	tempCustomer.setValues(" "," ",0," ");
-
-	bool found;
-
 	cursor = _head;
 	found  = false;
-
-
 
 	while(cursor != NULL && !found)
 	{
@@ -790,7 +772,7 @@ Customer CustomerList::VerifyCustomer(QString userName, QString password)
 
 /****************************************************************
 * Overload =    (assignment operators)
-* ------------------------------------------------------------------------------------
+* --------------------------------------------------------------
 *
 *****************************************************************/
 CustomerList& CustomerList::operator=(const CustomerList& list)
@@ -822,9 +804,12 @@ CustomerList& CustomerList::operator=(const CustomerList& list)
 	}
 	return *this;
 }// **** END METHOD **** //
+
 /************************************************************
-* WriteToFile (Overloaded, DOES NOT allow to specify filePath)
+* WriteToFile
 * -----------------------------------------------------------
+* - Overloaded
+*	- see WriteToFile(Qstring)
 * Returns true only if it successfully writes
 * Returns false if it fails to open, write or if there are
 *  no customers in the list.
@@ -834,18 +819,17 @@ CustomerList& CustomerList::operator=(const CustomerList& list)
 bool CustomerList::WriteToFile()
 {
 	Node<Customer>* _customerPtr;
-	QDir dataDir;
 	bool writeSuccessFull;
+	QString resourcePath;
+
+	// Allows us to choose path of data storage
+	resourcePath = "/Documents/CS_PROJECT_RESOURCES/CustomerDatabase.txt";
 
 	// This calls on QDir to return the path of the home folder of the user
 	//  who executed the program then concatenates
-//T00//	*****Testing***** Files paths
-//	dataDir = QDir::currentPath() + "/Resources";
-	dataDir = QDir::home();
-	dataDir = dataDir.path() + "/Documents/CS1C-Project/";
 
 	// Initialize QFile and write failed, Appended File to path, QFile Creates
-	QFile customerDataFile(dataDir.path() + "/CustomerDatabase.txt");
+	QFile customerDataFile("~/" + resourcePath);
 
 	// Failstate signal
 	writeSuccessFull = false;
@@ -860,22 +844,13 @@ bool CustomerList::WriteToFile()
 		while(_customerPtr != 0)
 		{
 			out << _customerPtr->GetData().getUserName() << "\n";
-
 			out << _customerPtr->GetData().getAddressLine1()  << "\n";
-
 			out << _customerPtr->GetData().getAddressLine2()  << "\n";
-
 			out << _customerPtr->GetData().getInterest() << "\n";
-
 			out << _customerPtr->GetData().getKey()      << "\n";
-
 			out << _customerPtr->GetData().getPassword() << "\n";
-
 			out << _customerPtr->GetData().getEmail() << "\n";
-
 			out << _customerPtr->GetData().getAccountNum() << "\n";
-
-
 
 			if((_customerPtr = _customerPtr->GetNext()) != 0)
 			{
@@ -916,13 +891,11 @@ bool CustomerList::ReadFile()
 	// This calls on QDir to return the path of the home folder of the user
 	//  who executed the program then concatenates
 	//      -- Initial File / Directory location --
-	dataDir = QDir::currentPath() + "/Resources";
 
 	qDebug() << "Current Path: " << dataDir.path();
 
-
 	// A QFile is the created or opened
-	QFile customerDataFile(dataDir.path() + "/CustomerDatabase.txt");
+	QFile customerDataFile("qrc:/CustomerDatabase.txt");
 
 	// This checks if the file opens, if it does not, it will display an
 	//  error message
@@ -1004,10 +977,8 @@ bool CustomerList::ReadFile()
 *****************************************************************/
 bool CustomerList::ReadFile(QString filePath)
 {
-	QDir		dataDir;
-	bool		readSuccessFull;
-	QMessageBox *warning;
-
+	QDir dataDir;
+	bool readSuccessFull;
 
 	// Initialize write to false
 	readSuccessFull = false;
