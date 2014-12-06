@@ -13,6 +13,7 @@ Reston, VA  12345
 Very Interested
 Key
 savethepresident
+secrets@cia.gov
 77564221
 
 FBI
@@ -21,6 +22,7 @@ Washington D.C. 00234
 Somewhat Interested
 Key
 investigate
+superinvestigators@FBI.gov
 99955533
 
 CIA
@@ -29,14 +31,15 @@ Baltimore, MD 00754
 Very Interested
 Key
 nocomment
-We-Werent-Here@noneyabussiness.gov
-00000001
+We-Werent-Here@noneyabusiness.gov
+10000001
 
 Saddleback College
 28000 Marguerite Pkwy
 Mission Viejo, CA 92692
 not  Interested
 Nice to Have
+education
 Educated@saddleback.edu
 45513220
 
@@ -53,6 +56,7 @@ Austin
 28000 Marguerite Pkwy
 Mission Viejo, CA 92692
 Somewhat Interested
+Key
 password123
 austinvaday@gmail.com
 10100011
@@ -69,26 +73,26 @@ stopgoofing@gmail.com
 Sammy Hagar
 115 Rocker
 Salinas, CA 92237
-samaday@gmail.com
 Somewhat Interested
 Nice to Have
+rocknroll
+partytillyoudrop@hardcore.com
 23123333
-123pass123
 
 Billy The Kid
 555 Camden Ct
 Mission Viejo, CA 13334
 Not Interested
 Nice to Have
+1234pass
 billy@yahoo.com
 333333333
-1234pass
 
 Marcus Aurelius
 1 Emperor Way
 Rome, Italy
 Very Interested
 Key
-22229999
 irule
 ruletheworld@rome.com
+22229999

@@ -240,7 +240,9 @@ void CustomerAddressBook::on_submitButton_clicked()
     QString address = addressLine1 + addressLine2;
 
 
-    bool  activationStatus = false;
+qDebug() << "Customer Address Book submitting : " << address;
+
+bool  activationStatus = false;
     if(ui->ActivatedCustomer->isChecked())
     {
         activationStatus = true;
@@ -271,6 +273,30 @@ void CustomerAddressBook::on_submitButton_clicked()
                        tr("Please enter in an email address."));
             on_cancelButton_clicked();
 
+        }
+        else if (addressLine1.isEmpty())
+        {
+            QMessageBox::information(this, tr("Empty Field"),
+                       tr("Please enter in an Address in line 1."));
+            on_cancelButton_clicked();
+        }
+        else if (addressLine2.isEmpty())
+        {
+            QMessageBox::information(this, tr("Empty Field"),
+                       tr("Please enter in an Address in line 1."));
+            on_cancelButton_clicked();
+        }
+        else if (interest.isEmpty())
+        {
+            QMessageBox::information(this, tr("Empty Field"),
+                       tr("Please enter the customer interest."));
+            on_cancelButton_clicked();
+        }
+        else if (key.isEmpty())
+        {
+            QMessageBox::information(this, tr("Empty Field"),
+                       tr("Please enter the customer key."));
+            on_cancelButton_clicked();
         }
         else if (idString.isEmpty())
         {

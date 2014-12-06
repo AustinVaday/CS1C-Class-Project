@@ -685,30 +685,67 @@ void CustomerList::SortList(Node<Customer>* head)
 
 void CustomerList::Swap(Node<Customer>* objectOne, Node<Customer>* objectTwo)
 {
-    QString tempName;
-    QString tempEmail;
-    QString tempPassword;
-    long    tempAccountNumber;
-    \
+        QString tempString;
+        long    tempLong;
+        bool activated;
+
+        tempString = objectOne->GetData().getUserName();
+        objectOne->GetData().setUserName(objectTwo->GetData().getUserName());
+        objectTwo->GetData().setUserName(tempString);
+
+        tempString = objectOne->GetData().getEmail();
+        objectOne->GetData().setEmail(objectTwo->GetData().getEmail());
+        objectTwo->GetData().setEmail(tempString);
+
+        tempString = objectOne->GetData().getPassword();
+        objectOne->GetData().setPassword(objectTwo->GetData().getPassword());
+        objectTwo->GetData().setPassword(tempString);
+
+        tempLong = objectOne->GetData().getAccountNum();
+        objectOne->GetData().setAccountNum(objectTwo->GetData().getAccountNum());
+        objectTwo->GetData().setAccountNum(tempLong);
+
+        tempString = objectOne->GetData().getAddressLine1();
+        objectOne->GetData().setAddressLine1(objectTwo->GetData().getAddressLine1());
+        objectTwo->GetData().setAddressLine1(tempString);
+
+        tempString = objectOne->GetData().getAddressLine2();
+        objectOne->GetData().setAddressLine2(objectTwo->GetData().getAddressLine2());
+        objectTwo->GetData().setAddressLine2(tempString);
+
+        tempString = objectOne->GetData().getInterest();
+        objectOne->GetData().setInterest(objectTwo->GetData().getInterest());
+        objectTwo->GetData().setInterest(tempString);
+
+        tempString = objectOne->GetData().getKey();
+        objectOne->GetData().setKey(objectTwo->GetData().getKey());
+        objectTwo->GetData().setKey(tempString);
 
 
-    tempName          = objectOne->GetData().getUserName();
-    tempEmail         = objectOne->GetData().getEmail();
-    tempAccountNumber = objectOne->GetData().getAccountNum();
-    tempPassword      = objectOne->GetData().getPassword();
 
-    objectOne->GetData().setUserName(objectTwo->GetData().getUserName());
-    objectOne->GetData().setEmail(objectTwo->GetData().getEmail());
-    objectOne->GetData().setPassword(objectTwo->GetData().getPassword());
-    objectOne->GetData().setAccountNum(objectTwo->GetData().getAccountNum());
-    objectTwo->GetData().setUserName(tempName);
-    objectTwo->GetData().setEmail(tempEmail);
-    objectTwo->GetData().setPassword(tempPassword);
-    objectTwo->GetData().setAccountNum(tempAccountNumber);
+// *********** ORIGINAL *************
+//    QString tempName;
+//    QString tempEmail;
+//    QString tempPassword;
 
+//    tempEmail         = objectOne->GetData().getEmail();
+//    tempAccountNumber = objectOne->GetData().getAccountNum();
+//    tempPassword      = objectOne->GetData().getPassword();
+
+//    objectOne->GetData().setUserName(objectTwo->GetData().getUserName());
+//    objectOne->GetData().setEmail(objectTwo->GetData().getEmail());
+//    objectOne->GetData().setPassword(objectTwo->GetData().getPassword());
+//    objectOne->GetData().setAccountNum(objectTwo->GetData().getAccountNum());
+//    objectOne->GetData().setAddressLine1(objectTwo->GetData().getAddressLine1());
+//    objectOne->GetData().setAddressLine2(objectTwo->GetData().getAddressLine2());
+//    objectOne->GetData().getInterest(objectTwo->GetData().getInterest());
+//    objectOne->GetData().getKey(objectTwo->GetData().getKey());
+//    objectTwo->GetData().setUserName(tempName);
+//    objectTwo->GetData().setEmail(tempEmail);
+//    objectTwo->GetData().setPassword(tempPassword);
+//    objectTwo->GetData().setAccountNum(tempAccountNumber);
 
 }
-
 
 Customer CustomerList::VerifyCustomer(QString userName, QString password)
 {
@@ -1047,12 +1084,15 @@ qDebug() << "Customer Email: " << inputData[6];
 qDebug() << "Account ID: " << inputData[7];
 
             inFile.skipWhiteSpace();
+            inFile.flush();
 
-
-
-Customer newCustomer(inputData[0],inputData[1],inputData[3], inputData[4], inputData[5], inputData[6], inputData[7].toLong());
-
-            this->Enqueue(newCustomer);
+            this->Enqueue(Customer(inputData[0],
+                                                                inputData[1],
+                                                                inputData[3],
+                                                                inputData[4],
+                                                                inputData[5],
+                                                                inputData[6],
+                                                                inputData[7].toLong()));
 
         }
         readSuccessFull = true;

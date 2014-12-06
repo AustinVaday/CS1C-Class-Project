@@ -1,4 +1,5 @@
 #include "customerclass.h"
+#include <QDebug>
 
 Customer::Customer()
 {
@@ -75,7 +76,13 @@ void Customer::setAddress(QString customerAddress)
         index++;
         stringIterator ++;
     }
+
+
+qDebug() << "Setting Customer Address 1 : " << inputString;
+
     address1 = inputString;
+
+    inputString.clear();
 
     stringIterator = 0;
 
@@ -85,6 +92,8 @@ void Customer::setAddress(QString customerAddress)
         index++;
         stringIterator++;
     }
+
+qDebug() << "Setting Customer Address 2 : " << inputString;
 
     address2 = inputString;
 
