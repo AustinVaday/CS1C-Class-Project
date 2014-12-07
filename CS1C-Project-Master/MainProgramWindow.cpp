@@ -14,20 +14,17 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
 	guestLogin    = 0;
 	createAccount = 0;
 
+	if(!databaseCreated)
+	{
+		if((databaseCreated = CreateDatabase()))
+		{
+			Q_ASSERT("Database not created!");
+		}
+	}
 	ui->setupUi(this);
 
 	// Determines if data base has been created
-	if(!databaseCreated)
-	{
-		if(!CreateDatabase())
-		{
-			qWarning("Missing Data");
-		}
-		else
-		{
-			databaseCreated = true;
-		}
-	}
+
 
 	ui->tempDisplay->setText(customerList.OutputList());
 
@@ -46,17 +43,13 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
 
 MainProgramWindow::~MainProgramWindow()
 {
-	if(!robotList.isEmpty())
-	{
-		robotList.WriteToFile();
-		robotList.ClearList();
-	}
+	robotList.WriteToFile();
+	robotList.ClearList();
 
-	if(!customerList.isEmpty())
-	{
-		customerList.WriteToFile();
-		customerList.ClearList();
-	}
+
+	customerList.WriteToFile();
+	customerList.ClearList();
+
 
 	delete aWindow;
 	delete bWindow;
@@ -223,48 +216,21 @@ void MainProgramWindow::on_pushButton_Guest_clicked()
  ************************************************************************/
 bool MainProgramWindow::CreateDatabase()
 {
-	QMessageBox writeFail;
-	bool writeStatus;
-	writeStatus = false;
-
-	// Sets writeFail Window Title
-	writeFail.setWindowTitle("*** > WARNING < ***");
-
-
+	bool readStatus;
+	readStatus = false;
 
 	// Reads from default list
-	if(this->robotList.ReadFile())
+	if(!(readStatus = (this->robotList.ReadFile())))
 	{
-		writeFail.setText("Product Database Initialized!");
-		writeFail.setModal(true);
-		writeFail.exec();
-		writeStatus = true;
-		writeStatus = true;
-	}
-	else
-	{
-		writeFail.setText("Failed to initialize Product Database!");
-		writeFail.setModal(true);
-		writeFail.exec();
-		writeStatus = false;
+		Q_ASSERT(readStatus);
 	}
 
-	if(this->customerList.ReadFile())
+	if(!(readStatus = (this->customerList.ReadFile())))
 	{
-		writeFail.setText("Customer Database Initialized!");
-		writeFail.setModal(true);
-		writeFail.exec();
-		writeStatus = true;
-	}
-	else
-	{
-		writeFail.setText("Failed to initialize Customer Database!");
-		writeFail.setModal(true);
-		writeFail.exec();
-		writeStatus = false;
+		Q_ASSERT(readStatus);
 	}
 
-	return writeStatus;
+	return readStatus;
 }
 void MainProgramWindow::on_pushButton_RequestBrochure_clicked()
 {

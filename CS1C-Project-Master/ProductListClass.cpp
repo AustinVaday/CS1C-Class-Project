@@ -20,7 +20,7 @@
  *		Austin 	Vaday
  *		Anthony Ramirez
  *		Annie	Raichev
- *		Erik 	Karlssonm
+ *		Erik 	Karlsson
  *
  **********************************************************************/
 
@@ -117,8 +117,6 @@ QString ProductList::OutputList () const
 		{
 
 			out << "List item #" << index + 1 << endl;
-
-
 			//            ui->listWidget->addItem(traverse->GetData().OutputData());
 			out << traverse->GetData().OutputData();
 			//Sets the traverse pointer to the next node
@@ -149,16 +147,11 @@ QString ProductList::OutputList () const
  **************************************************************************/
 void ProductList::ClearList()
 {
-
 	//    cout << endl << "***Clearing List***" << endl;
 	delete _head;
-
-	_head = NULL;
-	_tail    = NULL;
-
+	_head	   = NULL;
+	_tail      = NULL;
 	_nodeCount = 0;
-
-
 }
 
 /**************************************************************************
@@ -339,12 +332,10 @@ void ProductList::RemoveProduct(Product &someProduct)
 		{
 			_tail = _tail->GetPrevious();
 
-
 			_tail->SetNext(NULL);
 			//				_tail->_next = NULL;
 
 			traversePtr->Orphan();
-
 			delete traversePtr;
 
 		}
@@ -361,15 +352,10 @@ void ProductList::RemoveProduct(Product &someProduct)
 
 			traversePtr->SetNext(traversePtr->GetNext());
 			traversePtr->SetPrevious(actionPtr);
-
 			traversePtr->Orphan();
-
 			delete traversePtr;
-
 		}
-
 	}
-
 	if (index == _listLimit && traversePtr == NULL)
 	{
 		// throw exception class if not found.
@@ -424,7 +410,6 @@ QString ProductList::operator[](int index)
 	}
 
 	traversePtr = _head;
-
 	int i = 0;
 
 	while (i < _listLimit && traversePtr !=NULL &&
@@ -442,37 +427,39 @@ QString ProductList::operator[](int index)
 	return traversePtr->GetData().OutputData();
 }
 
-/************************************************************
- * WriteToFile (Overloaded, DOES NOT allow to specify filePath)
- * -----------------------------------------------------------
+/****************************************************
+ * WriteToFile (Overloaded, DOES NOT allow to
+ *	specify filePath)
+ * --------------------------------------------
  * Returns true only if it successfully writes
  * Returns false if it fails to open, write or if there are
  *  no products in the list.
- * ----------------------------------------------------------
+ * --------------------------------------------
  * File path is set when first establishing the database
  *************************************************************/
 bool ProductList::WriteToFile()
 {
 	Node<Product>* _productPtr;
-	QDir dataPath;
 	bool writeSuccessFull;
+	QDir dataPath = QDir::homePath();
+	QString resourcePath;
 
-	// This calls on QDir to return the path of the home folder of the user
-	//  who executed the program then concatenates
-	dataPath = QDir::currentPath() + "/Resources";
+	// sets the QDir dataPath to start at /Users/"username"/ folder
+	//		resource path will decide which path to write the file.
+	resourcePath = "/CS-PROJECT-RESOURCES/";
 
-	// A QFile is the created or opeth.
-	QFile productDataFile(dataPath.path() + "/ProductData.txt");
+	// A QFile is the created or opened
+	QFile productDataFile(dataPath.path()
+						  + resourcePath
+						  + "ProductDatabase.txt");
 
 	// Initialize write to false
 	writeSuccessFull = false;
 
 	if(productDataFile.open(QIODevice::ReadWrite | QIODevice::Text) && !isEmpty())
 	{
-		qDebug() << "Debugging:: WRITE :::  It opened ::: ";
 		QTextStream out(&productDataFile);
-
-		_productPtr = _head;
+_productPtr = _head;
 
 		while(_productPtr != 0)
 		{
@@ -493,6 +480,143 @@ bool ProductList::WriteToFile()
 
 	return writeSuccessFull;
 
+}
+
+/************************************************************
+ * ReadFile (Overloaded, DOES NOT allow to specify filePath)
+ * -----------------------------------------------------------
+ * Returns true only if it successfully reads
+ * Returns false if it fails to open, read or if there
+ *		are no products in the database
+ * -----------------------------------------------------------
+ * File path is set when first establishing the database
+ *************************************************************/
+bool ProductList::ReadFile()
+{
+	bool readStatus;
+	const QString RESOURCE_PATH = "/CS-PROJECT-RESOURCES/";
+	QDir  filePath = QDir::currentPath();
+	// Initialize write to false
+	readStatus = false;
+
+	filePath.cd(RESOURCE_PATH);
+qDebug() << "Current path in product list! "<< filePath.currentPath();
+qDebug() << "PRODUCT: CD - New Path is : " << QDir::currentPath();
+
+	// A QFile is the created or opened
+	QFile productDataFile("ProductDatabase.txt");
+
+	// This checks if the file opens, if it does not, it will display an
+	//  error message
+	if(productDataFile.open(QIODevice::ReadWrite | QIODevice::Text))
+	{
+		QString inputData[5];
+qDebug() << "Product Data base opened!";
+		// Points Text stream to input file to read in.
+		QTextStream inFile(&productDataFile);
+		while(!inFile.atEnd() && !(this->isFull()))
+		{
+			qDebug() << "Debugging:: Open Success :: Reading data...";
+
+			// Reads in respective order of:
+			//	Name -> Cost -> Description -> Model Number -> Date Released
+			inputData[0] = inFile.readLine();
+			inputData[1] = inFile.readLine();
+			inputData[2] = inFile.readLine();
+			inputData[3] = inFile.readLine();
+			inputData[4] = inFile.readLine();
+			Product newProduct(inputData[0],inputData[1],inputData[2].toFloat(),inputData[3].toInt(),inputData[4].toInt());
+
+			this->Enqueue(newProduct);
+
+		}
+		readStatus = true;
+	}
+
+	qDebug() << "Flush: " << productDataFile.flush();
+
+	productDataFile.close();
+
+	qDebug() << "Close: " << !productDataFile.isOpen();
+
+	return readStatus;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// OVERLOAD METHODS ~~~ Might Remove To Save space if not used!!
+/*********************************************************************
+ * ReadFile (Overloaded, ALLOWS to specify filePath)
+ * -------------------------------------------------------------------
+ * Returns true only if it successfully reads
+ * Returns false if it fails to open, read or if there are no products
+ *      in the database
+ * -------------------------------------------------------------------
+ * File path is set when first establishing the database
+ *********************************************************************/
+bool ProductList::ReadFile(QString filePath)
+{
+	bool readStatus;
+	// Initialize write to false
+	readStatus = false;
+	QDir dataPath;
+	QString resourcePath;
+
+	// sets the QDir dataPath to start at /Users/"username"/ folder
+	//		resource path will decide which path to write the file.
+	dataPath.setCurrent(QDir::homePath());
+	resourcePath = "/CS-PROJECT-RESOURCES/";
+
+	// A QFile is the created or opened
+	QFile productDataFile(dataPath.path()
+						  + resourcePath
+						  + filePath);
+
+	// This checks if the file opens, if it does not, it will display an
+	//  error message
+	if(productDataFile.open(QIODevice::ReadWrite | QIODevice::Text))
+	{
+		QString inputData[5];
+
+		// Points Text stream to input file to read in.
+		//		INPUT BUFFER QTextStream == ostringstream
+		QTextStream inFile(&productDataFile);
+
+		// Checks if the file is at and and
+		while(!inFile.atEnd() && !isFull())
+		{
+			// This will read in data in this order:
+			//	name -> cost -> description -> Model Number -> Date Released
+			inputData[0] = inFile.readLine();
+			inputData[1] = inFile.readLine();
+			inputData[2] = inFile.readLine();
+			inputData[3] = inFile.readLine();
+			inputData[4] = inFile.readLine();
+
+			Product newProduct(inputData[0],		  inputData[1],
+							   inputData[2].toFloat(),inputData[3].toInt(),
+							   inputData[4].toInt());
+
+			this->Enqueue(newProduct);
+		}
+		// Sets Read status to true and flushes file and input buffeand closes the fi
+		readStatus = true;
+		productDataFile.close();
+	}
+	return readStatus;
 }
 
 /*************************************************************
@@ -539,177 +663,10 @@ bool ProductList::WriteToFile(QString file)
 
 		writeSuccessFull = true;
 		out.flush();
+
+		productDataFile.flush();
+		productDataFile.close();
 	}
-
-	productDataFile.flush();
-	productDataFile.close();
-
 	return writeSuccessFull;
 }
 
-
-/************************************************************
- * ReadFile (Overloaded, DOES NOT allow to specify filePath)
- * -----------------------------------------------------------
- * Returns true only if it successfully reads
- * Returns false if it fails to open, read or if there
- *		are no products in the database
- * -----------------------------------------------------------
- * File path is set when first establishing the database
- *************************************************************/
-bool ProductList::ReadFile()
-{
-	QDir dataPath;
-	bool readSuccessFull;
-
-	// Initialize write to false
-	readSuccessFull = false;
-
-	// This calls on QDir to return the path of the home folder of the user
-	//  who executed the program then concatenates
-	dataPath = QDir::currentPath() + "/Resources";
-
-	// If the path doesn't exist, the program will create another,
-	//  if it was lost during execution.
-	if(!dataPath.exists())
-	{
-qDebug() << "Patch Exists: " << dataPath.exists();
-	}
-
-	// A QFile is the created or opened
-	QFile productDataFile(dataPath.path() + "/ProductDatabase.txt");
-
-	// This checks if the file opens, if it does not, it will display an
-	//  error message
-	if(productDataFile.open(QIODevice::ReadWrite | QIODevice::Text))
-	{
-		QString inputData[5];
-
-		// Points Text stream to input file to read in.
-		QTextStream inFile(&productDataFile);
-		while(!inFile.atEnd() && !isFull())
-		{
-			qDebug() << "Debugging:: Open Success :: Reading data...";
-
-			// Name
-			inputData[0] = inFile.readLine() + " 1 + ";
-			qDebug() << "Name: " << inputData[0];
-
-			// Cost
-			inputData[1] = inFile.readLine() + " 2 + ";
-			qDebug() << "Description: " << inputData[1];
-
-			// Description
-			inputData[2] = inFile.readLine() + " 3 + ";
-			qDebug() << "Cost: " << inputData[2];
-
-			// Model Number
-			inputData[3] = inFile.readLine() + " 4 + ";
-			qDebug() << "Model Number: " << inputData[3];
-
-			// Date Released
-			inputData[4] = inFile.readLine() + " 5 + ";
-			qDebug() << "Date Released: " << inputData[4];
-			Product newProduct(inputData[0],inputData[1],inputData[2].toFloat(),inputData[3].toInt(),inputData[4].toInt());
-
-			this->Enqueue(newProduct);
-
-		}
-		readSuccessFull = true;
-	}
-
-	qDebug() << "Flush: " << productDataFile.flush();
-
-	productDataFile.close();
-
-	qDebug() << "Close: " << !productDataFile.isOpen();
-
-	return readSuccessFull;
-
-}
-
-/*********************************************************************
- * ReadFile (Overloaded, ALLOWS to specify filePath)
- * -------------------------------------------------------------------
- * Returns true only if it successfully reads
- * Returns false if it fails to open, read or if there are no products
- *      in the database
- * -------------------------------------------------------------------
- * File path is set when first establishing the database
- *********************************************************************/
-bool ProductList::ReadFile(QString filePath)
-{
-	QDir dataPath;
-	bool readSuccessFull;
-
-	// Initialize write to false
-	readSuccessFull = false;
-
-	// This calls on QDir to return the path of the home folder of the user
-	//  who executed the program then concatenates
-	dataPath = QDir::currentPath();
-	qDebug() << "Current Path to application : " << QDir::currentPath();
-
-
-	// If the path doesn't exist, the program will create another, if it was lost during execution.
-	if(!dataPath.exists(filePath))
-	{
-		qDebug() << "Product File: " << dataPath.exists(filePath);
-	}
-
-	// A QFile is the created or opened
-	QFile productDataFile(dataPath.path() + "/" + filePath);
-
-	qDebug() << "Product File Path : " << dataPath.path() << "";
-
-	// This checks if the file opens, if it does not, it will display an
-	//  error message
-	if(productDataFile.open(QIODevice::ReadWrite | QIODevice::Text))
-	{
-		QString inputData[5];
-
-		// Points Text stream to input file to read in.
-		QTextStream inFile(&productDataFile);
-		while(!inFile.atEnd() && !isFull())
-		{
-			qDebug() << "Debugging:: Open Success :: Reading data...";
-
-			// Name
-			inputData[0] = inFile.readLine();
-			qDebug() << "Name: " << inputData[0];
-
-			// Cost
-			inputData[1] = inFile.readLine();
-			qDebug() << "Description: " << inputData[1];
-
-			// Description
-			inputData[2] = inFile.readLine();
-			qDebug() << "Cost: " << inputData[2];
-
-			// Model Number
-			inputData[3] = inFile.readLine();
-			qDebug() << "Model Number: " << inputData[3];
-
-			// Date Released
-			inputData[4] = inFile.readLine();
-			qDebug() << "Date Released: " << inputData[4];
-			Product newProduct(inputData[0],inputData[1],inputData[2].toFloat(),inputData[3].toInt(),inputData[4].toInt());
-
-			this->Enqueue(newProduct);
-
-		}
-
-		readSuccessFull = true;
-
-		qDebug() << "Flush: " << productDataFile.flush();
-
-		productDataFile.close();
-
-		qDebug() << "Close: " << !productDataFile.isOpen();
-	}
-
-
-
-	return readSuccessFull;
-
-}

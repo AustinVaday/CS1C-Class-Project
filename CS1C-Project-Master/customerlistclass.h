@@ -129,15 +129,7 @@ public:
 
     bool    WriteToFile();
 
-    bool    WriteToFile(QString filePath);
-
-    bool    ReadFile();
-
-    bool    ReadFile(QString filePath);
-
-    QString FindDirectory(QDir path);
-
-    class pathFail{};
+	bool    ReadFile();
 };
 
 #endif // CUSTOMERLISTCLASS_H
