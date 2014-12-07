@@ -135,13 +135,13 @@ public:
    ShoppingCartList SortList();
 
 
-   void RemoveProduct (Product &someProduct)
+   void RemoveProduct (Product &someProduct);
     // Removes customer from list
     //   Returns customer by reference
 
-    Product FindCustomer(QString userName);
-    // Finds customer in list
-    //   Returns customer object
+//    Product FindCustomer(QString userName);
+//    // Finds customer in list
+//    //   Returns customer object
 
     Product* ReturnCustomerPtr(QString userName);
     // Returns customer pointer to calling function

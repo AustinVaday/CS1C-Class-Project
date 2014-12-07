@@ -24,15 +24,23 @@ signals:
 
     void viewProducts();
 
+public slots:
+    void on_updated_shopping_list(ProductList & updatedList);
+
 private slots:
     void on_actionHELP_triggered();
 
     void on_button_viewProducts_clicked();
 
+//    void on_button_placeOrder_clicked();
+
 private:
     Ui::BrochureWindow* ui;
     ViewProducts*       vpWindow;
+    ShoppingCartWindowNew* scWindow;
     ImageViewer*        image;
+    ProductList         shoppingCartList;
+    ProductList         robotList;
 };
 
 #endif // BROCHUREWINDOW_H

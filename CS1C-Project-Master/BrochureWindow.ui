@@ -39,13 +39,6 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QPushButton" name="button_placeOrder">
-        <property name="text">
-         <string>Place Order</string>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QPushButton" name="button_viewProducts">
         <property name="text">
          <string>View Products</string>
@@ -76,7 +69,7 @@
      <x>0</x>
      <y>0</y>
      <width>631</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMenu">

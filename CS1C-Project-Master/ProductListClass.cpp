@@ -37,7 +37,6 @@ ProductList::ProductList()
     _nodeCount = 0;
     _listLimit = 30;
 }
-
 /**************************************************************************
  * D E S T R U C T O R
  * ------------------------------------------------------------------------
@@ -69,6 +68,52 @@ bool ProductList::isFull() const
 void ProductList::IncrementCount()
 {
     _nodeCount += 1;
+}
+
+//Returns the sum of the entire list
+float ProductList::SumList()
+{
+    Node<Product>* traverse;
+    float totalCost;
+    totalCost = 0;
+    traverse = _head;
+
+    if(!isEmpty()){
+        while(traverse!= NULL)
+        {
+            totalCost += traverse->GetData().getCost();
+        }
+    }
+    return totalCost;
+}
+
+ProductList& ProductList::operator=(const ProductList& list)
+{
+    if (this != &list)
+    {
+        int index;
+        Product copyCustomer;
+        index = 0;
+
+        //Before Assignment
+        this->ClearList();
+
+        // Only a temporary fix :( It's only adding to the queue not removing from it.
+        if(!list.isEmpty())
+        {
+                for(index = 0; index < list.Size(); index++)
+                {
+                        copyCustomer = list.ReturnProduct(index);
+                        this->Enqueue(copyCustomer);
+                }
+
+        }
+        // AFter
+        qDebug() << "Line 616: After CustomerLIst Assignment: " << this->OutputList();
+
+    }
+    return *this;
+
 }
 
 /**************************************************************************
@@ -443,6 +488,42 @@ QString ProductList::operator[](int index)
         return traversePtr->GetData().OutputData();
 
 
+}
+
+Product ProductList::ReturnProduct(int index) const
+{
+    Node<Product> * traversePtr;
+
+        if(isEmpty())
+        {
+            throw EmptyList();
+        }
+
+        if (index > _listLimit)
+        {
+            throw OutOfRange();
+        }
+
+
+        // NEED TO MAKE SURE 2 ACCOUNT NUMBERS CANNOT BE THE SAME //
+        traversePtr = _head;
+        int i = 0;
+        while (i < _listLimit && traversePtr !=NULL &&
+                i != index)
+        {
+            traversePtr = traversePtr->GetNext();
+
+            i++;
+        }
+
+        if (traversePtr == NULL)
+        {
+            // throw exception class if not found.
+            traversePtr = NULL;
+            throw NotFound();
+        }
+
+        return traversePtr->GetData();
 }
 
 /************************************************************

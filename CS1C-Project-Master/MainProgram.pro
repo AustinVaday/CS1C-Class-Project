@@ -47,7 +47,12 @@ SOURCES += main.cpp\
     maintplan.cpp \
     environments.cpp \
     signupwindow.cpp \
-    contactus.cpp
+    contactus.cpp\
+    shoppingcartwindow.cpp\
+    shoppingcartwindownew.cpp
+
+
+
 
 HEADERS += MainProgramWindow.h \
 	adminclass.h \
@@ -84,7 +89,10 @@ HEADERS += MainProgramWindow.h \
     environments.h \
     signupwindow.h \
     contactus.h \
-    ShoppingCartList.h
+    ShoppingCartList.h\
+    shoppingcartwindownew.h\
+    QWidget.h
+
 
 FORMS   += mainprogramwindow.ui \
 	newactivatedlist.ui \
@@ -111,7 +119,8 @@ FORMS   += mainprogramwindow.ui \
     maintplan.ui \
     environments.ui \
     signupwindow.ui \
-    contactus.ui
+    contactus.ui\
+    shoppingcartwindownew.ui
 
 RESOURCES += \
     TextFilesFolder.qrc \
