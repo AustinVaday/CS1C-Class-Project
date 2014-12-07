@@ -14,7 +14,11 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">#ViewProducts
+{
+	background-color: rgb(0, 0, 0);
+
+}</string>
   </property>
   <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
@@ -29,7 +33,24 @@
     <bool>false</bool>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">#Product1
+{
+	background-image: url(:/Resources/space cat.jpg);
+}
+
+#Product2
+{
+	
+	background-color: rgb(0, 0, 0);
+}
+
+#Product3
+{
+	
+	background-image: url(:/Resources/soviet.jpg);
+
+}
+</string>
    </property>
    <property name="currentIndex">
     <number>2</number>
@@ -41,10 +62,10 @@
     <widget class="QLabel" name="pic1">
      <property name="geometry">
       <rect>
-       <x>160</x>
+       <x>170</x>
        <y>0</y>
        <width>231</width>
-       <height>201</height>
+       <height>211</height>
       </rect>
      </property>
      <property name="autoFillBackground">
@@ -64,16 +85,27 @@
      <property name="geometry">
       <rect>
        <x>140</x>
-       <y>200</y>
-       <width>291</width>
-       <height>221</height>
+       <y>210</y>
+       <width>301</width>
+       <height>211</height>
       </rect>
      </property>
      <property name="autoFillBackground">
       <bool>false</bool>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">#text1
+{
+	background-color: rgba(192, 19, 255, 115);
+   
+	font: 100 15pt &quot;American Typewriter&quot;;
+	
+	font-weight: bold;
+   
+	color: rgb(255, 255, 255);
+
+
+}</string>
      </property>
     </widget>
     <widget class="QPushButton" name="product_One">
@@ -97,10 +129,10 @@
     <widget class="QLabel" name="pic2">
      <property name="geometry">
       <rect>
-       <x>50</x>
+       <x>20</x>
        <y>0</y>
-       <width>451</width>
-       <height>201</height>
+       <width>521</width>
+       <height>391</height>
       </rect>
      </property>
      <property name="text">
@@ -116,11 +148,21 @@
     <widget class="QTextBrowser" name="text2">
      <property name="geometry">
       <rect>
-       <x>140</x>
-       <y>220</y>
+       <x>130</x>
+       <y>120</y>
        <width>281</width>
        <height>201</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#text2
+{
+	background-color: rgba(0, 0, 0, 38);
+	font
+	font: 15pt &quot;American Typewriter&quot;;
+	color:white;
+
+}</string>
      </property>
     </widget>
     <widget class="QPushButton" name="product_Two">
@@ -169,6 +211,11 @@
        <height>211</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">font: 15pt &quot;American Typewriter&quot;;
+color:white;
+background-color: rgba(0, 0, 0, 56);</string>
+     </property>
     </widget>
     <widget class="QPushButton" name="product_Three">
      <property name="geometry">
@@ -196,6 +243,20 @@
    </property>
    <property name="autoFillBackground">
     <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+background-color: rgb(0, 0, 0);
+font: 13pt &quot;American Typewriter&quot;;
+color: white;
+border:  2px solid #555;
+border-style: solid;
+border-width: 1px;
+border-radius: 40px;
+padding: 5px;
+border-color: rgb(218, 73, 255);
+
+</string>
    </property>
    <property name="text">
     <string>Maintanence Plan</string>

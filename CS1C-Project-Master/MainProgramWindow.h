@@ -27,8 +27,13 @@
 #include "guestwindow.h"
 #include "maintplan.h"
 #include "environments.h"
+<<<<<<< HEAD
 #include "signupwindow.h"
 #include "contactus.h"
+=======
+#include "conceptofops.h"
+#include "testimonial.h"
+>>>>>>> Brochure-Output
 
 #include <QDebug>
 
@@ -100,9 +105,13 @@ class MainProgramWindow : public QMainWindow
 		void on_actionHelp_triggered();
 		//  Help Window Appear
 
+<<<<<<< HEAD
 		void on_pushButton_Guest_clicked();
 		void on_pushButton_RequestBrochure_clicked();
 		void on_actionContactUS_triggered();
+=======
+    void updateTestimonial(QString newTestimonial);
+>>>>>>> Brochure-Output
 
 	private:
 		Ui::MainProgramWindow *ui;
@@ -124,9 +133,16 @@ class MainProgramWindow : public QMainWindow
 		CustomerList    customerList;
 		bool            databaseCreated = false;
 
+<<<<<<< HEAD
 		// SECTION LOGIN BOOLEANS
 		//These boolean variables are used to determine what
 		//  type of window to launch
+=======
+    void on_pushButton_clicked();
+
+private:
+    Ui::MainProgramWindow *ui;
+>>>>>>> Brochure-Output
 
 		bool adminLogin;
 		bool customerLogin;
@@ -136,6 +152,31 @@ class MainProgramWindow : public QMainWindow
 		QString userName;
 		QString password;
 
+<<<<<<< HEAD
+=======
+    HelpWindow  *hWindow;
+
+    GuestWindow *gWindow;
+    Testimonial *testWindow;
+    // Pointer of type HelpWindow
+    //  Used to create a help window for the user
+
+    BrochureWindow*     bWindow;
+    ProductList*        lst;
+    CustomerList        customerList;
+
+    // SECTION LOGIN BOOLEANS
+    //These boolean variables are used to determine what
+    //  type of window to launch
+    QString customerTestimonial;
+    bool adminLogin         = 0;
+    bool customerLogin  = 0;
+    bool guestLogin      = 0;
+    bool createAccount   = 0;
+
+    QString userName;
+    QString password;
+>>>>>>> Brochure-Output
 };
 
 #endif // MAINPROGRAMWINDOW_H

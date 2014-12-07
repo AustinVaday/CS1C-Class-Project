@@ -30,7 +30,12 @@ ViewProducts::ViewProducts(QWidget *parent, ProductList &robotList, ProductList 
 
     ui->text3->insertPlainText(robotList[2]);
 
+<<<<<<< HEAD
     scWindow = new ShoppingCartWindowNew();
+=======
+    Product robo3("Soviet Attackers", "if cold war ever happens again robot is very efficient\nmade special to detect Soviet threats\ncan transmit video and audio", 500.56, 234, 81285);
+    ui->text3->insertPlainText(robo3.OutputData());
+>>>>>>> Brochure-Output
 }
 
 ViewProducts::~ViewProducts()

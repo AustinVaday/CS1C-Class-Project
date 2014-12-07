@@ -7,20 +7,33 @@
     <x>0</x>
     <y>0</y>
     <width>631</width>
-    <height>425</height>
+    <height>446</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-image: url(:/Resources/peacebridgeout.jpg);</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
+    <property name="sizeConstraint">
+     <enum>QLayout::SetNoConstraint</enum>
+    </property>
     <item>
      <widget class="QLabel" name="label">
       <property name="font">
        <font>
-        <pointsize>40</pointsize>
+        <family>Zapfino</family>
+        <pointsize>48</pointsize>
+        <weight>50</weight>
+        <italic>true</italic>
+        <bold>false</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: italic 48pt &quot;Zapfino&quot;;</string>
       </property>
       <property name="text">
        <string>Brochure</string>
@@ -38,8 +51,29 @@
     </item>
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetNoConstraint</enum>
+      </property>
       <item>
        <widget class="QPushButton" name="button_placeOrder">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>46</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: italic 13pt &quot;Zapfino&quot;;</string>
+        </property>
         <property name="text">
          <string>Place Order</string>
         </property>
@@ -47,6 +81,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="button_viewProducts">
+        <property name="styleSheet">
+         <string notr="true">font: italic 13pt &quot;Zapfino&quot;;</string>
+        </property>
         <property name="text">
          <string>View Products</string>
         </property>
@@ -54,6 +91,21 @@
       </item>
       <item>
        <widget class="QPushButton" name="button_accountInfo">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>167777</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: italic 13pt &quot;Zapfino&quot;;</string>
+        </property>
         <property name="text">
          <string>Account Info</string>
         </property>
@@ -61,6 +113,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="button_logout">
+        <property name="styleSheet">
+         <string notr="true">font: italic 13pt &quot;Zapfino&quot;;</string>
+        </property>
         <property name="text">
          <string>Log out</string>
         </property>
@@ -76,7 +131,7 @@
      <x>0</x>
      <y>0</y>
      <width>631</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMenu">

@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Login iRobot Inc.</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-image: url(:/Resources/login.jpg);</string>
+  </property>
   <widget class="QDialogButtonBox" name="buttonBox_loginPress">
    <property name="geometry">
     <rect>
@@ -21,6 +24,10 @@
      <width>164</width>
      <height>32</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 13pt &quot;American Typewriter&quot;;
+Color: white;</string>
    </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
@@ -41,13 +48,23 @@
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QLabel" name="label">
+      <property name="styleSheet">
+       <string notr="true">font: 75 13pt &quot;American Typewriter&quot;;
+Color: white;
+</string>
+      </property>
       <property name="text">
        <string>User Name</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEdit_username"/>
+     <widget class="QLineEdit" name="lineEdit_username">
+      <property name="styleSheet">
+       <string notr="true">font: 75 13pt &quot;American Typewriter&quot;;
+Color: white;</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -63,6 +80,10 @@
    <layout class="QHBoxLayout" name="horizontalLayout_2">
     <item>
      <widget class="QLabel" name="label_2">
+      <property name="styleSheet">
+       <string notr="true">font: 75 13pt &quot;American Typewriter&quot;;
+Color: white;</string>
+      </property>
       <property name="text">
        <string>Password  </string>
       </property>
@@ -70,6 +91,10 @@
     </item>
     <item>
      <widget class="QLineEdit" name="lineEdit_password">
+      <property name="styleSheet">
+       <string notr="true">font: 75 13pt &quot;American Typewriter&quot;;
+Color: white;</string>
+      </property>
       <property name="echoMode">
        <enum>QLineEdit::Password</enum>
       </property>

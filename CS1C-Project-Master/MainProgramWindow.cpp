@@ -52,10 +52,15 @@ qDebug() << customerList.OutputList();
     // Initialize
     hWindow = new HelpWindow;
     aWindow = new AdminWindow(this, customerList);
+<<<<<<< HEAD
     bWindow = new BrochureWindow(this);
     gWindow = new GuestWindow;
     sWindow = new SignUpWindow;
     cWindow = new ContactUs(this);
+=======
+    bWindow = new BrochureWindow;
+    testWindow = new Testimonial;
+>>>>>>> Brochure-Output
 
     // ***DEBUG** List is read.
 qDebug() << customerList.OutputList() << "Main Program Window: "
@@ -65,6 +70,7 @@ qDebug() << customerList.OutputList() << "Main Program Window: "
 
     connect(bWindow, SIGNAL(clicked()), this, SLOT(on_pushButton_Help_clicked()));
 
+    connect(testWindow, SIGNAL(returnString(QString)),this, SLOT(updateTestimonial(QString)));
 
     // Shows the main program buttons when first logging in
 
@@ -72,8 +78,19 @@ qDebug() << customerList.OutputList() << "Main Program Window: "
 
 MainProgramWindow::~MainProgramWindow()
 {
+<<<<<<< HEAD
 	robotList.WriteToFile();
 	robotList.ClearList();
+=======
+
+    customerTestimonial = testWindow->getTestimonial();
+    qDebug() << "My testimonials are : " << customerTestimonial;
+       ProductList myList;
+
+        Product robot1("Guy", "<AR{P", 434.2, 432, 232341);
+
+        myList.Enqueue(robot1);
+>>>>>>> Brochure-Output
 
 
 	customerList.WriteToFile();
@@ -308,4 +325,18 @@ void MainProgramWindow::on_pushButton_RequestBrochure_clicked()
 void MainProgramWindow::on_actionContactUS_triggered()
 {
 	cWindow->show();
+}
+
+void MainProgramWindow::on_pushButton_clicked()
+{
+    QString mystring = "Here are recent customer testimonials!\n";
+    testWindow->setTestimonial(mystring);
+    testWindow->show();
+
+
+}
+
+void MainProgramWindow::updateTestimonial(QString newTestimonial)
+{
+    customerTestimonial = newTestimonial;
 }
