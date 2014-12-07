@@ -10,14 +10,14 @@
     <x>0</x>
     <y>0</y>
     <width>534</width>
-    <height>356</height>
+    <height>581</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <property name="autoFillBackground">
-   <bool>true</bool>
+   <bool>false</bool>
   </property>
   <property name="styleSheet">
    <string notr="true">background-image: url(:/Resources/night.jpg);</string>
@@ -26,7 +26,7 @@
    <property name="geometry">
     <rect>
      <x>150</x>
-     <y>310</y>
+     <y>520</y>
      <width>201</width>
      <height>32</height>
     </rect>
@@ -73,7 +73,7 @@ color: white;</string>
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>271</width>
+     <width>361</width>
      <height>41</height>
     </rect>
    </property>
@@ -82,7 +82,7 @@ color: white;</string>
 color: white;</string>
    </property>
    <property name="text">
-    <string>Feel Free to Write testimonials below...</string>
+    <string>Feel free to write a review below...</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="nameLine">
@@ -104,6 +104,75 @@ color: white;</string>
    <property name="placeholderText">
     <string>Enter Name:</string>
    </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>310</y>
+     <width>111</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:
+rgb(255, 255, 255)</string>
+   </property>
+   <property name="text">
+    <string>Please rate us: </string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>330</y>
+     <width>158</width>
+     <height>77</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QRadioButton" name="veryInterested">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string>Very interested</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="somewhatInterested">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string>Somewhat interested</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="notInterested">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string>Not interested</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="neverCallAgain">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string>Never will call again</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>
