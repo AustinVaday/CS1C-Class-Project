@@ -20,7 +20,16 @@ AdminWindow::AdminWindow(QWidget *parent, CustomerList &list) :
     viewList = new NewActivatedList(this, customerList);
     ui->setupUi(this);
     ui->graphicsView->setStyleSheet("background-image: url(:/Resources/guest.jpg)");
+<<<<<<< HEAD
    }
+=======
+
+
+
+
+
+  }
+>>>>>>> 337196388c866d5d19e820b7494f018a5bcdb2e4
 
 AdminWindow::~AdminWindow()
 {

@@ -36,8 +36,38 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
 	sWindow = new SignUpWindow;
 	cWindow = new ContactUs(this);
 
+<<<<<<< HEAD
 	connect(aWindow, SIGNAL(clicked()), this, SLOT(on_pushButton_Help_clicked()));
 	connect(bWindow, SIGNAL(clicked()), this, SLOT(on_pushButton_Help_clicked()));
+=======
+    // Hard code of admin login
+    Admin testAdmin("","admin1234@gmail.com", 1234, "");
+
+// Debuggin
+qDebug() << "Admin window: Output List, Line 36";
+qDebug() << customerList.OutputList();
+
+
+
+    // Initialize
+    hWindow = new HelpWindow;
+    aWindow = new AdminWindow(this, customerList);
+    bWindow = new BrochureWindow(this);
+    gWindow = new GuestWindow;
+    sWindow = new SignUpWindow;
+    cWindow = new ContactUs(this);
+
+    // ***DEBUG** List is read.
+qDebug() << customerList.OutputList() << "Main Program Window: "
+" customerList.OutputList - Line 27";
+
+    connect(aWindow, SIGNAL(clicked()), this, SLOT(on_pushButton_Help_clicked()));
+
+    connect(bWindow, SIGNAL(clicked()), this, SLOT(on_pushButton_Help_clicked()));
+
+
+    // Shows the main program buttons when first logging in
+>>>>>>> 337196388c866d5d19e820b7494f018a5bcdb2e4
 
 }
 

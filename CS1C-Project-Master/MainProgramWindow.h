@@ -136,8 +136,37 @@ class MainProgramWindow : public QMainWindow
 		bool guestLogin;
 		bool createAccount;
 
+<<<<<<< HEAD
 		QString userName;
 		QString password;
+=======
+    // Customer / Brochure Data Memeber Placeholder
+
+    HelpWindow  *hWindow;
+    GuestWindow *gWindow;
+    // Pointer of type HelpWindow
+    //  Used to create a help window for the user
+
+    BrochureWindow*     bWindow;
+    SignUpWindow* sWindow;
+    ContactUs * cWindow;
+
+    ProductList     robotList;
+    CustomerList    customerList;
+    bool                     databaseCreated = false;
+
+    // SECTION LOGIN BOOLEANS
+    //These boolean variables are used to determine what
+    //  type of window to launch
+
+    bool adminLogin;
+    bool customerLogin;
+    bool guestLogin;
+    bool createAccount;
+
+    QString userName;
+    QString password;
+>>>>>>> 337196388c866d5d19e820b7494f018a5bcdb2e4
 };
 
 #endif // MAINPROGRAMWINDOW_H
