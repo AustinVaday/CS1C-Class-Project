@@ -1,4 +1,5 @@
 #include "MainProgramWindow.h"
+#include <assert.h>
 
 MainProgramWindow::MainProgramWindow(QWidget *parent) :
 	QMainWindow(parent),
@@ -13,35 +14,34 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
 	customerLogin = 0;
 	guestLogin    = 0;
 	createAccount = 0;
+	// Hard code of admin login
+	Admin testAdmin("","admin1234@gmail.com", 1234, "");
 
-	if(!databaseCreated)
-	{
-		if((databaseCreated = CreateDatabase()))
-		{
-			Q_ASSERT("Database not created!");
-		}
-	}
 	ui->setupUi(this);
 
 	// Determines if data base has been created
 
+	try
+	{
+		if(!databaseCreated)
+		{
+			if(!(databaseCreated = CreateDatabase()))
+			{
+					throw "DATABASE FAILED";
+			}
+
+		}
+
+	}
+	catch(QString f)
+	{
+		QMessageBox terminate;
+		terminate.setText(f);
+		terminate.setWindowTitle("ERROR!");
+		QApplication::quit();
+	}
 
 	ui->tempDisplay->setText(customerList.OutputList());
-
-	// Initialize
-	hWindow = new HelpWindow;
-	aWindow = new AdminWindow(this, customerList);
-	bWindow = new BrochureWindow;
-	gWindow = new GuestWindow;
-	sWindow = new SignUpWindow;
-	cWindow = new ContactUs(this);
-
-<<<<<<< HEAD
-	connect(aWindow, SIGNAL(clicked()), this, SLOT(on_pushButton_Help_clicked()));
-	connect(bWindow, SIGNAL(clicked()), this, SLOT(on_pushButton_Help_clicked()));
-=======
-    // Hard code of admin login
-    Admin testAdmin("","admin1234@gmail.com", 1234, "");
 
 // Debuggin
 qDebug() << "Admin window: Output List, Line 36";
@@ -67,7 +67,6 @@ qDebug() << customerList.OutputList() << "Main Program Window: "
 
 
     // Shows the main program buttons when first logging in
->>>>>>> 337196388c866d5d19e820b7494f018a5bcdb2e4
 
 }
 

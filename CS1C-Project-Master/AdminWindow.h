@@ -35,11 +35,9 @@ private slots:
     void on_actionHelp_triggered();
 
 private:
-<<<<<<< HEAD
+
 	Ui::AdminWindow  *ui;
-=======
-    Ui::AdminWindow  *ui;
->>>>>>> 337196388c866d5d19e820b7494f018a5bcdb2e4
+
     NewActivatedList *viewList;
 	CustomerList	  customerList;
 };

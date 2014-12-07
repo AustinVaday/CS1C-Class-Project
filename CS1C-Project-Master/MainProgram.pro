@@ -89,11 +89,8 @@ HEADERS += MainProgramWindow.h \
     environments.h \
     signupwindow.h \
     contactus.h \
-<<<<<<< HEAD
-    ShoppingCartList.h
-=======
+    ShoppingCartList.h\
     shoppingcartwindownew.h
->>>>>>> master
 
 FORMS   += mainprogramwindow.ui \
 	newactivatedlist.ui \

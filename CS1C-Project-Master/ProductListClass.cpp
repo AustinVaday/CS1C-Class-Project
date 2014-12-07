@@ -329,7 +329,7 @@ int ProductList::Size() const
 
 void ProductList::RemoveProduct(Product &someProduct)
 {
-<<<<<<< HEAD
+
 	Node<Product> * traversePtr;
 	Node<Product> * actionPtr;
 
@@ -393,84 +393,7 @@ void ProductList::RemoveProduct(Product &someProduct)
 		traversePtr = NULL;
 		throw NotFound();
 	}
-=======
-    Node<Product> * traversePtr;
-    Node<Product> * actionPtr;
-    qDebug() << "Remove Product method test" << endl;
 
-    if(isEmpty())
-    {
-        qDebug() << "Can't Dequeue an empty list" << endl;
-
-        throw EmptyList();
-    }
-
-    qDebug() << "Remove Product method test 2" << endl;
-
-    traversePtr = _head;
-    int index = 0;
-
-    while (index < _listLimit && traversePtr != NULL && !(traversePtr->GetData() == someProduct))
-    {
-
-        traversePtr = traversePtr->GetNext();
-        index++;
-    }
-    if (index == _listLimit && traversePtr == NULL)
-    {
-        // throw exception class if not found.
-        traversePtr = NULL;
-        qDebug() << endl << "Within NOt FOUnd CATCH";
-
-        throw NotFound();
-    }
-    // overloaded operator
-            if (traversePtr->GetData() == someProduct)
-            {
-                // head deletion
-                if (traversePtr == _head)
-                {
-                    Dequeue();
-
-                }
-                // end deletion
-                else if (traversePtr == _tail)
-                {
-                    _tail = _tail->GetPrevious();
-
-
-                    _tail->SetNext(NULL);
-    //				_tail->_next = NULL;
-
-                    traversePtr->Orphan();
-
-                    delete traversePtr;
-
-                }
-                // middle deletion
-                else
-                {
-    //				actionPtr = traversePtr->_previous;
-                    actionPtr = traversePtr->GetPrevious();
-
-    //				actionPtr->_next = traversePtr->_next;
-                    actionPtr->SetNext(traversePtr->GetNext());
-
-    //				traversePtr->_next->_previous = actionPtr;
-
-                    traversePtr->SetNext(traversePtr->GetNext());
-                    traversePtr->SetPrevious(actionPtr);
-
-                    traversePtr->Orphan();
-
-                    delete traversePtr;
-
-                }
-
-            }
-
-
->>>>>>> 337196388c866d5d19e820b7494f018a5bcdb2e4
 }
 
 Product ProductList::FindProduct(QString productName)
@@ -536,51 +459,45 @@ QString ProductList::operator[](int index)
 	return traversePtr->GetData().OutputData();
 }
 
-<<<<<<< HEAD
-/****************************************************
- * WriteToFile (Overloaded, DOES NOT allow to
- *	specify filePath)
- * --------------------------------------------
-=======
+
 bool ProductList::isExist(Product someProduct)
 {
 
-    Node<Product> * traversePtr;
+	Node<Product> * traversePtr;
 
-    if(isEmpty())
-    {
-        return false;
-    }
+	if(isEmpty())
+	{
+		return false;
+	}
 
-    traversePtr = _head;
-    int i = 0;
+	traversePtr = _head;
+	int i = 0;
 
-    while (i < Size() && traversePtr !=NULL)
-    {
+	while (i < Size() && traversePtr !=NULL)
+	{
 
-        if (someProduct == traversePtr->GetData())
-        {
-            return true;
-        }
+		if (someProduct == traversePtr->GetData())
+		{
+			return true;
+		}
 
-        traversePtr = traversePtr->GetNext();
+		traversePtr = traversePtr->GetNext();
 
-        i++;
-    }
+		i++;
+	}
 
-    if (traversePtr == NULL)
-    {
-        // throw exception class if not found.
-        return false;
-    }
+	if (traversePtr == NULL)
+	{
+		// throw exception class if not found.
+		return false;
+	}
 
-    return true;
+	return true;
 }
 
 /************************************************************
  * WriteToFile (Overloaded, DOES NOT allow to specify filePath)
- * --------------------------------------------------------------------------------
->>>>>>> 337196388c866d5d19e820b7494f018a5bcdb2e4
+ * ----------------------------------------------------------
  * Returns true only if it successfully writes
  * Returns false if it fails to open, write or if there are
  *  no products in the list.

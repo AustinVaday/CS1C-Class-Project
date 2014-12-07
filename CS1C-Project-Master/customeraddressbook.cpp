@@ -180,16 +180,7 @@ void CustomerAddressBook::on_addButton_clicked()
 
     // store old information into variables
     // (in case they submition)
-<<<<<<< HEAD
-	oldName			= ui->EDIT_name->text();
-	oldEmail		= ui->EDIT_email->text();
-	oldId			= ui->EDIT_account->text();
-	oldPassword		= ui->EDIT_password->text();
-    oldAddressLine1 = ui->EDIT_addressLine1->text();
-    oldAddressLine2 = ui->EDIT_addressLine2->text();
-	oldKey			= ui->EDIT_value->text();
-	oldInterest		= ui->EDIT_interest->text();
-=======
+
     oldName         = ui->EDIT_name->text();
     oldEmail        = ui->EDIT_email->text();
     oldId           = ui->EDIT_account->text();
@@ -198,7 +189,6 @@ void CustomerAddressBook::on_addButton_clicked()
     oldAddressLine2 = ui->EDIT_addressLine2->text();
     oldKey          = ui->EDIT_value->text();
     oldInterest     = ui->EDIT_interest->text();
->>>>>>> 337196388c866d5d19e820b7494f018a5bcdb2e4
 
     oldIsActivated = ui->ActivatedCustomer->isChecked();
 
@@ -223,17 +213,7 @@ void CustomerAddressBook::on_addButton_clicked()
 void CustomerAddressBook::on_submitButton_clicked()
 {
     // store new contact details in variables
-<<<<<<< HEAD
-	QString name		 = ui->EDIT_name->text();
-	QString email		 = ui->EDIT_email->text();
-	QString idString	 = ui->EDIT_account->text();
-	QString pass		 = ui->EDIT_password->text();
-    QString addressLine1 = ui->EDIT_addressLine1->text() + "\n";
-    QString addressLine2 = ui->EDIT_addressLine2->text() + "\n";
-	QString interest	 = ui->EDIT_interest->text();
-	QString key			 = ui->EDIT_value->text();
-	QString address		 = addressLine1 + "\n" + addressLine2;
-=======
+
     QString name         = ui->EDIT_name->text();
     QString email        = ui->EDIT_email->text();
     QString idString     = ui->EDIT_account->text();
@@ -243,8 +223,6 @@ void CustomerAddressBook::on_submitButton_clicked()
     QString interest     = ui->EDIT_interest->text();
     QString key          = ui->EDIT_value->text();
     QString address      = addressLine1 + "\n" + addressLine2;
-
->>>>>>> 337196388c866d5d19e820b7494f018a5bcdb2e4
 
 	bool  activationStatus = false;
 
@@ -581,7 +559,7 @@ void CustomerAddressBook::on_editButton_clicked()
 
 void CustomerAddressBook::on_removeButton_clicked()
 {
-<<<<<<< HEAD
+
 	// INPUT DECLARATIONS
 	//  RETRIEVES ALL DATA TO CREATE AN OBJECT TO COMPARE AND DELETE FROM THE
 	//  CUSTOMER LIST
@@ -594,17 +572,7 @@ void CustomerAddressBook::on_removeButton_clicked()
 	QString interest	 = ui->EDIT_interest->text();
 	QString key			 = ui->EDIT_value->text();
 	QString address		 = addressLine1 + addressLine2; // CONCATENATES STRINGS
-=======
-    QString name           = ui->EDIT_name->text();
-    QString email          = ui->EDIT_email->text();
-    QString idString       = ui->EDIT_account->text();
-    QString pass           = ui->EDIT_password->text();
-    QString addressLine1   = ui->EDIT_addressLine1->text() + "\n";
-    QString addressLine2   = ui->EDIT_addressLine2->text() + "\n";
-    QString interest       = ui->EDIT_interest->text();
-    QString key            = ui->EDIT_value->text();
-    QString address        = addressLine1 + addressLine2;
->>>>>>> 337196388c866d5d19e820b7494f018a5bcdb2e4
+
 
     bool  activationStatus = false;
 
