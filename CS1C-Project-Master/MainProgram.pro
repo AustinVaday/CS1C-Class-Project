@@ -49,15 +49,12 @@ SOURCES += main.cpp\
     guestwindow.cpp \
     maintplan.cpp \
     environments.cpp \
-<<<<<<< HEAD
     signupwindow.cpp \
     contactus.cpp \
     shoppingcartwindownew.cpp \
-    ExceptionHandlers.cpp
-=======
+    ExceptionHandlers.cpp\
     conceptofops.cpp \
     testimonial.cpp
->>>>>>> Brochure-Output
 
 HEADERS += MainProgramWindow.h \
 	adminclass.h \
@@ -92,15 +89,13 @@ HEADERS += MainProgramWindow.h \
     guestwindow.h \
     maintplan.h \
     environments.h \
-<<<<<<< HEAD
     signupwindow.h \
     contactus.h \
     ShoppingCartList.h\
-    shoppingcartwindownew.h
-=======
+    shoppingcartwindownew.h\
     conceptofops.h \
     testimonial.h
->>>>>>> Brochure-Output
+
 
 FORMS   += mainprogramwindow.ui \
 	newactivatedlist.ui \
@@ -126,18 +121,15 @@ FORMS   += mainprogramwindow.ui \
     guestwindow.ui \
     maintplan.ui \
     environments.ui \
-<<<<<<< HEAD
     signupwindow.ui \
     contactus.ui \
-    shoppingcartwindownew.ui
-=======
+    shoppingcartwindownew.ui\
     conceptofops.ui \
     testimonial.ui
->>>>>>> Brochure-Output
 
 RESOURCES += \
-    TextFilesFolder.qrc \
-    Images.qrc
+    Images.qrc \
+    Database.qrc
 
 OTHER_FILES += \
     ProductDatabase.txt\

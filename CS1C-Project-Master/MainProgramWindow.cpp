@@ -10,10 +10,10 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
 	createAccount(false)
 {
 	// DECLARATIONS
-	adminLogin    = 0;
-	customerLogin = 0;
-	guestLogin    = 0;
-	createAccount = 0;
+//	adminLogin    = 0;
+//	customerLogin = 0;
+//	guestLogin    = 0;
+//	createAccount = 0;
 	// Hard code of admin login
 	Admin testAdmin("","admin1234@gmail.com", 1234, "");
 

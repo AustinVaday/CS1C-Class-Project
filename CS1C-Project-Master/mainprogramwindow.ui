@@ -77,16 +77,12 @@ font: 13pt &quot;Papyrus&quot;;
       </widget>
      </item>
      <item>
-<<<<<<< HEAD
-      <widget class="QPushButton" name="pushButton_RequestBrochure">
-=======
       <widget class="QPushButton" name="pushButton_RequestBrochure_2">
        <property name="styleSheet">
         <string notr="true">color: white;
 font: 13pt &quot;Papyrus&quot;;
 </string>
        </property>
->>>>>>> Brochure-Output
        <property name="text">
         <string>Request Account/Brochure</string>
        </property>
