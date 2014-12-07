@@ -42,10 +42,12 @@ qDebug() << "MainProgramWindow - Reading List! - Line 19";
 qDebug() << "Admin window: Output List, Line 36";
 qDebug() << customerList.OutputList();
 
+
+
     // Initialize
     hWindow = new HelpWindow;
     aWindow = new AdminWindow(this, customerList);
-    bWindow = new BrochureWindow;
+    bWindow = new BrochureWindow(this);
     gWindow = new GuestWindow;
     sWindow = new SignUpWindow;
     cWindow = new ContactUs(this);

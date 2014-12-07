@@ -1,31 +1,12 @@
-Billy The Kid
-555 Camden Ct
-Mission Viejo, CA 13334
-Not Interested
-Nice to Have
-1234pass
-billy@yahoo.com
-333333333
+0
 
-CIA
-987 Jefferson Blvd
-Baltimore, MD 00754
-Very Interested
-Key
-nocomment
-We-Werent-Here@noneyabusiness.gov
-10000001
 
-FBI
-1 Lincoln Ave.
-Washington D.C. 00234
-Somewhat Interested
-Key
-investigate
-superinvestigators@FBI.gov
-99955533
 
-Goofy - AKA " Dippy Dawg"
+
+
+
+0
+
 1800 Pluto Drive
 Disney World, FL 05446
 Very Interested
@@ -33,6 +14,25 @@ Key
 password222
 stopgoofing@gmail.com
 10202011
+0
+
+ddd
+d
+
+dd
+dd
+dd
+dd
+0
+
+gdfg
+jhkjh
+
+kjh
+kjhjkh
+password
+kjh
+0
 
 Los Angeles Airport
 12345 Main
@@ -61,6 +61,15 @@ irule
 ruletheworld@rome.com
 22229999
 
+o Have
+1234pass
+billy@yahoo.com
+333333333
+
+CIA
+987 Jefferson Blvd
+0
+
 Saddleback College
 28000 Marguerite Pkwy
 Mission Viejo, CA 92692
@@ -87,13 +96,47 @@ Key
 savethepresident
 secrets@cia.gov
 77564221
-3333
 
-Secret Service
-12345 Pennsylvania
-Reston, VA  12345
+secrets@cia.gov
+77564221
+
+
+
+
+
+0
+
 Very Interested
 Key
+nocomment
+We-Werent-Here@noneyabusiness.gov
+10000001
+
+FBI
+0
+
+Washington D.C. 00234
+Somewhat Interested
+Key
+investigate
+superinvestigators@FBI.gov
+99955533
+
+0
+
+y
 savethepresident
 secrets@cia.gov
 77564221
+
+secrets@cia.gov
+77564221
+0
+cia.gov
+77564221
+
+
+
+
+
+0

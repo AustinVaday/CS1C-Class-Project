@@ -38,6 +38,36 @@ ProductList::ProductList()
     _listLimit = 30;
 }
 
+
+int ProductList::CalculateSum()
+{
+
+    //D E C L A R A T I O N
+    Node<Product>* traverse;
+    float totalSum;
+
+
+    totalSum = 0;
+
+    traverse = _head;
+
+
+    if(!isEmpty())
+    {
+        while(traverse != NULL)
+        {
+               totalSum += traverse->GetData().getCost();
+
+               traverse = traverse->GetNext();
+        }
+
+    }
+
+    traverse = NULL;
+
+    return totalSum;
+}
+
 /**************************************************************************
  * D E S T R U C T O R
  * ------------------------------------------------------------------------
@@ -308,12 +338,16 @@ void ProductList::RemoveProduct(Product &someProduct)
 {
     Node<Product> * traversePtr;
     Node<Product> * actionPtr;
+    qDebug() << "Remove Product method test" << endl;
 
     if(isEmpty())
     {
-//		cout << "Can't Dequeue an empty list" << endl;
+        qDebug() << "Can't Dequeue an empty list" << endl;
+
         throw EmptyList();
     }
+
+    qDebug() << "Remove Product method test 2" << endl;
 
     traversePtr = _head;
     int index = 0;
@@ -324,7 +358,14 @@ void ProductList::RemoveProduct(Product &someProduct)
         traversePtr = traversePtr->GetNext();
         index++;
     }
+    if (index == _listLimit && traversePtr == NULL)
+    {
+        // throw exception class if not found.
+        traversePtr = NULL;
+        qDebug() << endl << "Within NOt FOUnd CATCH";
 
+        throw NotFound();
+    }
     // overloaded operator
             if (traversePtr->GetData() == someProduct)
             {
@@ -370,12 +411,7 @@ void ProductList::RemoveProduct(Product &someProduct)
 
             }
 
-    if (index == _listLimit && traversePtr == NULL)
-    {
-        // throw exception class if not found.
-        traversePtr = NULL;
-        throw NotFound();
-    }
+
 }
 
 Product ProductList::FindProduct(QString productName)
@@ -443,6 +479,41 @@ QString ProductList::operator[](int index)
         return traversePtr->GetData().OutputData();
 
 
+}
+
+bool ProductList::isExist(Product someProduct)
+{
+
+    Node<Product> * traversePtr;
+
+    if(isEmpty())
+    {
+        return false;
+    }
+
+    traversePtr = _head;
+    int i = 0;
+
+    while (i < Size() && traversePtr !=NULL)
+    {
+
+        if (someProduct == traversePtr->GetData())
+        {
+            return true;
+        }
+
+        traversePtr = traversePtr->GetNext();
+
+        i++;
+    }
+
+    if (traversePtr == NULL)
+    {
+        // throw exception class if not found.
+        return false;
+    }
+
+    return true;
 }
 
 /************************************************************
