@@ -6,46 +6,42 @@
 #include <QTextStream>
 #include <QMessageBox>
 
-
-
 int main(int argc, char *argv[])
 {
-    // DECLARATIONS
-    QApplication a(argc, argv);
-    MainProgramWindow MainProgramWindow;
-    QDir dir = QDir::home();
-    QString projectPath;
-    QString defaultPath = "/ERCK";
-    QMessageBox noDir;
+	// DECLARATIONS BEFORE APPLICATION STARTS
+	QApplication a(argc, argv);
+	QDir	directory = QDir::current();
+	bool	directoryMade;
+
+	directoryMade = false;
+
+	while(directory.dirName() != "Class-Project")
+	{
+		directory.cdUp();
+qDebug() << "Currently in - " << directory.dirName();
+	}
+
+	if(!directory.cd("Database-Files"))
+	{
+		directory.mkpath("Database-Files");
 
 
-    // Combines current home path and default program path this determines
-    //  if the path directory required for data persistence exists, if it /
-    //  doesn't it will create it.
-    projectPath = dir.path() + defaultPath;
-    dir         = projectPath;
 
-    if(!dir.exists())
-    {
-        // Sets text for message box then displays
-        noDir.setText("Directory not found.\n Initiating....");
-        noDir.exec();
-
-        qWarning("Cannot find the Project directory.");
-        dir.mkpath(projectPath);
-
-        // Reads Default Database text file from binary file.
-        //  Default database cannot be modified once compile and executed.
-        //  Application will read and write from the set directory path
-
-        noDir.setText("Initiating Database...");
-        noDir.exec();
-
-    }
+		directory.cd("Database-Files");
+	}
 
 
+	QFile::copy(":/CustomerDatabase.txt",(directory.path() +  "/CustomerList.txt"));
+
+
+	QFile::copy(":/ProductDatabase.txt",(directory.path() +  "/ProductList.txt"));
+
+
+	// MAIN WINDOW HAS TO STAY DOWN HERE OR IT WILL TRY TO INITIALIZE BEFORE
+	//	CHECKING FOR DIRECTORY
+	MainProgramWindow MainProgramWindow;
+	// DISPLAYS MAIN WINDOW
     MainProgramWindow.show();
-
 
     return a.exec();
 }

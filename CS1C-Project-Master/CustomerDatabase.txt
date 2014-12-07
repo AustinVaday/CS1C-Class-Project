@@ -1,11 +1,23 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 3333
+=======
+Los Angeles Airport
+12345 Main
+El Segundo, CA 90245
+Very Interested
+Key
+loveplanes
+lax@airport.gov
+1555433
+>>>>>>> Persistence
 
 Secret Service
 12345 Pennsylvania
 Reston, VA  12345
 Very Interested
 Key
+<<<<<<< HEAD
 0
 
 Billy The Kid
@@ -20,8 +32,27 @@ billy@yahoo.com
 0
 >>>>>>> master
 
+=======
+savethepresident
+secrets@cia.gov
+77564221
+=======
+0
+
+>>>>>>> 337196388c866d5d19e820b7494f018a5bcdb2e4
+>>>>>>> Persistence
 
 
+<<<<<<< HEAD
+CIA
+987 Jefferson Blvd
+Baltimore, MD 00754
+Very Interested
+Key
+nocomment
+We-Werent-Here@noneyabusiness.gov
+10000001
+=======
 
 
 
@@ -53,15 +84,16 @@ kjhjkh
 password
 kjh
 0
+>>>>>>> 337196388c866d5d19e820b7494f018a5bcdb2e4
 
-Los Angeles Airport
-12345 Main
-El Segundo, CA 90245
-Very Interested
-Key
-loveplanes
-lax@airport.gov
-1555433
+Saddleback College
+28000 Marguerite Pkwy
+Mission Viejo, CA 92692
+not  Interested
+Nice to Have
+education
+Educated@saddleback.edu
+45513220
 
 Los Angeles Dodgers
 12345 Chevaz Ravine
@@ -72,6 +104,9 @@ baseball
 worldchamps@dodgers.com
 43224445
 
+<<<<<<< HEAD
+Austin
+=======
 Marcus Aurelius
 1 Emperor Way
 Rome, Italy
@@ -91,13 +126,23 @@ CIA
 0
 
 Saddleback College
+>>>>>>> 337196388c866d5d19e820b7494f018a5bcdb2e4
 28000 Marguerite Pkwy
 Mission Viejo, CA 92692
-not  Interested
-Nice to Have
-education
-Educated@saddleback.edu
-45513220
+Somewhat Interested
+Key
+password123
+austinvaday@gmail.com
+10100011
+
+Goofy - AKA " Dippy Dawg"
+1800 Pluto Drive
+Disney World, FL 05446
+Very Interested
+Key
+password222
+stopgoofing@gmail.com
+10202011
 
 Sammy Hagar
 115 Rocker
@@ -108,6 +153,25 @@ rocknroll
 partytillyoudrop@hardcore.com
 23123333
 
+<<<<<<< HEAD
+Billy The Kid
+555 Camden Ct
+Mission Viejo, CA 13334
+Not Interested
+Nice to Have
+1234pass
+billy@yahoo.com
+333333333
+
+Marcus Aurelius
+1 Emperor Way
+Rome, Italy
+Very Interested
+Key
+irule
+ruletheworld@rome.com
+22229999
+=======
 Secret Service
 12345 Pennsylvania
 Reston, VA  12345
@@ -166,3 +230,4 @@ cia.gov
 
 
 0
+>>>>>>> 337196388c866d5d19e820b7494f018a5bcdb2e4
