@@ -230,7 +230,7 @@ void NewActivatedList::on_addToDeactivatedListButton_clicked()
             }
 
             customer = customerList[i];
-            custPtr = customerList.ReturnCustomerPtr(customer.getUserName());
+            custPtr  = customerList.ReturnCustomerPtr(customer.getUserName());
             custPtr->setAccountAccess(false);
 
             if (listIndeces.count() == 1)
@@ -281,7 +281,7 @@ void NewActivatedList::on_addToActivatedListButton_clicked()
             }
 
             customer = customerList[i];
-            custPtr = customerList.ReturnCustomerPtr(customer.getUserName());
+            custPtr  = customerList.ReturnCustomerPtr(customer.getUserName());
             custPtr->setAccountAccess(true);
 
             if (listIndeces.count() == 1)

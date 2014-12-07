@@ -17,7 +17,7 @@
 #ifndef PRODUCTCLASS_H_
 #define PRODUCTCLASS_H_
 #include <QString>
-
+#include "userclass.h"
 
 /**************************************************************************
  * Product Class
@@ -26,7 +26,7 @@
  * 	available for sale by Extreme Robot Cat Coderz. The class will
  *
  *************************************************************************/
-class Product
+class Product  : public User
 {
     public:
         Product();
@@ -65,7 +65,6 @@ class Product
         //	Passes in a new string to replace the productDescription
         //	string value of the class.
         // Returns: Nothing
-
 
         /*****************************************************************
          * Accessors

@@ -52,7 +52,7 @@ private slots:
 //    void on_unreadMessagesButton_clicked();
 
 private:
-    Ui::AdminWindow *ui;
+    Ui::AdminWindow  *ui;
     NewActivatedList *viewList;
     CustomerList customerList;
 };

@@ -130,7 +130,7 @@ private:
     SignUpWindow* sWindow;
     ContactUs * cWindow;
 
-    ProductList        robotList;
+    ProductList     robotList;
     CustomerList    customerList;
     bool                     databaseCreated = false;
 

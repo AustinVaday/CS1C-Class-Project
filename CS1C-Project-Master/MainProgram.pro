@@ -47,7 +47,9 @@ SOURCES += main.cpp\
     maintplan.cpp \
     environments.cpp \
     signupwindow.cpp \
-    contactus.cpp
+    contactus.cpp \
+    shoppingcartwindownew.cpp \
+    ExceptionHandlers.cpp
 
 HEADERS += MainProgramWindow.h \
 	adminclass.h \
@@ -84,7 +86,11 @@ HEADERS += MainProgramWindow.h \
     environments.h \
     signupwindow.h \
     contactus.h \
+<<<<<<< HEAD
     ShoppingCartList.h
+=======
+    shoppingcartwindownew.h
+>>>>>>> master
 
 FORMS   += mainprogramwindow.ui \
 	newactivatedlist.ui \
@@ -111,7 +117,8 @@ FORMS   += mainprogramwindow.ui \
     maintplan.ui \
     environments.ui \
     signupwindow.ui \
-    contactus.ui
+    contactus.ui \
+    shoppingcartwindownew.ui
 
 RESOURCES += \
     TextFilesFolder.qrc \

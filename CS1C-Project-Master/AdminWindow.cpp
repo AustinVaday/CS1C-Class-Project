@@ -28,7 +28,7 @@ AdminWindow::AdminWindow(QWidget *parent, CustomerList &list) :
 
 
 
-   }
+  }
 
 AdminWindow::~AdminWindow()
 {
