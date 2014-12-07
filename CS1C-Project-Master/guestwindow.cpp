@@ -39,3 +39,11 @@ void GuestWindow::on_EnviroButton_clicked()
     eWindow.setModal(true);
     eWindow.exec();
 }
+
+void GuestWindow::on_ConceptOps_clicked()
+{
+    ConceptOfOps OpWindow;
+
+    OpWindow.setModal(true);
+    OpWindow.exec();
+}

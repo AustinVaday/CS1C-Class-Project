@@ -70,6 +70,24 @@ background-color: rgb(20, 29, 117);</string>
      <string>Physical Environments Supported</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="ConceptOps">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>60</y>
+      <width>261</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(15, 15, 99);
+
+font: 14pt &quot;American Typewriter&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Concept of Operations</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

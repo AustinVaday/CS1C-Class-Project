@@ -13,7 +13,16 @@
   <property name="windowTitle">
    <string>MainProgramWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralWidget">
+   <property name="styleSheet">
+    <string notr="true">
+background-image: url(:/Resources/city whhaaa.jpg);
+
+</string>
+   </property>
    <widget class="QPushButton" name="exitProgram">
     <property name="geometry">
      <rect>
@@ -22,6 +31,11 @@
       <width>115</width>
       <height>32</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;
+font: 13pt &quot;Papyrus&quot;;
+</string>
     </property>
     <property name="text">
      <string>Exit Program</string>
@@ -39,6 +53,11 @@
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QPushButton" name="pushButton_Login">
+       <property name="styleSheet">
+        <string notr="true">color: white;
+font: 13pt &quot;Papyrus&quot;;
+</string>
+       </property>
        <property name="text">
         <string>Login</string>
        </property>
@@ -46,13 +65,24 @@
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_Guest">
+       <property name="styleSheet">
+        <string notr="true">color: white;
+font: 13pt &quot;Papyrus&quot;;
+
+</string>
+       </property>
        <property name="text">
         <string>Guest</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_RequestBrochure">
+      <widget class="QPushButton" name="pushButton_RequestBrochure_2">
+       <property name="styleSheet">
+        <string notr="true">color: white;
+font: 13pt &quot;Papyrus&quot;;
+</string>
+       </property>
        <property name="text">
         <string>Request Account/Brochure</string>
        </property>
@@ -60,12 +90,21 @@
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_Help">
+       <property name="styleSheet">
+        <string notr="true">color: white;
+font: 13pt &quot;Papyrus&quot;;
+</string>
+       </property>
        <property name="text">
         <string>Help</string>
        </property>
       </widget>
      </item>
     </layout>
+    <zorder>pushButton_Help</zorder>
+    <zorder>pushButton_Login</zorder>
+    <zorder>pushButton_Guest</zorder>
+    <zorder>pushButton_RequestBrochure_2</zorder>
    </widget>
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
@@ -103,13 +142,37 @@
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
-         <widget class="QTextBrowser" name="tempDisplay"/>
+         <widget class="QTextBrowser" name="tempDisplay">
+          <property name="styleSheet">
+           <string notr="true">color: white;
+font: 13pt &quot;Papyrus&quot;;
+</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="page_2"/>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>60</y>
+      <width>81</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;
+font: 13pt &quot;Papyrus&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Customer
+ Testimonials</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">

@@ -1,54 +1,58 @@
 #include "MainProgramWindow.h"
+#include <assert.h>
 
 MainProgramWindow::MainProgramWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainProgramWindow),
-     adminLogin(false),
-     customerLogin(false),
-     guestLogin(false),
-     createAccount(false)
+	QMainWindow(parent),
+	ui(new Ui::MainProgramWindow),
+	adminLogin(false),
+	customerLogin(false),
+	guestLogin(false),
+	createAccount(false)
 {
-    // DECLARATIONS
-    adminLogin    = 0;
-    customerLogin = 0;
-    guestLogin    = 0;
-    createAccount = 0;
+	// Hard code of admin login
+	Admin testAdmin("","admin1234@gmail.com", 1234, "");
 
+	ui->setupUi(this);
 
-    ui->setupUi(this);
-    // Debug construct
-qDebug() << "MainProgramWindow - Reading List! - Line 19";
+	// Determines if data base has been created
 
-    if(!databaseCreated)
-    {
-        if(!CreateDatabase())
-        {
-            qWarning("Missing Data");
-        }
-        else
-        {
-            databaseCreated = true;
-        }
-    }
+	try
+	{
+		if(!databaseCreated)
+		{
+			if(!(databaseCreated = CreateDatabase()))
+			{
+					throw "DATABASE FAILED";
+			}
 
-    // TEMPORARY DISPLAY!!
-    ui->tempDisplay->setText(customerList.OutputList());
+		}
 
+	}
+	catch(QString f)
+	{
+		QMessageBox terminate;
+		terminate.setText(f);
+		terminate.setWindowTitle("ERROR!");
+		QApplication::quit();
+	}
 
-    // Hard code of admin login
-    Admin testAdmin("","admin1234@gmail.com", 1234, "");
+	ui->tempDisplay->setText(customerList.OutputList());
 
 // Debuggin
 qDebug() << "Admin window: Output List, Line 36";
 qDebug() << customerList.OutputList();
 
+
+
     // Initialize
     hWindow = new HelpWindow;
     aWindow = new AdminWindow(this, customerList);
-    bWindow = new BrochureWindow;
+    bWindow = new BrochureWindow(this);
     gWindow = new GuestWindow;
     sWindow = new SignUpWindow;
     cWindow = new ContactUs(this);
+    bWindow = new BrochureWindow;
+    testWindow = new Testimonial;
 
     // ***DEBUG** List is read.
 qDebug() << customerList.OutputList() << "Main Program Window: "
@@ -58,6 +62,7 @@ qDebug() << customerList.OutputList() << "Main Program Window: "
 
     connect(bWindow, SIGNAL(clicked()), this, SLOT(on_pushButton_Help_clicked()));
 
+    connect(testWindow, SIGNAL(returnString(QString)),this, SLOT(updateTestimonial(QString)));
 
     // Shows the main program buttons when first logging in
 
@@ -65,220 +70,169 @@ qDebug() << customerList.OutputList() << "Main Program Window: "
 
 MainProgramWindow::~MainProgramWindow()
 {
-        if(!robotList.isEmpty())
-        {
-            robotList.WriteToFile();
-            robotList.ClearList();
-        }
 
-        if(!customerList.isEmpty())
-        {
-            customerList.WriteToFile();
-            customerList.ClearList();
-        }
-qDebug() << "Deconstructor Write to test file.";
+	robotList.WriteToFile();
+	robotList.ClearList();
 
 
+    customerTestimonial = testWindow->getTestimonial();
+    qDebug() << "My testimonials are : " << customerTestimonial;
 
-        delete aWindow;
-        delete bWindow;
-        delete hWindow;
-        delete gWindow;
-        delete sWindow;
-        delete cWindow;
-        delete ui;
+	customerList.WriteToFile();
+	customerList.ClearList();
+
+
+	delete aWindow;
+	delete bWindow;
+	delete hWindow;
+	delete gWindow;
+	delete sWindow;
+	delete cWindow;
+	delete ui;
 }
 
 void MainProgramWindow::on_pushButton_Login_clicked()
 {
+	Admin	Administrator("admin","admin1234@gmail.com", 1234, "password");
+	int		customerLocation;
+	bool	validInput = false;
+	QString tempName;
+	QString tempPassword;
+	Login   loginWindow;
+	ErrorLogin errorWindow;
+	Customer tempCustomer;
 
 
-    Admin testAdmin("admin","admin1234@gmail.com", 1234, "password");
+	customerLocation = 0;
+	loginWindow.setModal(true);
+	loginWindow.exec();
+	loginWindow.on_buttonBox_loginPress_accepted(tempName, tempPassword);
 
-    int        customerLocation;
+	// Stores the tempname and password
+	SetUsername(tempName);
+	SetPassword(tempPassword);
 
-    bool validInput = false;
-
-
-    QString    tempName;
-    QString    tempPassword;
-    Login      loginWindow;
-    ErrorLogin errorWindow;
-    Customer tempCustomer;
-
-
-        customerLocation = 0;
-        loginWindow.setModal(true);
-
-        loginWindow.exec();
-
-        loginWindow.on_buttonBox_loginPress_accepted(tempName, tempPassword);
-
-        SetUsername(tempName);
-        SetPassword(tempPassword);
-
-
-        if(testAdmin.checkAdmin(tempName, tempPassword ))
-        {
-            validInput = true;
-            SetAdminLogin(true);
-        }
-        else
-        {
-           tempCustomer =  customerList.VerifyCustomer(tempName, tempPassword);
-
-           if(tempCustomer.getUserName() != " ")
-           {
-               validInput = true;
-               SetCustomerLogin(true);
-           }
-        }
-
-
-    if(!loginWindow.on_buttonBox_loginPress_rejected())
-    {
-        errorWindow.setModal(true);
-        errorWindow.exec();
-        errorWindow.show();
-    }
-
-    if(validInput)
-    {
-        Launcher();
-    }
-
+	if(Administrator.checkAdmin(tempName, tempPassword ))
+	{
+		validInput = true;
+		SetAdminLogin(true);
+	}
+	else
+	{	// Compare user input to database
+		tempCustomer =  customerList.VerifyCustomer(tempName, tempPassword);
+		if(tempCustomer.getUserName() != " ")
+		{
+			validInput = true;
+			SetCustomerLogin(true);
+		}
+	}
+	if(!loginWindow.on_buttonBox_loginPress_rejected())
+	{
+		// ERROR MESSAGES LOGIN REJECTED DISPLAY
+		errorWindow.setModal(true);
+		errorWindow.exec();
+		errorWindow.show();
+	}
+	if(validInput)
+	{
+		if(adminLogin)
+		{
+			aWindow->show();	// ADMIN
+		}
+		else if(customerLogin)
+		{
+			bWindow->show();    // BROCHURE
+		}
+	}
 }
-
 // Launches Window depending which button is clicked
 void MainProgramWindow::Launcher()
 {
-    if(adminLogin)
-    {
-        aWindow->show();
-    }
-    else if(customerLogin)
-    {
-        bWindow->show();
-    }
 
 }
-
-
 void MainProgramWindow::on_exitProgram_clicked()
 {
-    QApplication::quit();
+	QApplication::quit(); // <-----EXITS PROGRAM
 }
-
-//S E T ~ A N D ~ G E T ~ M E T H O D S
-
+// SET DATA MEMBER METHODS
 void MainProgramWindow::SetAdminLogin(bool state)
 {
-    adminLogin = state;
+	adminLogin = state;
+}
+void MainProgramWindow::SetCustomerLogin  (bool state)
+{
+	customerLogin = state;
 }
 
- void MainProgramWindow::SetCustomerLogin  (bool state)
- {
-    customerLogin = state;
- }
-
-  void MainProgramWindow::SetGuestLogin  (bool state)
- {
-    guestLogin = state;
- }
-
-  void MainProgramWindow::SetCreateAccount  (bool state)
- {
-    createAccount = state;
- }
-
-
+void MainProgramWindow::SetGuestLogin  (bool state)
+{
+	guestLogin = state;
+}
+void MainProgramWindow::SetCreateAccount  (bool state)
+{
+	createAccount = state;
+}
 // G E T ~ M E T H O D S
-
- bool MainProgramWindow::GetAdminLoginState()
- {
-    return adminLogin;
- }
-
- bool MainProgramWindow::GetCustomerLoginState()
- {
-    return customerLogin;
- }
-
- bool MainProgramWindow::GetGuestLoginState()
- {
-    return guestLogin;
- }
-
-  bool MainProgramWindow::GetCreateAccountState()
- {
-    return createAccount;
- }
-
-
+bool MainProgramWindow::GetAdminLoginState()
+{
+	return adminLogin;
+}
+bool MainProgramWindow::GetCustomerLoginState()
+{
+	return customerLogin;
+}
+bool MainProgramWindow::GetGuestLoginState()
+{
+	return guestLogin;
+}
+bool MainProgramWindow::GetCreateAccountState()
+{
+	return createAccount;
+}
 QString MainProgramWindow::GetUsername()
 {
-    return userName;
+	return userName;
 }
-
 QString MainProgramWindow::GetPassword()
 {
-    return password;
+	return password;
 }
-
-
-
 void MainProgramWindow::SetUsername(QString newUserName)
 {
-    userName = newUserName;
+	userName = newUserName;
 }
-
 void MainProgramWindow::SetPassword(QString newPassword)
 {
-    password = newPassword;
+	password = newPassword;
 }
-
+// HELP WIDNOW - 2x Buttons Display 1 Window
 void MainProgramWindow::on_pushButton_Help_clicked()
 {
-    showHelpWindow();
+	hWindow->show();
 }
-
-// Help Button Clicked
-void MainProgramWindow::showHelpWindow()
-{
-    hWindow->show();
-}
-
-// Menu Bar Help Option
 void MainProgramWindow::on_actionHelp_triggered()
 {
-    hWindow->show();
+	hWindow->show();
 }
-
+// Updates Customer List
 void MainProgramWindow::updateCustomerList(CustomerList *list)
 {
+	// if adminwindow is not open, update it's customer list.
+	if (!aWindow->isVisible())
+	{
+		aWindow = new AdminWindow(this, customerList);
+	}
 
-    // if adminwindow is not open, update it's customer list.
-    if (!aWindow->isVisible())
-    {
-//        delete aWindow; /* CRASHES THE PROGRAM FOR SOME REASON!?!?! */
+	customerList = *list;
+	ui->tempDisplay->clear();
+	ui->tempDisplay->setText(customerList.OutputList());
 
-        aWindow = new AdminWindow(this, customerList);
-    }
-
-    customerList = *list;
-
-    // TEMPORARY DISPLAY!!
-    ui->tempDisplay->clear();
-    ui->tempDisplay->setText(customerList.OutputList());
-
-    customerList.WriteToFile();
-
-    qDebug() << "List has finally reached the MainProgramWindow!";
+//    customerList.WriteToFile();
 }
 
 void MainProgramWindow::on_pushButton_Guest_clicked()
 {
-    gWindow->show();
+	gWindow->show();
 }
 
 
@@ -293,92 +247,81 @@ void MainProgramWindow::on_pushButton_Guest_clicked()
  ************************************************************************/
 bool MainProgramWindow::CreateDatabase()
 {
-    QMessageBox writeFail;
-    bool writeSuccess;
-    writeSuccess = false;
+	bool readStatus;
+	readStatus = false;
 
-    // Sets writeFail Window Title
-    writeFail.setWindowTitle("*** > WARNING < ***");
+	// Reads from default list
+	if(!(readStatus = (this->robotList.ReadFile())))
+	{
+		Q_ASSERT(readStatus);
+	}
 
-    if(this->robotList.ReadFile())
-    {
-qDebug() << "CreateDatabase Product Write";
-        writeSuccess = true;
-    }
-    else
-    {
-        writeFail.setText("Failed to initialize Product Database!");
-        writeFail.setModal(true);
-        writeFail.exec();
-        writeSuccess = false;
-    }
+	if(!(readStatus = (this->customerList.ReadFile())))
+	{
+		Q_ASSERT(readStatus);
+	}
 
-    if(this->customerList.ReadFile())
-    {
-        qDebug() << "CreateDatabase Customer Write";
-        writeSuccess = true;
-    }
-    else
-    {
-        writeFail.setText("Failed to initialize Customer Database!");
-        writeFail.setModal(true);
-        writeFail.exec();
-        writeSuccess = false;
-    }
-
-    return writeSuccess;
+	return readStatus;
 }
 void MainProgramWindow::on_pushButton_RequestBrochure_clicked()
 {
-        Customer customer;
-        bool properFields = false;
-        sWindow->setModal(true);
+	Customer customer;
+	bool properFields = false;
+	sWindow->setModal(true);
 
 
-        int submitSuccess = sWindow->exec();
+	int submitSuccess = sWindow->exec();
 
-        if (submitSuccess)
-        {
-            sWindow->on_buttonBox_accepted(customer, properFields);
+	if (submitSuccess)
+	{
+		sWindow->on_buttonBox_accepted(customer, properFields);
 
-            if (properFields)
-            {
-                 // check if the customer is not taken
-                 if (!customerList.isExist(customer) && !customerList.isExistSameName(customer.getUserName()))
-                 {
+		if (properFields)
+		{
+			// check if the customer is not taken
+			if (!customerList.isExist(customer)
+			&& !customerList.isExistSameName(customer.getUserName()))
+			{
+				customerList.Enqueue(customer);
+				updateCustomerList(&customerList);
+				QMessageBox::information(this, tr("Registration Successful"),tr("\"%1\", you will be notified shortly whether you have been accepted or rejected.").arg(customer.getUserName()));
 
+			// SIGNALS & SLOTS
+			// emit customerListChanged(&customerList);
 
-                     customerList.Enqueue(customer);
+			}
+			else if (customerList.isExistSameName(customer.getUserName()))
+			{
+				QMessageBox::information(this, tr("Registration Unsuccessful"),tr("Please enter in another name,""\"%1\" is already taken").arg(customer.getUserName()));
+			}
+			else
+			{
 
-                     updateCustomerList(&customerList);
+				QMessageBox::information(this, tr("Registration Unsuccessful"),
+					tr("\"%1\" is already in your "
+					"customer list.").arg(customer.getUserName()));
 
-                     QMessageBox::information(this, tr("Registration Successful"),
-                      tr("\"%1\", you will be notified shortly whether you have been accepted or rejected.").arg(customer.getUserName()));
-
-                     // SIGNALS & SLOTS
-    //                 emit customerListChanged(&customerList);
-
-                  }
-                 else if (customerList.isExistSameName(customer.getUserName()))
-                 {
-                     QMessageBox::information(this, tr("Registration Unsuccessful"),
-                      tr("Please enter in another name, \"%1\" is already taken").arg(customer.getUserName()));
-                 }
-                 else
-                  {
-
-                     QMessageBox::information(this, tr("Registration Unsuccessful"),
-                      tr("\"%1\" is already in your customer list.").arg(customer.getUserName()));
-
-                  }
-                }
-                qDebug() << customer.OutputData();
-        }
-
-
+			}
+		}
+		qDebug() << customer.OutputData();
+	}
 }
 
 void MainProgramWindow::on_actionContactUS_triggered()
 {
-    cWindow->show();
+	cWindow->show();
+}
+
+void MainProgramWindow::on_pushButton_clicked()
+{
+    QString mystring = "Here are recent customer testimonials!\n";
+    testWindow->setTestimonial(mystring);
+    testWindow->show();
+
+
+}
+
+void MainProgramWindow::updateTestimonial(QString newTestimonial)
+{
+    customerTestimonial = newTestimonial;
 }

@@ -6,6 +6,7 @@
 #include "guarantee.h"
 #include "sellpoint.h"
 #include "environments.h"
+#include "conceptofops.h"
 
 namespace Ui {
 class GuestWindow;
@@ -25,6 +26,8 @@ private slots:
     void on_sellButton_clicked();
 
     void on_EnviroButton_clicked();
+
+    void on_ConceptOps_clicked();
 
 private:
     Ui::GuestWindow *ui;

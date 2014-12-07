@@ -14,12 +14,8 @@ Admin::Admin(QString userName,
               QString password
             ) : User(userName,email,accountNum,password)
 {
-//	User::setUserName(userName);
-//	User::setEmail(email);
-//	User::setAccountNum(accountNum); // should we make this in the class instead?????
-//	User::setPassword(password);
 
-//	activate = true;
+
 }
 
 // destructor
