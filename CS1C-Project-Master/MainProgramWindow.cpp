@@ -9,11 +9,6 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
 	guestLogin(false),
 	createAccount(false)
 {
-	// DECLARATIONS
-//	adminLogin    = 0;
-//	customerLogin = 0;
-//	guestLogin    = 0;
-//	createAccount = 0;
 	// Hard code of admin login
 	Admin testAdmin("","admin1234@gmail.com", 1234, "");
 
@@ -52,15 +47,12 @@ qDebug() << customerList.OutputList();
     // Initialize
     hWindow = new HelpWindow;
     aWindow = new AdminWindow(this, customerList);
-<<<<<<< HEAD
     bWindow = new BrochureWindow(this);
     gWindow = new GuestWindow;
     sWindow = new SignUpWindow;
     cWindow = new ContactUs(this);
-=======
     bWindow = new BrochureWindow;
     testWindow = new Testimonial;
->>>>>>> Brochure-Output
 
     // ***DEBUG** List is read.
 qDebug() << customerList.OutputList() << "Main Program Window: "
@@ -78,20 +70,13 @@ qDebug() << customerList.OutputList() << "Main Program Window: "
 
 MainProgramWindow::~MainProgramWindow()
 {
-<<<<<<< HEAD
+
 	robotList.WriteToFile();
 	robotList.ClearList();
-=======
+
 
     customerTestimonial = testWindow->getTestimonial();
     qDebug() << "My testimonials are : " << customerTestimonial;
-       ProductList myList;
-
-        Product robot1("Guy", "<AR{P", 434.2, 432, 232341);
-
-        myList.Enqueue(robot1);
->>>>>>> Brochure-Output
-
 
 	customerList.WriteToFile();
 	customerList.ClearList();

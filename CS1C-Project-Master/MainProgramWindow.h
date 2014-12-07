@@ -98,7 +98,7 @@ class MainProgramWindow : public QMainWindow
 		void on_pushButton_Login_clicked();
 		//  Login Window Process Executes
 		//      Login -> Customer || Admin || Denied
-
+		void on_pushButton_clicked();
 		void on_actionHelp_triggered();
 		//  Help Window Appear
 
@@ -129,6 +129,13 @@ class MainProgramWindow : public QMainWindow
 		CustomerList    customerList;
 		bool            databaseCreated = false;
 
+		bool		adminLogin;
+		bool		customerLogin;
+		bool		createAccount;
+		bool		guestLogin;
+
+		QString		userName;
+		QString		password;
 };
 
 #endif // MAINPROGRAMWINDOW_H
