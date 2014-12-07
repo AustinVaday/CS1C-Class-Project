@@ -83,7 +83,8 @@ HEADERS += MainProgramWindow.h \
     maintplan.h \
     environments.h \
     signupwindow.h \
-    contactus.h
+    contactus.h \
+    ShoppingCartList.h
 
 FORMS   += mainprogramwindow.ui \
 	newactivatedlist.ui \
