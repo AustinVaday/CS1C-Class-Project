@@ -24,3 +24,8 @@ void BrochureWindow::on_button_viewProducts_clicked()
 {
     vpWindow->show();
 }
+
+void BrochureWindow::on_button_logout_clicked()
+{
+    this->close();
+}

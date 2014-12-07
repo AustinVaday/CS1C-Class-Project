@@ -27,6 +27,8 @@
 #include "guestwindow.h"
 #include "maintplan.h"
 #include "environments.h"
+#include "conceptofops.h"
+#include "testimonial.h"
 
 #include <QDebug>
 

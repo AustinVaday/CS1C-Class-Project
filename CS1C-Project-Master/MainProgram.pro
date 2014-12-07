@@ -45,7 +45,9 @@ SOURCES += main.cpp\
     guarantee.cpp \
     guestwindow.cpp \
     maintplan.cpp \
-    environments.cpp
+    environments.cpp \
+    conceptofops.cpp \
+    testimonial.cpp
 
 HEADERS += MainProgramWindow.h \
 	adminclass.h \
@@ -79,7 +81,9 @@ HEADERS += MainProgramWindow.h \
     guarantee.h \
     guestwindow.h \
     maintplan.h \
-    environments.h
+    environments.h \
+    conceptofops.h \
+    testimonial.h
 
 FORMS   += mainprogramwindow.ui \
 	newactivatedlist.ui \
@@ -104,7 +108,9 @@ FORMS   += mainprogramwindow.ui \
     guarantee.ui \
     guestwindow.ui \
     maintplan.ui \
-    environments.ui
+    environments.ui \
+    conceptofops.ui \
+    testimonial.ui
 
 RESOURCES += \
     TextFilesFolder.qrc \

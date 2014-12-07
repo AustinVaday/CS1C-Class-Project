@@ -29,6 +29,8 @@ private slots:
 
     void on_button_viewProducts_clicked();
 
+    void on_button_logout_clicked();
+
 private:
     Ui::BrochureWindow* ui;
     ViewProducts*       vpWindow;

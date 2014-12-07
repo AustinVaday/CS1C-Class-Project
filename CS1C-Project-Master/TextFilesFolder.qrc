@@ -5,5 +5,10 @@
         <file>ProductDatabase.txt</file>
         <file>HelpOptionFile.txt</file>
         <file>TestFile.txt</file>
+        <file>../Resources/03776_craterpath_2560x1600.jpg</file>
+        <file>../Resources/coral.jpg</file>
+        <file>../Resources/mmmm.jpg</file>
+        <file>../Resources/oahusplash.jpg</file>
+        <file>../Resources/soviet.jpg</file>
     </qresource>
 </RCC>
