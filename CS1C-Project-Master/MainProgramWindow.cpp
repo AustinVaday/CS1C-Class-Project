@@ -271,3 +271,11 @@ void MainProgramWindow::on_pushButton_Guest_clicked()
 
     gWindow->show();
 }
+
+void MainProgramWindow::on_pushButton_clicked()
+{
+    QString mystring = "Here are recent customer testimonials!\n";
+    testWindow = new Testimonial(0,mystring);
+    testWindow->show();
+
+}

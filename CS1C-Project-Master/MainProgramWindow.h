@@ -106,6 +106,8 @@ private slots:
 
     void on_pushButton_Guest_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainProgramWindow *ui;
 
@@ -118,6 +120,7 @@ private:
     HelpWindow  *hWindow;
 
     GuestWindow *gWindow;
+    Testimonial *testWindow;
     // Pointer of type HelpWindow
     //  Used to create a help window for the user
 

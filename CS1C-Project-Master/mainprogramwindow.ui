@@ -14,9 +14,12 @@
    <string>MainProgramWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-image: url(:/Resources/city whhaaa.jpg);</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralWidget">
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/Resources/city whhaaa.jpg);</string>
+   </property>
    <widget class="QPushButton" name="exitProgram">
     <property name="geometry">
      <rect>
@@ -149,6 +152,24 @@ font: 13pt &quot;Papyrus&quot;;
      </widget>
     </widget>
     <widget class="QWidget" name="page_2"/>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>60</y>
+      <width>81</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;
+font: 13pt &quot;Papyrus&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Customer
+ Testimonials</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
