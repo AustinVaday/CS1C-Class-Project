@@ -96,6 +96,7 @@ public slots:
 
     void updateCustomerList(CustomerList *list);
 
+    void updateTestimonial(QString newTestimonial);
 
 
 private slots:
@@ -131,7 +132,7 @@ private:
     // SECTION LOGIN BOOLEANS
     //These boolean variables are used to determine what
     //  type of window to launch
-
+    QString customerTestimonial;
     bool adminLogin         = 0;
     bool customerLogin  = 0;
     bool guestLogin      = 0;

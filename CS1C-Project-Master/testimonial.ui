@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>Testimonial</class>
  <widget class="QWidget" name="Testimonial">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -13,8 +16,11 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
+  </property>
   <property name="styleSheet">
-   <string notr="true">Background-image: url(:/Resources/night.jpg)</string>
+   <string notr="true">background-image: url(:/Resources/night.jpg);</string>
   </property>
   <widget class="QPushButton" name="write">
    <property name="geometry">

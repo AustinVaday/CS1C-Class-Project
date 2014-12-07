@@ -31,6 +31,7 @@ qDebug() << customerList.OutputList();
     hWindow = new HelpWindow;
     aWindow = new AdminWindow(this, customerList);
     bWindow = new BrochureWindow;
+    testWindow = new Testimonial;
 
     // ***DEBUG** List is read.
 qDebug() << customerList.OutputList() << "Main Program Window: "
@@ -40,6 +41,7 @@ qDebug() << customerList.OutputList() << "Main Program Window: "
 
     connect(bWindow, SIGNAL(clicked()), this, SLOT(on_pushButton_Help_clicked()));
 
+    connect(testWindow, SIGNAL(returnString(QString)),this, SLOT(updateTestimonial(QString)));
 
     // Shows the main program buttons when first logging in
 
@@ -47,6 +49,9 @@ qDebug() << customerList.OutputList() << "Main Program Window: "
 
 MainProgramWindow::~MainProgramWindow()
 {
+
+    customerTestimonial = testWindow->getTestimonial();
+    qDebug() << "My testimonials are : " << customerTestimonial;
        ProductList myList;
 
         Product robot1("Guy", "<AR{P", 434.2, 432, 232341);
@@ -275,7 +280,13 @@ void MainProgramWindow::on_pushButton_Guest_clicked()
 void MainProgramWindow::on_pushButton_clicked()
 {
     QString mystring = "Here are recent customer testimonials!\n";
-    testWindow = new Testimonial(0,mystring);
+    testWindow->setTestimonial(mystring);
     testWindow->show();
 
+
+}
+
+void MainProgramWindow::updateTestimonial(QString newTestimonial)
+{
+    customerTestimonial = newTestimonial;
 }

@@ -13,13 +13,16 @@ class Testimonial : public QWidget
 
 public:
     explicit Testimonial(QWidget *parent = 0);
-    Testimonial(QWidget *parent, QString &inputStr);
     ~Testimonial();
+
+    void setTestimonial(QString input);
+    QString getTestimonial() const;
+
+signals:
+    void returnString(QString returnString);
 
 private slots:
     void on_write_clicked();
-
-
 
 private:
     Ui::Testimonial *ui;

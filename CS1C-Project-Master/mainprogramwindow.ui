@@ -18,7 +18,10 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="styleSheet">
-    <string notr="true">background-image: url(:/Resources/city whhaaa.jpg);</string>
+    <string notr="true">
+background-image: url(:/Resources/city whhaaa.jpg);
+
+</string>
    </property>
    <widget class="QPushButton" name="exitProgram">
     <property name="geometry">
