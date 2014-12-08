@@ -9,8 +9,11 @@ QT       += printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+QT_NO_DEBUG_OUTPUT
+
 TARGET = MainProgram
 TEMPLATE = app
+
 
 
 SOURCES += main.cpp\
@@ -47,12 +50,18 @@ SOURCES += main.cpp\
     maintplan.cpp \
     environments.cpp \
     signupwindow.cpp \
+<<<<<<< HEAD
     contactus.cpp\
     shoppingcartwindow.cpp\
     shoppingcartwindownew.cpp
 
 
 
+=======
+    contactus.cpp \
+    shoppingcartwindownew.cpp \
+    ExceptionHandlers.cpp
+>>>>>>> 6c200a4cea29f155e84a6178e779239b8e25e3ba
 
 HEADERS += MainProgramWindow.h \
 	adminclass.h \
@@ -90,9 +99,13 @@ HEADERS += MainProgramWindow.h \
     signupwindow.h \
     contactus.h \
     ShoppingCartList.h\
+<<<<<<< HEAD
     shoppingcartwindownew.h\
     QWidget.h
 
+=======
+    shoppingcartwindownew.h
+>>>>>>> 6c200a4cea29f155e84a6178e779239b8e25e3ba
 
 FORMS   += mainprogramwindow.ui \
 	newactivatedlist.ui \
@@ -119,7 +132,11 @@ FORMS   += mainprogramwindow.ui \
     maintplan.ui \
     environments.ui \
     signupwindow.ui \
+<<<<<<< HEAD
     contactus.ui\
+=======
+    contactus.ui \
+>>>>>>> 6c200a4cea29f155e84a6178e779239b8e25e3ba
     shoppingcartwindownew.ui
 
 RESOURCES += \
@@ -127,5 +144,31 @@ RESOURCES += \
     Images.qrc
 
 OTHER_FILES += \
-    ProductDatabase.txt
+    ProductDatabase.txt\
+    CustomerDatabase.txt
 
+
+# QMAKE OUTPUTS
+#       DO NOT REMOVE!!!!!!
+#
+ message($$QMAKESPEC)
+
+# Mac OS Specific path
+ macx{
+        _PATH = "../../../../CS1C-Project-Master"
+ }
+
+
+ message(Qt version: $$[QT_VERSION])
+ message(Qt is installed in $$[QT_INSTALL_PREFIX])
+ message(Qt resources can be found in the following locations:)
+ message(Documentation: $$[QT_INSTALL_DOCS])
+ message(Header files: $$[QT_INSTALL_HEADERS])
+ message(Libraries: $$[QT_INSTALL_LIBS])
+ message(Binary files (executables): $$[QT_INSTALL_BINS])
+ message(Plugins: $$[QT_INSTALL_PLUGINS])
+ message(Data files: $$[QT_INSTALL_DATA])
+ message(Translation files: $$[QT_INSTALL_TRANSLATIONS])
+ message(Settings: $$[QT_INSTALL_SETTINGS])
+ message(Examples: $$[QT_INSTALL_EXAMPLES])
+ message(Demonstrations: $$[QT_INSTALL_DEMOS])

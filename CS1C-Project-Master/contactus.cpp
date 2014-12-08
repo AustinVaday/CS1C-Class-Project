@@ -158,15 +158,13 @@ void ContactUs::on_sendButton_clicked()
     question = ui->chatTypeLine->text();
 
     ui->chatTypeLine->clear();
-
     ui->chatTypeLine->setEnabled(false);
     ui->chatTypeLine->setText("Admin is typing ... ");
 
     ui->nameEdit->clearFocus();
+
     QTimer::singleShot(3000, this, SLOT(generateResponse()));
+
     ui->nameEdit->clearFocus();
-
-
-
 
 }

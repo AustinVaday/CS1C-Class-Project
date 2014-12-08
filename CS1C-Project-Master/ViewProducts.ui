@@ -76,6 +76,7 @@
       <string notr="true"/>
      </property>
     </widget>
+<<<<<<< HEAD
     <widget class="QPushButton" name="addProductOne">
      <property name="geometry">
       <rect>
@@ -87,6 +88,19 @@
      </property>
      <property name="text">
       <string>Add To Cart</string>
+=======
+    <widget class="QPushButton" name="product_One">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>280</y>
+       <width>75</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Add to Cart</string>
+>>>>>>> 6c200a4cea29f155e84a6178e779239b8e25e3ba
      </property>
     </widget>
    </widget>
@@ -123,6 +137,7 @@
       </rect>
      </property>
     </widget>
+<<<<<<< HEAD
     <widget class="QPushButton" name="addProductTwo">
      <property name="geometry">
       <rect>
@@ -134,6 +149,19 @@
      </property>
      <property name="text">
       <string>Add To Cart</string>
+=======
+    <widget class="QPushButton" name="product_Two">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>300</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Add to Cart</string>
+>>>>>>> 6c200a4cea29f155e84a6178e779239b8e25e3ba
      </property>
     </widget>
    </widget>
@@ -170,6 +198,7 @@
       </rect>
      </property>
     </widget>
+<<<<<<< HEAD
     <widget class="QPushButton" name="addProductThree">
      <property name="geometry">
       <rect>
@@ -181,6 +210,19 @@
      </property>
      <property name="text">
       <string>Add To Cart</string>
+=======
+    <widget class="QPushButton" name="product_Three">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>320</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Add to Cart</string>
+>>>>>>> 6c200a4cea29f155e84a6178e779239b8e25e3ba
      </property>
     </widget>
    </widget>
@@ -201,6 +243,7 @@
     <string>Maintanence Plan</string>
    </property>
   </widget>
+<<<<<<< HEAD
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
@@ -226,6 +269,20 @@
      </widget>
     </item>
    </layout>
+=======
+  <widget class="QPushButton" name="checkout_button">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>10</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Ceckout</string>
+   </property>
+>>>>>>> 6c200a4cea29f155e84a6178e779239b8e25e3ba
   </widget>
  </widget>
  <resources>

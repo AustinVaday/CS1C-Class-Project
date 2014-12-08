@@ -38,113 +38,104 @@ class MainProgramWindow;
 
 class MainProgramWindow : public QMainWindow
 {
-    Q_OBJECT
+		Q_OBJECT
 
+	public:         // Main Program, Initial Interface
+		explicit MainProgramWindow(QWidget *parent = 0);
 
-public:
-    explicit MainProgramWindow(QWidget *parent = 0);
+	// Sets Login state of the customer, Login state determines what list &
+	//  window type / widget / dialogue to launch & types of data transfers
+	//  of the customer list and the product list
+		void SetAdminLogin     (bool state);
+		void SetCustomerLogin  (bool state);
+		void SetGuestLogin     (bool state);
+		void SetCreateAccount  (bool state);
 
-    /************************************************************
-     * These set methods are used to set the state of the private boolean
-     * variables. The boolean variables are our new approach to launching a
-     * specific widgets/windows. For example, if adminLogin is true, launch an
-     * AdminWindow. If customerLogin is true, launch a CustomerWindow and so on.
-     * This approach will allow the Login window practice encapsulation.
-     ***************************************************************************/
-    void SetAdminLogin     (bool state);
-    void SetCustomerLogin  (bool state);
-    void SetGuestLogin     (bool state);
-    void SetCreateAccount  (bool state);
+	// These get methods will be used to detemine what type of window to launch
+		bool GetAdminLoginState();
+		bool GetCustomerLoginState();
+		bool GetGuestLoginState();
+		bool GetCreateAccountState();
 
-    /***************************************************************************
-     * These get methods will be used to detemine what type of window to launch
-     *
-     * (read documentation above)
-     ***************************************************************************/
-     bool GetAdminLoginState();
-     bool GetCustomerLoginState();
-     bool GetGuestLoginState();
-     bool GetCreateAccountState();
+		// COMPOSITION gets product list
+		ProductList* getProductList() const;
 
-     ProductList* getProductList() const;
+		// Gets user name and password for any login
+		QString GetUsername();
+		QString GetPassword();
 
-     QString GetUsername();
-     QString GetPassword();
+		// Determines if to instatiate a database
+		bool CreateDatabase();
 
-     bool CreateDatabase();
+		//  Accessors
+		void SetUsername(QString newUsername);
+		// Sets user name
 
-    //  Accessors
-     void SetUsername(QString newUsername);
-     // Sets user name
+		void SetPassword(QString newPassword);
+		// Sets users password
 
-     void SetPassword(QString newPassword);
-     // Sets users password
+		// user state == Admin || Brochure -> window
+		void Launcher();
 
-void Launcher();
+		~MainProgramWindow();
 
-    ~MainProgramWindow();
+	signals:
+		void clicked();
+		// Signal to emit if anything is clicked on mainprogram window
+		//  or main bar, commonly used signal
 
-signals:
-    void clicked();
+	public slots:
+		// Displays Respective Windows
 
-public slots:
+		void on_pushButton_Help_clicked();
+		void on_exitProgram_clicked();
+		void updateCustomerList(CustomerList *list);
 
-    void on_pushButton_Help_clicked();
+	private slots:
 
-    void on_exitProgram_clicked();
+		void on_pushButton_Login_clicked();
+		//  Login Window Process Executes
+		//      Login -> Customer || Admin || Denied
 
-    void showHelpWindow();
-    // displays help window
+		void on_actionHelp_triggered();
+		//  Help Window Appear
 
-    void updateCustomerList(CustomerList *list);
+		void on_pushButton_Guest_clicked();
+		void on_pushButton_RequestBrochure_clicked();
+		void on_actionContactUS_triggered();
 
+	private:
+		Ui::MainProgramWindow *ui;
 
+		// PROGRAM SECTION WINDOWS
+		AdminWindow *aWindow;
+		// Pointer towards the admin window
 
-private slots:
+		HelpWindow  *hWindow;
+		GuestWindow *gWindow;
+		// Pointer of type HelpWindow
+		//  Used to create a help window for the user
 
-    void on_pushButton_Login_clicked();
+		BrochureWindow* bWindow;
+		SignUpWindow*   sWindow;
+		ContactUs *     cWindow;
 
-    void on_actionHelp_triggered();
+		ProductList     robotList;
+		CustomerList    customerList;
+		bool            databaseCreated = false;
 
-    void on_pushButton_Guest_clicked();
+		// SECTION LOGIN BOOLEANS
+		//These boolean variables are used to determine what
+		//  type of window to launch
 
-    void on_pushButton_RequestBrochure_clicked();
+		bool adminLogin;
+		bool customerLogin;
+		bool guestLogin;
+		bool createAccount;
 
-    void on_actionContactUS_triggered();
+		QString userName;
+		QString password;
 
-private:
-    Ui::MainProgramWindow *ui;
-
-    // PROGRAM SECTION WINDOWS
-    AdminWindow *aWindow;
-    // Pointer towards the admin window
-
-    // Customer / Brochure Data Memeber Placeholder
-
-    HelpWindow  *hWindow;
-    GuestWindow *gWindow;
-    // Pointer of type HelpWindow
-    //  Used to create a help window for the user
-
-    BrochureWindow*     bWindow;
-    SignUpWindow* sWindow;
-    ContactUs * cWindow;
-
-    ProductList        robotList;
-    CustomerList    customerList;
-    bool                     databaseCreated = false;
-
-    // SECTION LOGIN BOOLEANS
-    //These boolean variables are used to determine what
-    //  type of window to launch
-
-    bool adminLogin;
-    bool customerLogin;
-    bool guestLogin;
-    bool createAccount;
-
-    QString userName;
-    QString password;
 };
 
 #endif // MAINPROGRAMWINDOW_H
