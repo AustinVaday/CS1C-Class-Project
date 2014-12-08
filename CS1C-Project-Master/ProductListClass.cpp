@@ -504,7 +504,6 @@ QString ProductList::operator[](int index)
 	return traversePtr->GetData().OutputData();
 }
 
-<<<<<<< HEAD
 Product ProductList::ReturnProduct(int index) const
 {
     Node<Product> * traversePtr;
@@ -550,11 +549,8 @@ Product ProductList::ReturnProduct(int index) const
  * --------------------------------------------------------------------------------
  * File path is set when first establishing the database
  *************************************************************/
-bool ProductList::WriteToFile()
-=======
 
 bool ProductList::isExist(Product someProduct)
->>>>>>> master
 {
 
 	Node<Product> * traversePtr;

@@ -55,8 +55,6 @@
        <enum>QLayout::SetNoConstraint</enum>
       </property>
       <item>
-<<<<<<< HEAD
-=======
        <widget class="QPushButton" name="button_placeOrder">
         <property name="enabled">
          <bool>true</bool>
@@ -82,7 +80,6 @@
        </widget>
       </item>
       <item>
->>>>>>> master
        <widget class="QPushButton" name="button_viewProducts">
         <property name="styleSheet">
          <string notr="true">font: italic 13pt &quot;Zapfino&quot;;</string>
@@ -134,11 +131,8 @@
      <x>0</x>
      <y>0</y>
      <width>631</width>
-<<<<<<< HEAD
      <height>21</height>
-=======
      <height>22</height>
->>>>>>> master
     </rect>
    </property>
    <widget class="QMenu" name="menuMenu">

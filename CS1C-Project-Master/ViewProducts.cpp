@@ -1,9 +1,6 @@
 #include "ViewProducts.h"
 #include "ui_ViewProducts.h"
-<<<<<<< HEAD
 #include "shoppingcartwindownew.h"
-=======
->>>>>>> master
 #include <QMessageBox>
 
 
@@ -28,7 +25,6 @@ ViewProducts::ViewProducts(QWidget *parent, ProductList &robotList, ProductList 
 
     ui->setupUi(this);
 
-<<<<<<< HEAD
 
 //    Product robo1("Meowzers", "Robot is disquised as a cat\nvery efficient in difficult terrains\nvery agile & stealthy robot", 5000.00, 666, 111413);
 //    ui->text1->insertPlainText(robo1.OutputData());
@@ -63,12 +59,9 @@ ViewProducts::ViewProducts(QWidget *parent, ProductList &shoppingCartList):
 
     Product robo1("Meowzers", "Robot is disquised as a cat\nvery efficient in difficult terrains\nvery agile & stealthy robot", 5000.00, 666, 111413);
     ui->text1->insertPlainText(robo1.OutputData());
-=======
     ui->text1->insertPlainText(robotList[0]);
 
     ui->text2->insertPlainText(robotList[1]);
->>>>>>> master
-
     ui->text3->insertPlainText(robotList[2]);
 
     scWindow = new ShoppingCartWindowNew();
@@ -101,13 +94,7 @@ void ViewProducts::on_updated_shopping_list(ProductList & updatedList)
     emit signal_updated_shopping_list(shoppingCart);
 }
 
-void ViewProducts::on_updated_shopping_list(ProductList &ShoppingCartList)
-{
 
-    shoppingCartList = ShoppingCartList;
-
-    emit signal_updated_shopping_list(shoppingCartList);
-}
 
 void ViewProducts::on_MaintPlan_clicked()
 {
@@ -117,7 +104,6 @@ void ViewProducts::on_MaintPlan_clicked()
     mWindow.exec();
 }
 
-<<<<<<< HEAD
 void ViewProducts::on_addProductOne_clicked()
 {
      shoppingCart.Enqueue(product1);
@@ -140,7 +126,6 @@ void ViewProducts::on_addProductThree_clicked()
 
 
 }
-
 void ViewProducts::on_checkOutButton_clicked()
 {
 
@@ -165,67 +150,7 @@ void ViewProducts::on_checkOutButton_clicked()
 }
 
 
-void ViewProducts::on_pushButton_clicked()
-{
-    this->hide();
-=======
 
-//Product Buttons ok
-void ViewProducts::on_product_One_clicked()
-{
-
-    Product data;
-
-    data = roboList.FindProduct("Meowzers");
-
-    if (!shoppingCartList.isExist(data))
-    {
-        shoppingCartList.Enqueue(data);
-
-        emit signal_updated_shopping_list(shoppingCartList);
-    }
-    else
-    {
-        QMessageBox::information(this,"Error" ,"Already in your shopping cart!");
-    }
-
-}
-void ViewProducts::on_product_Two_clicked()
-{
-    Product data;
-
-    data = roboList.FindProduct("iRobot 6000");
-
-    if (!shoppingCartList.isExist(data))
-    {
-        shoppingCartList.Enqueue(data);
-
-        emit signal_updated_shopping_list(shoppingCartList);
-    }
-    else
-    {
-        QMessageBox::information(this,"Error" ,"Already in your shopping cart!");
-    }
-}
-
-void ViewProducts::on_product_Three_clicked()
-{
-    Product data;
-
-     data = roboList.FindProduct("Soviet Attackers");
-
-     if (!shoppingCartList.isExist(data))
-     {
-         shoppingCartList.Enqueue(data);
-
-         emit signal_updated_shopping_list(shoppingCartList);
-     }
-     else
-     {
-         QMessageBox::information(this,"Error" ,"Already in your shopping cart!");
-     }
-
-}
 
 void ViewProducts::on_checkout_button_clicked()
 {

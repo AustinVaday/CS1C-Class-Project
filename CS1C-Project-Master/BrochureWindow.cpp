@@ -6,14 +6,11 @@ BrochureWindow::BrochureWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::BrochureWindow)
 {
-<<<<<<< HEAD
     vpWindow = new ViewProducts;
     scWindow = new ShoppingCartWindowNew;
     ui->setupUi(this);
 
 
-=======
-    ui->setupUi(this);
 
 
     Product robo1("Meowzers", "Robot is disquised as a cat\nvery efficient in difficult terrains\nvery agile & stealthy robot", 5000.00, 666, 111413);
@@ -23,32 +20,21 @@ BrochureWindow::BrochureWindow(QWidget *parent) :
     robotList.Enqueue(robo2);
     robotList.Enqueue(robo3);
 
-    vpWindow = new ViewProducts;
 
 
 
->>>>>>> master
 }
 
 BrochureWindow::~BrochureWindow()
 {
     delete ui;
     delete vpWindow;
-<<<<<<< HEAD
     delete scWindow;
 
 }
 void BrochureWindow::on_updated_shopping_list(ProductList & updatedList)
 {
     this->shoppingCartList = updatedList;
-
-=======
-}
-\
-void BrochureWindow::on_updated_shopping_list(ProductList &ShoppingCartList)
-{
-    shoppingCartList = ShoppingCartList;
->>>>>>> master
 }
 
 void BrochureWindow::on_actionHELP_triggered()
@@ -58,19 +44,14 @@ void BrochureWindow::on_actionHELP_triggered()
 
 void BrochureWindow::on_button_viewProducts_clicked()
 {
-<<<<<<< HEAD
+
 
     delete vpWindow;
-    vpWindow = new ViewProducts(this, shoppingCartList);
-=======
-    delete vpWindow;
     vpWindow = new ViewProducts(this, robotList, shoppingCartList);
->>>>>>> master
 
     vpWindow->show();
 }
 
-<<<<<<< HEAD
 //void BrochureWindow::on_button_placeOrder_clicked()
 //{
 //    if (shoppingCartList.isEmpty())
@@ -85,9 +66,7 @@ void BrochureWindow::on_button_viewProducts_clicked()
 //        scWindow->show();
 //    }
 //}
-=======
 void BrochureWindow::on_button_logout_clicked()
 {
     this->close();
 }
->>>>>>> master

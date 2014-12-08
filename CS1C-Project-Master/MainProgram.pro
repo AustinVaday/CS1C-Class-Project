@@ -50,20 +50,12 @@ SOURCES += main.cpp\
     maintplan.cpp \
     environments.cpp \
     signupwindow.cpp \
-<<<<<<< HEAD
     contactus.cpp\
     shoppingcartwindow.cpp\
-    shoppingcartwindownew.cpp
-
-
-
-=======
-    contactus.cpp \
-    shoppingcartwindownew.cpp \
+    shoppingcartwindownew.cpp\
     ExceptionHandlers.cpp\
     conceptofops.cpp \
     testimonial.cpp
->>>>>>> master
 
 HEADERS += MainProgramWindow.h \
 	adminclass.h \
@@ -102,12 +94,8 @@ HEADERS += MainProgramWindow.h \
     contactus.h \
     ShoppingCartList.h\
     shoppingcartwindownew.h\
-<<<<<<< HEAD
-    QWidget.h
-=======
     conceptofops.h \
     testimonial.h
->>>>>>> master
 
 
 FORMS   += mainprogramwindow.ui \
@@ -135,15 +123,10 @@ FORMS   += mainprogramwindow.ui \
     maintplan.ui \
     environments.ui \
     signupwindow.ui \
-<<<<<<< HEAD
     contactus.ui\
-    shoppingcartwindownew.ui
-=======
-    contactus.ui \
     shoppingcartwindownew.ui\
     conceptofops.ui \
     testimonial.ui
->>>>>>> master
 
 RESOURCES += \
     Images.qrc \
