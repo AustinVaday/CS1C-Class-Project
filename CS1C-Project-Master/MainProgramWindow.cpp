@@ -254,7 +254,7 @@ void MainProgramWindow::on_pushButton_RequestBrochure_clicked()
 	bool properFields = false;
 	sWindow->setModal(true);
 
-
+QMessageBox::information(this, "lol", "lol");
 	int submitSuccess = sWindow->exec();
 
 	if (submitSuccess)
