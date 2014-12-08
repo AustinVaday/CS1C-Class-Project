@@ -55,7 +55,8 @@ SOURCES += main.cpp\
     shoppingcartwindownew.cpp\
     ExceptionHandlers.cpp\
     conceptofops.cpp \
-    testimonial.cpp
+    testimonial.cpp \
+    proceedtocheckout.cpp
 
 HEADERS += MainProgramWindow.h \
 	adminclass.h \
@@ -95,7 +96,8 @@ HEADERS += MainProgramWindow.h \
     ShoppingCartList.h\
     shoppingcartwindownew.h\
     conceptofops.h \
-    testimonial.h
+    testimonial.h \
+    proceedtocheckout.h
 
 
 FORMS   += mainprogramwindow.ui \
@@ -126,7 +128,8 @@ FORMS   += mainprogramwindow.ui \
     contactus.ui\
     shoppingcartwindownew.ui\
     conceptofops.ui \
-    testimonial.ui
+    testimonial.ui \
+    proceedtocheckout.ui
 
 RESOURCES += \
     Images.qrc \

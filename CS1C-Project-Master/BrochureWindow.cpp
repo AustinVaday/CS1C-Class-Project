@@ -21,8 +21,6 @@ BrochureWindow::BrochureWindow(QWidget *parent) :
     robotList.Enqueue(robo3);
 
 
-
-
 }
 
 BrochureWindow::~BrochureWindow()

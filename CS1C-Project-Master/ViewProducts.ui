@@ -53,7 +53,7 @@
 </string>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="Product1">
     <attribute name="title">
@@ -106,19 +106,6 @@
 
 
 }</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="product_One">
-     <property name="geometry">
-      <rect>
-       <x>460</x>
-       <y>280</y>
-       <width>75</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Add to Cart</string>
      </property>
     </widget>
     <widget class="QPushButton" name="addProductOne">
@@ -178,19 +165,6 @@
 }</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="product_Two">
-     <property name="geometry">
-      <rect>
-       <x>460</x>
-       <y>300</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Add to Cart</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="addProductTwo">
      <property name="geometry">
       <rect>
@@ -243,19 +217,6 @@ color:white;
 background-color: rgba(0, 0, 0, 56);</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="product_Three">
-     <property name="geometry">
-      <rect>
-       <x>460</x>
-       <y>320</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Add to Cart</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="addProductThree">
      <property name="geometry">
       <rect>
@@ -301,7 +262,7 @@ border-color: rgb(218, 73, 255);
     <string>Maintanence Plan</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>410</x>
@@ -328,5 +289,8 @@ border-color: rgb(218, 73, 255);
    </layout>
   </widget>
  </widget>
+ <resources>
+  <include location="Images.qrc"/>
+ </resources>
  <connections/>
 </ui>

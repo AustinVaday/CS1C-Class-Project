@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include "ProductListClass.h"
+#include "proceedtocheckout.h"
+
 
 namespace Ui {
 class ShoppingCartWindowNew;
@@ -32,8 +34,10 @@ private slots:
 
 private:
     Ui::ShoppingCartWindowNew *ui;
-    ProductList roboList;
+    ProductList robotList;
     ProductList shoppingCartList;
+    ProceedToCheckout* checkoutWindow;
+
 //    Product robo1;
 //    Product robo2;
 //    Product robo3;

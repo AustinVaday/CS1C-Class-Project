@@ -136,6 +136,7 @@ class MainProgramWindow : public QMainWindow
 
 		QString		userName;
 		QString		password;
+        int loginCount;
 };
 
 #endif // MAINPROGRAMWINDOW_H

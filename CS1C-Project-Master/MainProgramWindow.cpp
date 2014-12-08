@@ -1,5 +1,6 @@
 #include "MainProgramWindow.h"
 #include <assert.h>
+#include <QMessageBox>
 
 MainProgramWindow::MainProgramWindow(QWidget *parent) :
 	QMainWindow(parent),
@@ -53,6 +54,7 @@ qDebug() << customerList.OutputList();
     cWindow = new ContactUs(this);
     bWindow = new BrochureWindow;
     testWindow = new Testimonial;
+    loginCount = 0;
 
     // ***DEBUG** List is read.
 qDebug() << customerList.OutputList() << "Main Program Window: "
@@ -102,48 +104,63 @@ void MainProgramWindow::on_pushButton_Login_clicked()
 	ErrorLogin errorWindow;
 	Customer tempCustomer;
 
+    if(loginCount >= 0)
+    {
+     adminLogin    = false;
+     customerLogin = false;
+    }
 
-	customerLocation = 0;
-	loginWindow.setModal(true);
-	loginWindow.exec();
-	loginWindow.on_buttonBox_loginPress_accepted(tempName, tempPassword);
+        customerLocation = 0;
+        loginWindow.setModal(true);
+        loginWindow.exec();
+        loginWindow.on_buttonBox_loginPress_accepted(tempName, tempPassword);
 
-	// Stores the tempname and password
-	SetUsername(tempName);
-	SetPassword(tempPassword);
+        // Stores the tempname and password
+        SetUsername(tempName);
+        SetPassword(tempPassword);
 
-	if(Administrator.checkAdmin(tempName, tempPassword ))
-	{
-		validInput = true;
-		SetAdminLogin(true);
-	}
-	else
-	{	// Compare user input to database
-		tempCustomer =  customerList.VerifyCustomer(tempName, tempPassword);
-		if(tempCustomer.getUserName() != " ")
-		{
-			validInput = true;
-			SetCustomerLogin(true);
-		}
-	}
-	if(!loginWindow.on_buttonBox_loginPress_rejected())
-	{
-		// ERROR MESSAGES LOGIN REJECTED DISPLAY
-		errorWindow.setModal(true);
-		errorWindow.exec();
-		errorWindow.show();
-	}
-	if(validInput)
-	{
-		if(adminLogin)
-		{
-			aWindow->show();	// ADMIN
-		}
-		else if(customerLogin)
-		{
-			bWindow->show();    // BROCHURE
-		}
-	}
+        if(Administrator.checkAdmin(tempName, tempPassword ))
+        {
+            validInput = true;
+            SetAdminLogin(true);
+        }
+        else
+        {	// Compare user input to database
+            tempCustomer =  customerList.VerifyCustomer(tempName, tempPassword);
+            if(tempCustomer.getUserName() != " ")
+            {
+                validInput = true;
+                SetCustomerLogin(true);
+            }
+        }
+
+
+        if(!validInput)
+        {
+            QMessageBox::information(this, "Error", "Please enter a valid user name and password");
+        }
+    //	if(!loginWindow.on_buttonBox_loginPress_rejected())
+    //	{
+    //		// ERROR MESSAGES LOGIN REJECTED DISPLAY
+    //		errorWindow.setModal(true);
+    //		errorWindow.exec();
+    //		errorWindow.show();
+    //	}
+        if(validInput)
+        {
+            if(adminLogin)
+            {    loginCount++;
+                aWindow->show();	// ADMIN
+
+            }
+            else if(customerLogin)
+            { loginCount++;
+                bWindow->show();    // BROCHURE
+            }
+
+        }
+
+
 }
 // Launches Window depending which button is clicked
 void MainProgramWindow::Launcher()
