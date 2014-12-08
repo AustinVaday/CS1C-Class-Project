@@ -109,24 +109,18 @@ QString CustomerList::OutputList () const
 	if(!isEmpty())
 	{//Begin While
 
-		//        out << endl << "***Current Linked List***" << endl;
-		//        out << "******************************************************************\n";
-
 		int index = 0;
 		while(traverse != NULL)
 		{
 
 			out << "List item #" << index + 1 << endl;
 
-
-			//            ui->listWidget->addItem(traverse->GetData().OutputData());
 			out << traverse->GetData().OutputData();
 			//Sets the traverse pointer to the next node
 			traverse = traverse->GetNext();
 			index++;
 		}//End While
 
-		//        out << "******************************************************************\n";
 
 	}
 	else
@@ -170,7 +164,6 @@ Customer CustomerList::Front() const
 	return _head->GetData();
 }
 
-
 //Not sure if I need this anymore
 
 /****************************************************************
@@ -207,7 +200,6 @@ void CustomerList::Enqueue(Customer data)
 		_head = _createNew;
 		_tail = _createNew;
 
-		//		cout << "\nAdding " << _createNew->GetData() << " to the list.\n";
 		//increments the _listCount
 
 		_createNew = NULL;  /* ADDED BY AUSTIN */
@@ -232,14 +224,11 @@ void CustomerList::Enqueue(Customer data)
 
 			if(_createNew->GetData().getUserName().toUpper() < _cursor->GetData().getUserName().toUpper())
 			{
-
 				_createNew->SetNext(_cursor);
 
 				_cursor->SetPrevious(_createNew); /* ADDED BY AUSTIN */
 
 				_head = _createNew;
-
-
 			}
 			else
 			{
@@ -281,16 +270,9 @@ void CustomerList::Enqueue(Customer data)
 				_tail->SetNext(_createNew);
 				_tail = _createNew;
 			}
-
-
-
 		}
-
-
 		//Increments the current Count
 		IncrementCount();
-
-
 	}
 	else
 	{
@@ -329,13 +311,11 @@ Customer CustomerList::Dequeue()
 		//Decrements the _nodeCount
 		DecrementCount();
 
-
 		//Calls Orphan to set all pointers to NULL
 
 		temp->Orphan();
 
 		tempCustomer = temp->GetData();
-
 
 		delete temp;
 
@@ -351,7 +331,6 @@ Customer CustomerList::Dequeue()
 **************************************************************************/
 bool CustomerList::isEmpty() const
 {
-
 	return _head == NULL;
 
 }
@@ -416,21 +395,12 @@ void CustomerList::RemoveCustomer(Customer &someCustomer)
 		// middle deletion
 		else
 		{
-			//				actionPtr = traversePtr->_previous;
 			actionPtr = traversePtr->GetPrevious();
-
-			//				actionPtr->_next = traversePtr->_next;
 			actionPtr->SetNext(traversePtr->GetNext());
-
-			//				traversePtr->_next->_previous = actionPtr;
-
 			traversePtr->SetNext(traversePtr->GetNext());
 			traversePtr->SetPrevious(actionPtr);
-
 			traversePtr->Orphan();
-
 			delete traversePtr;
-
 			//Decrements the _nodeCount
 			DecrementCount();
 
@@ -806,22 +776,13 @@ bool CustomerList::WriteToFile()
 
 	dataPath.cd("Database-Files");
 
-	dataPath.remove((dataPath.path() + "/CustomerList.txt"));
+//	dataPath.remove((dataPath.path() + "/CustomerList.txt"));
 
-	qDebug() << "Does the customer list file exist in the directory?" << dataPath.exists((dataPath.path() + "/CustomerList.txt"));
-
-qDebug() << "Customer path: line 896 : " << dataPath.path();
 	QFile customerDataFile((dataPath.path() + "/CustomerList.txt"));
-
-qDebug() << "1) Is it open? "<< customerDataFile.isOpen() << "and can it be written? " <<
-customerDataFile.isWritable();
 
 	if(customerDataFile.open((QIODevice::ReadWrite | QIODevice::Text)|QIODevice::Truncate) && !isEmpty())
 	{
 
-	qDebug() << "1) Is it open? "<< customerDataFile.isOpen() << "and can it be written? " <<
-customerDataFile.isWritable();
-		qDebug() << "Debugging:: WRITE Customer :::  It opened ::: ";
 		QTextStream out(&customerDataFile);
 		_customerPtr = _head;
 
@@ -859,7 +820,7 @@ customerDataFile.isWritable();
 }// **** END METHOD **** //
 
 /************************************************************
-* ReadFile (Overloaded, DOES NOT allow to specify filePath)
+* ReadFile
 * ----------------------------------------------------------
 * Returns true only if it successfully reads
 * Returns false if it fails to open, read or if there are no
@@ -871,11 +832,6 @@ bool CustomerList::ReadFile()
 {
 	bool readSuccessFull;
 	QDir dataPath = QDir::current();
-
-qDebug() << "Current path when reading " << dataPath.path();
-	readSuccessFull = false;
-
-	// QDir datapath is a pointer that points towards each directory
 
 	while(dataPath.dirName() != "Class-Project")
 	{
@@ -892,7 +848,6 @@ qDebug() << "Current path when reading " << dataPath.path();
 	{
 
 		QString inputData[10];
-
 		// Points Text stream to input file to read in.
 		QTextStream inFile(&customerDataFile);
 		while(!inFile.atEnd() && !this->isFull())

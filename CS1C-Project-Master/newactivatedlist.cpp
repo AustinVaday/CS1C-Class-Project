@@ -22,17 +22,6 @@ NewActivatedList::NewActivatedList(QWidget *parent, CustomerList &list) :
     ui->listWidget->setSelectionMode(QAbstractItemView::MultiSelection );
     ui->deactivatedListWidget->setSelectionMode(QAbstractItemView::MultiSelection );
 
-    // when a list widget item is clicked, will call the function to output customer address book.
-//    connect(ui->listWidget,SIGNAL(itemDoubleClicked(QListWidgetItem*)),this,SLOT(on_listItem_clicked()));
-//    connect(ui->deactivatedListWidget,SIGNAL(itemDoubleClicked(QListWidgetItem*)),this,SLOT(on_listItem_clicked()));
-
-    //connect
-//    connect(ui->addToActivatedListButton, SIGNAL(clicked()), ui->listWidget, SLOT(performAction(QListWidget*)));
-
-
-//     connect(ui->listWidget, SIGNAL(itemClicked(QListWidgetItem*)), ui->addToDeactivatedListButton, SLOT(setFocus()));
-//    connect(ui->listWidget, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(on_addToDeactivatedListButton_clicked(QListWidgetItem*)));
-
     customerList = list;
 
     // Creates new customer address book
@@ -57,7 +46,7 @@ void NewActivatedList::DisplayTheList(const CustomerList& list)
     ui->deactivatedListWidget->clear();
 
 
-qDebug() << "Inside 'DisplayTheList'";
+
     for (int i = 0; i < list.Size(); i++)
     {
         try
@@ -66,12 +55,11 @@ qDebug() << "Inside 'DisplayTheList'";
             // activated customer list.
             if(list[i].getAccess())
             {
-                 qDebug () << "64";
               ui->listWidget->addItem((list)[i].OutputData());
             }
             else
             {
-                qDebug () << "68";
+
                 ui->deactivatedListWidget->addItem((list)[i].OutputData());
             }
         }
@@ -130,56 +118,19 @@ int NewActivatedList::UpdateNumActivatedCustomers()
 
 NewActivatedList::~NewActivatedList()
 {
-qDebug() << "******Debugging: NewActivatedList - Deconstructor******\n";
 
         updateCustomerList(&customerList);
         customerList.ClearList();
 
-
-qDebug() << "******Debugging: NewActivatedList - Deleting custAddBook******\n";
         delete custAddBook;
 
-qDebug() << "******Debugging: NewActivatedList - Deleting ui******\n";
-        delete ui;
-qDebug() << "****AFTER DELETING UI******";
-
-
-//    customerList = 0;
+		delete ui;
 }
-
-//void NewActivatedList::on_listItem_clicked(QListWidgetItem* item)
-//{
-//   QMessageBox::information(this,"Hello!","You clicked\n \""+item->text()+"\"");
-
-////   custAddBook->setModal(true);
-////   custAddBook->exec();
-
-////qDebug() <<
-
-//qDebug() << "******Debugging: NewActivatedList - custAddBook : Deconstructor******\n";
-//   delete custAddBook;
-
-//   // find current list number
-//   int listItemNum = ui->listWidget->row(item);
-
-//   qDebug() << "CustAddBook Num is: " << listItemNum;
-
-//   custAddBook = new CustomerAddressBook(this, customerList, listItemNum);
-
-
-//   custAddBook->show();
-
-
-//}
 
 
 void NewActivatedList::updateCustomerList(CustomerList *list)
 {
     customerList = *list;
-
-
-// Debugging Display list in new activated list
-qDebug() << "NewActivatedList";
 
     DisplayTheList(customerList);
 
@@ -245,16 +196,8 @@ void NewActivatedList::on_addToDeactivatedListButton_clicked()
                 ui->listWidget->removeItemWidget(ui->deactivatedListWidget->item(listIndeces[numRows].row()));
             }
         }
-
-
-
         custPtr = NULL;
-
-
         DisplayTheList(customerList);
-
-
-
     }
 
 
@@ -309,11 +252,7 @@ void NewActivatedList::on_masterModeButton_clicked()
 {
     delete custAddBook;
 
-    // find current list number
-//    int listItemNum = ui->listWidget->row(item);
-
     custAddBook = new CustomerAddressBook(this, customerList, 0);
-
 
     custAddBook->show();
 }

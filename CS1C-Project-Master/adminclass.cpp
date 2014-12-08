@@ -89,10 +89,7 @@ void Admin::wipeList (CustomerList &list)
 // customer reviews.
  void Admin::modifyCustomerReviews()
  {
-        /*********************************************
-         * THIS NEEDS TO BE COMPLETED !!
-         * THIS IS A REQUIREMENT!!!!!
-         **********************************************/
+	// Requirement
  }
 
 

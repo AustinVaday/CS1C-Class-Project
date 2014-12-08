@@ -6,8 +6,8 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
 	ui(new Ui::MainProgramWindow),
 	adminLogin(false),
 	customerLogin(false),
-	guestLogin(false),
-	createAccount(false)
+	createAccount(false),
+	guestLogin(false)
 {
 	// Hard code of admin login
 	Admin testAdmin("","admin1234@gmail.com", 1234, "");
@@ -15,7 +15,8 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
 	ui->setupUi(this);
 
 	// Determines if data base has been created
-
+	//	will be checked every time program is executed. Once database has
+	//	been established then
 	try
 	{
 		if(!databaseCreated)
@@ -26,7 +27,6 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
 			}
 
 		}
-
 	}
 	catch(QString f)
 	{
@@ -38,12 +38,6 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
 
 	ui->tempDisplay->setText(customerList.OutputList());
 
-// Debuggin
-qDebug() << "Admin window: Output List, Line 36";
-qDebug() << customerList.OutputList();
-
-
-
     // Initialize
     hWindow = new HelpWindow;
     aWindow = new AdminWindow(this, customerList);
@@ -54,9 +48,6 @@ qDebug() << customerList.OutputList();
     bWindow = new BrochureWindow;
     testWindow = new Testimonial;
 
-    // ***DEBUG** List is read.
-qDebug() << customerList.OutputList() << "Main Program Window: "
-" customerList.OutputList - Line 27";
 
     connect(aWindow, SIGNAL(clicked()), this, SLOT(on_pushButton_Help_clicked()));
 
@@ -73,14 +64,8 @@ MainProgramWindow::~MainProgramWindow()
 
 	robotList.WriteToFile();
 	robotList.ClearList();
-
-
-    customerTestimonial = testWindow->getTestimonial();
-    qDebug() << "My testimonials are : " << customerTestimonial;
-
 	customerList.WriteToFile();
 	customerList.ClearList();
-
 
 	delete aWindow;
 	delete bWindow;
@@ -287,7 +272,7 @@ void MainProgramWindow::on_pushButton_RequestBrochure_clicked()
 				QMessageBox::information(this, tr("Registration Successful"),tr("\"%1\", you will be notified shortly whether you have been accepted or rejected.").arg(customer.getUserName()));
 
 			// SIGNALS & SLOTS
-			// emit customerListChanged(&customerList);
+//			 emit customerListChanged(&customerList);
 
 			}
 			else if (customerList.isExistSameName(customer.getUserName()))
@@ -303,7 +288,6 @@ void MainProgramWindow::on_pushButton_RequestBrochure_clicked()
 
 			}
 		}
-		qDebug() << customer.OutputData();
 	}
 }
 
@@ -317,11 +301,14 @@ void MainProgramWindow::on_pushButton_clicked()
     QString mystring = "Here are recent customer testimonials!\n";
     testWindow->setTestimonial(mystring);
     testWindow->show();
-
-
 }
 
 void MainProgramWindow::updateTestimonial(QString newTestimonial)
 {
     customerTestimonial = newTestimonial;
+}
+
+void MainProgramWindow::setDatabaseStatus(bool status)
+{
+	databaseCreated = status;
 }

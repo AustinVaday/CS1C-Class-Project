@@ -19,15 +19,12 @@ public:
     ~ShoppingCartWindowNew();
     void DisplayTheList();
 
-
 signals:
    void signal_updated_shopping_list(ProductList& ShoppingCartList);
 
 private slots:
    void on_remove_button_clicked();
-
    void on_checkout_button_clicked();
-
    void on_back_button_clicked();
 
 private:

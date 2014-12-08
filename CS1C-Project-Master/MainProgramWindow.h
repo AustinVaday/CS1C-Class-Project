@@ -66,9 +66,6 @@ class MainProgramWindow : public QMainWindow
 		QString GetUsername();
 		QString GetPassword();
 
-		// Determines if to instatiate a database
-		bool CreateDatabase();
-
 		//  Accessors
 		void SetUsername(QString newUsername);
 		// Sets user name
@@ -78,6 +75,12 @@ class MainProgramWindow : public QMainWindow
 
 		// user state == Admin || Brochure -> window
 		void Launcher();
+
+		// Determines if to instatiate a database
+		bool CreateDatabase();
+
+
+		void setDatabaseStatus(bool status);
 
 		~MainProgramWindow();
 
@@ -124,18 +127,15 @@ class MainProgramWindow : public QMainWindow
 		BrochureWindow* bWindow;
 		SignUpWindow*   sWindow;
 		ContactUs *     cWindow;
-
 		ProductList     robotList;
-		CustomerList    customerList;
-		bool            databaseCreated = false;
-
-		bool		adminLogin;
-		bool		customerLogin;
-		bool		createAccount;
-		bool		guestLogin;
-
-		QString		userName;
-		QString		password;
+		CustomerList	customerList;
+		bool            databaseCreated;
+		bool			adminLogin;
+		bool			customerLogin;
+		bool			createAccount;
+		bool			guestLogin;
+		QString			userName;
+		QString			password;
 };
 
 #endif // MAINPROGRAMWINDOW_H
