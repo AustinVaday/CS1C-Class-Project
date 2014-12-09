@@ -850,10 +850,7 @@ bool CustomerList::ReadFile()
 	if(customerDataFile.open(QIODevice::ReadOnly | QIODevice::Text))
 	{
 
-<<<<<<< HEAD
 		QString inputData[10];
-=======
->>>>>>> 139b028912e9b04524e0ca717280f30a7aa35379
 		// Points Text stream to input file to read in.
 		QTextStream inFile(&customerDataFile);
 		while(!inFile.atEnd() && !this->isFull())
