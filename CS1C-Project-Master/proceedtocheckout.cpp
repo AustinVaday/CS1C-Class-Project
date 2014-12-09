@@ -11,7 +11,7 @@ ProceedToCheckout::ProceedToCheckout(QWidget *parent, const ProductList& shoppin
     ui->setupUi(this);
 
     displayList = shoppingCartList;
-    totalCost = total;
+    totalCost   = total;
 
     ui->displayShoppingCart->insertPlainText(displayList.OutputList());
     ui->totalCost_Browser->insertPlainText(totalCost);

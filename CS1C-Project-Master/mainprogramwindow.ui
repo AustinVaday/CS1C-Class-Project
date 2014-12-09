@@ -142,6 +142,13 @@ font: 13pt &quot;Papyrus&quot;;
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
+         <widget class="QRadioButton" name="radioButton">
+          <property name="text">
+           <string>RadioButton</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QTextBrowser" name="tempDisplay">
           <property name="styleSheet">
            <string notr="true">color: white;
@@ -181,7 +188,7 @@ font: 13pt &quot;Papyrus&quot;;</string>
      <x>0</x>
      <y>0</y>
      <width>533</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuExtreme_Robo_Cat_Coderz">

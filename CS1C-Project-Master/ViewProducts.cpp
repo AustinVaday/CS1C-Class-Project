@@ -165,7 +165,7 @@ void ViewProducts::on_checkOutButton_clicked()
     {
 //        delete scWindow;
 
-        scWindow = new ShoppingCartWindowNew(this, shoppingCart);
+        scWindow = new ShoppingCartWindowNew(0, shoppingCart);
 
         scWindow->show();
     }

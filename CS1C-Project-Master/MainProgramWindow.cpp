@@ -50,7 +50,7 @@ qDebug() << customerList.OutputList();
     aWindow = new AdminWindow(this, customerList);
     bWindow = new BrochureWindow(this);
     gWindow = new GuestWindow;
-    sWindow = new SignUpWindow;
+    sWindow = new SignUpWindow(0);
     cWindow = new ContactUs(this);
     bWindow = new BrochureWindow;
     testWindow = new Testimonial;
@@ -98,6 +98,7 @@ void MainProgramWindow::on_pushButton_Login_clicked()
 	Admin	Administrator("admin","admin1234@gmail.com", 1234, "password");
 	int		customerLocation;
 	bool	validInput = false;
+    bool    accessGranted = false;
 	QString tempName;
 	QString tempPassword;
 	Login   loginWindow;
@@ -148,14 +149,24 @@ void MainProgramWindow::on_pushButton_Login_clicked()
     //	}
         if(validInput)
         {
+
+
+
             if(adminLogin)
             {    loginCount++;
                 aWindow->show();	// ADMIN
 
             }
             else if(customerLogin)
-            { loginCount++;
-                bWindow->show();    // BROCHURE
+            {
+                if(!tempCustomer.getAccess())
+                {
+                    bWindow->show();    // BROCHURE
+                }
+                else
+                {
+                    QMessageBox::information(0, "Account Information", "Your account has not been activated yet.\nOur administrators are working on it");
+                }
             }
 
         }
@@ -280,14 +291,15 @@ bool MainProgramWindow::CreateDatabase()
 
 	return readStatus;
 }
-void MainProgramWindow::on_pushButton_RequestBrochure_clicked()
+void MainProgramWindow::on_pushButton_RequestBrochure_2_clicked()
 {
 	Customer customer;
 	bool properFields = false;
 	sWindow->setModal(true);
 
 
-	int submitSuccess = sWindow->exec();
+    int submitSuccess = sWindow->exec();
+
 
 	if (submitSuccess)
 	{
@@ -317,7 +329,6 @@ void MainProgramWindow::on_pushButton_RequestBrochure_clicked()
 				QMessageBox::information(this, tr("Registration Unsuccessful"),
 					tr("\"%1\" is already in your "
 					"customer list.").arg(customer.getUserName()));
-
 			}
 		}
 		qDebug() << customer.OutputData();

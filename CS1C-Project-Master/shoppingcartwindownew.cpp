@@ -227,20 +227,23 @@ void ShoppingCartWindowNew::on_checkout_button_clicked()
 
    QString message =  "Total price for the products you purchased is $";
    message += stringSum;
+//    this->hide();
 
-    checkoutWindow = new ProceedToCheckout(this, shoppingCartList, message);
-    checkoutWindow->show();
+   if(!shoppingCartList.isEmpty())
+   {    checkoutWindow = new ProceedToCheckout(0, shoppingCartList, message);
+        checkoutWindow->show();
 
-//   totalSum = shoppingCartList.SumList();
-//  QString = str = "The total cost is " << shoppingCartList.SumList();
+    //   totalSum = shoppingCartList.SumList();
+    //  QString = str = "The total cost is " << shoppingCartList.SumList();
 
-   shoppingCartList.ClearList();
+       shoppingCartList.ClearList();
 
-
-   DisplayTheList();
-
-
-
+   }
+   else
+   {
+       QMessageBox::information(0, "Error", "Shopping Cart is Currently empty. Press the back button to continue");
+   }
+       DisplayTheList();
 }
 
 void ShoppingCartWindowNew::on_back_button_clicked()

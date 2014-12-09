@@ -103,11 +103,12 @@ class MainProgramWindow : public QMainWindow
 		//  Help Window Appear
 
 		void on_pushButton_Guest_clicked();
-		void on_pushButton_RequestBrochure_clicked();
 		void on_actionContactUS_triggered();
 		void updateTestimonial(QString newTestimonial);
 
-	private:
+        void on_pushButton_RequestBrochure_2_clicked();
+
+private:
 		Ui::MainProgramWindow *ui;
 		QString customerTestimonial;
 		Testimonial *testWindow;
