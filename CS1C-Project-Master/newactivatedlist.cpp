@@ -198,6 +198,12 @@ void NewActivatedList::on_addToDeactivatedListButton_clicked()
         }
         custPtr = NULL;
         DisplayTheList(customerList);
+<<<<<<< HEAD
+=======
+      emit customerListChanged(&customerList);
+
+
+>>>>>>> 139b028912e9b04524e0ca717280f30a7aa35379
     }
 
 
@@ -246,6 +252,7 @@ void NewActivatedList::on_addToActivatedListButton_clicked()
 
 
             DisplayTheList(customerList);
+            emit customerListChanged(&customerList);
 }
 
 void NewActivatedList::on_masterModeButton_clicked()

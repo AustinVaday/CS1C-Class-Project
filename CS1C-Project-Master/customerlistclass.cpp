@@ -796,6 +796,7 @@ bool CustomerList::WriteToFile()
 			out << _customerPtr->GetData().getPassword() << "\n";
 			out << _customerPtr->GetData().getEmail() << "\n";
 			out << _customerPtr->GetData().getAccountNum() << "\n";
+            out << _customerPtr->GetData().getAccessStr() << "\n";
 
 			if((_customerPtr = _customerPtr->GetNext()) != 0)
 			{
@@ -832,6 +833,8 @@ bool CustomerList::ReadFile()
 {
 	bool readSuccessFull;
 	QDir dataPath = QDir::current();
+    QString inputData[9];
+
 
 	while(dataPath.dirName() != "Class-Project")
 	{
@@ -847,27 +850,31 @@ bool CustomerList::ReadFile()
 	if(customerDataFile.open(QIODevice::ReadOnly | QIODevice::Text))
 	{
 
+<<<<<<< HEAD
 		QString inputData[10];
+=======
+>>>>>>> 139b028912e9b04524e0ca717280f30a7aa35379
 		// Points Text stream to input file to read in.
 		QTextStream inFile(&customerDataFile);
 		while(!inFile.atEnd() && !this->isFull())
 		{
 											  // Data Type			| TXT FILE
-			inputData[0] = inFile.readLine(); // Customer Name		| Line 1
-			inputData[1] = inFile.readLine(); // Address Part 1		| Line 2
-			inputData[2] = inFile.readLine(); // Address Part 2		| Line 3
-			inputData[1] = inputData[1]		  // Concatenate		| N/A
-						 + "\n"+ inputData[2];// addresses
-			inputData[3] = inFile.readLine(); // Customer Interest	| Line 4
-			inputData[4] = inFile.readLine(); // Customer Key		| Line 5
-			inputData[5] = inFile.readLine(); // Passowrd			| Line 6
-			inputData[6] = inFile.readLine(); // Email				| Line 7
-			inputData[7] = inFile.readLine(); // Account ID			| Line 8
+			inputData[0] = inFile.readLine();       // Customer Name	| Line 1
+			inputData[1] = inFile.readLine();        // Address Part 1		| Line 2
+			inputData[2] = inFile.readLine();       // Address Part 2		| Line 3
+			inputData[1] = inputData[1]                 // Concatenate          | N/A
+						 + "\n"+ inputData[2];               // addresses
+			inputData[3] = inFile.readLine();       // Customer Interest| Line 4
+			inputData[4] = inFile.readLine();       // Customer Key		| Line 5
+			inputData[5] = inFile.readLine();       // Passoword              | Line 6
+			inputData[6] = inFile.readLine();       // Email                       | Line 7
+			inputData[7] = inFile.readLine();       // Account ID            | Line 8
+            inputData[8] = inFile.readLine();       // Access String         | Line 9
 
 			// Adds the customer to customer list
 			this->Enqueue(Customer(inputData[0], inputData[1], inputData[3],
-								   inputData[4], inputData[5], inputData[6],
-								   inputData[7].toLong()));
+                                                            inputData[4], inputData[5], inputData[6],
+                                                            inputData[7].toLong(),         inputData[8]));
 					inFile.skipWhiteSpace();
 					inFile.flush();
 		}
