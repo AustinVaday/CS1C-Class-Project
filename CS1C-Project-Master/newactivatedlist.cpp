@@ -252,7 +252,7 @@ void NewActivatedList::on_addToDeactivatedListButton_clicked()
 
 
         DisplayTheList(customerList);
-
+      emit customerListChanged(&customerList);
 
 
     }
@@ -303,14 +303,12 @@ void NewActivatedList::on_addToActivatedListButton_clicked()
 
 
             DisplayTheList(customerList);
+            emit customerListChanged(&customerList);
 }
 
 void NewActivatedList::on_masterModeButton_clicked()
 {
     delete custAddBook;
-
-    // find current list number
-//    int listItemNum = ui->listWidget->row(item);
 
     custAddBook = new CustomerAddressBook(this, customerList, 0);
 

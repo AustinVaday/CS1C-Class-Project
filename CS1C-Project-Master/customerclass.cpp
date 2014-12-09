@@ -25,6 +25,26 @@ Customer::Customer(QString userName,
     keyCustomer = key;
 }
 
+Customer::Customer(QString userName,
+                   QString customerAddress,
+                   QString initInterest,
+                   QString key,
+                   QString password,
+                   QString email,
+                   long    accountNum,
+                   QString initAccess)
+{
+    User::setUserName(userName);
+    User::setEmail(email);
+    User::setAccountNum(accountNum);
+    User::setPassword(password);
+
+    setAddress(customerAddress);
+    setAccountAccess(initAccess);
+    interest    = initInterest;
+    keyCustomer = key;
+}
+
 bool Customer::operator >(const Customer& otherCustomer) const
 {
     return this->getUserName() > otherCustomer.getUserName();
@@ -62,7 +82,6 @@ QString Customer::getKey() const
 
 void Customer::setAddress(QString customerAddress)
 {
-
     int index;
     int stringIterator;
 
@@ -96,7 +115,6 @@ void Customer::setAddress(QString customerAddress)
 
     inputString.clear();
 
-
 }
 
 void Customer::setAddressLine1(QString newAddress)
@@ -119,3 +137,35 @@ void Customer::setKey(QString key)
     keyCustomer = key;
 }
 
+QString Customer::getAccessStr()    const
+{
+    return accessStr;
+}
+
+void Customer::setAccountAccess(bool access)
+{
+    if(access)
+    {
+        User::setAccountAccess(true);
+        accessStr = "ACTIVATED";
+    }
+    else
+    {
+        User::setAccountAccess(false);
+        accessStr = "DEACTIVATED";
+    }
+}
+
+void Customer::setAccountAccess(QString access)
+{
+    if(access.toUpper() == "ACTIVATED")
+    {
+        User::setAccountAccess(true);
+        accessStr = "ACTIVATED";
+    }
+    else
+    {
+        User::setAccountAccess(false);
+        accessStr = "DEACTIVATED";
+    }
+}

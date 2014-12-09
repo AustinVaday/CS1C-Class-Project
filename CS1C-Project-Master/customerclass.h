@@ -20,6 +20,15 @@ class Customer : public User
                              long    accountNum);
         // Nondefault constructor
 
+        Customer(QString userName,
+                             QString customerAddress,
+                             QString initInterest,
+                             QString key,
+                             QString password,
+                             QString email,
+                             long    accountNum,
+                             QString initAccess);
+
         bool operator >(const Customer& otherCustomer) const;
         // Overloading comparison operator greater than
 
@@ -33,6 +42,7 @@ class Customer : public User
         QString getAddressLine2() const;
         QString getKey()           const;
         QString getInterest()   const;
+        QString getAccessStr() const;
 
         // MUTATORS
         void setInterest(QString newInterest);
@@ -41,12 +51,15 @@ class Customer : public User
         void setAddressLine2(QString customerAddress);
         void setKey(QString key);
         void separateAddress();
+        void setAccountAccess(bool access);
+        void setAccountAccess(QString access);
 
     private:
         QString address1;
         QString address2;
         QString interest;
         QString keyCustomer;
+        QString accessStr;
 
 };
 
