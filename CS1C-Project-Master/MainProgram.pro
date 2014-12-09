@@ -47,7 +47,7 @@ SOURCES += main.cpp\
     maintplan.cpp \
     environments.cpp \
     conceptofops.cpp \
-    testimonial.cpp
+    custTestimonial.cpp
 
 HEADERS += MainProgramWindow.h \
 	adminclass.h \

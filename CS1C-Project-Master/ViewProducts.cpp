@@ -31,3 +31,18 @@ void ViewProducts::on_MaintPlan_clicked()
     mWindow.setModal(true);
     mWindow.exec();
 }
+
+
+void ViewProducts::on_pushButton_clicked()
+{
+    QString mystring = "Here are recent customer testimonials!\n";
+    testWindow->setTestimonial(mystring);
+    testWindow->show();
+
+
+}
+
+void ViewProducts::updateTestimonial(QString newTestimonial)
+{
+    customerTestimonial = newTestimonial;
+}
