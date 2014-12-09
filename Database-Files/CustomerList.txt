@@ -6,7 +6,7 @@ Key
 password123
 austinvaday@gmail.com
 10100011
-DEACTIVATED
+ACTIVATED
 
 Billy The Kid
 555 Camden Ct
@@ -16,7 +16,7 @@ Nice to Have
 1234pass
 billy@yahoo.com
 333333333
-DEACTIVATED
+ACTIVATED
 
 CIA
 987 Jefferson Blvd
@@ -36,7 +36,7 @@ Key
 investigate
 superinvestigators@FBI.gov
 99955533
-DEACTIVATED
+ACTIVATED
 
 Goofy - AKA " Dippy Dawg"
 1800 Pluto Drive
@@ -46,7 +46,7 @@ Key
 password222
 stopgoofing@gmail.com
 10202011
-DEACTIVATED
+ACTIVATED
 
 Los Angeles Airport
 12345 Main
@@ -76,7 +76,7 @@ Key
 irule
 ruletheworld@rome.com
 22229999
-DEACTIVATED
+ACTIVATED
 
 Saddleback College
 28000 Marguerite Pkwy
@@ -96,7 +96,7 @@ Nice to Have
 rocknroll
 partytillyoudrop@hardcore.com
 23123333
-DEACTIVATED
+ACTIVATED
 
 Secret Service
 12345 Pennsylvania
