@@ -6,7 +6,11 @@ BrochureWindow::BrochureWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::BrochureWindow)
 {
+    vpWindow = new ViewProducts;
+    scWindow = new ShoppingCartWindowNew;
     ui->setupUi(this);
+
+
 
 
     Product robo1("Meowzers", "Robot is disquised as a cat\nvery efficient in difficult terrains\nvery agile & stealthy robot", 5000.00, 666, 111413);
@@ -16,9 +20,6 @@ BrochureWindow::BrochureWindow(QWidget *parent) :
     robotList.Enqueue(robo2);
     robotList.Enqueue(robo3);
 
-    vpWindow = new ViewProducts;
-
-
 
 }
 
@@ -26,11 +27,12 @@ BrochureWindow::~BrochureWindow()
 {
     delete ui;
     delete vpWindow;
+    delete scWindow;
+
 }
-\
-void BrochureWindow::on_updated_shopping_list(ProductList &ShoppingCartList)
+void BrochureWindow::on_updated_shopping_list(ProductList & updatedList)
 {
-    shoppingCartList = ShoppingCartList;
+    this->shoppingCartList = updatedList;
 }
 
 void BrochureWindow::on_actionHELP_triggered()
@@ -40,12 +42,28 @@ void BrochureWindow::on_actionHELP_triggered()
 
 void BrochureWindow::on_button_viewProducts_clicked()
 {
+
+
     delete vpWindow;
     vpWindow = new ViewProducts(this, robotList, shoppingCartList);
 
     vpWindow->show();
 }
 
+//void BrochureWindow::on_button_placeOrder_clicked()
+//{
+//    if (shoppingCartList.isEmpty())
+//    {
+//        QMessageBox::information(this, "Sorry", "You have no items in the shopping cart!");
+//    }
+//    else
+//    {
+//        delete scWindow;
+//        scWindow = new ShoppingCartWindowNew(this, shoppingCartList);
+
+//        scWindow->show();
+//    }
+//}
 void BrochureWindow::on_button_logout_clicked()
 {
     this->close();

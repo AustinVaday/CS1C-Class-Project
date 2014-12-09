@@ -2,7 +2,7 @@
 #include "ui_CustomerPlaceOrder.h"
 
 CustomerPlaceOrder::CustomerPlaceOrder(QWidget *parent) :
-    QWidget(parent),
+    QDialog(parent),
     ui(new Ui::CustomerPlaceOrder)
 {
     ui->setupUi(this);

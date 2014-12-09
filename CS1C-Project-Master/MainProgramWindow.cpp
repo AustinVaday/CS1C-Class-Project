@@ -1,5 +1,6 @@
 #include "MainProgramWindow.h"
 #include <assert.h>
+#include <QMessageBox>
 
 MainProgramWindow::MainProgramWindow(QWidget *parent) :
 	QMainWindow(parent),
@@ -53,6 +54,7 @@ qDebug() << customerList.OutputList();
     cWindow = new ContactUs(this);
     bWindow = new BrochureWindow;
     testWindow = new Testimonial;
+    loginCount = 0;
 
     // ***DEBUG** List is read.
 qDebug() << customerList.OutputList() << "Main Program Window: "
@@ -93,57 +95,86 @@ MainProgramWindow::~MainProgramWindow()
 
 void MainProgramWindow::on_pushButton_Login_clicked()
 {
-	Admin	Administrator("admin","admin1234@gmail.com", 1234, "password");
-	int		customerLocation;
-	bool	validInput = false;
-	QString tempName;
-	QString tempPassword;
-	Login   loginWindow;
+    Admin	   Administrator("admin","admin1234@gmail.com", 1234, "password");
+    int		   customerLocation;
+    bool	   validInput = false;
+    QString    tempName;
+    QString    tempPassword;
+    Login      loginWindow;
 	ErrorLogin errorWindow;
-	Customer tempCustomer;
+    Customer   tempCustomer;
+
+    if(loginCount >= 0)
+    {
+     adminLogin    = false;
+     customerLogin = false;
+    }
+
+        customerLocation = 0;
+        loginWindow.setModal(true);
+        loginWindow.exec();
+        loginWindow.on_buttonBox_loginPress_accepted(tempName, tempPassword);
+
+        // Stores the tempname and password
+        SetUsername(tempName);
+        SetPassword(tempPassword);
+
+        if(Administrator.checkAdmin(tempName, tempPassword ))
+        {
+            validInput = true;
+            SetAdminLogin(true);
+        }
+        else
+        {	// Compare user input to database
+            tempCustomer =  customerList.VerifyCustomer(tempName, tempPassword);
+            if(tempCustomer.getUserName() != " ")
+            {
+                validInput = true;
+                SetCustomerLogin(true);
+            }
+        }
 
 
-	customerLocation = 0;
-	loginWindow.setModal(true);
-	loginWindow.exec();
-	loginWindow.on_buttonBox_loginPress_accepted(tempName, tempPassword);
+        if(!validInput)
+        {
+            QMessageBox::information(this, "Error", "Please enter a valid user name and password");
+        }
+    //	if(!loginWindow.on_buttonBox_loginPress_rejected())
+    //	{
+    //		// ERROR MESSAGES LOGIN REJECTED DISPLAY
+    //		errorWindow.setModal(true);
+    //		errorWindow.exec();
+    //		errorWindow.show();
+    //	}
+        if(validInput)
+        {
+            if(adminLogin)
+            {    loginCount++;
+                aWindow->show();	// ADMIN
 
-	// Stores the tempname and password
-	SetUsername(tempName);
-	SetPassword(tempPassword);
+            }
+            else if(customerLogin)    
+            {
+                //*************************************
+                //***************************************
+                //This must change. WHen the boolean changes we dont have to negate.
+                if(!tempCustomer.getAccess())
+                {
+                    bWindow->show();    // BROCHURE
 
-	if(Administrator.checkAdmin(tempName, tempPassword ))
-	{
-		validInput = true;
-		SetAdminLogin(true);
-	}
-	else
-	{	// Compare user input to database
-		tempCustomer =  customerList.VerifyCustomer(tempName, tempPassword);
-		if(tempCustomer.getUserName() != " ")
-		{
-			validInput = true;
-			SetCustomerLogin(true);
-		}
-	}
-	if(!loginWindow.on_buttonBox_loginPress_rejected())
-	{
-		// ERROR MESSAGES LOGIN REJECTED DISPLAY
-		errorWindow.setModal(true);
-		errorWindow.exec();
-		errorWindow.show();
-	}
-	if(validInput)
-	{
-		if(adminLogin)
-		{
-			aWindow->show();	// ADMIN
-		}
-		else if(customerLogin)
-		{
-			bWindow->show();    // BROCHURE
-		}
-	}
+                }
+                else
+                {
+                    QMessageBox::information(0, "Notice","Your account has not yet been activated. Check back in a few hours");
+                }
+
+
+                loginCount++;
+            }
+
+        }
+
+
 }
 // Launches Window depending which button is clicked
 void MainProgramWindow::Launcher()
@@ -269,7 +300,7 @@ void MainProgramWindow::on_pushButton_RequestBrochure_clicked()
 	bool properFields = false;
 	sWindow->setModal(true);
 
-QMessageBox::information(this, "lol", "lol");
+
 	int submitSuccess = sWindow->exec();
 
 	if (submitSuccess)

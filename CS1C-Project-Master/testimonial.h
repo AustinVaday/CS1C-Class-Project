@@ -17,22 +17,12 @@ public:
 
     void setTestimonial(QString input);
     QString getTestimonial() const;
-    void clearRadioButtons();
 
 signals:
     void returnString(QString returnString);
 
 private slots:
     void on_write_clicked();
-
-    void on_veryInterested_clicked();
-
-    void on_somewhatInterested_clicked();
-
-    void on_notInterested_clicked();
-
-    void on_neverCallAgain_clicked();
-
 
 private:
     Ui::Testimonial *ui;

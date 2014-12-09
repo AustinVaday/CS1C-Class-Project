@@ -150,6 +150,10 @@ public:
      **********************************************************************/
     bool isExist(Product someProduct);
 
+    float SumList();
+
+    ProductList& operator=(const ProductList& list);
+
     bool    WriteToFile();
 
     bool    WriteToFile(QString filePath);
@@ -163,6 +167,8 @@ public:
     Product FindProduct(QString userName) ;
 
     QString operator[](int index);
+
+    Product ReturnProduct(int index) const;
 
 };
 #endif // PRODUCTLISTCLASS_H

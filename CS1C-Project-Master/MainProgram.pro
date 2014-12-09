@@ -11,7 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 QT_NO_DEBUG_OUTPUT
 
-TARGET = MainProgram
+TARGET   = MainProgram
 TEMPLATE = app
 
 
@@ -50,11 +50,13 @@ SOURCES += main.cpp\
     maintplan.cpp \
     environments.cpp \
     signupwindow.cpp \
-    contactus.cpp \
-    shoppingcartwindownew.cpp \
+    contactus.cpp\
+    shoppingcartwindow.cpp\
+    shoppingcartwindownew.cpp\
     ExceptionHandlers.cpp\
     conceptofops.cpp \
-    testimonial.cpp
+    testimonial.cpp \
+    proceedtocheckout.cpp
 
 HEADERS += MainProgramWindow.h \
 	adminclass.h \
@@ -94,7 +96,8 @@ HEADERS += MainProgramWindow.h \
     ShoppingCartList.h\
     shoppingcartwindownew.h\
     conceptofops.h \
-    testimonial.h
+    testimonial.h \
+    proceedtocheckout.h
 
 
 FORMS   += mainprogramwindow.ui \
@@ -122,10 +125,11 @@ FORMS   += mainprogramwindow.ui \
     maintplan.ui \
     environments.ui \
     signupwindow.ui \
-    contactus.ui \
+    contactus.ui\
     shoppingcartwindownew.ui\
     conceptofops.ui \
-    testimonial.ui
+    testimonial.ui \
+    proceedtocheckout.ui
 
 RESOURCES += \
     Images.qrc \

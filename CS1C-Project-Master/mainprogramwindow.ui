@@ -77,7 +77,7 @@ font: 13pt &quot;Papyrus&quot;;
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_RequestBrochure">
+      <widget class="QPushButton" name="pushButton_RequestBrochure_2">
        <property name="styleSheet">
         <string notr="true">color: white;
 font: 13pt &quot;Papyrus&quot;;
@@ -104,7 +104,7 @@ font: 13pt &quot;Papyrus&quot;;
     <zorder>pushButton_Help</zorder>
     <zorder>pushButton_Login</zorder>
     <zorder>pushButton_Guest</zorder>
-    <zorder>pushButton_RequestBrochure</zorder>
+    <zorder>pushButton_RequestBrochure_2</zorder>
    </widget>
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
@@ -170,7 +170,8 @@ font: 13pt &quot;Papyrus&quot;;
 font: 13pt &quot;Papyrus&quot;;</string>
     </property>
     <property name="text">
-     <string>Reviews</string>
+     <string>Customer
+ Testimonials</string>
     </property>
    </widget>
   </widget>

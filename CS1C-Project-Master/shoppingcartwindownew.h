@@ -1,20 +1,22 @@
 #ifndef SHOPPINGCARTWINDOWNEW_H
 #define SHOPPINGCARTWINDOWNEW_H
 
-#include <QWidget>
+#include <QDialog>
 #include "ProductListClass.h"
+#include "proceedtocheckout.h"
+
 
 namespace Ui {
 class ShoppingCartWindowNew;
 }
 
-class ShoppingCartWindowNew : public QWidget
+class ShoppingCartWindowNew : public QDialog
 {
     Q_OBJECT
 
 public:
     explicit ShoppingCartWindowNew(QWidget *parent = 0);
-    ShoppingCartWindowNew(QWidget *parent, ProductList &robotList, ProductList &ShoppingCartList);
+    ShoppingCartWindowNew(QWidget *parent, ProductList &ShoppingCartList);
 
     ~ShoppingCartWindowNew();
     void DisplayTheList();
@@ -32,8 +34,13 @@ private slots:
 
 private:
     Ui::ShoppingCartWindowNew *ui;
-    ProductList roboList;
+    ProductList robotList;
     ProductList shoppingCartList;
+    ProceedToCheckout* checkoutWindow;
+
+//    Product robo1;
+//    Product robo2;
+//    Product robo3;
 };
 
 #endif // SHOPPINGCARTWINDOWNEW_H

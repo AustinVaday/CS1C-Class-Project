@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>436</width>
-    <height>364</height>
+    <width>603</width>
+    <height>478</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QScrollArea" name="scrollArea">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>40</y>
+     <x>150</x>
+     <y>50</y>
      <width>201</width>
      <height>291</height>
     </rect>
@@ -44,7 +44,7 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>150</x>
+     <x>220</x>
      <y>10</y>
      <width>91</width>
      <height>16</height>
@@ -57,8 +57,8 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>130</y>
+     <x>400</x>
+     <y>160</y>
      <width>112</width>
      <height>83</height>
     </rect>

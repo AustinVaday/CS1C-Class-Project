@@ -1,13 +1,13 @@
 #ifndef CUSTOMERPLACEORDER_H
 #define CUSTOMERPLACEORDER_H
 
-#include <QWidget>
+#include <QDialog>
 
 namespace Ui {
 class CustomerPlaceOrder;
 }
 
-class CustomerPlaceOrder : public QWidget
+class CustomerPlaceOrder : public QDialog
 {
     Q_OBJECT
 
