@@ -10,18 +10,6 @@
     <height>430</height>
    </rect>
   </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
-  </property>
-  <property name="maximumSize">
-   <size>
-    <width>533</width>
-    <height>430</height>
-   </size>
-  </property>
   <property name="windowTitle">
    <string>MainProgramWindow</string>
   </property>
@@ -44,12 +32,6 @@ background-image: url(:/Resources/city whhaaa.jpg);
       <height>32</height>
      </rect>
     </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
     <property name="styleSheet">
      <string notr="true">color: white;
 font: 13pt &quot;Papyrus&quot;;
@@ -68,21 +50,9 @@ font: 13pt &quot;Papyrus&quot;;
       <height>201</height>
      </rect>
     </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QPushButton" name="pushButton_Login">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
        <property name="styleSheet">
         <string notr="true">color: white;
 font: 13pt &quot;Papyrus&quot;;
@@ -95,12 +65,6 @@ font: 13pt &quot;Papyrus&quot;;
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_Guest">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
        <property name="styleSheet">
         <string notr="true">color: white;
 font: 13pt &quot;Papyrus&quot;;
@@ -114,12 +78,6 @@ font: 13pt &quot;Papyrus&quot;;
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_RequestBrochure">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
        <property name="styleSheet">
         <string notr="true">color: white;
 font: 13pt &quot;Papyrus&quot;;
@@ -132,12 +90,6 @@ font: 13pt &quot;Papyrus&quot;;
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_Help">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
        <property name="styleSheet">
         <string notr="true">color: white;
 font: 13pt &quot;Papyrus&quot;;
@@ -154,20 +106,64 @@ font: 13pt &quot;Papyrus&quot;;
     <zorder>pushButton_Guest</zorder>
     <zorder>pushButton_RequestBrochure</zorder>
    </widget>
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>230</y>
+      <width>311</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="page">
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="geometry">
+       <rect>
+        <x>-10</x>
+        <y>0</y>
+        <width>241</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>239</width>
+         <height>129</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QTextBrowser" name="tempDisplay">
+          <property name="styleSheet">
+           <string notr="true">color: white;
+font: 13pt &quot;Papyrus&quot;;
+</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_2"/>
+   </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>240</y>
-      <width>171</width>
+      <x>0</x>
+      <y>60</y>
+      <width>81</width>
       <height>101</height>
      </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
     </property>
     <property name="styleSheet">
      <string notr="true">color: white;
@@ -175,28 +171,6 @@ font: 13pt &quot;Papyrus&quot;;</string>
     </property>
     <property name="text">
      <string>Reviews</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>10</y>
-      <width>271</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color:rgb(255, 255, 255)</string>
-    </property>
-    <property name="text">
-     <string>iRobotsTheBomb Inc.</string>
     </property>
    </widget>
   </widget>

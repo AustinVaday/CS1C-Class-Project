@@ -9,7 +9,6 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
 	createAccount(false),
 	guestLogin(false)
 {
-
 	// Hard code of admin login
 	Admin testAdmin("","admin1234@gmail.com", 1234, "");
 
@@ -20,7 +19,6 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
 	//	been established then
 	try
 	{
-
 		if(!databaseCreated)
 		{
 			if(!(databaseCreated = CreateDatabase()))
@@ -38,17 +36,18 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
 		QApplication::quit();
 	}
 
+	ui->tempDisplay->setText(customerList.OutputList());
+
     // Initialize
     hWindow = new HelpWindow;
     aWindow = new AdminWindow(this, customerList);
-//    bWindow = new BrochureWindow(this);
+    bWindow = new BrochureWindow(this);
     gWindow = new GuestWindow;
     sWindow = new SignUpWindow;
     cWindow = new ContactUs(this);
     bWindow = new BrochureWindow;
 	reviewsWindow = new customerReviews;
 
-	ReadTestimonials();
 
     connect(aWindow, SIGNAL(clicked()), this, SLOT(on_pushButton_Help_clicked()));
 
@@ -63,13 +62,11 @@ MainProgramWindow::MainProgramWindow(QWidget *parent) :
 MainProgramWindow::~MainProgramWindow()
 {
 
-	StoreTestimonials();
 	robotList.WriteToFile();
 	robotList.ClearList();
 	customerList.WriteToFile();
 	customerList.ClearList();
-
-	if(reviewsWindow != 0)
+	if(reviewsWindow == 0)
 	{
 		delete reviewsWindow;
 	}
@@ -139,11 +136,6 @@ void MainProgramWindow::on_pushButton_Login_clicked()
 
 
 	}
-	else
-	{
-		QMessageBox::information(0, "Login Error", "Sorry, wrong credentials");
-	}
-
 }
 
 void MainProgramWindow::on_exitProgram_clicked()
@@ -220,6 +212,8 @@ void MainProgramWindow::updateCustomerList(CustomerList *list)
 	}
 
 	customerList = *list;
+	ui->tempDisplay->clear();
+	ui->tempDisplay->setText(customerList.OutputList());
 
 //    customerList.WriteToFile();
 }
@@ -326,113 +320,4 @@ void MainProgramWindow::updateCustomerReviews(QString newCustomerReviews)
 void MainProgramWindow::setDatabaseStatus(bool status)
 {
 	databaseCreated = status;
-}
-
-
-/************************************************************
-* WriteToFile
-* -----------------------------------------------------------
-* - Overloaded
-*	- see WriteToFile(Qstring)
-* Returns true only if it successfully writes
-* Returns false if it fails to open, write or if there are
-*  no customers in the list.
-* ------------------------------------------------------------
-* File path is set when first establishing the database
-*************************************************************/
-bool MainProgramWindow::StoreTestimonials()
-{
-	QDir dataPath = QDir::current();
-	bool writeStatus;
-
-	// Failstate signal
-	writeStatus = false;
-
-	// Initialize QFile and write failed, Appended File to path, QFile Creates
-
-	while(dataPath.dirName() != "Class-Project")
-	{
-		dataPath.cdUp();
-	}
-
-	dataPath.cd("Database-Files");
-
-	QFile testimonialDataFile((dataPath.path() + "/Testimonials.txt"));
-
-	if(testimonialDataFile.open((QIODevice::ReadWrite | QIODevice::Text)|QIODevice::Truncate))
-	{
-
-		QTextStream out(&testimonialDataFile);
-
-
-		out << bWindow->getTestimonials();
-
-		// Flushes output buffer
-
-		out.flush();
-		writeStatus = true;
-
-
-	} // END OPEN FILE IF
-// Flushes and coses the data file
-	testimonialDataFile.flush();
-	testimonialDataFile.close();
-
-	// Returns True or False status
-	return writeStatus;
-
-}// **** END METHOD **** //
-
-/************************************************************
-* ReadFile
-* ----------------------------------------------------------
-* Returns true only if it successfully reads
-* Returns false if it fails to open, read or if there are no
-*	customers in the database
-* ----------------------------------------------------------
-* File path is set when first establishing the database
-*************************************************************/
-bool MainProgramWindow::ReadTestimonials()
-{
-	bool readSuccessFull;
-	QDir dataPath = QDir::current();
-	QString inputData;
-
-	readSuccessFull = false;
-
-	while(dataPath.dirName() != "Class-Project")
-	{
-		dataPath.cdUp();
-	}
-
-	qDebug () << "Current dir path " << dataPath.dirName();
-
-	dataPath.cd("Database-Files");
-
-	QFile testimonialDataFile((dataPath.path() + "/Testimonials.txt"));
-
-	// This checks if the file opens, if it does not, it will display an
-	//  error message
-	if(testimonialDataFile.open(QIODevice::ReadOnly | QIODevice::Text))
-	{
-
-		// Points Text stream to input file to read in.
-		QTextStream inFile(&testimonialDataFile);
-		while(!inFile.atEnd())
-		{
-											  // Data Type			| TXT FILE
-			inputData = inputData + '\n' + inFile.readLine() + '\n';	 // Customer Name	| Line 1
-		}
-
-		bWindow->setTestimonials(inputData);
-		// sets read true, flushes the Qtextstream buffer
-		readSuccessFull = true;
-
-		testimonialDataFile.flush();
-		testimonialDataFile.close();
-	}
-	return readSuccessFull;
-
-// **** END METHOD **** //
-
 }
