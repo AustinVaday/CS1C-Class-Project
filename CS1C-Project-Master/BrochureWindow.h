@@ -6,6 +6,7 @@
 #include "ProductListClass.h"
 #include "ViewProducts.h"
 #include "ImageViewer.h"
+#include "testimonial.h"
 
 namespace Ui {
 class BrochureWindow;
@@ -19,13 +20,18 @@ public:
     explicit BrochureWindow(QWidget *parent = 0);
     ~BrochureWindow();
 
+	QString getTestimonials() const;
+	void	setTestimonials(QString input);
+
+
+
 signals:
     void clicked();
 
     void viewProducts();
 
 public slots:
-    void on_updated_shopping_list(ProductList &ShoppingCartList);
+	void on_updated_shopping_list(ProductList &ShoppingCartList);
 
 
 private slots:
@@ -35,7 +41,9 @@ private slots:
 
     void on_button_logout_clicked();
 
-private:
+	void on_viewTestimonials_clicked();
+
+	private:
 
     //Annie declares the objects individually wihtin the view product window
     // lol, i just realized that you don't need a shoppingCartList, it's just
@@ -49,6 +57,8 @@ private:
     Ui::BrochureWindow* ui;
     ViewProducts*       vpWindow;
     ImageViewer*        image;
+	Testimonial*		tWindow;
+	QString				testimonialString;
 };
 
 #endif // BROCHUREWINDOW_H

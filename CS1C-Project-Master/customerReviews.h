@@ -1,22 +1,22 @@
-#ifndef TESTIMONIAL_H
-#define TESTIMONIAL_H
+#ifndef CUSTOMERREVIEWS_H
+#define CUSTOMERREVIEWS_H
 
 #include <QWidget>
 #include <QTextBrowser>
 namespace Ui {
-class Testimonial;
+class customerReviews;
 }
 
-class Testimonial : public QWidget
+class customerReviews : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit Testimonial(QWidget *parent = 0);
-    ~Testimonial();
+	explicit customerReviews(QWidget *parent = 0);
+	~customerReviews();
 
-    void setTestimonial(QString input);
-    QString getTestimonial() const;
+	void setCustomerReviews(QString input);
+	QString getCustomerReviews() const;
     void clearRadioButtons();
 
 signals:
@@ -35,9 +35,9 @@ private slots:
 
 
 private:
-    Ui::Testimonial *ui;
-    QString* testimonial;
+	Ui::customerReviews *ui;
+	QString* reviews;
 
 };
 
-#endif // TESTIMONIAL_H
+#endif // CUSTOMERREVIEWS_H

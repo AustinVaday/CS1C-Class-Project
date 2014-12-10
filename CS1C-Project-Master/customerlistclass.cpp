@@ -776,13 +776,13 @@ bool CustomerList::WriteToFile()
 
 	dataPath.cd("Database-Files");
 
-//	dataPath.remove((dataPath.path() + "/CustomerList.txt"));
-
 	QFile customerDataFile((dataPath.path() + "/CustomerList.txt"));
+
+
 
 	if(customerDataFile.open((QIODevice::ReadWrite | QIODevice::Text)|QIODevice::Truncate) && !isEmpty())
 	{
-
+		qDebug () << "Customer file opened ";
 		QTextStream out(&customerDataFile);
 		_customerPtr = _head;
 
@@ -809,11 +809,11 @@ bool CustomerList::WriteToFile()
 		out.flush();
 		writeStatus = true;
 
+
+	} // END OPEN FILE IF
 // Flushes and coses the data file
 	customerDataFile.flush();
 	customerDataFile.close();
-	} // END OPEN FILE IF
-
 
 	// Returns True or False status
 	return writeStatus;
@@ -835,11 +835,14 @@ bool CustomerList::ReadFile()
 	QDir dataPath = QDir::current();
     QString inputData[9];
 
+	readSuccessFull = false;
 
 	while(dataPath.dirName() != "Class-Project")
 	{
 		dataPath.cdUp();
 	}
+
+	qDebug () << "Current dir path " << dataPath.dirName();
 
 	dataPath.cd("Database-Files");
 
@@ -850,7 +853,6 @@ bool CustomerList::ReadFile()
 	if(customerDataFile.open(QIODevice::ReadOnly | QIODevice::Text))
 	{
 
-		QString inputData[10];
 		// Points Text stream to input file to read in.
 		QTextStream inFile(&customerDataFile);
 		while(!inFile.atEnd() && !this->isFull())
@@ -870,8 +872,8 @@ bool CustomerList::ReadFile()
 
 			// Adds the customer to customer list
 			this->Enqueue(Customer(inputData[0], inputData[1], inputData[3],
-                                                            inputData[4], inputData[5], inputData[6],
-                                                            inputData[7].toLong(),         inputData[8]));
+								   inputData[4], inputData[5], inputData[6],
+								   inputData[7].toLong(),         inputData[8]));
 					inFile.skipWhiteSpace();
 					inFile.flush();
 		}

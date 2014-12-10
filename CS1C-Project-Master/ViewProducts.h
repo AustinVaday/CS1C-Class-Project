@@ -6,7 +6,7 @@
 #include "ProductListClass.h"
 #include "ImageViewer.h"
 #include "maintplan.h"
-#include "ShoppingCartWindowNew.h"
+#include "shoppingcartwindownew.h"
 
 namespace Ui {
 class ViewProducts;
@@ -18,17 +18,18 @@ class ViewProducts : public QWidget
 
 public:
     explicit ViewProducts(QWidget *parent = 0);
-    ViewProducts(QWidget *parent, ProductList &robotList, ProductList &shoppingCartList);
+	ViewProducts(QWidget *parent, ProductList &robotList, ProductList &shoppingCartList);
+	ViewProducts(QWidget *parent, ProductList &shoppingCartList);
 
 
 
     ~ViewProducts();
 signals:
 
-    void signal_updated_shopping_list(ProductList &shoppingCartList);
+	void signal_updated_shopping_list(ProductList &ProductList);
 
 public slots:
-    void on_updated_shopping_list(ProductList &ShoppingCartList);
+	void on_updated_shopping_list(ProductList &updatedList);
 
 private slots:
 
@@ -43,12 +44,14 @@ private slots:
 
     void on_checkout_button_clicked();
 
+	void on_backButton_clicked();
+
 private:
     Ui::ViewProducts *ui;
     ImageViewer* image1;
-    ProductList shoppingCartList;
-    ProductList roboList;
-    ShoppingCartWindowNew *scWindow;
+	ProductList shoppingCart;
+	ProductList roboList;
+	ShoppingCartWindowNew *scWindow;
 
 };
 

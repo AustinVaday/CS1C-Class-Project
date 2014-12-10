@@ -459,6 +459,76 @@ QString ProductList::operator[](int index)
 	return traversePtr->GetData().OutputData();
 }
 
+/****************************************************************
+* Overload =    (assignment operators)
+* --------------------------------------------------------------
+*
+*****************************************************************/
+ProductList& ProductList::operator=(const ProductList& list)
+{
+
+	if (this != &list)
+	{
+		int index;
+		Product copyProduct;
+		index = 0;
+
+		//Before Assignment
+
+		qDebug() << "Line 765 : Before ProductLIst Assignment: " << this->OutputList();
+
+		this->ClearList();
+
+		// Only a temporary fix :( It's only adding to the queue not removing from it.
+		if(!list.isEmpty())
+		{
+			for(index = 0; index < list.Size(); index++)
+			{
+				copyProduct =list.ReturnProduct(index);
+				this->Enqueue(copyProduct);
+			}
+
+		}
+		// After
+	}
+	return *this;
+}// **** END METHOD **** //
+
+Product ProductList::ReturnProduct(int index) const
+{
+	Node<Product> * traversePtr;
+
+		if(isEmpty())
+		{
+			throw EmptyList();
+		}
+
+		if (index > _listLimit)
+		{
+			throw OutOfRange();
+		}
+
+
+		// NEED TO MAKE SURE 2 ACCOUNT NUMBERS CANNOT BE THE SAME //
+		traversePtr = _head;
+		int i = 0;
+		while (i < _listLimit && traversePtr !=NULL &&
+				i != index)
+		{
+			traversePtr = traversePtr->GetNext();
+
+			i++;
+		}
+
+		if (traversePtr == NULL)
+		{
+			// throw exception class if not found.
+			traversePtr = NULL;
+			throw NotFound();
+		}
+
+		return traversePtr->GetData();
+}
 
 bool ProductList::isExist(Product someProduct)
 {
@@ -518,7 +588,7 @@ bool ProductList::WriteToFile()
 	// A QFile is the created or opened
 	QFile productDataFile(dataPath.path()
 						  + resourcePath
-						  + "ProductDatabase.txt");
+						  + "ProductList.txt");
 
 	// Initialize write to false
 	writeSuccessFull = false;

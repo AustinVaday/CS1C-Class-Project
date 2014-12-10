@@ -1,18 +1,18 @@
-#include "testimonial.h"
-#include "ui_testimonial.h"
+#include "customerReviews.h"
+#include "ui_customerReviews.h"
 #include <QIcon>
 
-Testimonial::Testimonial(QWidget *parent) :
+customerReviews::customerReviews(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::Testimonial)
+	ui(new Ui::customerReviews)
 {
-    /* AUSTIN VADAY EDITED THIS WHOLE CLASS */
+	/* AUSTIN VADAY EDITED THIS WHOLE CLASS */
 
     ui->setupUi(this);
-    testimonial = new QString;
+	reviews = new QString;
 
     ui->custTest->setAcceptRichText(true);
-    ui->custTest->setText(*testimonial);
+	ui->custTest->setText(*reviews);
     ui->custTest->setReadOnly(true);
 
     ui->submitForm->setAcceptRichText(true);
@@ -20,14 +20,14 @@ Testimonial::Testimonial(QWidget *parent) :
 }
 
 
-Testimonial::~Testimonial()
+customerReviews::~customerReviews()
 {
-    emit returnString(*testimonial);
+	emit returnString(*reviews);
     delete ui;
-    delete testimonial;
+	delete reviews;
 }
 
-void Testimonial::on_write_clicked()
+void customerReviews::on_write_clicked()
 {
     QString name;
     QString interestRating;
@@ -35,7 +35,7 @@ void Testimonial::on_write_clicked()
     /* CHANGED THIS CODE */
     if (!ui->submitForm->toPlainText().isEmpty())
     {
-        *testimonial += '\n' + ui->submitForm->toPlainText();
+		*reviews += '\n' + ui->submitForm->toPlainText();
         name = ui->nameLine->text();
 
         if (name.isEmpty())
@@ -72,37 +72,37 @@ void Testimonial::on_write_clicked()
         }
 
         ui->custTest->setReadOnly(false);
-        *testimonial += "\nInterest rating: " + interestRating;
+		*reviews += "\nInterest rating: " + interestRating;
 
 
-        *testimonial += "\n- " + name;
-        ui->custTest->setText(*testimonial);
+		*reviews += "\n- " + name;
+		ui->custTest->setText(*reviews);
         ui->custTest->setReadOnly(true);
     }
 
 }
 
-void Testimonial::setTestimonial(QString input)
+void customerReviews::setCustomerReviews(QString input)
 {
-    if(testimonial != 0)
+	if(reviews != 0)
     {
-        *testimonial = input;
+		*reviews = input;
     }
 }
 
-QString Testimonial::getTestimonial() const
+QString customerReviews::getCustomerReviews() const
 {
     QString returnStr;
     returnStr.clear();
-    if(testimonial != 0)
+	if(reviews != 0)
     {
-        returnStr = *testimonial;
+		returnStr = *reviews;
     }
 
     return returnStr;
 }
 
-void Testimonial::on_veryInterested_clicked()
+void customerReviews::on_veryInterested_clicked()
 {
     ui->veryInterested->setChecked(true);
     ui->somewhatInterested->setChecked(false);
@@ -110,7 +110,7 @@ void Testimonial::on_veryInterested_clicked()
     ui->neverCallAgain->setChecked(false);
 }
 
-void Testimonial::on_somewhatInterested_clicked()
+void customerReviews::on_somewhatInterested_clicked()
 {
     ui->veryInterested->setChecked(false);
     ui->somewhatInterested->setChecked(true);
@@ -118,7 +118,7 @@ void Testimonial::on_somewhatInterested_clicked()
     ui->neverCallAgain->setChecked(false);
 }
 
-void Testimonial::on_notInterested_clicked()
+void customerReviews::on_notInterested_clicked()
 {
     ui->veryInterested->setChecked(false);
     ui->somewhatInterested->setChecked(false);
@@ -126,7 +126,7 @@ void Testimonial::on_notInterested_clicked()
     ui->neverCallAgain->setChecked(false);
 }
 
-void Testimonial::on_neverCallAgain_clicked()
+void customerReviews::on_neverCallAgain_clicked()
 {
     ui->veryInterested->setChecked(false);
     ui->somewhatInterested->setChecked(false);
@@ -134,7 +134,7 @@ void Testimonial::on_neverCallAgain_clicked()
     ui->neverCallAgain->setChecked(true);
 }
 
-void Testimonial::clearRadioButtons()
+void customerReviews::clearRadioButtons()
 {
     ui->veryInterested->setChecked(false);
     ui->somewhatInterested->setChecked(false);

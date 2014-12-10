@@ -23,9 +23,11 @@ int main(int argc, char *argv[])
 		directory.cd("Database-Files");
 	}
 
+	qDebug() << "Current Directory : " << directory.path();
+
 	QFile::copy(":/CustomerDatabase.txt",(directory.path() +  "/CustomerList.txt"));
 	QFile::copy(":/ProductDatabase.txt",(directory.path() +  "/ProductList.txt"));
-
+	QFile::copy(":/Testimonials.txt",(directory.path()) + "/Testimonials.txt");
 
 	// MAIN WINDOW HAS TO STAY DOWN HERE OR IT WILL TRY TO INITIALIZE BEFORE
 	//	CHECKING FOR DIRECTORY

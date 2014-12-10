@@ -8,47 +8,66 @@ ViewProducts::ViewProducts(QWidget *parent):
     ui(new Ui::ViewProducts)
 {
     ui->setupUi(this);
-    scWindow = new ShoppingCartWindowNew;
+
+	scWindow = new ShoppingCartWindowNew;
+
 }
 
 
-ViewProducts::ViewProducts(QWidget *parent, ProductList &robotList, ProductList &shoppingCartList)
+ViewProducts::ViewProducts(QWidget *parent, ProductList &robotList, ProductList &shoppingCart)
  :
     QWidget(parent),
     ui(new Ui::ViewProducts)
 {
 
-    connect(this, SIGNAL(signal_updated_shopping_list(ProductList&)), parent, SLOT(on_updated_shopping_list(ProductList &)));
+	scWindow = new ShoppingCartWindowNew;
+	connect(this, SIGNAL(signal_updated_shopping_list(ProductList&)), parent, SLOT(on_updated_shopping_list(ProductList &)));
+		roboList = robotList;
+ui->setupUi(this);
+		Product robo1("Meowzers", "Robot is disquised as a cat\nvery efficient in difficult terrains\nvery agile & stealthy robot", 5000.00, 666, 111413);
+	Product robo2("iRobot 6000", "Can bounce into action after being thrown out of building\nhas a manipulator arm in order to cut wires\nvery durable can keep running after being dropped 100 ft", 100000.99, 342, 122112 );
+	Product robo3("Soviet Attackers", "if cold war ever happens again robot is very efficient\nmade special to detect Soviet threats\ncan transmit video and sudio", 500.56, 234, 81285);
+	roboList.Enqueue(robo1);
+	roboList.Enqueue(robo2);
+	roboList.Enqueue(robo3);
 
-    roboList = robotList;
+	ui->text1->insertPlainText(roboList[0]);
 
-    ui->setupUi(this);
+	ui->text2->insertPlainText(roboList[1]);
 
-    ui->text1->insertPlainText(robotList[0]);
+	ui->text3->insertPlainText(roboList[2]);
 
-    ui->text2->insertPlainText(robotList[1]);
+	ui->text3->insertPlainText(robo3.OutputData());
 
-    ui->text3->insertPlainText(robotList[2]);
 
-    scWindow = new ShoppingCartWindowNew();
-    Product robo3("Soviet Attackers", "if cold war ever happens again robot is very efficient\nmade special to detect Soviet threats\ncan transmit video and audio", 500.56, 234, 81285);
-    ui->text3->insertPlainText(robo3.OutputData());
+}
+
+
+
+// Anthony's Constructor, Check out cart
+ViewProducts::ViewProducts(QWidget *parent, ProductList &shoppingCartList):
+QWidget(parent),
+ui(new Ui::ViewProducts)
+
+{
+	ui->setupUi(this);
+
+	connect(this, SIGNAL(signal_updated_shopping_list(ProductList&)), parent, SLOT(on_updated_shopping_list(ProductList&)));
+
+	this->shoppingCart = shoppingCartList;
 }
 
 ViewProducts::~ViewProducts()
 {
-    delete ui;
-
-    delete scWindow;
+	delete ui;
+	delete scWindow;
 }
 
 
-void ViewProducts::on_updated_shopping_list(ProductList &ShoppingCartList)
+void ViewProducts::on_updated_shopping_list(ProductList &updateList)
 {
-
-    shoppingCartList = ShoppingCartList;
-
-    emit signal_updated_shopping_list(shoppingCartList);
+	this->shoppingCart = updateList;
+	emit signal_updated_shopping_list(shoppingCart);
 }
 
 void ViewProducts::on_MaintPlan_clicked()
@@ -64,74 +83,48 @@ void ViewProducts::on_MaintPlan_clicked()
 void ViewProducts::on_product_One_clicked()
 {
 
-    Product data;
+	shoppingCart.Enqueue(roboList.ReturnProduct(0));
 
-    data = roboList.FindProduct("Meowzers");
+	emit signal_updated_shopping_list(shoppingCart);
 
-    if (!shoppingCartList.isExist(data))
-    {
-        shoppingCartList.Enqueue(data);
-
-        emit signal_updated_shopping_list(shoppingCartList);
-    }
-    else
-    {
-        QMessageBox::information(this,"Error" ,"Already in your shopping cart!");
-    }
 
 }
 void ViewProducts::on_product_Two_clicked()
 {
-    Product data;
+	shoppingCart.Enqueue(roboList.ReturnProduct(1));
 
-    data = roboList.FindProduct("iRobot 6000");
-
-    if (!shoppingCartList.isExist(data))
-    {
-        shoppingCartList.Enqueue(data);
-
-        emit signal_updated_shopping_list(shoppingCartList);
-    }
-    else
-    {
-        QMessageBox::information(this,"Error" ,"Already in your shopping cart!");
-    }
+	emit signal_updated_shopping_list(shoppingCart);
 }
 
 void ViewProducts::on_product_Three_clicked()
 {
-    Product data;
+	shoppingCart.Enqueue(roboList.ReturnProduct(2));
 
-     data = roboList.FindProduct("Soviet Attackers");
-
-     if (!shoppingCartList.isExist(data))
-     {
-         shoppingCartList.Enqueue(data);
-
-         emit signal_updated_shopping_list(shoppingCartList);
-     }
-     else
-     {
-         QMessageBox::information(this,"Error" ,"Already in your shopping cart!");
-     }
-
+	emit signal_updated_shopping_list(shoppingCart);
 }
 
 void ViewProducts::on_checkout_button_clicked()
 {
 
-    if (shoppingCartList.isEmpty())
+	if (shoppingCart.isEmpty())
     {
         QMessageBox::information(this,"Error" ,"Nothing in cart");
 
-    }
+	}
     else
     {
-        delete scWindow;
 
-        scWindow = new ShoppingCartWindowNew(this, roboList, shoppingCartList);
+//		emit signal_updated_shopping_list(shoppingCart);
+//		scWindow.show();
+			scWindow = new ShoppingCartWindowNew(this, shoppingCart);
 
-        scWindow->show();
-    }
+			scWindow->show();
+		}
 
+}
+
+// This method is for when the customer decides to go back to the previous window
+void ViewProducts::on_backButton_clicked()
+{
+	this->hide();
 }

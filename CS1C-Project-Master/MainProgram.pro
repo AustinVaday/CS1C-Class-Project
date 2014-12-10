@@ -9,8 +9,6 @@ QT       += printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-QT_NO_DEBUG_OUTPUT
-
 TARGET = MainProgram
 TEMPLATE = app
 
@@ -54,6 +52,8 @@ SOURCES += main.cpp\
     shoppingcartwindownew.cpp \
     ExceptionHandlers.cpp\
     conceptofops.cpp \
+    proceedtocheckout.cpp \
+    customerReviews.cpp \
     testimonial.cpp
 
 HEADERS += MainProgramWindow.h \
@@ -63,7 +63,7 @@ HEADERS += MainProgramWindow.h \
 	customerclass.h \
 	genericnodeclass.h \
 	ExceptionHandlers.h \
-	Header.h \
+        header.h \
 	newactivatedlist.h\
 	maindisplay.h \
 	AdminWindow.h \
@@ -94,7 +94,10 @@ HEADERS += MainProgramWindow.h \
     ShoppingCartList.h\
     shoppingcartwindownew.h\
     conceptofops.h \
-    testimonial.h
+        proceedtocheckout.h \
+    customerReviews.h\
+    testimonial.h\
+
 
 
 FORMS   += mainprogramwindow.ui \
@@ -112,7 +115,6 @@ FORMS   += mainprogramwindow.ui \
 	orderproduct.ui \
     BrochureWindow.ui \
     CustomerPlaceOrder.ui \
-    ViewProducts.ui\
     find.ui \
     customeraccountwindow.ui \
     ImageViewer.ui \
@@ -121,10 +123,13 @@ FORMS   += mainprogramwindow.ui \
     guestwindow.ui \
     maintplan.ui \
     environments.ui \
-    signupwindow.ui \
-    contactus.ui \
-    shoppingcartwindownew.ui\
-    conceptofops.ui \
+        signupwindow.ui \
+        contactus.ui \
+        shoppingcartwindownew.ui\
+        conceptofops.ui \
+        proceedtocheckout.ui \
+    ViewProducts.ui\
+    customerReviews.ui\
     testimonial.ui
 
 RESOURCES += \
@@ -132,20 +137,13 @@ RESOURCES += \
     Database.qrc
 
 OTHER_FILES += \
-    ProductDatabase.txt\
-    CustomerDatabase.txt
+    Testimonials.txt
 
 
 # QMAKE OUTPUTS
 #       DO NOT REMOVE!!!!!!
 #
  message($$QMAKESPEC)
-
-# Mac OS Specific path
- macx{
-        _PATH = "../../../../CS1C-Project-Master"
- }
-
 
  message(Qt version: $$[QT_VERSION])
  message(Qt is installed in $$[QT_INSTALL_PREFIX])

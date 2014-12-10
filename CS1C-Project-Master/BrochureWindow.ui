@@ -55,27 +55,9 @@
        <enum>QLayout::SetNoConstraint</enum>
       </property>
       <item>
-       <widget class="QPushButton" name="button_placeOrder">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>46</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">font: italic 13pt &quot;Zapfino&quot;;</string>
-        </property>
+       <widget class="QPushButton" name="viewTestimonials">
         <property name="text">
-         <string>Place Order</string>
+         <string>View Testimonials</string>
         </property>
        </widget>
       </item>
@@ -86,28 +68,6 @@
         </property>
         <property name="text">
          <string>View Products</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="button_accountInfo">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>167777</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">font: italic 13pt &quot;Zapfino&quot;;</string>
-        </property>
-        <property name="text">
-         <string>Account Info</string>
         </property>
        </widget>
       </item>

@@ -16,21 +16,23 @@ BrochureWindow::BrochureWindow(QWidget *parent) :
     robotList.Enqueue(robo2);
     robotList.Enqueue(robo3);
 
-    vpWindow = new ViewProducts;
 
-
-
+	vpWindow = new ViewProducts;
+	tWindow	= new Testimonial;
+	tWindow->setTestimonial(testimonialString);
 }
 
 BrochureWindow::~BrochureWindow()
 {
-    delete ui;
-    delete vpWindow;
+
+	delete tWindow;
+	delete vpWindow;
+	delete ui;
 }
-\
+
 void BrochureWindow::on_updated_shopping_list(ProductList &ShoppingCartList)
 {
-    shoppingCartList = ShoppingCartList;
+	shoppingCartList = ShoppingCartList;
 }
 
 void BrochureWindow::on_actionHELP_triggered()
@@ -40,8 +42,8 @@ void BrochureWindow::on_actionHELP_triggered()
 
 void BrochureWindow::on_button_viewProducts_clicked()
 {
-    delete vpWindow;
-    vpWindow = new ViewProducts(this, robotList, shoppingCartList);
+	delete vpWindow;
+	vpWindow = new ViewProducts(this, robotList, shoppingCartList);
 
     vpWindow->show();
 }
@@ -49,4 +51,19 @@ void BrochureWindow::on_button_viewProducts_clicked()
 void BrochureWindow::on_button_logout_clicked()
 {
     this->close();
+}
+
+void BrochureWindow::on_viewTestimonials_clicked()
+{
+	tWindow->show();
+}
+
+void BrochureWindow::setTestimonials(QString input)
+{
+	testimonialString = input;
+}
+
+QString BrochureWindow::getTestimonials() const
+{
+	return testimonialString;
 }

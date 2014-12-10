@@ -135,7 +135,7 @@ public:
    ShoppingCartList SortList();
 
 
-   void RemoveProduct (Product &someProduct)
+   void RemoveProduct (Product &someProduct);
     // Removes customer from list
     //   Returns customer by reference
 

@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "ProductListClass.h"
+#include "proceedtocheckout.h"
 
 namespace Ui {
 class ShoppingCartWindowNew;
@@ -14,7 +15,7 @@ class ShoppingCartWindowNew : public QWidget
 
 public:
     explicit ShoppingCartWindowNew(QWidget *parent = 0);
-    ShoppingCartWindowNew(QWidget *parent, ProductList &robotList, ProductList &ShoppingCartList);
+	ShoppingCartWindowNew(QWidget *parent, ProductList &ShoppingCartList);
 
     ~ShoppingCartWindowNew();
     void DisplayTheList();
@@ -31,6 +32,7 @@ private:
     Ui::ShoppingCartWindowNew *ui;
     ProductList roboList;
     ProductList shoppingCartList;
+	ProceedToCheckout *checkoutWindow;
 };
 
 #endif // SHOPPINGCARTWINDOWNEW_H

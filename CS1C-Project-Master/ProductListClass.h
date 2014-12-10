@@ -81,13 +81,6 @@ public:
      **********************************************************************/
     void DecrementCount();
 
-//	/**********************************************************************
-//	 * CreateObject
-//	 * --------------------------------------------------------------------
-//	 * This method will create an object and fill it with data
-//	 **********************************************************************/
-//	Node<Product>* CreateObject( data);
-
     /**********************************************************************
      * clearList
      * --------------------------------------------------------------------
@@ -163,6 +156,10 @@ public:
     Product FindProduct(QString userName) ;
 
     QString operator[](int index);
+
+	ProductList& operator=(const ProductList& list);
+
+	Product ReturnProduct(int index) const;
 
 };
 #endif // PRODUCTLISTCLASS_H

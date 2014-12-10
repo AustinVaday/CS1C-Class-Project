@@ -6,11 +6,10 @@ ShoppingCartWindowNew::ShoppingCartWindowNew(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ShoppingCartWindowNew)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 }
 
-ShoppingCartWindowNew::ShoppingCartWindowNew(QWidget *parent, ProductList &robotList, ProductList &ShoppingCartList) :
-    QWidget(parent),
+ShoppingCartWindowNew::ShoppingCartWindowNew(QWidget *parent, ProductList &ShoppingCartList) :
     ui(new Ui::ShoppingCartWindowNew)
 {
     ui->setupUi(this);
@@ -22,19 +21,11 @@ ShoppingCartWindowNew::ShoppingCartWindowNew(QWidget *parent, ProductList &robot
     Product robo1("Meowzers", "Robot is disquised as a cat\nvery efficient in difficult terrains\nvery agile & stealthy robot", 5000.00, 666, 111413);
     Product robo2("iRobot 6000", "Can bounce into action after being thrown out of building\nhas a manipulator arm in order to cut wires\nvery durable can keep running after being dropped 100 ft", 100000.99, 342, 122112 );
     Product robo3("Soviet Attackers", "if cold war ever happens again robot is very efficient\nmade special to detect Soviet threats\ncan transmit video and sudio", 500.56, 234, 81285);
-    robotList.Enqueue(robo1);
-    robotList.Enqueue(robo2);
-    robotList.Enqueue(robo3);
+	this->roboList.Enqueue(robo1);
+	this->roboList.Enqueue(robo2);
+	this->roboList.Enqueue(robo3);
 
     shoppingCartList = ShoppingCartList;
-
-
-
-
-    qDebug()<< "Outputting the current shopping Cart List: " << endl;
-    qDebug() << shoppingCartList.OutputList();
-
-//    qDebug() << "Hi";
 
     DisplayTheList();
 
@@ -96,6 +87,7 @@ void ShoppingCartWindowNew::on_remove_button_clicked()
     Product product1("Meowzers", "Robot is disquised as a cat\nvery efficient in difficult terrains\nvery agile & stealthy robot", 5000.00, 666, 111413);
     Product product2("iRobot 6000", "Can bounce into action after being thrown out of building\nhas a manipulator arm in order to cut wires\nvery durable can keep running after being dropped 100 ft", 100000.99, 342, 122112 );
     Product product3("Soviet Attackers", "if cold war ever happens again robot is very efficient\nmade special to detect Soviet threats\ncan transmit video and sudio", 500.56, 234, 81285);
+
 
 //        Product product1; = shoppingCartList.FindProduct("Meowzers");
 //        Product product2; = shoppingCartList.FindProduct("iRobot 6000");
@@ -209,7 +201,6 @@ void ShoppingCartWindowNew::on_remove_button_clicked()
 
         }
 
-
         DisplayTheList();
   }
 }
@@ -218,12 +209,28 @@ void ShoppingCartWindowNew::on_checkout_button_clicked()
 {
 
 
-  DisplayTheList();
+	 float totalSum = shoppingCartList.CalculateSum();
+	 QString stringSum = QString::number(totalSum);
 
+	 QString message =  "Total price for the products you purchased is $";
+	 message += stringSum;
 
+	 if(!shoppingCartList.isEmpty())
+	 {
+		 checkoutWindow = new ProceedToCheckout(0, shoppingCartList, message);
+		 checkoutWindow->show();
+		 shoppingCartList.ClearList();
+	 }
+	 else
+	{
+		 QMessageBox::information(0, "Error", "Shopping Cart Empty");
+	}
+
+	 DisplayTheList();
 }
 
 void ShoppingCartWindowNew::on_back_button_clicked()
 {
     this->hide();
+	shoppingCartList.ClearList();
 }

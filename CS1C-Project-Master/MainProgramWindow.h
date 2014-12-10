@@ -30,7 +30,7 @@
 #include "signupwindow.h"
 #include "contactus.h"
 #include "conceptofops.h"
-#include "testimonial.h"
+#include "customerReviews.h"
 
 #include <QDebug>
 
@@ -82,6 +82,10 @@ class MainProgramWindow : public QMainWindow
 
 		void setDatabaseStatus(bool status);
 
+		bool StoreTestimonials();
+
+		bool ReadTestimonials();
+
 		~MainProgramWindow();
 
 	signals:
@@ -108,12 +112,12 @@ class MainProgramWindow : public QMainWindow
 		void on_pushButton_Guest_clicked();
 		void on_pushButton_RequestBrochure_clicked();
 		void on_actionContactUS_triggered();
-		void updateTestimonial(QString newTestimonial);
+		void updateCustomerReviews(QString newCustomerReviews);
 
 	private:
 		Ui::MainProgramWindow *ui;
-		QString customerTestimonial;
-		Testimonial *testWindow;
+		QString review;
+		customerReviews *reviewsWindow;
 
 		// PROGRAM SECTION WINDOWS
 		AdminWindow *aWindow;
@@ -136,6 +140,7 @@ class MainProgramWindow : public QMainWindow
 		bool			guestLogin;
 		QString			userName;
 		QString			password;
+		QString			productTestimonials;
 };
 
 #endif // MAINPROGRAMWINDOW_H
