@@ -274,13 +274,6 @@ void CustomerAddressBook::on_submitButton_clicked()
                        tr("Please enter the customer key."));
             on_cancelButton_clicked();
         }
-        else if (idString.isEmpty())
-        {
-            QMessageBox::information(this, tr("Empty Field"),
-                       tr("Please enter in an ID number."));
-            on_cancelButton_clicked();
-
-        }
         else if (pass.isEmpty())
         {
             QMessageBox::information(this, tr("Empty Field"),

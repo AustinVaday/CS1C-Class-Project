@@ -1,16 +1,6 @@
-Austin
-28000 Marguerite Pkwy
-
-Somewhat Interested
-Key
-password
-austinvaday@gmail.com
-10100011
-DEACTIVATED
-
 Billy The Kid
-555 Camden Ct
-Mission Viejo, CA 13334
+55335 Camden Ct, Texas
+
 Not Interested
 Nice to Have
 1234pass
@@ -28,15 +18,15 @@ We-Werent-Here@noneyabusiness.gov
 10000001
 DEACTIVATED
 
-FBI
-1 Lincoln Ave.
-Washington D.C. 00234
-Somewhat Interested
-Key
-investigate
-superinvestigators@FBI.gov
-99955533
-DEACTIVATED
+Dropbox
+22222 Marguerite Pkwy
+
+
+
+password
+dropbox@dropbox.com
+0
+ACTIVATED
 
 Goofy - AKA " Dippy Dawg"
 1800 Pluto Drive
@@ -46,26 +36,6 @@ Key
 password222
 stopgoofing@gmail.com
 10202011
-DEACTIVATED
-
-Los Angeles Airport
-12345 Main
-El Segundo, CA 90245
-Very Interested
-Key
-loveplanes
-lax@airport.gov
-1555433
-DEACTIVATED
-
-Los Angeles Dodgers
-12345 Chevaz Ravine
-Los Angeles, CA 90277
-very Interested
-Nice to Have
-baseball
-worldchamps@dodgers.com
-43224445
 DEACTIVATED
 
 Marcus Aurelius
@@ -78,14 +48,14 @@ ruletheworld@rome.com
 22229999
 DEACTIVATED
 
-Saddleback College
-28000 Marguerite Pkwy
-Mission Viejo, CA 92692
-not  Interested
-Nice to Have
-education
-Educated@saddleback.edu
-45513220
+Newton
+22222 Marguerite Pkwy
+
+
+
+password
+newton@gmail.com
+0
 DEACTIVATED
 
 Sammy Hagar
@@ -98,12 +68,12 @@ partytillyoudrop@hardcore.com
 23123333
 DEACTIVATED
 
-Secret Service
-12345 Pennsylvania
-Reston, VA  12345
-Very Interested
-Key
-savethepresident
-secrets@cia.gov
-77564221
+Testing
+22222 Marguerite Pkwy
+
+
+
+password
+testing@yahoo.com
+0
 DEACTIVATED

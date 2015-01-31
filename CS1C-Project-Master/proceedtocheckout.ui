@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>560</width>
-    <height>344</height>
+    <width>734</width>
+    <height>453</height>
    </rect>
   </property>
   <property name="contextMenuPolicy">
@@ -32,9 +32,9 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>40</y>
-     <width>221</width>
+     <x>400</x>
+     <y>70</y>
+     <width>291</width>
      <height>31</height>
     </rect>
    </property>
@@ -45,8 +45,8 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>120</y>
+     <x>400</x>
+     <y>140</y>
      <width>71</width>
      <height>20</height>
     </rect>
@@ -58,8 +58,8 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>160</y>
+     <x>400</x>
+     <y>190</y>
      <width>31</width>
      <height>21</height>
     </rect>
@@ -71,8 +71,8 @@
   <widget class="QPushButton" name="on_cvcButton_clicked">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>160</y>
+     <x>440</x>
+     <y>190</y>
      <width>31</width>
      <height>21</height>
     </rect>
@@ -84,23 +84,23 @@
   <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>50</y>
-     <width>141</width>
+     <x>50</x>
+     <y>80</y>
+     <width>201</width>
      <height>21</height>
     </rect>
    </property>
    <property name="text">
-    <string>Products being purchased</string>
+    <string>Products being purchased:</string>
    </property>
   </widget>
   <widget class="QTextBrowser" name="displayShoppingCart">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>80</y>
-     <width>221</width>
-     <height>201</height>
+     <x>50</x>
+     <y>100</y>
+     <width>311</width>
+     <height>281</height>
     </rect>
    </property>
    <property name="autoFillBackground">
@@ -117,18 +117,18 @@
   <widget class="QTextBrowser" name="totalCost_Browser">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>280</y>
-     <width>221</width>
+     <x>50</x>
+     <y>380</y>
+     <width>311</width>
      <height>41</height>
     </rect>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>340</x>
-     <y>80</y>
+     <x>480</x>
+     <y>110</y>
      <width>211</width>
      <height>191</height>
     </rect>

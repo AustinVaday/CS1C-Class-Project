@@ -46,13 +46,9 @@ void SignUpWindow::on_buttonBox_accepted(Customer& customer, bool & properFields
         else if (addL1.isEmpty())
         {
             QMessageBox::information(this, tr("Empty Field"),
-                       tr("Please enter in an ID number."));
+                       tr("Please enter in atleast one address."));
         }
-        else if(addL2.isEmpty())
-        {
-            QMessageBox::information(this, tr("Empty Field"),
-                       tr("Please enter in an ID number."));
-        }
+
         else if (pass.isEmpty())
         {
             QMessageBox::information(this, tr("Empty Field"),

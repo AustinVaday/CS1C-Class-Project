@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>663</width>
-    <height>582</height>
+    <width>672</width>
+    <height>516</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,16 +16,16 @@
   <property name="styleSheet">
    <string notr="true">#ViewProducts
 {
-	background-color: rgb(0, 0, 0);
+	background-color: white;
 
 }</string>
   </property>
   <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>30</y>
-     <width>581</width>
+     <x>40</x>
+     <y>50</y>
+     <width>531</width>
      <height>441</height>
     </rect>
    </property>
@@ -33,85 +33,11 @@
     <bool>false</bool>
    </property>
    <property name="styleSheet">
-    <string notr="true">#Product1
-{
-	background-image: url(:/Resources/space cat.jpg);
-}
-
-#Product2
-{
-	
-	background-color: rgb(0, 0, 0);
-}
-
-#Product3
-{
-	
-	background-image: url(:/Resources/soviet.jpg);
-
-}
-</string>
+    <string notr="true"/>
    </property>
    <property name="currentIndex">
     <number>2</number>
    </property>
-   <widget class="QWidget" name="Product2">
-    <attribute name="title">
-     <string>Product 2</string>
-    </attribute>
-    <widget class="QLabel" name="pic2">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>0</y>
-       <width>521</width>
-       <height>391</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="Images.qrc">:/Resources/images.jpeg</pixmap>
-     </property>
-     <property name="scaledContents">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QTextBrowser" name="text2">
-     <property name="geometry">
-      <rect>
-       <x>130</x>
-       <y>120</y>
-       <width>281</width>
-       <height>201</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">#text2
-{
-	background-color: rgba(0, 0, 0, 38);
-	font
-	font: 15pt &quot;American Typewriter&quot;;
-	color:white;
-
-}</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="product_Two">
-     <property name="geometry">
-      <rect>
-       <x>470</x>
-       <y>290</y>
-       <width>111</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Add to Cart</string>
-     </property>
-    </widget>
-   </widget>
    <widget class="QWidget" name="Product1">
     <attribute name="title">
      <string>Product 1</string>
@@ -120,9 +46,9 @@
      <property name="geometry">
       <rect>
        <x>170</x>
-       <y>0</y>
-       <width>231</width>
-       <height>211</height>
+       <y>10</y>
+       <width>181</width>
+       <height>151</height>
       </rect>
      </property>
      <property name="autoFillBackground">
@@ -141,10 +67,10 @@
     <widget class="QTextBrowser" name="text1">
      <property name="geometry">
       <rect>
-       <x>140</x>
-       <y>210</y>
+       <x>110</x>
+       <y>170</y>
        <width>301</width>
-       <height>211</height>
+       <height>191</height>
       </rect>
      </property>
      <property name="autoFillBackground">
@@ -153,7 +79,6 @@
      <property name="styleSheet">
       <string notr="true">#text1
 {
-	background-color: rgba(192, 19, 255, 115);
    
 	font: 100 15pt &quot;American Typewriter&quot;;
 	
@@ -168,11 +93,105 @@
     <widget class="QPushButton" name="product_One">
      <property name="geometry">
       <rect>
-       <x>490</x>
-       <y>270</y>
-       <width>75</width>
-       <height>20</height>
+       <x>190</x>
+       <y>370</y>
+       <width>151</width>
+       <height>31</height>
       </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+background-color: rgb(0, 0, 0);
+font: 13pt &quot;American Typewriter&quot;;
+color: white;
+border:  2px solid #555;
+border-style: solid;
+border-width: 1px;
+border-radius: 40px;
+padding: 5px;
+border-color: rgb(218, 73, 255);
+
+</string>
+     </property>
+     <property name="text">
+      <string>Add to Cart</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="Product2">
+    <attribute name="title">
+     <string>Product 2</string>
+    </attribute>
+    <widget class="QLabel" name="pic2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>0</y>
+       <width>521</width>
+       <height>391</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Images.qrc">:/Resources/images.jpeg</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="text2">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>100</y>
+       <width>281</width>
+       <height>201</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#text2
+{
+	background-color: rgba(0, 0, 0, 38);
+	font
+	font: 15pt &quot;American Typewriter&quot;;
+	color:white;
+
+}</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="product_Two">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>330</y>
+       <width>151</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+background-color: rgb(0, 0, 0);
+font: 13pt &quot;American Typewriter&quot;;
+color: white;
+border:  2px solid #555;
+border-style: solid;
+border-width: 1px;
+border-radius: 40px;
+padding: 5px;
+border-color: rgb(218, 73, 255);
+
+</string>
      </property>
      <property name="text">
       <string>Add to Cart</string>
@@ -186,10 +205,10 @@
     <widget class="QLabel" name="pic3">
      <property name="geometry">
       <rect>
-       <x>40</x>
+       <x>120</x>
        <y>0</y>
-       <width>481</width>
-       <height>221</height>
+       <width>291</width>
+       <height>151</height>
       </rect>
      </property>
      <property name="text">
@@ -205,9 +224,9 @@
     <widget class="QTextBrowser" name="text3">
      <property name="geometry">
       <rect>
-       <x>140</x>
-       <y>230</y>
-       <width>271</width>
+       <x>100</x>
+       <y>160</y>
+       <width>321</width>
        <height>211</height>
       </rect>
      </property>
@@ -220,11 +239,28 @@ background-color: rgba(0, 0, 0, 56);</string>
     <widget class="QPushButton" name="product_Three">
      <property name="geometry">
       <rect>
-       <x>480</x>
-       <y>310</y>
-       <width>101</width>
-       <height>21</height>
+       <x>180</x>
+       <y>380</y>
+       <width>151</width>
+       <height>31</height>
       </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+background-color: rgb(0, 0, 0);
+font: 13pt &quot;American Typewriter&quot;;
+color: white;
+border:  2px solid #555;
+border-style: solid;
+border-width: 1px;
+border-radius: 40px;
+padding: 5px;
+border-color: rgb(218, 73, 255);
+
+</string>
      </property>
      <property name="text">
       <string>Add to Cart</string>
@@ -265,15 +301,32 @@ border-color: rgb(218, 73, 255);
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>470</x>
+     <x>460</x>
      <y>10</y>
-     <width>175</width>
+     <width>181</width>
      <height>32</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QPushButton" name="checkout_button">
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+background-color: rgb(0, 0, 0);
+font: 13pt &quot;American Typewriter&quot;;
+color: white;
+border:  2px solid #555;
+border-style: solid;
+border-width: 1px;
+border-radius: 40px;
+padding: 5px;
+border-color: rgb(218, 73, 255);
+
+</string>
+      </property>
       <property name="text">
        <string>Checkout</string>
       </property>
@@ -281,6 +334,23 @@ border-color: rgb(218, 73, 255);
     </item>
     <item>
      <widget class="QPushButton" name="backButton">
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+background-color: rgb(0, 0, 0);
+font: 13pt &quot;American Typewriter&quot;;
+color: white;
+border:  2px solid #555;
+border-style: solid;
+border-width: 1px;
+border-radius: 40px;
+padding: 5px;
+border-color: rgb(218, 73, 255);
+
+</string>
+      </property>
       <property name="text">
        <string>Back</string>
       </property>
