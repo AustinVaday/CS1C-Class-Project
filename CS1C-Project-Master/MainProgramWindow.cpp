@@ -96,7 +96,7 @@ void MainProgramWindow::on_pushButton_Login_clicked()
 
 	customerLocation = 0;
 	loginWindow.setModal(true);
-	loginWindow.exec();
+    int success = loginWindow.exec();
 	loginWindow.on_buttonBox_loginPress_accepted(tempName, tempPassword);
 
 	// Stores the tempname and password
@@ -110,12 +110,40 @@ void MainProgramWindow::on_pushButton_Login_clicked()
 	}
 	else
 	{	// Compare user input to database
-		tempCustomer =  customerList.VerifyCustomer(tempName, tempPassword);
-		if(tempCustomer.getUserName() != " ")
-		{
-			validInput = true;
-			SetCustomerLogin(true);
-		}
+
+        try
+        {
+            tempCustomer = customerList.FindCustomer(tempName);
+
+            if (tempCustomer.getAccess() && tempCustomer.getPassword() == tempPassword)
+            {
+                validInput = true;
+                SetCustomerLogin(true);
+            }
+            else if (tempCustomer.getPassword() != tempPassword)
+            {
+                QMessageBox::information(this,"Error", "Wrong Credentials, sorry.");
+            }
+            else
+            {
+                QMessageBox::information(this,"Message", "Your account has not been activated yet. An administrator needs to activate your account, thank you for your patience!");
+
+            }
+
+        }
+        catch (NotFound)
+        {
+            if (success)
+            {
+                QMessageBox::information(this,"Error", "Account not found, sorry.");
+            }
+        }
+        catch(...)
+        {
+
+        }
+
+
 	}
 
 	if(validInput)
@@ -130,19 +158,15 @@ void MainProgramWindow::on_pushButton_Login_clicked()
 			{
 
 				bWindow->show();    // BROCHURE
-			}
-			else
-			{
-				QMessageBox::information(0, "Login Error", "Sorry, your account is not activated");
-			}
+            }
 		}
 
 
 	}
-	else
-	{
-		QMessageBox::information(0, "Login Error", "Sorry, wrong credentials");
-	}
+
+    //restore defaults
+    SetAdminLogin(false);
+    SetCustomerLogin(false);
 
 }
 
@@ -267,7 +291,6 @@ void MainProgramWindow::on_pushButton_RequestBrochure_clicked()
 	sWindow = new SignUpWindow;
 	sWindow->setModal(true);
 
-QMessageBox::information(this, "lol", "lol");
 	int submitSuccess = sWindow->exec();
 
 	if (submitSuccess)
@@ -435,4 +458,9 @@ bool MainProgramWindow::ReadTestimonials()
 
 // **** END METHOD **** //
 
+}
+
+void MainProgramWindow::on_pushButton_Login_2_clicked()
+{
+    this->on_actionContactUS_triggered();
 }

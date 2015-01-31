@@ -4,7 +4,7 @@
 
 
 ViewProducts::ViewProducts(QWidget *parent):
-    QWidget(parent),
+    QMainWindow(parent),
     ui(new Ui::ViewProducts)
 {
     ui->setupUi(this);
@@ -16,7 +16,7 @@ ViewProducts::ViewProducts(QWidget *parent):
 
 ViewProducts::ViewProducts(QWidget *parent, ProductList &robotList, ProductList &shoppingCart)
  :
-    QWidget(parent),
+    QMainWindow(parent),
     ui(new Ui::ViewProducts)
 {
 
@@ -46,7 +46,7 @@ ui->setupUi(this);
 
 // Anthony's Constructor, Check out cart
 ViewProducts::ViewProducts(QWidget *parent, ProductList &shoppingCartList):
-QWidget(parent),
+QMainWindow(parent),
 ui(new Ui::ViewProducts)
 
 {

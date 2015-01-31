@@ -114,7 +114,9 @@ class MainProgramWindow : public QMainWindow
 		void on_actionContactUS_triggered();
 		void updateCustomerReviews(QString newCustomerReviews);
 
-	private:
+        void on_pushButton_Login_2_clicked();
+
+private:
 		Ui::MainProgramWindow *ui;
 		QString review;
 		customerReviews *reviewsWindow;

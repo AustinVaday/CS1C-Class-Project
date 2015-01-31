@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>549</width>
-    <height>329</height>
+    <width>565</width>
+    <height>337</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,9 +23,33 @@
       <height>243</height>
      </rect>
     </property>
+    <property name="minimumSize">
+     <size>
+      <width>491</width>
+      <height>243</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>491</width>
+      <height>243</height>
+     </size>
+    </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
       <widget class="QLabel" name="welcome_label">
+       <property name="minimumSize">
+        <size>
+         <width>489</width>
+         <height>63</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>489</width>
+         <height>63</height>
+        </size>
+       </property>
        <property name="font">
         <font>
          <family>Arial</family>
@@ -40,6 +64,18 @@
      </item>
      <item>
       <widget class="QLabel" name="user_name_label">
+       <property name="minimumSize">
+        <size>
+         <width>489</width>
+         <height>62</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>489</width>
+         <height>62</height>
+        </size>
+       </property>
        <property name="font">
         <font>
          <family>Arial</family>
@@ -56,22 +92,39 @@
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
         <widget class="QPushButton" name="view_activated_customers">
-         <property name="text">
-          <string>View Customers</string>
+         <property name="minimumSize">
+          <size>
+           <width>489</width>
+           <height>32</height>
+          </size>
          </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="unreadMessagesButton">
+         <property name="maximumSize">
+          <size>
+           <width>489</width>
+           <height>32</height>
+          </size>
+         </property>
          <property name="text">
-          <string>Unread Messages</string>
+          <string>View and Manage Customers</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="back_button">
+         <property name="minimumSize">
+          <size>
+           <width>489</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>489</width>
+           <height>32</height>
+          </size>
+         </property>
          <property name="text">
-          <string>Back </string>
+          <string>Log Out</string>
          </property>
         </widget>
        </item>
@@ -87,6 +140,18 @@
       <width>601</width>
       <height>281</height>
      </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>601</width>
+      <height>281</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>601</width>
+      <height>281</height>
+     </size>
     </property>
    </widget>
    <zorder>graphicsView</zorder>
@@ -106,7 +171,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>549</width>
+     <width>565</width>
      <height>22</height>
     </rect>
    </property>

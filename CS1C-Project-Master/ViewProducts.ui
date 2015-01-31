@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>582</width>
-    <height>480</height>
+    <width>663</width>
+    <height>582</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -53,8 +53,65 @@
 </string>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>2</number>
    </property>
+   <widget class="QWidget" name="Product2">
+    <attribute name="title">
+     <string>Product 2</string>
+    </attribute>
+    <widget class="QLabel" name="pic2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>0</y>
+       <width>521</width>
+       <height>391</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Images.qrc">:/Resources/images.jpeg</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="text2">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>120</y>
+       <width>281</width>
+       <height>201</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#text2
+{
+	background-color: rgba(0, 0, 0, 38);
+	font
+	font: 15pt &quot;American Typewriter&quot;;
+	color:white;
+
+}</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="product_Two">
+     <property name="geometry">
+      <rect>
+       <x>470</x>
+       <y>290</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Add to Cart</string>
+     </property>
+    </widget>
+   </widget>
    <widget class="QWidget" name="Product1">
     <attribute name="title">
      <string>Product 1</string>
@@ -111,67 +168,10 @@
     <widget class="QPushButton" name="product_One">
      <property name="geometry">
       <rect>
-       <x>460</x>
-       <y>280</y>
+       <x>490</x>
+       <y>270</y>
        <width>75</width>
        <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Add to Cart</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="Product2">
-    <attribute name="title">
-     <string>Product 2</string>
-    </attribute>
-    <widget class="QLabel" name="pic2">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>0</y>
-       <width>521</width>
-       <height>391</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="Images.qrc">:/Resources/images.jpeg</pixmap>
-     </property>
-     <property name="scaledContents">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QTextBrowser" name="text2">
-     <property name="geometry">
-      <rect>
-       <x>130</x>
-       <y>120</y>
-       <width>281</width>
-       <height>201</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">#text2
-{
-	background-color: rgba(0, 0, 0, 38);
-	font
-	font: 15pt &quot;American Typewriter&quot;;
-	color:white;
-
-}</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="product_Two">
-     <property name="geometry">
-      <rect>
-       <x>460</x>
-       <y>300</y>
-       <width>75</width>
-       <height>23</height>
       </rect>
      </property>
      <property name="text">
@@ -220,10 +220,10 @@ background-color: rgba(0, 0, 0, 56);</string>
     <widget class="QPushButton" name="product_Three">
      <property name="geometry">
       <rect>
-       <x>460</x>
-       <y>320</y>
-       <width>75</width>
-       <height>23</height>
+       <x>480</x>
+       <y>310</y>
+       <width>101</width>
+       <height>21</height>
       </rect>
      </property>
      <property name="text">
@@ -262,31 +262,31 @@ border-color: rgb(218, 73, 255);
     <string>Maintanence Plan</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="checkout_button">
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
      <x>470</x>
      <y>10</y>
-     <width>75</width>
-     <height>23</height>
+     <width>175</width>
+     <height>32</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Checkout</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="backButton">
-   <property name="geometry">
-    <rect>
-     <x>380</x>
-     <y>10</y>
-     <width>75</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Back</string>
-   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QPushButton" name="checkout_button">
+      <property name="text">
+       <string>Checkout</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="backButton">
+      <property name="text">
+       <string>Back</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources>

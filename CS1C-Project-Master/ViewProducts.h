@@ -1,7 +1,7 @@
 #ifndef VIEWPRODUCTS_H
 #define VIEWPRODUCTS_H
 
-#include <QWidget>
+#include <QMainWindow>
 #include "ProductClass.h"
 #include "ProductListClass.h"
 #include "ImageViewer.h"
@@ -12,7 +12,7 @@ namespace Ui {
 class ViewProducts;
 }
 
-class ViewProducts : public QWidget
+class ViewProducts : public QMainWindow
 {
     Q_OBJECT
 

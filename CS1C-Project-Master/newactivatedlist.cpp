@@ -12,6 +12,8 @@ NewActivatedList::NewActivatedList(QWidget *parent, CustomerList &list) :
     QDialog(parent),
     ui(new Ui::NewActivatedList)
 {
+
+
     /***********************************************************
      * This should be used in all windows except main window!
      ***********************************************************/
@@ -118,13 +120,12 @@ int NewActivatedList::UpdateNumActivatedCustomers()
 
 NewActivatedList::~NewActivatedList()
 {
-
         updateCustomerList(&customerList);
         customerList.ClearList();
 
         delete custAddBook;
 
-		delete ui;
+        delete ui;
 }
 
 

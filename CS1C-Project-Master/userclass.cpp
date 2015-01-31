@@ -147,7 +147,9 @@ QString  User::OutputData() const
     out << "Email address: " << userEmail << endl;
     out << "Account number: " <<  accountNum << endl;
     out << "Password: " << userPassword << endl;
-    out << "Temp... Account Access: " << accountAccess << endl;
+    out << "Account Access: ";
+    if (accountAccess){out << "yes";} else{out << "no";}
+    out << endl;
     out << "........................................................\n";
 
     return str;

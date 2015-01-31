@@ -35,7 +35,11 @@ void AdminWindow::on_back_button_clicked()
 }
 void AdminWindow::on_view_activated_customers_clicked()
 {
-    viewList->show();
+    viewList->setModal(true);
+    viewList->exec();
+
+    this->show();
+
 }
 void AdminWindow::on_modify_help_options_clicked()
 {
